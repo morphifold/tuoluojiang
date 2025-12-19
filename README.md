@@ -187,7 +187,6 @@ Linux安装教程：https://doc.crmeb.com/tuoluojiang/tuoluojiang19/19108
 
 **陀螺匠开源技术交流群**
 
-**扫码进群可领取开源版产品功能清单、高清UI设计图、思维脑图！**
 
 ![输入图片说明](readme/image1.jpg)
 
