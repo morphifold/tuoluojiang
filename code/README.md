@@ -31,6 +31,12 @@
 7. 内置长连接服务减少CPU及内存使用及网络堵塞，减少请求响应时长
 8. 对接WPS在线协同编辑文档
 
+### 一键运行
+
+```bash
+docker run -d -p 8022:80 --name tuoluojiang ccr.ccs.tencentyun.com/zbkj/tuoluojiang:v2.0
+```
+
 ### 相关命令
 
 ```shell
