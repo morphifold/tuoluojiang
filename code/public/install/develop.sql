@@ -1,6 +1,6 @@
 -- 表的结构 `eb_cheliangjichuxinxi`
-CREATE TABLE `eb_cheliangjichuxinxi` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `eb_cheliangjichuxinxi` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `update_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '修改用户id',
   `owner_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '所属用户id',
@@ -18,8 +18,8 @@ CREATE TABLE `eb_cheliangjichuxinxi` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 -- 表的结构 `eb_jiashiyuanxinxi`
-CREATE TABLE `eb_jiashiyuanxinxi` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `eb_jiashiyuanxinxi` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `update_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '修改用户id',
   `owner_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '所属用户id',
@@ -36,8 +36,8 @@ CREATE TABLE `eb_jiashiyuanxinxi` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 -- 表的结构 `eb_paichejilu`
-CREATE TABLE `eb_paichejilu` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `eb_paichejilu` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `update_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '修改用户id',
   `owner_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '所属用户id',
@@ -175,8 +175,8 @@ INSERT INTO `eb_system_crud_table_user` (`id`, `crud_id`, `user_id`, `senior_sea
 (4, 3, 1, '[]', '[]', '{\"tab\":[{\"id\":\"4\",\"table_name\":\"\\u6d3e\\u8f66\\u8bb0\\u5f55\",\"table_name_en\":\"paichejilu\",\"field_name\":\"\\u6d3e\\u8f66\\u8bb0\\u5f55\"}]}', '2024-04-30 07:08:09', '2024-04-30 07:08:09', NULL),
 (5, 2, 1, '[]', '[\"jiashiyuanxingming\",\"lianxidianhua\",\"jiazhaoleixing\",\"jiazhaobianhao\",\"jiazhaodaoqishijian\",\"owner_user_id\"]', '{\"create\":[],\"tab\":[{\"id\":\"3\",\"table_name\":\"\\u7528\\u8f66\\u7533\\u8bf7\",\"table_name_en\":\"yongcheshenqing\",\"field_name\":\"\\u7528\\u8f66\\u7533\\u8bf7\"},{\"id\":\"4\",\"table_name\":\"\\u6d3e\\u8f66\\u8bb0\\u5f55\",\"table_name_en\":\"paichejilu\",\"field_name\":\"\\u6d3e\\u8f66\\u8bb0\\u5f55\"}]}', '2024-05-06 06:40:13', '2024-05-07 01:30:32', NULL);
 -- 表的结构 `eb_yongcheshenqing`
-CREATE TABLE `eb_yongcheshenqing` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `eb_yongcheshenqing` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` int(11) NOT NULL DEFAULT '0' COMMENT '创建用户id',
   `update_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '修改用户id',
   `owner_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '所属用户id',
@@ -194,19 +194,7 @@ CREATE TABLE `eb_yongcheshenqing` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用车申请';
--- 转储表的索引
--- 表的索引 `eb_cheliangjichuxinxi`
-ALTER TABLE `eb_cheliangjichuxinxi` ADD PRIMARY KEY (`id`);
-ALTER TABLE `eb_cheliangjichuxinxi` MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
--- 表的索引 `eb_jiashiyuanxinxi`
-ALTER TABLE `eb_jiashiyuanxinxi` ADD PRIMARY KEY (`id`);
-ALTER TABLE `eb_jiashiyuanxinxi` MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
--- 表的索引 `eb_paichejilu`
-ALTER TABLE `eb_paichejilu` ADD PRIMARY KEY (`id`);
-ALTER TABLE `eb_paichejilu` MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
--- 表的索引 `eb_yongcheshenqing`
-ALTER TABLE `eb_yongcheshenqing` ADD PRIMARY KEY (`id`);
-ALTER TABLE `eb_yongcheshenqing` MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+-- 转储表的索引（主键和自增已在 CREATE TABLE 中定义）
 
 INSERT INTO `eb_openapi_rule` (`id`, `pid`, `name`, `type`, `crud_id`, `method`, `url`, `path_prams`, `created_at`, `updated_at`, `get_prams`, `post_prams`, `request_data`, `response_data`) VALUES
 (1, 0, '对外接口授权', 0, 0, '0', '0', '', '2024-11-06 09:41:26', '2024-11-06 09:41:26', NULL, NULL, NULL, NULL),
