@@ -7,8 +7,10 @@
 直接使用腾讯云容器镜像服务中的完整镜像：
 
 ```bash
-# 运行容器，使用腾讯云镜像
-docker run -d -p 8022:80 --name tuoluojiang ccr.ccs.tencentyun.com/zbkj/tuoluojiang:v2.0
+# 运行容器
+docker run -d -p 8022:80 --name tuoluojiang ccr.ccs.tencentyun.com/tuoluojiang/tuoluojiangky:latest
+
+# 访问地址：http://localhost:8022
 ```
 
 ## 2. 文件挂载说明
@@ -21,7 +23,7 @@ docker run -d \
   -p 8022:80 -p 3306:3306 -p 6379:6379 \
   -v /path/to/your/project:/var/www \
   --name tuoluojiang \
-  ccr.ccs.tencentyun.com/zbkj/tuoluojiang:v2.0
+  ccr.ccs.tencentyun.com/tuoluojiang/tuoluojiangky:latest
 ```
 
 **注意**：将 `/path/to/your/project` 替换为你的本地项目目录路径。
