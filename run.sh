@@ -13,11 +13,35 @@ NC='\033[0m' # No Color
 
 # 配置参数
 COMPOSE_FILE="docker-compose.yml"
-APP_NAME="tuoluojiang"
-APP_PORT="20300"
-MYSQL_PORT="3376"
-REDIS_PORT="6389"
-NGINX_PORT="80"
+
+# 从 docker-compose.yml 中读取配置
+load_config_from_compose() {
+    # 获取应用名称（容器名）
+    APP_NAME=$(grep "container_name: tuoluojiang" "$COMPOSE_FILE" | awk '{print $2}')
+    
+    # 获取端口配置
+    # MySQL端口
+    MYSQL_PORT=$(awk '/mysql_tuoluojiang:/{found=1} found && /:3306/{print; exit}' "$COMPOSE_FILE" | awk -F'[-:]' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+    
+    # Redis端口（处理引号）
+    REDIS_PORT=$(awk '/redis_tuoluojiang:/{found=1} found && /:6379/{print; exit}' "$COMPOSE_FILE" | tr -d '"' | awk -F'[-:]' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+    
+    # 应用端口（PHP容器）
+    APP_PORT=$(awk '/container_name: tuoluojiang/{found=1} found && /:20200/{print; exit}' "$COMPOSE_FILE" | awk -F'[-:]' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+    
+    # Nginx端口（HTTP端口，取第一个）
+    NGINX_PORT=$(awk '/nginx_tuoluojiang:/{found=1} found && /:80/{print; exit}' "$COMPOSE_FILE" | tr -d '"' | awk -F'[-:]' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+    
+    # 如果解析失败，使用默认值
+    APP_NAME=${APP_NAME:-"tuoluojiang"}
+    APP_PORT=${APP_PORT:-"20300"}
+    MYSQL_PORT=${MYSQL_PORT:-"3376"}
+    REDIS_PORT=${REDIS_PORT:-"6389"}
+    NGINX_PORT=${NGINX_PORT:-"80"}
+}
+
+# 加载配置
+load_config_from_compose
 
 # 日志函数
 log_info() {

@@ -47,7 +47,7 @@ services:
   # php 容器
   tuoluojiang:
     container_name: tuoluojiang #指定容器名
-    image: tuoluojiang #指定镜像名
+    # image: tuoluojiang #指定镜像名
     build:
       context: ./help/docker-compose/php #dockerfile文件路径
       dockerfile: Dockerfile #制定dockerfile文件名称
@@ -57,7 +57,7 @@ services:
       # 数据库配置环境变量
       MYSQL_HOST_IP: mysql_tuoluojiang
       MYSQL_PORT: "3306"
-      MYSQL_USER: tuoluojiang
+      MYSQL_USER: root
       MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: tuoluojiang
       # Redis配置环境变量
