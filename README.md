@@ -37,6 +37,29 @@ AI、低代码、考勤打卡、审批流、工作汇报、绩效管理、客户
 
 ---
 
+## 🐳 Docker一键运行体验
+
+通过Docker可以快速部署和运行陀螺匠系统，无需复杂的环境配置。
+
+### 快速启动
+
+```bash
+
+docker run -d \
+  --name tuoluojiang-app \
+  -p 80:80 \
+  --restart unless-stopped \
+  ccr.ccs.tencentyun.com/tuoluojiang/tuoluojiangky:latest
+
+```
+
+### 访问应用
+
+启动成功后，打开浏览器访问：http://localhost
+
+首次访问会自动跳转到安装向导页面，按提示完成安装即可。
+
+
 ## 💯 系统亮点
 
 1.前后端分离：后端Laravel9+Swoole，前端ElementUI+Vue；
