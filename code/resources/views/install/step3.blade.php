@@ -190,6 +190,10 @@
                                     case 1049:
                                         this.errorMsg.db_name = '请检查数据库是否存在'
                                         break;
+                                    case 1698:
+                                        this.errorMsg.db_user = '数据库用户认证失败，请检查用户名或使用正确的认证方式'
+                                        this.errorMsg.db_pwd = '数据库用户认证失败，请检查密码或使用正确的认证方式'
+                                        break;
                                     case -5:
                                         this.errorMsg.db_name = 'MySql数据库必须是5.7及以上版本'
                                         break;
@@ -218,7 +222,7 @@
                                         this.errorMsg.redis_host = 'Connection failed: `AUTH` failed!'
                                         break;
                                     default:
-                                        this.errorMsg.redis_host = 'Redis连接失败'
+                                        this.errorMsg.db_user = '数据库连接失败，请检查配置信息'
                                 }
                             }).catch(err=>{
                                 this.loading = false
