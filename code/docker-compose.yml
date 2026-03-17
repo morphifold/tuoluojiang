@@ -1,55 +1,72 @@
-version: "3.3"
 services:
   # mysql 容器
-  mysql_tuoluojiang:
-    container_name: mysql_tuoluojiang #指定容器名
-#    image: daocloud.io/library/mysql:5.7.5-m15 #M1芯片可以采用这个镜像
-    image: mysql:8.0 #一般电脑可以用这个镜像
+  mysql:
+    container_name: tuoluojiang_mysql
+    image: ccr.ccs.tencentyun.com/tuoluojiang/mysql:latest
+    # build: ./mysql
+    # 平台兼容性配置
+    # platform: linux/amd64
     ports:
-      - 3376:3306
-    # 环境变量
+      - "33061:3306"
     environment:
       TZ: Asia/Shanghai
-      MYSQL_ROOT_PASSWORD: '123456'
-      MYSQL_DATABASE: 'tuoluojiang'
-    privileged: true
-    command:
-       --character-set-server=utf8mb4
-       --collation-server=utf8mb4_general_ci
-       --explicit_defaults_for_timestamp=true
-       --lower_case_table_names=1
-       --max_allowed_packet=128M
-       --default-authentication-plugin=mysql_native_password
-       --sql-mode="NO_ENGINE_SUBSTITUTION"
-    working_dir: /var/lib/mysql
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: tuoluojiang
+      MYSQL_PASSWORD: 123456
+      MYSQL_DATABASE: tuoluojiang
     volumes:
-      - ./helper/docker-compose/mysql/my.cnf:/etc/mysql/my.cnf
-      - ./helper/docker-compose/mysql/data:/var/lib/mysql #挂载数据目录到本地
-      - ./helper/docker-compose/mysql/log:/var/log/mysql
+      # - ./mysql/my.cnf:/etc/mysql/my.cnf # 挂载MySQL配置文件
+      - ./mysql/data:/var/lib/mysql # 挂载MySQL数据目录到本地
+      - ./mysql/log:/var/log/mysql # 挂载MySQL日志目录到本地
     networks:
       app_net:
-        # 固定子网ip，网段必须在子网络192.168.*.*
-        ipv4_address: 192.168.10.14
+        ipv4_address: 192.168.12.11
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+
   # redis 容器
-  redis_tuoluojiang:
-    container_name: redis_tuoluojiang
-    image: 'redis:latest'
+  redis:
+    container_name: tuoluojiang_redis
+    image: ccr.ccs.tencentyun.com/tuoluojiang/redis:latest
+    # build: ./redis
     ports:
-      - "6389:6379"
-    command: redis-server /usr/local/etc/redis/redis.conf
+      - "6379:6379"
+    # command: redis-server /usr/local/etc/redis/redis.conf
     volumes:
-      - ./helper/docker-compose/redis/data:/data #挂载数据目录到本地
-      - ./helper/docker-compose/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      # - ./redis/redis.conf:/usr/local/etc/redis/redis.conf # 挂载Redis配置文件
+      - ./redis/data:/data # 挂载Redis数据目录到本地
+      - ./redis/log:/var/log/redis # 挂载Redis日志目录到本地
     networks:
       app_net:
-        ipv4_address: 192.168.10.15
+        ipv4_address: 192.168.12.10
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
   # php 容器
-  tuoluojiang:
-    container_name: tuoluojiang #指定容器名
-    image: tuoluojiang #指定镜像名
-    build:
-      context: ./helper/docker-compose/php #dockerfile文件路径
-      dockerfile: Dockerfile #制定dockerfile文件名称
+  phpfpm:
+    container_name: tuoluojiang_php
+    image: ccr.ccs.tencentyun.com/tuoluojiang/php:latest
+    # build: ./php
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -68,41 +85,72 @@ services:
       APP_DEBUG: true
       DEFAULT_TIMEZONE: Asia/Shanghai
     ports:
-      - 20300:20200
-    tmpfs: /var/temp #上传临时文件夹
+      - "9000:9000"
+      - "20200:20200"
     working_dir: /var/www
     volumes:
-      - ./:/var/www #程序运行目录
-      - ./storage:/var/www/temp #程序缓存目录
-      - ./helper/docker-compose/php/php-ini-overrides.ini:/etc/php/8.0/fpm/conf.d/99-overrides.ini
-    command: bin/laravels start --ignore
+      - ../../:/var/www # 程序运行目录
+      - ../../runtime:/var/www/runtime # 程序缓存目录
+      - ../../storage:/var/www/storage # 系统文件上传目录
+      # - ./php/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini # 挂载PHP配置文件
+      - ./php/log:/var/log/php # 挂载PHP日志目录到本地
     networks:
       app_net:
-        ipv4_address: 192.168.10.16
-    
-  nginx_tuoluojiang:
-    container_name: nginx_tuoluojiang
-    image: nginx:latest
-    # platform: linux/arm64/v8
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./:/var/www
-      - ./helper/docker-compose/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./helper/docker-compose/nginx/conf.d:/etc/nginx/conf.d
-      - ./helper/docker-compose/nginx/log:/var/log/nginx
-    networks:
-      app_net:
-        ipv4_address: 192.168.10.17
-    restart: unless-stopped
+        ipv4_address: 192.168.12.90
     depends_on:
-      - tuoluojiang
+      - mysql
+      - redis
+    command: bin/laravels start --ignore
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:20200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+
+  # nginx 容器
+  nginx:
+    container_name: tuoluojiang_nginx
+    image: ccr.ccs.tencentyun.com/tuoluojiang/nginx:latest
+    # build: ./nginx
+    restart: always
+    ports:
+      - "8022:80"
+    # 依赖关系 先跑php
+    depends_on:
+      - phpfpm
+    environment:
+      TZ: Asia/Shanghai
+    working_dir: /var/www
+    volumes_from:
+      - phpfpm # 继承phpfpm挂载目录
+    volumes:
+      # - ./nginx/vhost.conf:/etc/nginx/conf.d/default.conf # 挂载Nginx配置文件
+      - ./nginx/log:/var/log/nginx # 挂载Nginx日志目录到本地
+    networks:
+      app_net:
+        ipv4_address: 192.168.12.80
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
+
 networks: #网络配置
   app_net: #网络名称
     driver: bridge
     ipam: #网络配置
       driver: default
       config:
-        - subnet: 192.168.10.0/24 #IP区间
-
+        - subnet: 192.168.12.0/24 #IP区间

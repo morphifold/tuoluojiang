@@ -1,6 +1,6 @@
 
 <div style="text-align: center" align="center">
-<img src="./readme/logo.png" width='120' />
+<img src="./help/resource/logo.png" width='120' />
 <p>陀螺匠·AI+低代码双引擎智能办公系统</p>
 
 [官网](https://tuoluojiang.com)｜[在线体验](https://demo.tuoluojiang.com/)｜[帮助文档](https://doc.crmeb.com/tuoluojiang)｜[应用市场](https://www.crmeb.com/market/)｜[技术社区](https://www.crmeb.com/ask/thread/list/157)
@@ -61,23 +61,23 @@ AI、低代码、考勤打卡、审批流、工作汇报、绩效管理、客户
 
 ## 🏠 产品架构图
 
-![输入图片说明](./readme/framework.jpg)
+![输入图片说明](./help/resource/framework.jpg)
 
 ---
 
 ## 🖼️ 页面预览
 
-![输入图片说明](readme/%E5%B7%A5%E4%BD%9C%E5%8F%B0-%E6%96%B0%E6%A1%86%E6%9E%B6-%E8%93%9D.png)
-![输入图片说明](readme/%E6%96%B0%E5%A2%9E-%E7%9C%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1.png)
-![输入图片说明](readme/%E5%AE%A2%E6%88%B7%E7%AE%A1%E7%90%86%E5%88%97%E8%A1%A8-%E4%BD%8E%E4%BB%A3%E7%A0%81.png)
-![输入图片说明](readme/%E5%BC%80%E5%8F%91-%E5%AE%9E%E4%BD%93%E7%AE%A1%E7%90%86-%E8%A1%A8%E5%8D%95%E8%AE%BE%E8%AE%A1.png)
-![输入图片说明](readme/%E6%96%B0%E5%BB%BA.png)
-![输入图片说明](readme/%E5%BC%80%E5%8F%91-%E8%A7%A6%E5%8F%91%E5%99%A8%E7%AE%A1%E7%90%86.png)
-![输入图片说明](readme/%E5%AE%A2%E6%88%B7-%E5%8F%91%E7%A5%A8%E7%AE%A1%E7%90%86.png)
-![输入图片说明](readme/%E5%8A%9E%E5%85%AC-%E6%88%91%E7%9A%84%E6%97%A5%E7%A8%8B%EF%BC%88%E5%A4%A9%EF%BC%89.png)
-![输入图片说明](readme/%E9%A1%B9%E7%9B%AE-%E6%88%91%E7%9A%84%E4%BB%BB%E5%8A%A1.png)
-![输入图片说明](readme/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%E8%AE%BE%E7%BD%AE.png)
-![输入图片说明](readme/AI%E5%8A%A9%E6%89%8B%E5%88%97%E8%A1%A8%E6%A0%B7%E5%BC%8F.png)
+![输入图片说明](help/resource/%E5%B7%A5%E4%BD%9C%E5%8F%B0-%E6%96%B0%E6%A1%86%E6%9E%B6-%E8%93%9D.png)
+![输入图片说明](help/resource/%E6%96%B0%E5%A2%9E-%E7%9C%8B%E6%9D%BF%E8%AE%BE%E8%AE%A1.png)
+![输入图片说明](help/resource/%E5%AE%A2%E6%88%B7%E7%AE%A1%E7%90%86%E5%88%97%E8%A1%A8-%E4%BD%8E%E4%BB%A3%E7%A0%81.png)
+![输入图片说明](help/resource/%E5%BC%80%E5%8F%91-%E5%AE%9E%E4%BD%93%E7%AE%A1%E7%90%86-%E8%A1%A8%E5%8D%95%E8%AE%BE%E8%AE%A1.png)
+![输入图片说明](help/resource/%E6%96%B0%E5%BB%BA.png)
+![输入图片说明](help/resource/%E5%BC%80%E5%8F%91-%E8%A7%A6%E5%8F%91%E5%99%A8%E7%AE%A1%E7%90%86.png)
+![输入图片说明](help/resource/%E5%AE%A2%E6%88%B7-%E5%8F%91%E7%A5%A8%E7%AE%A1%E7%90%86.png)
+![输入图片说明](help/resource/%E5%8A%9E%E5%85%AC-%E6%88%91%E7%9A%84%E6%97%A5%E7%A8%8B%EF%BC%88%E5%A4%A9%EF%BC%89.png)
+![输入图片说明](help/resource/%E9%A1%B9%E7%9B%AE-%E6%88%91%E7%9A%84%E4%BB%BB%E5%8A%A1.png)
+![输入图片说明](help/resource/%E5%BA%94%E7%94%A8%E5%88%97%E8%A1%A8%E8%AE%BE%E7%BD%AE.png)
+![输入图片说明](help/resource/AI%E5%8A%A9%E6%89%8B%E5%88%97%E8%A1%A8%E6%A0%B7%E5%BC%8F.png)
 
 ---
 
@@ -188,7 +188,7 @@ Linux安装教程：https://doc.crmeb.com/tuoluojiang/tuoluojiang19/19108
 **陀螺匠开源技术交流群**
 
 
-![输入图片说明](readme/image1.jpg)
+![输入图片说明](help/resource/image1.jpg)
 
 **技术社区！找方法、提bug、看官方消息、拿活跃大奖！都在 **[**CRMEB 技术社区**](https://www.crmeb.com/ask/thread/list/157)** 应有尽有~**
 
@@ -214,6 +214,6 @@ All rights reserved。
 
 ## 欢迎了解CRMEB多商户商城系统
 
-![输入图片说明](readme/%E5%BC%80%E6%BA%90%E7%AB%99%E5%A4%9A%E5%95%86%E6%88%B7PHP.jpg)
+![输入图片说明](help/resource/%E5%BC%80%E6%BA%90%E7%AB%99%E5%A4%9A%E5%95%86%E6%88%B7PHP.jpg)
 
 
