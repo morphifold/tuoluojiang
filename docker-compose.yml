@@ -3,7 +3,7 @@ services:
   mysql_tuoluojiang:
     container_name: mysql_tuoluojiang #指定容器名
 #    image: daocloud.io/library/mysql:5.7.5-m15 #M1芯片可以采用这个镜像
-    image: mysql:8.0 #一般电脑可以用这个镜像
+    image: docker.1ms.run/mysql:8.0 #一般电脑可以用这个镜像
     ports:
       - 3376:3306
     # 环境变量
@@ -34,7 +34,7 @@ services:
   # redis 容器
   redis_tuoluojiang:
     container_name: redis_tuoluojiang
-    image: 'redis:latest'
+    image: 'docker.1ms.run/redis:latest'
     ports:
       - "6389:6379"
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -83,7 +83,7 @@ services:
     
   nginx_tuoluojiang:
     container_name: nginx_tuoluojiang
-    image: nginx:latest
+    image: docker.1ms.run/nginx:latest
     # platform: linux/arm64/v8
     ports:
       - "80:80"

@@ -188,12 +188,23 @@ show_logs() {
 }
 
 # 清理安装数据
+# 参数: $1 - 是否删除容器和镜像 (true/false, 默认false)
 clean_install_data() {
-    log_warning "删除容器和所有数据（仅保留代码和配置文件）..."
+    local remove_containers="${1:-false}"
     
-    # 停止并删除所有容器
-    log_info "停止并删除所有容器..."
-    docker-compose -f "$COMPOSE_FILE" down -v
+    if [ "$remove_containers" = "true" ]; then
+        log_warning "删除容器和数据卷（保留镜像，仅保留代码和配置文件）..."
+        
+        # 停止并删除容器和数据卷（保留镜像）
+        log_info "停止并删除容器和数据卷..."
+        docker-compose -f "$COMPOSE_FILE" down -v
+    else
+        log_warning "清理数据（保留容器和镜像，仅删除数据文件）..."
+        
+        # 仅停止容器
+        log_info "停止所有容器..."
+        docker-compose -f "$COMPOSE_FILE" stop
+    fi
     
     # 删除 MySQL 数据
     if [ -d "./help/docker-compose/mysql/data" ]; then
@@ -258,10 +269,6 @@ clean_install_data() {
         log_success "安装锁文件已删除"
     fi
     
-    # 清理未使用的 Docker 资源
-    log_info "清理未使用的 Docker 资源..."
-    docker system prune -af --volumes
-    
     log_success "清理完成！"
     log_info "保留的文件："
     echo "  ✓ 项目代码: ./code/"
@@ -307,10 +314,10 @@ build_php_image() {
     fi
 }
 
-# 删除容器和临时文件
+# 删除容器和临时文件（保留镜像）
 delete_containers() {
-    log_warning "删除容器和所有数据..."
-    clean_install_data
+    log_warning "删除容器和数据卷（保留镜像）..."
+    clean_install_data "true"
 }
 
 # 显示服务信息
@@ -379,7 +386,7 @@ main() {
             show_logs "$2"
             ;;
         install)
-            clean_install_data
+            clean_install_data "true"
             start_services
             ;;
         build)
