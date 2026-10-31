@@ -1,0 +1,12 @@
+{
+  "name": "fde_oa",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "devDependencies": {
+    "nx": "^19.0.0"
+  }
+}

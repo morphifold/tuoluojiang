@@ -1,0 +1,30 @@
+{
+  "name": "oa-backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/oa-backend/app",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "php bin/laravels start",
+        "cwd": "apps/oa-backend"
+      }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "php artisan migrate",
+        "cwd": "apps/oa-backend"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "php test_tencent_ocr_verification.php",
+        "cwd": "apps/oa-backend"
+      }
+    }
+  },
+  "tags": ["scope:backend", "type:app", "lang:php"]
+}

@@ -235,44 +235,44 @@ clean_install_data() {
     fi
     
     # 清理 storage 目录（保留结构）
-    if [ -d "./code/storage" ]; then
+    if [ -d "./apps/oa-backend/storage" ]; then
         log_info "清理 storage 目录..."
         # 清理 framework 缓存
-        rm -rf ./code/storage/framework/cache/* 2>/dev/null
-        rm -rf ./code/storage/framework/sessions/* 2>/dev/null
-        rm -rf ./code/storage/framework/views/* 2>/dev/null
+        rm -rf ./apps/oa-backend/storage/framework/cache/* 2>/dev/null
+        rm -rf ./apps/oa-backend/storage/framework/sessions/* 2>/dev/null
+        rm -rf ./apps/oa-backend/storage/framework/views/* 2>/dev/null
         # 清理日志
-        rm -rf ./code/storage/logs/*.log 2>/dev/null
+        rm -rf ./apps/oa-backend/storage/logs/*.log 2>/dev/null
         # 删除上传的文件
-        rm -rf ./code/storage/app/public/* 2>/dev/null
+        rm -rf ./apps/oa-backend/storage/app/public/* 2>/dev/null
         log_success "storage 目录已清理"
     fi
     
     # 删除用户上传文件
-    if [ -d "./code/public/uploads" ]; then
+    if [ -d "./apps/oa-backend/public/uploads" ]; then
         log_info "删除用户上传文件..."
-        rm -rf ./code/public/uploads/*
+        rm -rf ./apps/oa-backend/public/uploads/*
         log_success "用户上传文件已删除"
     fi
     
     # 清理 bootstrap 缓存
-    if [ -d "./code/bootstrap/cache" ]; then
+    if [ -d "./apps/oa-backend/bootstrap/cache" ]; then
         log_info "清理 bootstrap 缓存..."
-        rm -rf ./code/bootstrap/cache/*.php 2>/dev/null
+        rm -rf ./apps/oa-backend/bootstrap/cache/*.php 2>/dev/null
         log_success "bootstrap 缓存已清理"
     fi
     
     # 删除安装锁文件
-    if [ -f "./code/public/install/install.lock" ]; then
+    if [ -f "./apps/oa-backend/public/install/install.lock" ]; then
         log_info "删除安装锁文件..."
-        rm -f ./code/public/install/install.lock
+        rm -f ./apps/oa-backend/public/install/install.lock
         log_success "安装锁文件已删除"
     fi
     
     log_success "清理完成！"
     log_info "保留的文件："
-    echo "  ✓ 项目代码: ./code/"
-    echo "  ✓ 配置文件: ./code/.env"
+    echo "  ✓ 项目代码: ./apps/oa-backend/"
+    echo "  ✓ 配置文件: ./apps/oa-backend/.env"
     echo "  ✓ Docker 配置: ./help/docker-compose/"
     echo "  ✓ docker-compose.yml"
     echo ""

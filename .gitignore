@@ -32,6 +32,8 @@ yarn-error.log*
 .temp/
 
 .wrangler/
+.nx/
+.repo/
 # 环境配置
 .env.local
 .env.*.local

@@ -11,14 +11,12 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - tuoluojiang_app_data:/var/www
+      - ./apps/oa-backend:/var/www
       - tuoluojiang_mysql_data:/var/lib/mysql
       - tuoluojiang_redis_data:/var/lib/redis
       - ./nginx_default.conf:/etc/nginx/conf.d/default.conf:ro
 
 volumes:
-  tuoluojiang_app_data:
-    name: tuoluojiang_app_data
   tuoluojiang_mysql_data:
     name: tuoluojiang_mysql_data
   tuoluojiang_redis_data:

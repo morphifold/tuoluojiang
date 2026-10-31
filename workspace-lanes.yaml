@@ -1,0 +1,37 @@
+schema: workspace-lanes/v1
+modules:
+  oa-backend:
+    container_repo: proposed
+    layers: [app, controller, service, dao, model]
+  oa-frontend:
+    container_repo: proposed
+    layers: [view, component, api, router]
+  edge-proxy:
+    container_repo: proposed
+    layers: [worker]
+control:
+  module: fde_oa
+  container_repo: fde_oa
+  layers: [control]
+permissions:
+  feature:
+    branch_class: feature
+    code_write: allowed
+    concurrent_writers: 1
+  master:
+    branch_class: base
+    code_write: forbidden
+    concurrent_writers: 0
+  main:
+    branch_class: base
+    code_write: forbidden
+    concurrent_writers: 0
+  integration:
+    branch_class: integration
+    worktree_branch: sit
+    code_write: forbidden
+    commit_push: allowed
+    exclusive_lock: required
+    freeze_sha: required
+    keep_failure_site: required
+    concurrent_writers: 1

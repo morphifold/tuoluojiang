@@ -1,0 +1,12 @@
+{
+  "schema": "workspace/v1",
+  "projectType": "control_repo",
+  "workspaceMode": "separated",
+  "paths": {
+    "localRepos": ".repo",
+    "laneRegistryFile": "workspace-lanes.yaml"
+  },
+  "directoryConventions": {
+    "branchRepoRoot": ".repo/<branch>/<repo-id>"
+  }
+}
