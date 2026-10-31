@@ -1,0 +1,130 @@
+.gitignore
+  h_5fb804fa880b8e 34
+cloudflare-worker/src/index.ts
+  h_5fb804fa880b8e 1-105
+cloudflare-worker/wrangler.jsonc
+  h_5fb804fa880b8e 1-12
+code/.env.example
+  h_5fb804fa880b8e 71-75
+code/app/Http/Controller/AdminApi/CommonController.php
+  h_5fb804fa880b8e 75,80-83
+code/app/Http/Controller/AdminApi/Expense/ExpenseInvoiceController.php
+  h_5fb804fa880b8e 1-310
+code/app/Http/Dao/Expense/ExpenseInvoiceDao.php
+  h_5fb804fa880b8e 1-106
+code/app/Http/Dao/Expense/ExpenseInvoiceLogDao.php
+  h_5fb804fa880b8e 1-48
+code/app/Http/Model/Expense/ExpenseInvoice.php
+  h_5fb804fa880b8e 1-237
+code/app/Http/Model/Expense/ExpenseInvoiceLog.php
+  h_5fb804fa880b8e 1-83
+code/app/Http/Service/Approve/ApproveContentService.php
+  h_5fb804fa880b8e 110-111,119
+code/app/Http/Service/Company/CompanyUserJobAnalysisService.php
+  h_5fb804fa880b8e 98
+code/app/Http/Service/Expense/ExpenseInvoiceService.php
+  h_5fb804fa880b8e 1-1165
+code/app/Http/Service/Expense/InvoicePdfParserService.php
+  h_5fb804fa880b8e 1-580
+code/app/Http/Service/Expense/TencentInvoiceOcrService.php
+  h_5fb804fa880b8e 1-525
+code/app/Task/approve/ApplySavedTask.php
+  h_5fb804fa880b8e 207-241
+code/app/Task/approve/ApproveRejectTask.php
+  h_5fb804fa880b8e 92-94
+code/app/Task/approve/ApproveRevokeTask.php
+  h_5fb804fa880b8e 92-94
+code/app/Task/approve/ApprovedTask.php
+  h_5fb804fa880b8e 104-106
+code/config/services.php
+  h_5fb804fa880b8e 31-36
+code/database/migrations/v2.0/2026_10_30_100000_create_expense_invoice_tables.php
+  h_5fb804fa880b8e 1-91
+code/public/admin/index.html
+  h_5fb804fa880b8e 1
+code/public/admin/system/css/app.f9429e2d.css
+  h_5fb804fa880b8e 1
+code/public/admin/system/css/chunk-03ddc8c0.74a6e12d.css
+  h_5fb804fa880b8e 1
+code/public/admin/system/css/chunk-08d1f087.889b28eb.css
+  h_5fb804fa880b8e 1
+code/public/admin/system/css/chunk-48b27de0.994fcd34.css
+  h_5fb804fa880b8e 1
+code/public/admin/system/css/chunk-9c6e7c68.f0dd329e.css
+  h_5fb804fa880b8e 1
+code/public/admin/system/css/chunk-aeaae2b6.3b3ba74a.css
+  h_5fb804fa880b8e 1
+code/public/admin/system/css/chunk-e4b8866c.e70214a8.css
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/app.7f85b928.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-03ddc8c0.f0b12125.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-074405cf.9fb74af8.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-08d1f087.e8033965.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-31071a92.79f62849.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-48b27de0.ff569ce2.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-4f7ffc96.5bf2b5cc.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-63f046ab.020d7521.js
+  h_5fb804fa880b8e 1,16
+code/public/admin/system/js/chunk-799a07f0.0b731d61.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-9c6e7c68.f88c4fc5.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-aeaae2b6.4b0dc6c0.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-d96300d4.dc75028b.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-e4b8866c.ae81d344.js
+  h_5fb804fa880b8e 1
+code/public/admin/system/js/chunk-elementUI.3d8b3f4c.js
+  h_5fb804fa880b8e 1,9
+code/public/admin/system/js/chunk-libs.a441146f.js
+  h_5fb804fa880b8e 66
+code/test_tencent_ocr_verification.php
+  h_5fb804fa880b8e 1-292
+docker-compose.yml
+  h_5fb804fa880b8e 3-5,7-12,14-17,19-25
+nginx_default.conf
+  h_5fb804fa880b8e 1-129
+template/src/api/expenseInvoice.js
+  h_5fb804fa880b8e 1-98
+template/src/components/invoice/InvoiceSelect.vue
+  h_5fb804fa880b8e 1-776
+template/src/main.js
+  h_5fb804fa880b8e 31,85
+template/src/router/company.js
+  h_5fb804fa880b8e 60-71
+template/src/utils/invoiceStat.js
+  h_5fb804fa880b8e 1-24
+template/src/views/business/components/formSetting/components/form-create-designer/src/config/menu.js
+  h_5fb804fa880b8e 46,68
+template/src/views/business/components/formSetting/components/form-create-designer/src/config/rule/index.js
+  h_5fb804fa880b8e 48,97-98
+template/src/views/business/components/formSetting/components/form-create-designer/src/config/rule/invoiceSelect.js
+  h_5fb804fa880b8e 1-30
+template/src/views/business/components/formSetting/components/form-create-designer/src/index.js
+  h_5fb804fa880b8e 24,51-52
+template/src/views/fd/expenseInvoice/index.vue
+  h_5fb804fa880b8e 1-1063
+template/src/views/user/examine/components/detailExamine.vue
+  h_5fb804fa880b8e 91-94,189-190,426-452
+template/src/views/user/invoice/index.vue
+  h_5fb804fa880b8e 1-1397
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "dc21cda7ce1fe624ce1f03945b400ac865615f5e",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
