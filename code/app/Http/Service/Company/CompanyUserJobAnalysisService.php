@@ -95,7 +95,7 @@ class CompanyUserJobAnalysisService extends BaseService implements ResourceServi
      */
     public function getInfoByUid(int $uid, int $entId): array
     {
-        return $this->get(['entid' => $entId, 'uid' => $uid], ['uid', 'data', 'created_at', 'updated_at'])?->toArray();
+        return $this->get(['entid' => $entId, 'uid' => $uid], ['uid', 'data', 'created_at', 'updated_at'])?->toArray() ?: [];
     }
 
     public function resourceCreate(array $other = []): array

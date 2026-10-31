@@ -21,6 +21,7 @@ import uploadFrom from '@/components/form-common/oa-upload';
 import switchStatus from '@/components/switchStatus';
 import holidaySetting from '@/components/hr/holidaySetting';
 import infoForm from '@/components/hr/infoForm';
+import InvoiceSelect from '@/components/invoice/InvoiceSelect.vue';
 designerForm.component('draggable', draggable);
 designerForm.component('DragTool', DragTool);
 designerForm.component('DragBox', DragBox);
@@ -47,6 +48,8 @@ designerForm.component('holidaySetting', holidaySetting);
 formCreate.component('holidaySetting', holidaySetting);
 designerForm.component('infoForm', infoForm);
 formCreate.component('infoForm', infoForm);
+designerForm.component('invoiceSelect', InvoiceSelect);
+formCreate.component('invoiceSelect', InvoiceSelect);
 designerForm.register('_fc', {
   init(fc, rule) {
     rule._id = unique();

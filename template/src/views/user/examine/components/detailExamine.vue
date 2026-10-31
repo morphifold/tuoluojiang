@@ -88,7 +88,10 @@
               <el-form-item v-for="(item, index) in form.rule" :key="index">
                 <div class="label">
                   <span class="rule-label">{{ item.label }}:</span>
-                  <div v-if="Array.isArray(item.value)" style="width: 90%">
+                  <div v-if="isInvoiceData(item)" style="width: 100%">
+                    <invoice-select :value="parseInvoiceValue(item.value)" :disabled="true" :is-view="true" />
+                  </div>
+                  <div v-else-if="Array.isArray(item.value)" style="width: 90%">
                     <upload-list :file-list="item.value"></upload-list>
                   </div>
                   <div v-else-if="item.type === 'rich_text'" style="width: 90%">
@@ -183,7 +186,8 @@ export default {
     addSignature: () => import('./addSignature'),
     uploadList: () => import('@/components/form-common/oa-uploadList'),
     oaDialog: () => import('@/components/form-common/dialog-form'),
-    city: () => import('@/components/hr/city')
+    city: () => import('@/components/hr/city'),
+    invoiceSelect: () => import('@/components/invoice/InvoiceSelect')
   },
   data() {
     return {
@@ -419,6 +423,33 @@ export default {
         this.form.formData = formData
         this.form.loaded = true
       })
+    },
+    isInvoiceData(item) {
+      if (!item) return false
+      if (item.type === 'invoiceSelect' || item.type === 'invoice') return true
+      const val = item.value
+      if (Array.isArray(val) && val.length > 0) {
+        if (val[0] && (val[0].invoice_number || val[0].invoice_type || val[0].total_amount !== undefined)) {
+          return true
+        }
+      }
+      if (typeof val === 'string' && val.includes('invoice_number')) {
+        return true
+      }
+      return false
+    },
+    parseInvoiceValue(val) {
+      if (!val) return []
+      if (Array.isArray(val)) return val
+      if (typeof val === 'string') {
+        try {
+          const parsed = JSON.parse(val)
+          return Array.isArray(parsed) ? parsed : []
+        } catch (e) {
+          return []
+        }
+      }
+      return []
     }
   }
 }

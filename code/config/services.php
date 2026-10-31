@@ -28,4 +28,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // 腾讯云增值税发票识别 (VatInvoiceOCR)
+    'tencent_ocr' => [
+        'secret_id'  => env('TENCENT_OCR_SECRET_ID', ''),
+        'secret_key' => env('TENCENT_OCR_SECRET_KEY', ''),
+        'region'     => env('TENCENT_OCR_REGION', 'ap-guangzhou'),
+    ],
 ];

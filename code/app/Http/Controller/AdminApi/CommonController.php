@@ -72,12 +72,15 @@ class CommonController extends AuthController
     #[Get('config', '获取网站配置', ['auth.admin', 'ent.auth', 'ent.log'])]
     public function getConfig()
     {
-        $defaultLogo           = sys_config('ent_website_logo', '');
+        $defaultLogo           = sys_config('ent_website_logo', '') ?: '/admin/image/logo.png';
         $defaultSiteTitle      = sys_config('site_name', '');
         $globalWatermarkStatus = (int) sys_config('global_watermark_status', 0);
         $wpsType               = sys_config('wps_type', 0);
         $aiStatus              = sys_config('ai_status', 0);
-        $logo                  = $this->isEnt && ! empty($this->entInfo['logo']) ? $this->entInfo['logo'] : $defaultLogo;
+        $logo                  = ($this->isEnt && ! empty($this->entInfo['logo'])) ? $this->entInfo['logo'] : $defaultLogo;
+        if (empty($logo)) {
+            $logo = '/admin/image/logo.png';
+        }
         $siteTitle             = $this->isEnt && ! empty($this->entInfo['title']) ? $this->entInfo['title'] : $defaultSiteTitle;
         return $this->success([
             'site_logo'               => $logo,

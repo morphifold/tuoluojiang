@@ -43,6 +43,7 @@ import contracTrenewal from './rule/contractRenewal'
 import contractExpenditure from './rule/contractExpenditure'
 import issueInvoice from './rule/issueInvoice'
 import voidedInvoice from './rule/voidedInvoice'
+import invoiceSelect from './rule/invoiceSelect'
 
 export default function createMenu() {
   return [
@@ -64,6 +65,7 @@ export default function createMenu() {
         departmentTree,
         uploadFrom,
         bill,
+        invoiceSelect,
         span,
         city
       ],

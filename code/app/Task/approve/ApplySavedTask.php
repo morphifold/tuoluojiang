@@ -204,6 +204,41 @@ class ApplySavedTask extends Task
                 $scheduleData = $crudInfo['child'] ? $service->model(crudId: $crudInfo['child']['id'])->get($approveInfo['link_id'])?->toArray() : [];
                 $service->handleEvent(app()->make(SystemCrudService::class)->get($approveInfo['crud_id']), CrudTriggerEnum::TRIGGER_SAVED, $approveInfo['link_id'], $masterData, $scheduleData);
             }
+
+            // 进项发票自动绑定报销审批单（兼容 invoiceSelect 表单控件及对象数组/ID数组/字符串）
+            foreach ($this->forms as $form) {
+                $symbol = (string) ($form['symbol'] ?? '');
+                $type = (string) ($form['type'] ?? '');
+                $isInvoiceField = in_array($symbol, ['invoiceSelect', 'invoice_ids', 'invoiceIds', 'expense_invoices', 'invoices'], true)
+                    || in_array($type, ['invoiceSelect', 'invoice'], true);
+
+                if ($isInvoiceField && ! empty($form['value'])) {
+                    $raw = $form['value'];
+                    if (is_string($raw)) {
+                        $decoded = json_decode($raw, true);
+                        $raw = is_array($decoded) ? $decoded : explode(',', $raw);
+                    }
+                    $invoiceIds = [];
+                    if (is_array($raw)) {
+                        foreach ($raw as $item) {
+                            if (is_numeric($item)) {
+                                $invoiceIds[] = (int) $item;
+                            } elseif (is_array($item) && ! empty($item['id']) && is_numeric($item['id'])) {
+                                $invoiceIds[] = (int) $item['id'];
+                            }
+                        }
+                    }
+                    $invoiceIds = array_unique(array_filter($invoiceIds));
+                    if (! empty($invoiceIds)) {
+                        app()->get(\App\Http\Service\Expense\ExpenseInvoiceService::class)->bindInvoices(
+                            (int) $approveInfo['entid'],
+                            (int) $approveInfo['user_id'],
+                            $this->applyId,
+                            $invoiceIds
+                        );
+                    }
+                }
+            }
         } catch (\Throwable $e) {
             Log::error(__CLASS__ . ':' . $e->getMessage(), ['file' => $e->getFile(), 'line' => $e->getLine(), 'trace' => $e->getTrace()]);
         }

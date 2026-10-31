@@ -89,6 +89,9 @@ class ApproveRevokeTask extends Task
                 $scheduleData = $crudInfo['child'] ? $service->model(crudId: $crudInfo['child']['id'])->get($approveInfo['link_id'])?->toArray() : [];
                 $service->handleEvent(app()->make(SystemCrudService::class)->get($approveInfo['crud_id']), CrudTriggerEnum::TRIGGER_REVOKE, $approveInfo['link_id'], $masterData, $scheduleData);
             }
+
+            // 进项发票状态流转：审批撤销自动解绑释放
+            app()->get(\App\Http\Service\Expense\ExpenseInvoiceService::class)->onApproveRevoked($this->applyId);
         } catch (\Throwable $e) {
             Log::error(__CLASS__ . ':' . $e->getMessage(), ['file' => $e->getFile(), 'line' => $e->getLine(), 'trace' => $e->getTrace()]);
         }

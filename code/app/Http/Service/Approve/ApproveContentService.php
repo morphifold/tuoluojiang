@@ -107,7 +107,8 @@ class ApproveContentService extends BaseService
                     'contract_id' => 0,
                 ], child: [], value: $data);
             } else {
-                if ($item->types == 'uploadFrom') {
+                // 附件与发票明细以结构化数组存储，直接透传；其余数组字段按 name 拼接展示
+                if ($item->types == 'uploadFrom' || $item->types == 'invoiceSelect') {
                     $val['value'] = $item->value;
                 } elseif (is_array($item->value)) {
                     $val['value'] = implode('，', array_column($item->value, 'name'));
@@ -115,7 +116,7 @@ class ApproveContentService extends BaseService
                     $val['value'] = $item->value;
                 }
             }
-            if (is_array($val['value']) && $item->types != 'uploadFrom') {
+            if (is_array($val['value']) && $item->types != 'uploadFrom' && $item->types != 'invoiceSelect') {
                 foreach ($val['value'] as $v) {
                     $content[] = $v;
                 }

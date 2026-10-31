@@ -101,6 +101,9 @@ class ApprovedTask extends Task
                         app()->get(AttendanceApplyRecordService::class)->createApplyRecord($this->applyId);
                 }
             }
+
+            // 进项发票状态流转：审批通过归档锁定
+            app()->get(\App\Http\Service\Expense\ExpenseInvoiceService::class)->onApprovePassed($this->applyId);
         } catch (\Throwable $e) {
             Log::error(__CLASS__ . ':' . $e->getMessage(), ['file' => $e->getFile(), 'line' => $e->getLine(), 'trace' => $e->getTrace()]);
         }

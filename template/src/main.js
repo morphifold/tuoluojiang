@@ -28,6 +28,7 @@ import store from './store'
 import router from './router'
 import i18n from './lang' // internationalization
 import { formCreate } from '@/views/business/components/formSetting/components/form-create-designer/src/index'
+import InvoiceSelect from '@/components/invoice/InvoiceSelect.vue'
 import uploadPicture from './components/uploadPicture/uploadFrom'
 import VueUeditorWrap from 'vue-ueditor-wrap'
 import nodeWrap from '@/components/workFlow/nodeWrap'
@@ -81,6 +82,7 @@ Vue.use(VueClipboard)
 Vue.component('vue-ueditor-wrap', VueUeditorWrap)
 Vue.component('nodeWrap', nodeWrap) // 初始化组件
 Vue.component('addNode', addNode) // 初始化组件
+Vue.component('InvoiceSelect', InvoiceSelect)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: require('./assets/images/no.png'),

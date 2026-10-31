@@ -57,6 +57,18 @@ const companyRouter = {
       component: () => import('@/views/user/news/subscribe'),
       name: 'subscribe',
       meta: { title: '订阅消息', noCache: true }
+    },
+    {
+      path: `${roterPre}/user/invoice`,
+      name: 'userInvoice',
+      component: () => import('@/views/user/invoice/index.vue'),
+      meta: { title: '我的发票夹' }
+    },
+    {
+      path: `${roterPre}/fd/expenseInvoice`,
+      name: 'fdExpenseInvoice',
+      component: () => import('@/views/fd/expenseInvoice/index.vue'),
+      meta: { title: '进项发票台账' }
     }
   ]
 };
