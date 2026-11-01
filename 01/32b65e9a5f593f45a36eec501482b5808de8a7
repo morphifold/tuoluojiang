@@ -1,0 +1,48 @@
+.trae/skills/tuoluojiang_admin/README.md
+  h_5fb804fa880b8e 18,160-161,213-214
+.trae/skills/tuoluojiang_admin/SKILL.md
+  h_5fb804fa880b8e 30,64-66
+.trae/skills/tuoluojiang_admin/references/03-目录结构.md
+  h_5fb804fa880b8e 6
+.trae/skills/tuoluojiang_api/SKILL.md
+  h_5fb804fa880b8e 51-53
+.trae/skills/tuoluojiang_api/scripts/README.md
+  h_5fb804fa880b8e 222-223
+apps/oa-backend/app/Console/README.md
+  h_5fb804fa880b8e 4
+apps/oa-backend/app/Http/Controller/AdminApi/README.md
+  h_5fb804fa880b8e 4,306
+apps/oa-backend/app/Http/README.md
+  h_5fb804fa880b8e 4
+apps/oa-backend/app/README.md
+  h_5fb804fa880b8e 4
+apps/oa-backend/app/Task/README.md
+  h_5fb804fa880b8e 5
+apps/oa-backend/config/README.md
+  h_5fb804fa880b8e 4
+apps/oa-backend/public/README.md
+  h_5fb804fa880b8e 151,204,227-231,239
+apps/oa-frontend/public/README.md
+  h_5fb804fa880b8e 4
+apps/oa-frontend/src/README.md
+  h_5fb804fa880b8e 4
+apps/oa-frontend/src/api/README.md
+  h_5fb804fa880b8e 4
+apps/oa-frontend/src/components/README.md
+  h_5fb804fa880b8e 4
+apps/oa-frontend/src/utils/README.md
+  h_5fb804fa880b8e 4
+apps/oa-frontend/src/views/README.md
+  h_5fb804fa880b8e 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "0132b65e9a5f593f45a36eec501482b5808de8a7",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
