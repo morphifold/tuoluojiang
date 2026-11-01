@@ -1,0 +1,22 @@
+.gitignore
+  h_5fb804fa880b8e 58-59,61-65,67
+CODEBUDDY.md
+  h_5fb804fa880b8e 28-32,38,50-92,128,148-150,157
+RUN_README.md
+  h_5fb804fa880b8e 3-4
+help/docker-compose/README.md
+  h_5fb804fa880b8e 5-6,11,17,36,39,142-143,153,252,270,317
+run.sh
+  h_5fb804fa880b8e 5-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "a73f836799abaa6e5f4c9575662211b7fb827b31",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
