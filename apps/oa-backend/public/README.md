@@ -148,7 +148,7 @@ public/
 server {
     listen 80;
     server_name your-domain.com;
-    root /path/to/tuoluojiang/code/public;
+    root /path/to/tuoluojiang/apps/oa-backend/public;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
@@ -201,7 +201,7 @@ chmod -R 777 public/uploads/
 ## 开发注意事项
 
 ### 前端开发
-- 前端源代码位于 `template/` 目录
+- 前端源代码位于 `apps/oa-frontend/` 目录
 - 使用 `npm run build:prod` 构建后，资源会输出到 `public/` 目录
 - 开发时使用 `npm run dev` 启动开发服务器（端口 8080）
 
@@ -224,11 +224,11 @@ chmod -R 777 public/uploads/
 
 ## 相关文件
 
-- **应用入口**: `code/public/index.php`
-- **后端代码**: `code/app/`
-- **前端源码**: `template/`
-- **配置文件**: `code/config/`
-- **日志文件**: `code/storage/logs/`
+- **应用入口**: `apps/oa-backend/public/index.php`
+- **后端代码**: `apps/oa-backend/app/`
+- **前端源码**: `apps/oa-frontend/`
+- **配置文件**: `apps/oa-backend/config/`
+- **日志文件**: `apps/oa-backend/storage/logs/`
 
 ## 常见问题
 
@@ -236,7 +236,7 @@ chmod -R 777 public/uploads/
 A: 检查 Web 服务器配置，确保 `public/` 目录设置为根目录，且文件权限正确。
 
 ### Q: 如何更新前端资源？
-A: 在 `template/` 目录运行 `npm run build:prod`，构建后的资源会自动输出到 `public/` 目录。
+A: 在 `apps/oa-frontend/` 目录运行 `npm run build:prod`，构建后的资源会自动输出到 `public/` 目录。
 
 ### Q: 安装向导无法访问？
 A: 检查 `install/install.lock` 文件是否存在，如需重新安装请删除此文件。

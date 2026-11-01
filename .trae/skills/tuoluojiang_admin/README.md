@@ -15,7 +15,7 @@
 项目采用清晰的目录结构，便于开发和维护：
 
 ```
-template/
+apps/oa-frontend/
 ├── patches/              # 补丁文件
 ├── public/               # 静态资源
 │   ├── image/            # 图片资源
@@ -157,8 +157,8 @@ template/
 ### 6.2 安装依赖
 
 ```bash
-# 进入 template 目录
-cd /Users/xurongyao/工作/陀螺匠/kaiyuan/tuoluojiang/template
+# 进入前端目录（相对开发副本 worktree/sit/tuoluojiang/）
+cd apps/oa-frontend
 
 # 安装依赖
 npm install
@@ -210,8 +210,8 @@ npm run prettier
 项目提供了 Docker 配置文件，可以使用 Docker 进行部署：
 
 ```bash
-# 进入 template 目录
-cd /Users/xurongyao/工作/陀螺匠/kaiyuan/tuoluojiang/template
+# 进入前端目录（相对开发副本 worktree/sit/tuoluojiang/）
+cd apps/oa-frontend
 
 # 使用 Docker Compose 启动服务
 docker-compose up -d

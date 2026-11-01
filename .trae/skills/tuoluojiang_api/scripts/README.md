@@ -219,8 +219,8 @@ A: 编辑 `create_api.php` 中的生成函数：
 ## 相关文档
 
 - [API 开发指南](../SKILL.md) - 完整的 API 开发规范
-- [路由系统说明](../../../../code/routes/README.md) - 路由定义和使用
-- [项目规则](../../../../.trae/rules/tuoluojiang.md) - 项目整体规范
+- [路由系统说明](../../../../apps/oa-backend/routes/README.md) - 路由定义和使用
+- [项目指南](../../../../CODEBUDDY.md) - 项目结构、常用命令与核心架构
 
 ---
 

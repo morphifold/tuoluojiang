@@ -48,9 +48,9 @@
    - "项目的数据库结构是怎样的？"
 
 4. **文件操作触发**:
-   - 打开 `code/app/Http/Controller/AdminApi/UserController.php` 文件
-   - 编辑 `code/database/migrations/2024_01_01_000000_create_users_table.php` 文件
-   - 打开 `code/database/seeders/UserSeeder.sql` 文件
+   - 打开 `apps/oa-backend/app/Http/Controller/AdminApi/UserController.php` 文件
+   - 编辑 `apps/oa-backend/database/migrations/2024_01_01_000000_create_users_table.php` 文件
+   - 打开 `apps/oa-backend/database/seeders/UserSeeder.sql` 文件
 
 ## 2. 文档导航
 

@@ -27,7 +27,7 @@
 - 构建部署
 - 开发工具
 - 脚本工具
-- template 目录
+- apps/oa-frontend 目录
 - JavaScript 文件
 - Vue 组件
 - SCSS 文件
@@ -61,9 +61,9 @@
    - "项目的目录结构是怎样的？"
 
 5. **文件操作触发**:
-   - 打开 `template/src/components/common/echarts.vue` 文件
-   - 编辑 `template/src/api/user.js` 文件
-   - 打开 `template/src/assets/css/style.scss` 文件
+   - 打开 `apps/oa-frontend/src/components/common/echarts.vue` 文件
+   - 编辑 `apps/oa-frontend/src/api/user.js` 文件
+   - 打开 `apps/oa-frontend/src/assets/css/style.scss` 文件
 
 **使用流程**:
 

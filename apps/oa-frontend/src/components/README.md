@@ -1,7 +1,7 @@
 # components
 
 ## 目录说明
-- **路径**: `./template/src/components`
+- **路径**: `./apps/oa-frontend/src/components`
 - **用途**: 可复用组件目录，包含通用的 Vue 组件
 - **归属模块**: 前端组件层
 - **创建时间**: 2026-03-18

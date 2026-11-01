@@ -2,7 +2,7 @@
 
 ## 目录说明
 
-- **路径**: `./code/app/Task`
+- **路径**: `./apps/oa-backend/app/Task`
 - **用途**: Swoole 定时任务目录，包含所有基于 LaravelS 的定时任务（T timer）
 - **归属模块**: 定时任务层
 - **配置位置**: `config/laravels.php` 中的 `timer` 数组

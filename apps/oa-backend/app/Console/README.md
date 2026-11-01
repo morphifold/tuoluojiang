@@ -1,7 +1,7 @@
 # Console
 
 ## 目录说明
-- **路径**: `./code/app/Console`
+- **路径**: `./apps/oa-backend/app/Console`
 - **用途**: 命令行目录，包含所有 Artisan 命令
 - **归属模块**: 命令行层
 - **创建时间**: 2026-03-18

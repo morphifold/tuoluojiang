@@ -1,7 +1,7 @@
 # AdminApi - 管理后台API控制器目录
 
 ## 目录说明
-- **路径**: `./code/app/Http/Controller/AdminApi`
+- **路径**: `./apps/oa-backend/app/Http/Controller/AdminApi`
 - **用途**: 管理后台 API 控制器，包含所有业务功能的 API 接口
 - **归属模块**: 管理后台 API 层
 - **创建时间**: 2026-03-18
@@ -303,7 +303,7 @@ curl -X GET "http://localhost:20200/ent/client/customer/info/123" \
 // 访问: http://localhost:20200/api/test
 
 // 查看日志文件
-tail -f code/storage/logs/laravel-YYYY-MM-DD.log
+tail -f apps/oa-backend/storage/logs/laravel-YYYY-MM-DD.log
 ```
 
 ## 错误处理
