@@ -1,0 +1,16 @@
+.trae/skills/tuoluojiang_api/scripts/check_api.php
+  h_5fb804fa880b8e 16-17
+.trae/skills/tuoluojiang_api/scripts/create_api.php
+  h_5fb804fa880b8e 28,32-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "c61d20af20c67cb1f80179968336bf5eeafda6ac",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
