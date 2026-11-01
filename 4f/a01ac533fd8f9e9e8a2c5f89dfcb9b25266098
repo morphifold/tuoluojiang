@@ -1,0 +1,22 @@
+.gitignore
+  h_5fb804fa880b8e 37-39
+AGENTS.md
+  h_5fb804fa880b8e 1-29
+memory/index.md
+  h_5fb804fa880b8e 35-46
+workspace-lanes.yaml
+  h_5fb804fa880b8e 4,7,10,16-28,30-34,49
+workspace.json
+  h_5fb804fa880b8e 6,10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "4fa01ac533fd8f9e9e8a2c5f89dfcb9b25266098",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
