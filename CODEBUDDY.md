@@ -25,17 +25,17 @@ This file provides guidance to CodeBuddy when working with code in this reposito
 - **`php -c php-cs-fixer.php`** – 使用项目中预置的 PHP‑CS‑Fixer 配置格式化代码。
 
 ### 前端开发
-- **`cd template && npm run dev`** – 启动 Vue 开发服务器（默认端口 8080），支持热更新。
-- **`cd template && npm run build:prod`** – 构建生产环境的前端资源，输出到 `dist/` 目录。
-- **`cd template && npm run lint`** – 运行 ESLint 检查代码规范。
-- **`cd template && npm run prettier`** – 使用 Prettier 自动格式化所有前端文件。
-- **`cd template && npm run svgo`** – 优化 SVG 图标文件。
+- **`cd apps/oa-frontend && npm run dev`** – 启动 Vue 开发服务器（默认端口 8080），支持热更新。
+- **`cd apps/oa-frontend && npm run build:prod`** – 构建生产环境的前端资源，输出到 `dist/` 目录。
+- **`cd apps/oa-frontend && npm run lint`** – 运行 ESLint 检查代码规范。
+- **`cd apps/oa-frontend && npm run prettier`** – 使用 Prettier 自动格式化所有前端文件。
+- **`cd apps/oa-frontend && npm run svgo`** – 优化 SVG 图标文件。
 
 ### 调试与日志
 - **`./run.sh status`** – 查看各容器运行状态及资源使用情况。
 - **`docker logs -f tuoluojiang`** – 实时查看 PHP 应用容器的输出日志。
 - **`docker exec -it tuoluojiang bash`** – 进入 PHP 容器内部执行命令（如运行 Artisan 命令）。
-- 在代码中使用 `\Log::info('message', $data)` 记录调试信息，日志文件位于 `code/storage/logs/`。
+- 在代码中使用 `\Log::info('message', $data)` 记录调试信息，日志文件位于 `apps/oa-backend/storage/logs/`。
 
 ---
 
@@ -47,45 +47,49 @@ This file provides guidance to CodeBuddy when working with code in this reposito
 ### 目录结构
 ```
 根目录/
-├── code/                     # Laravel 后端项目
-│   ├── app/
-│   │   ├── Console/         # 命令行脚本
-│   │   ├── Constants/       # 常量定义
-│   │   ├── Exceptions/      # 自定义异常
-│   │   ├── Helpers/         # 辅助函数（common.php）
-│   │   ├── Http/            # HTTP 相关核心目录
-│   │   │   ├── Controller/  # 控制器（AdminApi/ 子目录存放 API 控制器）
-│   │   │   ├── Dao/         # 数据访问对象（数据层）
-│   │   │   ├── Middleware/  # 中间件（auth.admin、ent.auth、ent.log 等）
-│   │   │   ├── Model/       # Eloquent 模型
-│   │   │   ├── Requests/    # 表单请求验证类
-│   │   │   └── Service/     # 业务逻辑服务层
-│   │   ├── Jobs/            # 队列任务
-│   │   ├── Listeners/       # 事件监听器
-│   │   └── Task/            # 定时任务（与 LaravelS 的 timer 配置对应）
-│   ├── crmeb/               # 项目自定义的核心包
-│   │   ├── exceptions/      # 业务异常类
-│   │   ├── interfaces/      # 接口定义
-│   │   ├── services/        # 通用服务（如 ApiResponseService）
-│   │   ├── swoole/          # Swoole 相关工具
-│   │   ├── traits/          # 复用 Trait（如 ResourceControllerTrait）
-│   │   └── utils/           # 工具类
-│   ├── config/              # Laravel 配置文件
-│   │   └── laravels.php     # Swoole 服务器配置（热重载、定时器、WebSocket 等）
-│   ├── routes/              # 路由定义
-│   │   ├── web.php          # Web 路由（目前仅加载 MCP 路由）
-│   │   ├── mcp.php          # MCP（Model Context Protocol）接口路由
-│   │   └── install.php      # 安装向导路由
-│   ├── storage/             # 存储目录（日志、缓存、上传文件等）
-│   └── public/              # 公共入口（前端资源及安装锁文件）
-├── template/                 # Vue 前端项目
-│   ├── src/
-│   │   ├── api/             # 前端 API 请求封装
-│   │   ├── components/      # Vue 组件
-│   │   ├── views/           # 页面视图
-│   │   └── utils/           # 前端工具函数
-│   └── vue.config.js        # Vue CLI 配置（代理、打包优化等）
-└── help/docker-compose/     # Docker 相关配置（PHP、Nginx、MySQL、Redis 的配置文件）
+├── apps/                          # Nx 应用目录（原 code/、template/、cloudflare-worker/）
+│   ├── oa-backend/                # Laravel 后端项目
+│   │   ├── app/
+│   │   │   ├── Console/           # 命令行脚本
+│   │   │   ├── Constants/         # 常量定义
+│   │   │   ├── Exceptions/        # 自定义异常
+│   │   │   ├── Helpers/           # 辅助函数（common.php）
+│   │   │   ├── Http/              # HTTP 相关核心目录
+│   │   │   │   ├── Controller/    # 控制器（AdminApi/ 子目录存放 API 控制器）
+│   │   │   │   ├── Dao/           # 数据访问对象（数据层）
+│   │   │   │   ├── Middleware/    # 中间件（auth.admin、ent.auth、ent.log 等）
+│   │   │   │   ├── Model/         # Eloquent 模型
+│   │   │   │   ├── Requests/      # 表单请求验证类
+│   │   │   │   └── Service/       # 业务逻辑服务层
+│   │   │   ├── Jobs/              # 队列任务
+│   │   │   ├── Listeners/         # 事件监听器
+│   │   │   └── Task/              # 定时任务（与 LaravelS 的 timer 配置对应）
+│   │   ├── crmeb/                 # 项目自定义的核心包
+│   │   │   ├── exceptions/        # 业务异常类
+│   │   │   ├── interfaces/        # 接口定义
+│   │   │   ├── services/          # 通用服务（如 ApiResponseService）
+│   │   │   ├── swoole/            # Swoole 相关工具
+│   │   │   ├── traits/            # 复用 Trait（如 ResourceControllerTrait）
+│   │   │   └── utils/             # 工具类
+│   │   ├── config/                # Laravel 配置文件
+│   │   │   └── laravels.php       # Swoole 服务器配置（热重载、定时器、WebSocket 等）
+│   │   ├── routes/                # 路由定义
+│   │   │   ├── web.php            # Web 路由（目前仅加载 MCP 路由）
+│   │   │   ├── mcp.php            # MCP（Model Context Protocol）接口路由
+│   │   │   └── install.php        # 安装向导路由
+│   │   ├── storage/               # 存储目录（日志、缓存、上传文件等）
+│   │   └── public/                # 公共入口（前端资源及安装锁文件）
+│   ├── oa-frontend/               # Vue 前端项目
+│   │   ├── src/
+│   │   │   ├── api/               # 前端 API 请求封装
+│   │   │   ├── components/        # Vue 组件
+│   │   │   ├── views/             # 页面视图
+│   │   │   └── utils/             # 前端工具函数
+│   │   └── vue.config.js          # Vue CLI 配置（代理、打包优化等）
+│   └── edge-proxy/                # Cloudflare Worker 边缘代理
+├── libs/shared-invoice/           # 跨端共享契约（Nx lib）
+├── nx.json                        # Nx 工作区与任务编排配置
+└── help/docker-compose/           # Docker 相关配置（PHP、Nginx、MySQL、Redis 的配置文件）
 ```
 
 ### 核心架构要点
@@ -121,7 +125,7 @@ This file provides guidance to CodeBuddy when working with code in this reposito
 #### 5. 前后端协作
 - **API 规范**：所有接口返回统一 JSON 格式：`{"status":200,"message":"ok","data":{},"tips":1}`。成功使用 `$this->success($data)`，失败使用 `$this->fail($message)`。
 - **前端代理**：Vue 开发模式下通过 `vue.config.js` 的 `devServer.proxy` 将 `/api` 请求代理到后端容器（`http://tuoluojiang:20200`），解决跨域问题。
-- **语言包**：后端语言文件位于 `resources/lang/zh-CN/`，前端语言文件在 `template/src/lang/`，保持前后端提示一致。
+- **语言包**：后端语言文件位于 `resources/lang/zh-CN/`，前端语言文件在 `apps/oa-frontend/src/lang/`，保持前后端提示一致。
 
 #### 6. 数据库与缓存
 - **数据库**：MySQL 8.0，表名采用小写加下划线（如 `enterprise_user`），字段名同样规范。
@@ -141,16 +145,16 @@ This file provides guidance to CodeBuddy when working with code in this reposito
 5. **代码风格**：遵循项目中预置的 PHP‑CS‑Fixer 与 ESLint（前端）配置，保持代码一致。
 
 ### 相关文件参考
-- **项目规则**：`.trae/rules/tuoluojiang.md`（项目概述、目录规范、代码风格等）
-- **API 开发指南**：`.codebuddy/skills/tuoluojiang-api-dev/SKILL.md`（控制器、验证、路由、权限等完整流程）
-- **Docker 构建规范**：`.trae/rules/dockerbuild.md`（镜像构建、分层优化、多架构支持等）
+- **后端 API 技能**：`.trae/skills/tuoluojiang_api/SKILL.md`（控制器、验证、路由、权限等完整流程）
+- **前端管理端技能**：`.trae/skills/tuoluojiang_admin/SKILL.md`（页面、组件、接口调用等）
+- **Docker 配置**：`help/docker-compose/`（PHP、Nginx、MySQL、Redis 配置）与 `docker-compose.yml`
 - **README**：`README.md`（产品介绍、功能列表、演示地址等）
 
 ### 快速开始
 1. 运行 `./run.sh start` 启动所有服务。
 2. 访问 http://localhost:20300 进入安装向导。
 3. 安装完成后，默认管理员账号：`18888888888`，密码：`888888`（演示数据）。
-4. 前端开发：`cd template && npm run dev`，后端代码修改后会自动热重载（需配置 `hot_reload`）。
+4. 前端开发：`cd apps/oa-frontend && npm run dev`，后端代码修改后会自动热重载（需配置 `hot_reload`）。
 
 ---
 *本文件旨在帮助 AI 助手快速理解项目结构、常用命令与核心架构，以便高效地进行代码开发与维护。*

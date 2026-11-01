@@ -55,16 +55,16 @@ package-lock.json
 
 # 项目特定配置
 .idea/
-code/.trae/*
-code/.codebuddy/*
+apps/oa-backend/.trae/*
+apps/oa-backend/.codebuddy/*
 
-code/supervisord.pid
-code/supervisord.log
-code/.env
-code/.constant
-code/.codebuddy/models.json
+apps/oa-backend/supervisord.pid
+apps/oa-backend/supervisord.log
+apps/oa-backend/.env
+apps/oa-backend/.constant
+apps/oa-backend/.codebuddy/models.json
 
-code/storage/*
+apps/oa-backend/storage/*
 help/docker-compose/nginx/log/*
 help/docker-compose/mysql/data/*
 help/docker-compose/mysql/log/*

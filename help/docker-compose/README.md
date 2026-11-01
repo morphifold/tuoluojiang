@@ -2,16 +2,19 @@
 
 本文档提供陀螺匠项目的 Docker 配置和使用指南。
 
+> **说明**：本文件描述 `help/docker-compose/` 下 MySQL/Redis/PHP/Nginx 分离的多容器配置；当前仓库根 `docker-compose.yml` 为单容器镜像方案（容器 `tuoluojiang-oa`，挂载 `./apps/oa-backend:/var/www`），端口与挂载以 `docker-compose.yml` 为准。下文相对路径命令需在开发副本 `worktree/sit/tuoluojiang/` 目录内执行。
+
 ## 1. 目录结构
 
 ```
 tuoluojiang/
-├── code/                          # 项目代码目录
+├── apps/oa-backend/               # 后端项目代码目录（Laravel，原 code/）
 │   ├── app/                       # 应用代码
 │   ├── config/                    # 配置文件
 │   ├── public/                    # 公共资源
 │   ├── storage/                   # 存储目录
 │   └── ...
+├── apps/oa-frontend/              # 前端项目代码目录（Vue，原 template/）
 ├── help/                          # 帮助文档和配置
 │   ├── docker-compose/            # Docker 配置文件
 │   │   ├── mysql/                 # MySQL 配置
@@ -30,11 +33,10 @@ tuoluojiang/
 │   │   │   └── log/               # Nginx 日志目录
 │   │   └── README.md              # 本说明文档
 │   ├── resource/                  # 图片资源
-│   ├── README.md                  # Docker 快速指南
-│   └── RUN_README.md              # 运行说明
+│   └── README.md                  # Docker 快速指南
 ├── docker-compose.yml             # Docker Compose 主配置文件
 ├── run.sh                         # Docker 管理脚本
-├── Dockerfile                     # 一体化镜像构建文件
+├── Dockerfile                     # 一体化镜像构建文件（当前仓库未纳入版本控制，需自行提供）
 └── README.md                      # 项目说明文档
 ```
 
@@ -137,8 +139,8 @@ docker-compose logs -f
   - APP_DEBUG: true
   - DEFAULT_TIMEZONE: Asia/Shanghai
 - **数据卷**：
-  - ./code:/var/www
-  - ./code/storage:/var/www/temp
+  - ./apps/oa-backend:/var/www
+  - ./apps/oa-backend/storage:/var/www/temp
   - ./help/docker-compose/php/php-ini-overrides.ini:/etc/php/8.0/fpm/conf.d/99-overrides.ini
 - **网络地址**：192.168.10.16
 - **启动命令**：bin/laravels start --ignore
@@ -148,7 +150,7 @@ docker-compose logs -f
 - **镜像**：nginx:latest
 - **端口映射**：80:80, 443:443
 - **数据卷**：
-  - ./code:/var/www
+  - ./apps/oa-backend:/var/www
   - ./help/docker-compose/nginx/nginx.conf:/etc/nginx/nginx.conf
   - ./help/docker-compose/nginx/conf.d:/etc/nginx/conf.d
   - ./help/docker-compose/nginx/log:/var/log/nginx
@@ -247,7 +249,7 @@ nginx_tuoluojiang:
 - **MySQL 日志**：`./help/docker-compose/mysql/log/`
 - **Redis 数据**：`./help/docker-compose/redis/data/`
 - **Nginx 日志**：`./help/docker-compose/nginx/log/`
-- **应用存储**：`./code/storage/`
+- **应用存储**：`./apps/oa-backend/storage/`
 
 建议定期备份这些目录中的数据。
 
@@ -265,7 +267,7 @@ nginx_tuoluojiang:
 # 设置数据目录权限
 chmod -R 755 ./help/docker-compose/mysql/data
 chmod -R 755 ./help/docker-compose/redis/data
-chmod -R 755 ./code/storage
+chmod -R 755 ./apps/oa-backend/storage
 ```
 
 ### 10.3 服务启动失败
@@ -312,7 +314,7 @@ FLUSH PRIVILEGES;
 ## 11. 开发环境 vs 生产环境
 
 - **开发环境**：使用 `docker-compose.yml`，支持代码实时挂载和调试
-- **生产环境**：建议使用独立的 MySQL、Redis 服务，或使用项目根目录的 `Dockerfile` 构建包含所有服务的镜像进行部署
+- **生产环境**：建议使用独立的 MySQL、Redis 服务，或使用项目根目录的 `Dockerfile` 构建包含所有服务的镜像进行部署（该文件当前仓库未纳入版本控制，需自行提供）
 
 ## 13. 参考链接
 

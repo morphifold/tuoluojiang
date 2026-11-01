@@ -1,6 +1,7 @@
 # 陀螺匠 Docker 管理脚本 (run.sh)
 
-优化后的 `run.sh` 脚本提供了完整的 Docker Compose 管理功能，与 `docker-compose.yml` 配置完全对应。
+优化后的 `run.sh` 脚本提供了完整的 Docker Compose 管理功能，与 `docker-compose.yml` 配合使用。
+以下命令均需在开发副本 `worktree/sit/tuoluojiang/` 目录内执行；文中表格的容器名与网络 IP 属多容器分离布局，当前 `docker-compose.yml` 只定义单容器 `tuoluojiang-oa`，端口映射以 `docker-compose.yml` 为准。
 
 ## 主要优化内容
 

@@ -2,6 +2,9 @@
 
 # 陀螺匠 Docker 启动脚本
 
+# 运行位置：脚本内路径均相对仓库根，必须在开发副本 worktree/sit/tuoluojiang/ 目录内执行
+#（例如：cd worktree/sit/tuoluojiang && ./run.sh start）。
+
 # 颜色定义
 RED='\033[0;31m'
 GREEN='\033[0;32m'
