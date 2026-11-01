@@ -13,8 +13,8 @@
 
 declare(strict_types=1);
 
-$baseDir = __DIR__ . '/../../..';
-$controllerDir = "{$baseDir}/code/app/Http/Controller/AdminApi";
+$baseDir = __DIR__ . '/../../../..';
+$controllerDir = "{$baseDir}/apps/oa-backend/app/Http/Controller/AdminApi";
 
 // 获取检查范围
 $target = isset($argv[1]) ? $argv[1] : null;

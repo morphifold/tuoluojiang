@@ -25,15 +25,15 @@ $functionName = ucfirst($argv[2]); // 功能名 (user)
 $prefix = isset($argv[3]) ? $argv[3] : 'ent/' . strtolower($functionName); // 路由前缀
 $description = $functionName; // 功能描述
 
-$baseDir = __DIR__ . '/../../..';
+$baseDir = __DIR__ . '/../../../..';
 
 // 定义文件路径
 $paths = [
-    'controller' => "{$baseDir}/code/app/Http/Controller/AdminApi/{$moduleName}/{$functionName}Controller.php",
-    'request' => "{$baseDir}/code/app/Http/Requests/{$moduleName}/{$functionName}Request.php",
-    'model' => "{$baseDir}/code/app/Http/Model/{$functionName}.php",
-    'dao' => "{$baseDir}/code/app/Http/Dao/{$functionName}Dao.php",
-    'service' => "{$baseDir}/code/app/Http/Service/{$moduleName}/{$functionName}Service.php",
+    'controller' => "{$baseDir}/apps/oa-backend/app/Http/Controller/AdminApi/{$moduleName}/{$functionName}Controller.php",
+    'request' => "{$baseDir}/apps/oa-backend/app/Http/Requests/{$moduleName}/{$functionName}Request.php",
+    'model' => "{$baseDir}/apps/oa-backend/app/Http/Model/{$functionName}.php",
+    'dao' => "{$baseDir}/apps/oa-backend/app/Http/Dao/{$functionName}Dao.php",
+    'service' => "{$baseDir}/apps/oa-backend/app/Http/Service/{$moduleName}/{$functionName}Service.php",
 ];
 
 // 确保目录存在
