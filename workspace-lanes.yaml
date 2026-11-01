@@ -1,19 +1,37 @@
 schema: workspace-lanes/v1
 modules:
   oa-backend:
-    container_repo: proposed
+    container_repo: tuoluojiang
     layers: [app, controller, service, dao, model]
   oa-frontend:
-    container_repo: proposed
+    container_repo: tuoluojiang
     layers: [view, component, api, router]
   edge-proxy:
-    container_repo: proposed
+    container_repo: tuoluojiang
     layers: [worker]
 control:
   module: fde_oa
   container_repo: fde_oa
   layers: [control]
+
+# lane 词表：开发 lane 固定为 sit-<module>-<layer>。
+laneId:
+  template: "<branch>-<module>-<layer>"
+  dev_branch: sit
+  rule: "本仓开发 lane 固定为 sit-<module>-<layer>；<module> 取 modules 模块 id，<layer> 取该模块 layers。"
+
+# 唯一开发副本：本仓仅在 worktree/sit/tuoluojiang（分支 sit）开发，根检出与 base 分支对业务代码只读。
+repo_overrides:
+  tuoluojiang:
+    only_worktree: worktree/sit/tuoluojiang
+    branch: sit
+
 permissions:
+  dev:
+    branch_class: development
+    worktree_branch: sit
+    code_write: allowed
+    concurrent_writers: 1
   feature:
     branch_class: feature
     code_write: allowed
@@ -28,7 +46,7 @@ permissions:
     concurrent_writers: 0
   integration:
     branch_class: integration
-    worktree_branch: sit
+    worktree_branch: release-<module>-integration
     code_write: forbidden
     commit_push: allowed
     exclusive_lock: required

@@ -3,10 +3,10 @@
   "projectType": "control_repo",
   "workspaceMode": "separated",
   "paths": {
-    "localRepos": ".repo",
+    "localRepos": "worktree",
     "laneRegistryFile": "workspace-lanes.yaml"
   },
   "directoryConventions": {
-    "branchRepoRoot": ".repo/<branch>/<repo-id>"
+    "branchRepoRoot": "worktree/<branch>/<repo-id>"
   }
 }
