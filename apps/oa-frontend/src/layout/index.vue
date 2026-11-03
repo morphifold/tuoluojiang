@@ -1,9 +1,23 @@
 <template>
-  <div>
-    <div :class="classObj" style="box-sizing: border-box;">
+  <div class="layout-app-wrapper">
+    <!-- 移动端左上角汉堡切换按钮 -->
+    <div
+      class="mobile-hamburger"
+      @click="mobileMenuOpen = !mobileMenuOpen"
+    >
+      <i :class="mobileMenuOpen ? 'el-icon-close' : 'el-icon-s-unfold'"></i>
+    </div>
+
+    <!-- 移动端展开时的半透明遮罩层 -->
+    <div
+      v-if="mobileMenuOpen"
+      class="mobile-drawer-mask"
+      @click="mobileMenuOpen = false"
+    ></div>
+
+    <div :class="[classObj, { 'mobile-layout': device === 'mobile', 'mobile-menu-open': mobileMenuOpen }]" style="box-sizing: border-box;">
       <!-- 左侧一级菜单 -->
       <navbar :type="type" />
-      {{ sideShow }}
       <!-- 左侧二级菜单 -->
       <sidebar class="sidebar-container" v-show="!sideShow" />
       <!-- 中间区域 -->
@@ -81,6 +95,7 @@ export default {
 
   watch: {
     $route(to, from) {
+      this.mobileMenuOpen = false
       let data = {
         list: [],
         type: '',
@@ -117,6 +132,7 @@ export default {
   },
   data() {
     return {
+      mobileMenuOpen: false,
       widthNum: 'calc(100% - 70px)',
       isSidebarShow: true,
       helpShow: false,
@@ -243,6 +259,139 @@ export default {
 .top {
   /deep/.el-button--text {
     color: #909399;
+  }
+}
+
+// 移动端汉堡切换按钮
+.mobile-hamburger {
+  display: none;
+  position: fixed;
+  top: 7px;
+  left: 10px;
+  z-index: 2100;
+  width: 34px;
+  height: 34px;
+  background: #1890ff;
+  color: #ffffff;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  font-size: 19px;
+  transition: all 0.25s ease;
+  &:hover {
+    background: #40a9ff;
+  }
+}
+
+// 移动端展开时的全屏遮罩层
+.mobile-drawer-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1999;
+  backdrop-filter: blur(1px);
+}
+
+// ==============================
+// 移动端响应式布局适配（手机端视口 < 768px 或 mobile 模式）
+// ==============================
+@media (max-width: 767px) {
+  .mobile-hamburger {
+    display: flex !important;
+  }
+
+  .mobile-drawer-mask {
+    display: block !important;
+  }
+
+  // 默认情况下收起导航栏与侧边栏
+  /deep/ .navbar,
+  /deep/ .sidebar-container {
+    transform: translateX(-260px) !important;
+    transition: transform 0.25s ease !important;
+  }
+
+  // 汉堡菜单激活时滑出
+  .mobile-menu-open {
+    /deep/ .navbar {
+      transform: translateX(0) !important;
+      z-index: 2002 !important;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2) !important;
+    }
+    /deep/ .sidebar-container {
+      transform: translateX(0) !important;
+      z-index: 2001 !important;
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+
+  // 强制重置主内容容器边距为 0，防止被 219px 挤压截断
+  .main-container {
+    margin-left: 0 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  // 覆盖各类状态下的边距
+  .openSidebar,
+  .hideSidebar,
+  .showSidebar {
+    .breadcrumb {
+      padding-left: 52px !important;
+    }
+    .main-container {
+      margin-left: 0 !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+    }
+  }
+
+  // 顶栏面包屑左侧让位给汉堡按钮
+  /deep/ .breadcrumb {
+    padding-left: 52px !important;
+  }
+
+  // 页面全局内容容器紧凑边距，彻底防溢出
+  /deep/ .divBox {
+    padding: 10px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  body {
+    min-width: 100% !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  #app {
+    min-width: 100% !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  .divBox {
+    margin: 6px !important;
+    padding: 0 !important;
+    padding-top: 6px !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    overflow-x: hidden !important;
   }
 }
 </style>

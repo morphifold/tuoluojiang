@@ -1423,8 +1423,12 @@ export default {
 @media (max-width: 767px) {
   .invoice-my-container {
     .statistics-cards {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
       .stat-col {
         margin-bottom: 10px;
+        padding-left: 3px !important;
+        padding-right: 3px !important;
       }
       .stat-card {
         .stat-inner {
