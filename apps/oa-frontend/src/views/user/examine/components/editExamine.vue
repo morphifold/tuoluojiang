@@ -2,7 +2,7 @@
   <div>
     <!-- 编辑审批 -->
     <el-drawer
-      size="628px"
+      :size="drawerSize"
       :visible.sync="drawer"
       :show-close="true"
       :direction="direction"
@@ -142,14 +142,34 @@ export default {
       copyerDelete: true,
       tryDateOptions: null, // 异常时间
       tryYiChangOptions: null, // 异常记录
-      holidayTypeOptions: null
+      holidayTypeOptions: null,
+      windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200
+    }
+  },
+  computed: {
+    drawerSize() {
+      return this.windowWidth < 768 ? '100%' : '760px'
     }
   },
   created() {},
   mounted() {
+    this.updateViewport = () => {
+      this.windowWidth = window.innerWidth
+      if (this.option && this.option.form) {
+        this.option.form.labelPosition = this.windowWidth < 768 ? 'top' : 'right'
+      }
+    }
+    this.updateViewport()
+    window.addEventListener('resize', this.updateViewport)
+
     if (this.typeNum == 1) {
       this.holidayType()
       this.attendanceAbnormalDate()
+    }
+  },
+  beforeDestroy() {
+    if (this.updateViewport) {
+      window.removeEventListener('resize', this.updateViewport)
     }
   },
   watch: {},
@@ -163,11 +183,11 @@ export default {
       this.id = 0
     },
     openBox(command, val, type) {
+      this.updateViewport && this.updateViewport()
       this.configData = command
       this.id = command.id ? command.id : command
       this.approveId = this.configData.approve_id ? this.configData.approve_id : this.configData.id
       if (!this.isEdit) {
-        // 添加
         this.approveApply(this.id, val, type)
       } else {
         // 编辑
@@ -664,4 +684,85 @@ export default {
 /deep/ .el-form-item {
   margin-bottom: 20px;
 }
+
+/deep/ .edit-examine-form {
+  .el-form-item:has(.invoice-select-component) {
+    .el-form-item__label {
+      float: none !important;
+      display: block !important;
+      text-align: left !important;
+      width: 100% !important;
+      padding-bottom: 6px !important;
+      font-weight: 500;
+      color: #303133;
+    }
+    .el-form-item__content {
+      margin-left: 0 !important;
+      width: 100% !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .el-form-item {
+      margin-bottom: 14px;
+      .el-form-item__label {
+        float: none !important;
+        display: block !important;
+        text-align: left !important;
+        width: 100% !important;
+        padding-bottom: 4px !important;
+      }
+      .el-form-item__content {
+        margin-left: 0 !important;
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer__header {
+    height: auto !important;
+    padding: 12px 14px;
+    margin-bottom: 0;
+  }
+
+  .headerBox {
+    flex-wrap: wrap;
+    gap: 8px;
+    .portrait {
+      width: 32px;
+      height: 32px;
+      i {
+        font-size: 16px;
+      }
+    }
+    .nameBox {
+      .st1 {
+        font-size: 14px;
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .ex-content {
+    padding: 12px 0 20px 12px;
+    .ex-content-con {
+      padding-right: 12px;
+    }
+  }
+
+  .from-foot-btn {
+    padding: 10px 14px;
+    display: flex;
+    justify-content: flex-end;
+    .el-button {
+      flex: 1;
+    }
+  }
+}
 </style>
+

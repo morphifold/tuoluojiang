@@ -2,7 +2,7 @@
 <template>
   <div>
     <el-drawer
-      size="628px"
+      :size="drawerSize"
       :visible.sync="drawer"
       :direction="direction"
       :append-to-body="true"
@@ -86,15 +86,18 @@
             <!-- -----------------------------------审批内容-------------------------------- -->
             <el-form label-width="auto">
               <el-form-item v-for="(item, index) in form.rule" :key="index">
-                <div class="label">
+                <div
+                  class="label"
+                  :class="{ 'label-block': isInvoiceData(item) || Array.isArray(item.value) || item.type === 'rich_text' }"
+                >
                   <span class="rule-label">{{ item.label }}:</span>
                   <div v-if="isInvoiceData(item)" style="width: 100%">
                     <invoice-select :value="parseInvoiceValue(item.value)" :disabled="true" :is-view="true" />
                   </div>
-                  <div v-else-if="Array.isArray(item.value)" style="width: 90%">
+                  <div v-else-if="Array.isArray(item.value)" style="width: 100%">
                     <upload-list :file-list="item.value"></upload-list>
                   </div>
-                  <div v-else-if="item.type === 'rich_text'" style="width: 90%">
+                  <div v-else-if="item.type === 'rich_text'" style="width: 100%">
                     <div class="rich-box" v-html="item.value"></div>
                   </div>
                   <span v-else class="rule-value">{{ item.value || '--' }}</span>
@@ -237,13 +240,29 @@ export default {
       typeData: {},
       examineData: {},
       textarea: '',
-      isShow: false
+      isShow: false,
+      windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200
+    }
+  },
+  computed: {
+    drawerSize() {
+      return this.windowWidth < 768 ? '100%' : '760px'
     }
   },
   beforeCreate() {
     this.$vue.prototype.$func = func
   },
-
+  mounted() {
+    this.handleResize = () => {
+      this.windowWidth = window.innerWidth
+    }
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy() {
+    if (this.handleResize) {
+      window.removeEventListener('resize', this.handleResize)
+    }
+  },
   methods: {
     async submitReply() {
       if (this.textarea == '') {
@@ -586,9 +605,24 @@ export default {
   display: flex;
   align-items: center;
 
+  &.label-block {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+
+    .rule-label {
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #303133;
+      padding: 0;
+      white-space: normal;
+    }
+  }
+
   .rule-label {
     display: inline-block;
-
     text-align: right;
     color: #606266;
     white-space: nowrap;
@@ -597,8 +631,44 @@ export default {
   .rule-value {
     line-height: 24px;
     width: 90%;
+    word-break: break-word;
   }
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer__header {
+    height: auto !important;
+    padding: 12px 14px;
+    margin-bottom: 0;
+  }
+
+  .headerBox {
+    flex-wrap: wrap;
+    gap: 8px;
+    .portrait {
+      width: 40px;
+      height: 40px;
+    }
+    .nameBox {
+      .st1 {
+        font-size: 14px;
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .ex-content {
+    padding: 12px 0 0 12px;
+    .ex-content-con {
+      padding-right: 12px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
 
 .flex {
   display: flex;

@@ -2,7 +2,7 @@
   <div class="divBox invoice-my-container">
     <!-- 顶部概览统计卡片 -->
     <el-row :gutter="14" class="mb14 statistics-cards">
-      <el-col :span="6">
+      <el-col :xs="12" :sm="12" :md="6" :lg="6" class="stat-col">
         <el-card shadow="never" class="stat-card stat-total">
           <div class="stat-inner acea-row row-between row-middle">
             <div>
@@ -17,7 +17,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="6">
+      <el-col :xs="12" :sm="12" :md="6" :lg="6" class="stat-col">
         <el-card shadow="never" class="stat-card stat-unbound">
           <div class="stat-inner acea-row row-between row-middle">
             <div>
@@ -32,7 +32,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="6">
+      <el-col :xs="12" :sm="12" :md="6" :lg="6" class="stat-col">
         <el-card shadow="never" class="stat-card stat-binding">
           <div class="stat-inner acea-row row-between row-middle">
             <div>
@@ -47,7 +47,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="6">
+      <el-col :xs="12" :sm="12" :md="6" :lg="6" class="stat-col">
         <el-card shadow="never" class="stat-card stat-reimbursed">
           <div class="stat-inner acea-row row-between row-middle">
             <div>
@@ -136,7 +136,7 @@
           </el-form-item>
 
           <el-form-item label="金额范围">
-            <div class="acea-row row-middle">
+            <div class="acea-row row-middle amount-range-row">
               <el-input-number
                 v-model="where.min_amount"
                 :controls="false"
@@ -168,9 +168,11 @@
             />
           </el-form-item>
 
-          <el-form-item>
-            <el-button type="primary" icon="el-icon-search" @click="handleSearch">查询</el-button>
-            <el-button icon="el-icon-refresh" @click="handleReset">重置</el-button>
+          <el-form-item class="filter-actions-item">
+            <div class="filter-btn-row">
+              <el-button type="primary" icon="el-icon-search" @click="handleSearch">查询</el-button>
+              <el-button icon="el-icon-refresh" @click="handleReset">重置</el-button>
+            </div>
           </el-form-item>
         </el-form>
       </div>
@@ -189,7 +191,7 @@
         <!-- 模式 1：卡片网格视图 -->
         <div v-else-if="viewMode === 'card'" class="card-grid">
           <el-row :gutter="16">
-            <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="item in tableData" :key="item.id" class="mb16">
+            <el-col :xs="24" :sm="12" :md="8" :lg="8" v-for="item in tableData" :key="item.id" class="mb16">
               <div class="invoice-card" :class="{ 'is-abnormal': item.abnormal_status > 0 }">
                 <!-- 异常警示条 -->
                 <div v-if="item.abnormal_status > 0" class="abnormal-banner acea-row row-middle">
@@ -383,7 +385,8 @@
     <el-dialog
       :title="dialogMode === 'upload' ? '发票上传与智能解析' : (form.id ? '编辑发票信息' : '手动补录发票')"
       :visible.sync="editDialogVisible"
-      width="680px"
+      :width="isMobile ? '95%' : '680px'"
+      :top="isMobile ? '4vh' : '8vh'"
       :close-on-click-modal="false"
       class="invoice-edit-dialog"
     >
@@ -442,9 +445,9 @@
           :closable="false"
         />
 
-        <el-form ref="invoiceForm" :model="form" :rules="rules" label-width="110px" size="small">
+        <el-form ref="invoiceForm" :model="form" :rules="rules" :label-width="isMobile ? '90px' : '110px'" :label-position="isMobile ? 'top' : 'right'" size="small">
           <el-row :gutter="16">
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="发票类型" prop="invoice_type">
                 <el-select v-model="form.invoice_type" placeholder="请选择发票类型" style="width: 100%">
                   <el-option label="增值税专用发票" value="special" />
@@ -458,7 +461,7 @@
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="发票号码" prop="invoice_number">
                 <el-input
                   v-model="form.invoice_number"
@@ -470,7 +473,7 @@
           </el-row>
 
           <el-row :gutter="16">
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="发票代码" prop="invoice_code">
                 <el-input
                   v-model="form.invoice_code"
@@ -480,7 +483,7 @@
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="开票日期" prop="invoice_date">
                 <el-date-picker
                   v-model="form.invoice_date"
@@ -494,7 +497,7 @@
           </el-row>
 
           <el-row :gutter="16">
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="价税合计(元)" prop="total_amount">
                 <el-input-number
                   v-model="form.total_amount"
@@ -508,7 +511,7 @@
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="金额(不含税)" prop="amount">
                 <el-input-number
                   v-model="form.amount"
@@ -524,7 +527,7 @@
           </el-row>
 
           <el-row :gutter="16">
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="税额(元)" prop="tax_amount">
                 <el-input-number
                   v-model="form.tax_amount"
@@ -537,7 +540,7 @@
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="销售方名称" prop="seller_name">
                 <el-input v-model="form.seller_name" placeholder="请输入销售方单位全称" />
               </el-form-item>
@@ -545,13 +548,13 @@
           </el-row>
 
           <el-row :gutter="16">
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="购买方名称">
                 <el-input v-model="form.buyer_name" placeholder="购买方企业或个人名称" />
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="发票原件文件">
                 <div class="acea-row row-middle">
                   <span v-if="form.file_name" class="font-12 text-muted ellipsis" style="max-width: 160px;" :title="form.file_name">
@@ -608,9 +611,9 @@
     <el-dialog
       :title="`发票原件预览 - ${currentPreview.invoice_number || ''}`"
       :visible.sync="previewDialogVisible"
-      width="820px"
+      :width="isMobile ? '96%' : '860px'"
       append-to-body
-      top="5vh"
+      :top="isMobile ? '4vh' : '5vh'"
       class="invoice-preview-dialog"
     >
       <div class="preview-container">
@@ -657,6 +660,7 @@ export default {
   name: 'MyInvoiceIndex',
   data() {
     return {
+      isMobile: window.innerWidth < 768,
       viewMode: 'card', // 'card' | 'table'
       loading: false,
       tableData: [],
@@ -733,6 +737,12 @@ export default {
   },
   created() {
     this.getTableData()
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     async getTableData() {
@@ -1136,6 +1146,10 @@ export default {
         3: '虚假发票'
       }
       return map[code] || '异常'
+    },
+
+    handleResize() {
+      this.isMobile = window.innerWidth < 768
     }
   }
 }
@@ -1207,6 +1221,13 @@ export default {
 
   .main-card {
     border-radius: 8px;
+
+    .header-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
 
     .page-title {
       font-size: 16px;
@@ -1300,6 +1321,10 @@ export default {
   }
 
   .table-view-box {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
     .price-text {
       color: #f5222d;
       font-weight: 600;
@@ -1393,5 +1418,189 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .invoice-my-container {
+    .statistics-cards {
+      .stat-col {
+        margin-bottom: 10px;
+      }
+      .stat-card {
+        .stat-inner {
+          padding: 4px 2px;
+        }
+        .stat-label {
+          font-size: 12px;
+          margin-bottom: 2px;
+        }
+        .stat-value {
+          font-size: 18px;
+          .unit {
+            font-size: 12px;
+          }
+        }
+        .stat-sub {
+          font-size: 11px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .stat-icon-wrapper {
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+          border-radius: 18px;
+          .stat-icon {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    .main-card {
+      /deep/ .el-card__body {
+        padding: 12px !important;
+      }
+
+      .header-box {
+        flex-direction: column;
+        align-items: flex-start !important;
+        .title-section {
+          width: 100%;
+          margin-bottom: 4px;
+          .sub-title {
+            display: none;
+          }
+        }
+        .action-section {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          .mr15 {
+            margin-right: 0 !important;
+          }
+          .el-button {
+            flex: 1;
+            min-width: 105px;
+            margin-left: 0 !important;
+          }
+        }
+      }
+    }
+
+    .search-filter-box {
+      .demo-form-inline {
+        .el-form-item {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 12px;
+
+          /deep/ .el-form-item__label {
+            text-align: left;
+            padding-bottom: 4px;
+            line-height: 1.4;
+          }
+          /deep/ .el-form-item__content {
+            width: 100%;
+          }
+          .el-select,
+          .el-date-editor,
+          .el-input,
+          .el-range-editor {
+            width: 100% !important;
+          }
+        }
+        .amount-range-row {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          .el-input-number {
+            flex: 1;
+            width: 100% !important;
+          }
+        }
+        .filter-btn-row {
+          display: flex;
+          gap: 10px;
+          width: 100%;
+          .el-button {
+            flex: 1;
+            margin-left: 0 !important;
+          }
+        }
+      }
+    }
+
+    .card-grid {
+      .invoice-card {
+        padding: 12px;
+        .card-amount-box .amount-val {
+          font-size: 20px;
+        }
+        .card-footer {
+          .btn-group {
+            display: flex;
+            gap: 8px;
+            .el-button {
+              padding: 5px 0;
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .pagination-box {
+      justify-content: center !important;
+      /deep/ .el-pagination {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+        .el-pagination__sizes,
+        .el-pagination__jump {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /deep/ .invoice-edit-dialog {
+    .el-dialog {
+      margin-bottom: 20px;
+    }
+    .el-dialog__body {
+      padding: 14px 16px;
+      max-height: 72vh;
+      overflow-y: auto;
+    }
+    .el-dialog__footer {
+      padding: 10px 16px;
+      .acea-row {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+    }
+  }
+
+  /deep/ .invoice-preview-dialog {
+    .el-dialog__body {
+      padding: 10px;
+    }
+    .preview-container {
+      min-height: 240px;
+      max-height: 70vh;
+      .pdf-box {
+        height: 380px;
+      }
+      .img-box .preview-img {
+        max-height: 380px;
+      }
+    }
+  }
 }
 </style>

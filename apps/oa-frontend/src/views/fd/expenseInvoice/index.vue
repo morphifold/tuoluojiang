@@ -2,7 +2,7 @@
   <div class="divBox finance-invoice-container">
     <!-- 顶部财务数据概览卡片 -->
     <el-row :gutter="14" class="mb14 stat-row">
-      <el-col :span="4" :xs="12" :sm="8">
+      <el-col :span="4" :xs="12" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">全员进项总览</div>
@@ -12,7 +12,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="5" :xs="12" :sm="8">
+      <el-col :span="5" :xs="12" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">待报销 (未绑定)</div>
@@ -22,7 +22,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="5" :xs="12" :sm="8">
+      <el-col :span="5" :xs="12" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">报销审批中 (已绑定)</div>
@@ -32,7 +32,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="5" :xs="12" :sm="8">
+      <el-col :span="5" :xs="12" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">已报销归档</div>
@@ -42,7 +42,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="5" :xs="24" :sm="8">
+      <el-col :span="5" :xs="24" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card abnormal-card">
           <div class="stat-inner">
             <div class="stat-title text-danger"><i class="el-icon-warning"></i> 异常预警发票</div>
@@ -62,6 +62,10 @@
           <span class="sub-title text-muted ml10">全员报销发票归集审计、防重把关、风险排查及异常标记管理</span>
         </div>
         <div class="action-section acea-row row-middle">
+          <el-radio-group v-model="viewMode" size="small" class="mr15 view-mode-radio">
+            <el-radio-button label="card"><i class="el-icon-menu"></i> 卡片</el-radio-button>
+            <el-radio-button label="table"><i class="el-icon-s-grid"></i> 表格</el-radio-button>
+          </el-radio-group>
           <el-button
             type="primary"
             size="small"
@@ -80,7 +84,6 @@
           </el-button>
         </div>
       </div>
-
       <!-- 高级复合检索栏 -->
       <div class="filter-box mb20">
         <el-form :inline="true" size="small" class="demo-form-inline">
@@ -160,22 +163,152 @@
             />
           </el-form-item>
 
-          <el-form-item>
-            <el-button type="primary" icon="el-icon-search" @click="handleSearch">查询</el-button>
-            <el-button icon="el-icon-refresh" @click="handleReset">重置</el-button>
+          <el-form-item class="filter-actions-item">
+            <div class="filter-btn-row">
+              <el-button type="primary" icon="el-icon-search" @click="handleSearch">查询</el-button>
+              <el-button icon="el-icon-refresh" @click="handleReset">重置</el-button>
+            </div>
           </el-form-item>
         </el-form>
       </div>
 
-      <!-- 数据表格 -->
+      <!-- 数据内容区 (支持移动端卡片与列表表格双视图) -->
       <div v-loading="loading">
-        <el-table
-          :data="tableData"
-          border
-          size="small"
-          style="width: 100%"
-          :row-class-name="tableRowClassName"
-        >
+        <!-- 空状态 (卡片模式下) -->
+        <div v-if="viewMode === 'card' && tableData.length === 0" class="empty-box acea-row row-column row-center row-middle">
+          <img src="../../../assets/images/defd.png" alt="暂无台账" class="empty-img" />
+          <p class="empty-text">进项发票台账暂无相关记录</p>
+        </div>
+
+        <!-- 模式 1：移动端财务台账卡片列表 -->
+        <div v-else-if="viewMode === 'card'" class="card-grid">
+          <el-row :gutter="14">
+            <el-col :xs="24" :sm="12" :md="8" :lg="8" v-for="item in tableData" :key="item.id" class="mb14">
+              <div class="finance-invoice-card" :class="{ 'is-abnormal': item.abnormal_status > 0 }">
+                <!-- 异常预警横幅 -->
+                <div v-if="item.abnormal_status > 0" class="abnormal-banner acea-row row-middle">
+                  <i class="el-icon-warning mr5"></i>
+                  <span>异常【{{ getAbnormalName(item.abnormal_status) }}】：{{ item.abnormal_reason || '存在异常风险' }}</span>
+                </div>
+
+                <!-- 卡片头部：类型与状态标签 -->
+                <div class="card-header acea-row row-between row-middle">
+                  <el-tag size="mini" :type="getInvoiceTagType(item.invoice_type)">
+                    {{ getInvoiceTypeName(item.invoice_type) }}
+                  </el-tag>
+                  <div class="status-tags acea-row row-middle">
+                    <el-tag v-if="item.status === 0" size="mini" type="success" effect="plain">未绑定</el-tag>
+                    <el-tag v-else-if="item.status === 1" size="mini" type="warning" effect="plain">审批中</el-tag>
+                    <el-tag v-else-if="item.status === 2" size="mini" type="info" effect="plain">已报销</el-tag>
+
+                    <el-tag v-if="item.abnormal_status > 0" size="mini" type="danger" effect="dark" class="ml5">
+                      {{ getAbnormalName(item.abnormal_status) }}
+                    </el-tag>
+                    <span v-else class="text-success font-12 ml5"><i class="el-icon-check"></i> 正常</span>
+                  </div>
+                </div>
+
+                <!-- 金额醒目展示 -->
+                <div class="card-amount-box mt10">
+                  <div class="amount-label">价税合计</div>
+                  <div class="amount-val">
+                    <span class="currency">¥</span>{{ formatMoney(item.total_amount) }}
+                  </div>
+                  <div class="sub-amount-row acea-row row-between">
+                    <span>不含税：¥{{ formatMoney(item.amount) }}</span>
+                    <span>税额：¥{{ formatMoney(item.tax_amount) }}</span>
+                  </div>
+                </div>
+
+                <!-- 发票核心字段信息 -->
+                <div class="card-info-list mt10">
+                  <div class="info-row acea-row">
+                    <span class="info-title">发票号码：</span>
+                    <span class="info-content font-mono font-bold">
+                      {{ item.invoice_number }}
+                      <i class="el-icon-document-copy pointer copy-btn" title="点击复制" @click="copyText(item.invoice_number)"></i>
+                    </span>
+                  </div>
+                  <div class="info-row acea-row" v-if="item.invoice_code">
+                    <span class="info-title">发票代码：</span>
+                    <span class="info-content font-mono">{{ item.invoice_code }}</span>
+                  </div>
+                  <div class="info-row acea-row">
+                    <span class="info-title">报销人员：</span>
+                    <span class="info-content">
+                      <span class="font-bold">{{ item.user_name || ((item.card || {}).name) || ('员工' + (item.uid || '')) }}</span>
+                      <span v-if="item.dep_name || (((item.card || {}).frame || {}).name)" class="dep-name text-muted">
+                        ({{ item.dep_name || (((item.card || {}).frame || {}).name) }})
+                      </span>
+                    </span>
+                  </div>
+                  <div class="info-row acea-row">
+                    <span class="info-title">开票日期：</span>
+                    <span class="info-content">{{ item.invoice_date || '--' }}</span>
+                  </div>
+                  <div class="info-row acea-row">
+                    <span class="info-title">销售方：</span>
+                    <span class="info-content ellipsis" :title="item.seller_name">{{ item.seller_name || '--' }}</span>
+                  </div>
+                  <div class="info-row acea-row" v-if="item.apply_id">
+                    <span class="info-title">关联单据：</span>
+                    <span class="info-content">
+                      <el-link type="primary" size="mini" @click="viewApprovalDetail(item.apply_id)">
+                        审批单 #{{ item.apply_id }}
+                      </el-link>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 卡片底部操作栏 -->
+                <div class="card-footer acea-row row-between row-middle mt15 pt10">
+                  <div>
+                    <el-button
+                      v-if="item.file_path"
+                      type="text"
+                      size="small"
+                      icon="el-icon-view"
+                      @click="previewInvoice(item)"
+                    >
+                      查看原件
+                    </el-button>
+                    <span v-else class="text-muted font-12">未传原件</span>
+                  </div>
+
+                  <div class="btn-group">
+                    <el-button
+                      type="text"
+                      size="small"
+                      :style="{ color: item.abnormal_status > 0 ? '#67C23A' : '#E6A23C' }"
+                      @click="openAbnormalDialog(item)"
+                    >
+                      {{ item.abnormal_status > 0 ? '解除异常' : '标记异常' }}
+                    </el-button>
+
+                    <el-button
+                      type="text"
+                      size="small"
+                      icon="el-icon-info"
+                      @click="openDetailDrawer(item)"
+                    >
+                      详情
+                    </el-button>
+                  </div>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+
+        <!-- 模式 2：表格列表视图 -->
+        <div v-else class="table-view-box">
+          <el-table
+            :data="tableData"
+            border
+            size="small"
+            style="width: 100%"
+            :row-class-name="tableRowClassName"
+          >
           <el-table-column type="index" label="序号" width="50" align="center" />
 
           <el-table-column prop="invoice_number" label="发票号码" min-width="130" show-overflow-tooltip>
@@ -301,6 +434,7 @@
             </template>
           </el-table-column>
         </el-table>
+        </div>
 
         <!-- 分页 -->
         <div class="pagination-box mt20 acea-row row-right">
@@ -321,12 +455,13 @@
     <el-dialog
       :title="`发票异常标记维护 - [${currentInvoice.invoice_number || ''}]`"
       :visible.sync="abnormalDialogVisible"
-      width="520px"
+      :width="isMobile ? '95%' : '520px'"
       append-to-body
+      :top="isMobile ? '4vh' : '15vh'"
       :close-on-click-modal="false"
       class="abnormal-dialog"
     >
-      <el-form ref="abnormalForm" :model="abnormalForm" :rules="abnormalRules" label-width="100px" size="small">
+      <el-form ref="abnormalForm" :model="abnormalForm" :rules="abnormalRules" :label-width="isMobile ? '80px' : '100px'" :label-position="isMobile ? 'top' : 'right'" size="small">
         <el-form-item label="发票号码">
           <span class="font-mono font-bold">{{ currentInvoice.invoice_number }}</span>
         </el-form-item>
@@ -381,9 +516,9 @@
     <el-dialog
       :title="`发票原件预览 - ${currentPreview.invoice_number || ''}`"
       :visible.sync="previewDialogVisible"
-      width="820px"
+      :width="isMobile ? '96%' : '860px'"
       append-to-body
-      top="5vh"
+      :top="isMobile ? '4vh' : '5vh'"
       class="invoice-preview-dialog"
     >
       <div class="preview-container">
@@ -416,7 +551,7 @@
     <el-drawer
       title="发票台账全要素详情"
       :visible.sync="detailDrawerVisible"
-      size="540px"
+      :size="isMobile ? '92%' : '540px'"
       append-to-body
     >
       <div class="drawer-content p20" v-if="drawerInvoice.id">
@@ -529,6 +664,8 @@ export default {
   },
   data() {
     return {
+      isMobile: window.innerWidth < 768,
+      viewMode: window.innerWidth < 768 ? 'card' : 'table',
       loading: false,
       exporting: false,
       tableData: [],
@@ -591,6 +728,12 @@ export default {
   },
   created() {
     this.getTableData()
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     async getTableData() {
@@ -819,7 +962,7 @@ export default {
           // 若后端未返回二进制/URL，则请求全量列表数据进行前端导出
           const listRes = await getExpenseInvoiceFinanceListApi(params)
           if (listRes.status !== 200) return
-          exportRows = listRes.data?.list || this.tableData
+          exportRows = (listRes.data && listRes.data.list) || this.tableData
         }
 
         // 构建 AOA 格式数据
@@ -853,8 +996,8 @@ export default {
             item.invoice_date || '',
             item.seller_name || '',
             item.buyer_name || '',
-            item.user_name || item.card?.name || '',
-            item.dep_name || item.card?.frame?.name || '',
+            item.user_name || (item.card && item.card.name) || '',
+            item.dep_name || (item.card && item.card.frame && item.card.frame.name) || '',
             item.status === 0 ? '待报销' : (item.status === 1 ? '审批中' : '已报销'),
             item.abnormal_status > 0 ? this.getAbnormalName(item.abnormal_status) : '正常',
             item.abnormal_reason || '',
@@ -922,6 +1065,16 @@ export default {
         3: '假票'
       }
       return map[code] || '异常'
+    },
+
+    handleResize() {
+      const mobile = window.innerWidth < 768
+      if (this.isMobile !== mobile) {
+        this.isMobile = mobile
+        if (mobile && this.viewMode === 'table') {
+          this.viewMode = 'card'
+        }
+      }
     }
   }
 }
@@ -961,6 +1114,13 @@ export default {
         background: #fff1f0;
       }
     }
+  }
+
+  .header-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
   }
 
   .page-title {
@@ -1004,6 +1164,110 @@ export default {
 
   /deep/ .abnormal-table-row {
     background: #fff8f8 !important;
+  }
+
+  .card-grid {
+    .finance-invoice-card {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 14px 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        border-color: #409EFF;
+        box-shadow: 0 4px 14px rgba(64, 158, 255, 0.15);
+      }
+
+      &.is-abnormal {
+        border-color: #ff4d4f;
+        background: #fffcfc;
+      }
+    }
+
+    .abnormal-banner {
+      background: #ff4d4f;
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .card-amount-box {
+      background: #fbfcfe;
+      border-radius: 6px;
+      padding: 8px 12px;
+      border: 1px dashed #e1e9f4;
+
+      .amount-label {
+        font-size: 11px;
+        color: #8c8c8c;
+      }
+      .amount-val {
+        font-size: 22px;
+        font-weight: bold;
+        color: #f5222d;
+        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        .currency {
+          font-size: 14px;
+          margin-right: 2px;
+        }
+      }
+      .sub-amount-row {
+        font-size: 11px;
+        color: #8c8c8c;
+        margin-top: 4px;
+      }
+    }
+
+    .card-info-list {
+      font-size: 12px;
+      line-height: 22px;
+
+      .info-row {
+        .info-title {
+          color: #8c8c8c;
+          width: 70px;
+          flex-shrink: 0;
+        }
+        .info-content {
+          color: #262626;
+          flex: 1;
+        }
+      }
+    }
+
+    .card-footer {
+      border-top: 1px solid #f0f0f0;
+    }
+  }
+
+  .table-view-box {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .empty-box {
+    padding: 60px 0;
+    .empty-img {
+      width: 160px;
+    }
+    .empty-text {
+      color: #8c8c8c;
+      margin: 14px 0 16px 0;
+      font-size: 14px;
+    }
+  }
+
+  .ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -1057,6 +1321,176 @@ export default {
       max-height: 580px;
       object-fit: contain;
       box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .finance-invoice-container {
+    .stat-row {
+      .stat-col {
+        margin-bottom: 10px;
+      }
+      .stat-card {
+        .stat-inner {
+          padding: 4px 2px;
+        }
+        .stat-title {
+          font-size: 12px;
+          margin-bottom: 4px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .stat-val {
+          font-size: 17px;
+          .unit {
+            font-size: 11px;
+          }
+        }
+        .stat-desc {
+          font-size: 11px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    .normal-page {
+      /deep/ .el-card__body {
+        padding: 12px !important;
+      }
+    }
+
+    .header-box {
+      flex-direction: column;
+      align-items: flex-start !important;
+      .title-section {
+        width: 100%;
+        margin-bottom: 4px;
+        .sub-title {
+          display: none;
+        }
+      }
+      .action-section {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        .mr15 {
+          margin-right: 0 !important;
+        }
+        .el-button {
+          flex: 1;
+          min-width: 105px;
+          margin-left: 0 !important;
+        }
+      }
+    }
+
+    .filter-box {
+      .demo-form-inline {
+        .el-form-item {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 12px;
+
+          /deep/ .el-form-item__label {
+            text-align: left;
+            padding-bottom: 4px;
+            line-height: 1.4;
+          }
+          /deep/ .el-form-item__content {
+            width: 100%;
+          }
+          .el-select,
+          .el-date-editor,
+          .el-input,
+          .el-range-editor {
+            width: 100% !important;
+          }
+        }
+        .filter-btn-row {
+          display: flex;
+          gap: 10px;
+          width: 100%;
+          .el-button {
+            flex: 1;
+            margin-left: 0 !important;
+          }
+        }
+      }
+    }
+
+    .card-grid {
+      .finance-invoice-card {
+        padding: 12px;
+        .card-amount-box .amount-val {
+          font-size: 20px;
+        }
+        .card-footer {
+          .btn-group {
+            display: flex;
+            gap: 8px;
+            .el-button {
+              padding: 5px 0;
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .pagination-box {
+      justify-content: center !important;
+      /deep/ .el-pagination {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+        .el-pagination__sizes,
+        .el-pagination__jump {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /deep/ .abnormal-dialog {
+    .el-dialog {
+      margin-bottom: 20px;
+    }
+    .el-dialog__body {
+      padding: 14px 16px;
+    }
+  }
+
+  /deep/ .invoice-preview-dialog {
+    .el-dialog__body {
+      padding: 10px;
+    }
+    .preview-container {
+      min-height: 240px;
+      max-height: 70vh;
+      .pdf-box {
+        height: 380px;
+      }
+      .img-box .preview-img {
+        max-height: 380px;
+      }
+    }
+  }
+
+  .drawer-content {
+    padding: 14px !important;
+    .detail-header-card {
+      padding: 12px;
+      .drawer-amount .amount-number {
+        font-size: 22px;
+      }
     }
   }
 }
