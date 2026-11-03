@@ -12,15 +12,15 @@
       <el-scrollbar style="height: 100%">
         <ul class="table-box" :style="{ height: tableHeight }">
           <li v-for="(item, index) in tableData" :key="index">
-            <el-row class="table-header">
-              <el-col :span="12">
-                <el-row class="table-title">
-                  <el-col class="table-title-left" v-if="item.approve">
+            <div class="table-header">
+              <div class="table-header-left">
+                <div class="table-title">
+                  <div class="table-title-left" v-if="item.approve">
                     <div class="selIcon" :style="{ backgroundColor: item.approve.color }">
                       <i class="icon iconfont" :class="item.approve.icon"></i>
                     </div>
-                  </el-col>
-                  <el-col class="table-title-right">
+                  </div>
+                  <div class="table-title-right">
                     <div class="title" v-if="item.approve">{{ item.approve.name }}</div>
                     <div class="tag">
                       <el-tag v-if="item.status === -1" type="info" size="mini"> 已撤销 </el-tag>
@@ -29,10 +29,10 @@
                       <el-tag v-if="item.status === 2" type="danger" size="mini"> 已拒绝 </el-tag>
                       <el-tag v-if="item.status === 1 && item.recall" type="danger" size="mini"> 撤销中 </el-tag>
                     </div>
-                  </el-col>
-                </el-row>
-              </el-col>
-              <el-col :span="12" class="text-right">
+                  </div>
+                </div>
+              </div>
+              <div class="table-header-right">
                 <el-button size="mini" @click="handleDetail(item)">查看详情</el-button>
                 <template v-if="item.status == 0">
                   <el-button v-if="item.verify_status === 0" type="danger" size="mini" @click="handleRefuse(item)">
@@ -42,15 +42,15 @@
                     同意
                   </el-button>
                 </template>
-              </el-col>
-            </el-row>
-            <el-row class="table-body">
-              <el-row class="table-body-title">
-                <el-col class="table-body-left">
+              </div>
+            </div>
+            <div class="table-body">
+              <div class="table-body-title">
+                <div class="table-body-left">
                   <img class="img-body" v-if="judge(item)" :src="item.card.avatar" alt="" />
                   <img class="img-body" v-else src="../../../../assets/images/portrait.png" alt="" />
-                </el-col>
-                <el-col class="table-body-right">
+                </div>
+                <div class="table-body-right">
                   <div class="title">
                     <span>{{ item.card ? item.card.name : '' }}</span>
                     <span class="time">创建于{{ item.created_at }}</span>
@@ -58,9 +58,9 @@
                   <div class="mt15 table-body-body">
                     <div class="over-text" v-html="getValue(item.content)"></div>
                   </div>
-                </el-col>
-              </el-row>
-            </el-row>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </el-scrollbar>
@@ -269,15 +269,64 @@ export default {
       await this.getTableData()
     },
     getValue(row) {
+      if (!Array.isArray(row)) return ''
       let arr = []
-      row.map((item) => {
-        if (item.value && item.type !== 'uploadFrom') {
-          let str = item.label + ' : ' + item.value + '&nbsp;&nbsp;&nbsp'
-          arr.push(str)
+      row.forEach((item) => {
+        if (!item || item.type === 'uploadFrom') return
+
+        // 发票明细摘要友好展示
+        let isInvoice = item.type === 'invoiceSelect' || item.type === 'invoice'
+        let invoiceList = null
+        if (Array.isArray(item.value)) {
+          if (item.value.length > 0 && (item.value[0].invoice_number || item.value[0].total_amount !== undefined || item.value[0].invoice_type)) {
+            isInvoice = true
+            invoiceList = item.value
+          } else if (isInvoice) {
+            invoiceList = item.value
+          }
+        } else if (typeof item.value === 'string' && (item.value.includes('invoice_number') || item.value.includes('total_amount'))) {
+          try {
+            const parsed = JSON.parse(item.value)
+            if (Array.isArray(parsed)) {
+              isInvoice = true
+              invoiceList = parsed
+            }
+          } catch (e) {}
+        }
+
+        if (isInvoice) {
+          const count = invoiceList ? invoiceList.length : 0
+          const total = invoiceList ? invoiceList.reduce((sum, cur) => sum + (parseFloat(cur.total_amount) || 0), 0) : 0
+          const label = item.label || '发票明细'
+          if (count > 0) {
+            arr.push(`${label} : 共 ${count} 张（合计 ¥${total.toFixed(2)}）&nbsp;&nbsp;&nbsp;`)
+          }
+          return
+        }
+
+        // 时间区间
+        if (item.type === 'timeFrom' && item.value && typeof item.value === 'object') {
+          const start = item.value.dateStart || ''
+          const end = item.value.dateEnd || ''
+          const dur = item.value.duration ? ` (${item.value.duration})` : ''
+          if (start || end) {
+            arr.push(`${item.label} : ${start} ~ ${end}${dur}&nbsp;&nbsp;&nbsp;`)
+          }
+          return
+        }
+
+        // 普通文本/数值/数组
+        if (item.value !== undefined && item.value !== null && item.value !== '') {
+          if (typeof item.value === 'string' || typeof item.value === 'number') {
+            arr.push(`${item.label} : ${item.value}&nbsp;&nbsp;&nbsp;`)
+          } else if (Array.isArray(item.value)) {
+            if (item.value.length > 0 && item.value.every((v) => typeof v === 'string' || typeof v === 'number')) {
+              arr.push(`${item.label} : ${item.value.join('、')}&nbsp;&nbsp;&nbsp;`)
+            }
+          }
         }
       })
-      arr = arr.join('')
-      return arr
+      return arr.join('')
     }
   }
 }
@@ -314,42 +363,65 @@ export default {
   list-style: none;
   margin: 0px 0px 0 0;
   padding: 0;
-  overflow: scroll;
+  overflow: auto;
   li {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px dashed #eeeeee;
     border: 1px solid #f0f2f5;
     padding: 14px;
-    border-radius: 3px;
+    border-radius: 4px;
+    background: #fff;
     .table-header {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
+      gap: 8px;
       margin-bottom: 15px;
+      .table-header-left {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        flex: 1 1 auto;
+      }
       .table-title {
         display: flex;
         align-items: center;
+        flex: 1;
+        min-width: 0;
         .table-title-left {
           width: 38px;
-          // i {
-          //   color: #fff;
-          //   font-size: 28px;
-          // }
+          flex-shrink: 0;
         }
         .table-title-right {
           width: calc(100% - 38px);
           display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 6px;
+          min-width: 0;
           .title {
             font-weight: bold;
             font-size: 13px;
             line-height: 20px;
           }
           .tag {
-            margin-left: 5px;
             /deep/ .el-tag {
               background: #fff;
             }
           }
+        }
+      }
+      .table-header-right {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+        flex-shrink: 0;
+        /deep/ .el-button + .el-button {
+          margin-left: 0;
         }
       }
     }
@@ -360,11 +432,18 @@ export default {
       }
       padding: 16px 15px;
       background-color: rgba(24, 144, 255, 0.04);
+      border-radius: 4px;
+      .table-body-title {
+        display: flex;
+        align-items: flex-start;
+      }
       .table-body-left {
         width: 40px;
+        flex-shrink: 0;
       }
       .table-body-right {
         width: calc(100% - 40px);
+        min-width: 0;
         font-size: 13px;
         color: rgba(119, 119, 119, 0.85);
         .title {
@@ -386,6 +465,85 @@ export default {
             padding-right: 15px;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .table-box {
+    height: auto !important;
+    max-height: calc(100vh - 220px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+
+    li {
+      margin-bottom: 10px;
+      padding: 10px;
+
+      .table-header {
+        margin-bottom: 10px;
+        gap: 8px;
+
+        .table-header-left {
+          width: 100%;
+        }
+
+        .table-header-right {
+          width: 100%;
+          justify-content: flex-end;
+          gap: 6px;
+        }
+      }
+
+      .table-body {
+        padding: 10px;
+
+        .table-body-left {
+          width: 36px;
+        }
+
+        .table-body-right {
+          width: calc(100% - 36px);
+
+          .title {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .time {
+              padding-left: 0;
+              font-size: 12px;
+            }
+          }
+
+          .table-body-body {
+            margin-top: 8px;
+            .over-text {
+              white-space: normal;
+              word-break: break-word;
+              line-height: 1.5;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .page-fixed {
+    position: static !important;
+    margin-top: 15px !important;
+    padding: 10px 0 !important;
+    justify-content: center !important;
+    /deep/ .el-pagination {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      .el-pagination__sizes,
+      .el-pagination__jump {
+        display: none;
       }
     }
   }

@@ -16,62 +16,95 @@
       </template>
     </oaFromBox>
     <div class="table-box mt10">
-      <el-table :data="tableData" :height="tableHeight" style="width: 100%" v-loading="loading" row-key="id"
-        default-expand-all>
-        <el-table-column prop="name" label="审批类型" min-width="250">
-          <template slot-scope="scope">
-            <el-row class="table-title">
-              <el-col class="table-title-left">
-                <div class="selIcon" :style="{ backgroundColor: scope.row.approve.color }">
-                  <i class="icon iconfont" :class="scope.row.approve.icon"></i>
-                </div>
-              </el-col>
-              <el-col class="table-title-right">
-                <p class="title">{{ scope.row.approve.name }}</p>
-                <p class="over-text">{{ getValue(scope.row.content) }}</p>
-              </el-col>
-            </el-row>
-          </template>
-        </el-table-column>
-        <el-table-column prop="name" label="审批状态" min-width="80">
-          <template slot-scope="scope">
-            <span class="status">
-              <el-tag v-if="scope.row.status === -1" type="info" effect="plain" size="mini"> 已撤销 </el-tag>
-              <el-tag v-if="scope.row.status === 1 && scope.row.recall" type="info" effect="plain" size="mini">
-                撤销中
-              </el-tag>
-              <el-tag v-if="scope.row.status === 0" type="warning" effect="plain" size="mini"> 审核中 </el-tag>
-              <el-tag v-if="scope.row.status === 1 && !scope.row.recall" type="info" effect="plain" size="mini">
-                已通过
-              </el-tag>
-              <el-tag v-if="scope.row.status === 2" type="danger" effect="plain" size="mini"> 已拒绝 </el-tag>
-            </span>
-          </template>
-        </el-table-column>
-        <el-table-column prop="created_at" label="提交时间" min-width="150" />
-        <el-table-column prop="name" :label="$t('public.operation')" width="200">
-          <template slot-scope="scope">
-            <el-button type="text" @click="handleDetail(scope.row)">详情 </el-button>
-            <el-button v-if="scope.row.status === 1 && scope.row.type < 6" type="text"
-              @click="handleEdit(scope.row)">再次提交</el-button>
+      <!-- PC 端表格视图 -->
+      <div class="pc-table">
+        <el-table :data="tableData" :height="tableHeight" style="width: 100%" v-loading="loading" row-key="id"
+          default-expand-all>
+          <el-table-column prop="name" label="审批类型" min-width="250">
+            <template slot-scope="scope">
+              <el-row class="table-title">
+                <el-col class="table-title-left" v-if="scope.row.approve">
+                  <div class="selIcon" :style="{ backgroundColor: scope.row.approve.color }">
+                    <i class="icon iconfont" :class="scope.row.approve.icon"></i>
+                  </div>
+                </el-col>
+                <el-col class="table-title-right">
+                  <p class="title" v-if="scope.row.approve">{{ scope.row.approve.name }}</p>
+                  <p class="over-text">{{ getValue(scope.row.content) }}</p>
+                </el-col>
+              </el-row>
+            </template>
+          </el-table-column>
+          <el-table-column prop="name" label="审批状态" min-width="80">
+            <template slot-scope="scope">
+              <span class="status">
+                <el-tag v-if="scope.row.status === -1" type="info" effect="plain" size="mini"> 已撤销 </el-tag>
+                <el-tag v-if="scope.row.status === 1 && scope.row.recall" type="info" effect="plain" size="mini">
+                  撤销中
+                </el-tag>
+                <el-tag v-if="scope.row.status === 0" type="warning" effect="plain" size="mini"> 审核中 </el-tag>
+                <el-tag v-if="scope.row.status === 1 && !scope.row.recall" type="info" effect="plain" size="mini">
+                  已通过
+                </el-tag>
+                <el-tag v-if="scope.row.status === 2" type="danger" effect="plain" size="mini"> 已拒绝 </el-tag>
+              </span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="created_at" label="提交时间" min-width="150" />
+          <el-table-column prop="name" :label="$t('public.operation')" width="200">
+            <template slot-scope="scope">
+              <el-button type="text" @click="handleDetail(scope.row)">详情</el-button>
+              <el-button v-if="canReapply(scope.row)" type="text" @click="handleEdit(scope.row)">再次提交</el-button>
+              <el-button v-if="canRevoke(scope.row)" type="text" @click="handleRefuse(scope.row)">撤销</el-button>
+              <el-button v-if="canResubmit(scope.row)" type="text" @click="handleEdit(scope.row)">重新提交</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
 
-            <el-button v-if="
-              ((scope.row.status === 1 && scope.row.rules && scope.row.rules.recall && scope.row.rules.recall == 1) ||
-                scope.row.status === 0) &&
-              !scope.row.recall
-            " type="text" @click="handleRefuse(scope.row)">
-              撤销
-            </el-button>
+      <!-- 移动端紧凑卡片视图 -->
+      <div class="mobile-card-list" v-loading="loading">
+        <div v-if="tableData.length === 0 && !loading" class="mobile-empty">
+          <default-page :index="14" :min-height="300" />
+        </div>
+        <div v-for="(item, index) in tableData" :key="item.id || index" class="mobile-card-item">
+          <div class="card-header">
+            <div class="header-left">
+              <div class="selIcon" v-if="item.approve" :style="{ backgroundColor: item.approve.color }">
+                <i class="icon iconfont" :class="item.approve.icon"></i>
+              </div>
+              <span class="card-title" v-if="item.approve">{{ item.approve.name }}</span>
+            </div>
+            <div class="header-right">
+              <span class="status">
+                <el-tag v-if="item.status === -1" type="info" effect="plain" size="mini"> 已撤销 </el-tag>
+                <el-tag v-if="item.status === 1 && item.recall" type="info" effect="plain" size="mini"> 撤销中 </el-tag>
+                <el-tag v-if="item.status === 0" type="warning" effect="plain" size="mini"> 审核中 </el-tag>
+                <el-tag v-if="item.status === 1 && !item.recall" type="info" effect="plain" size="mini"> 已通过 </el-tag>
+                <el-tag v-if="item.status === 2" type="danger" effect="plain" size="mini"> 已拒绝 </el-tag>
+              </span>
+            </div>
+          </div>
 
-            <el-button v-if="
-              (([2, -1].includes(scope.row.status) && scope.row.approve.types < 6) || scope.row.approve.types > 11) &&
-              scope.row.crud_id == 0
-            " type="text" @click="handleEdit(scope.row)">
-              重新提交
-            </el-button>
-          </template>
-        </el-table-column>
-      </el-table>
+          <div class="card-body">
+            <div class="card-content" v-if="getValue(item.content)">
+              {{ getValue(item.content) }}
+            </div>
+            <div class="card-time">
+              <i class="el-icon-time"></i>
+              <span>提交时间：{{ item.created_at }}</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <el-button type="text" size="small" @click="handleDetail(item)">详情</el-button>
+            <el-button v-if="canReapply(item)" type="text" size="small" @click="handleEdit(item)">再次提交</el-button>
+            <el-button v-if="canRevoke(item)" type="text" size="small" class="btn-danger" @click="handleRefuse(item)">撤销</el-button>
+            <el-button v-if="canResubmit(item)" type="text" size="small" @click="handleEdit(item)">重新提交</el-button>
+          </div>
+        </div>
+      </div>
+
       <div class="page-fixed">
         <el-pagination :page-size="where.limit" :current-page="where.page" :page-sizes="[15, 20, 30]"
           layout="total,sizes, prev, pager, next, jumper" :total="total" @size-change="handleSizeChange"
@@ -290,18 +323,79 @@ export default {
       }
       this.getTableData()
     },
+    canReapply(row) {
+      return Boolean(row && row.status === 1 && Number(row.type) < 6)
+    },
+    canRevoke(row) {
+      if (!row) return false
+      const allowRecall = row.status === 1 && row.rules && Number(row.rules.recall) === 1
+      return (allowRecall || row.status === 0) && !row.recall
+    },
+    canResubmit(row) {
+      if (!row || row.crud_id != 0) return false
+      const statusMatch = [2, -1].includes(row.status)
+      const types = row.approve ? Number(row.approve.types) : 0
+      return (statusMatch && types < 6) || types > 11
+    },
     getValue(row) {
+      if (!Array.isArray(row)) return ''
       let arr = []
-      row.map((item) => {
-        if (item.value && typeof item.value == 'string' && item.type !== 'rich_text') {
-          let str = item.label + ' : ' + item.value + ' '
-          arr.push(str)
-        } else {
+      row.forEach((item) => {
+        if (!item || item.type === 'uploadFrom' || item.type === 'rich_text') return
+
+        // 发票明细摘要友好展示
+        let isInvoice = item.type === 'invoiceSelect' || item.type === 'invoice'
+        let invoiceList = null
+        if (Array.isArray(item.value)) {
+          if (item.value.length > 0 && (item.value[0].invoice_number || item.value[0].total_amount !== undefined || item.value[0].invoice_type)) {
+            isInvoice = true
+            invoiceList = item.value
+          } else if (isInvoice) {
+            invoiceList = item.value
+          }
+        } else if (typeof item.value === 'string' && (item.value.includes('invoice_number') || item.value.includes('total_amount'))) {
+          try {
+            const parsed = JSON.parse(item.value)
+            if (Array.isArray(parsed)) {
+              isInvoice = true
+              invoiceList = parsed
+            }
+          } catch (e) {}
+        }
+
+        if (isInvoice) {
+          const count = invoiceList ? invoiceList.length : 0
+          const total = invoiceList ? invoiceList.reduce((sum, cur) => sum + (parseFloat(cur.total_amount) || 0), 0) : 0
+          const label = item.label || '发票明细'
+          if (count > 0) {
+            arr.push(`${label} : 共 ${count} 张（合计 ¥${total.toFixed(2)}） `)
+          }
+          return
+        }
+
+        // 时间区间
+        if (item.type === 'timeFrom' && item.value && typeof item.value === 'object') {
+          const start = item.value.dateStart || ''
+          const end = item.value.dateEnd || ''
+          const dur = item.value.duration ? ` (${item.value.duration})` : ''
+          if (start || end) {
+            arr.push(`${item.label} : ${start} ~ ${end}${dur} `)
+          }
+          return
+        }
+
+        // 普通文本/数值/数组
+        if (item.value !== undefined && item.value !== null && item.value !== '') {
+          if (typeof item.value === 'string' || typeof item.value === 'number') {
+            arr.push(`${item.label} : ${item.value} `)
+          } else if (Array.isArray(item.value)) {
+            if (item.value.length > 0 && item.value.every((v) => typeof v === 'string' || typeof v === 'number')) {
+              arr.push(`${item.label} : ${item.value.join('、')} `)
+            }
+          }
         }
       })
-      arr = arr.splice(0, 3).join('')
-
-      return arr
+      return arr.slice(0, 3).join('')
     }
   }
 }
@@ -340,6 +434,13 @@ export default {
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background: #eee; //滚动条背景色
+}
+
+.mobile-card-list {
+  display: none;
+}
+.pc-table {
+  display: block;
 }
 
 .table-box {
@@ -394,4 +495,114 @@ export default {
   font-size: 13px !important;
   color: #fff;
 }
-</style>
+
+@media (max-width: 767px) {
+  .pc-table {
+    display: none !important;
+  }
+
+  .mobile-card-list {
+    display: block;
+    max-height: calc(100vh - 220px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+
+    .mobile-card-item {
+      background: #fff;
+      border: 1px solid #ebeef5;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px dashed #f0f2f5;
+
+        .header-left {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          min-width: 0;
+          flex: 1;
+
+          .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #303133;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+
+        .header-right {
+          flex-shrink: 0;
+        }
+      }
+
+      .card-body {
+        padding: 10px 0;
+        font-size: 13px;
+        color: #606266;
+
+        .card-content {
+          line-height: 1.6;
+          color: #606266;
+          word-break: break-word;
+          margin-bottom: 6px;
+          background: rgba(24, 144, 255, 0.03);
+          padding: 6px 8px;
+          border-radius: 4px;
+        }
+
+        .card-time {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: #909399;
+          font-size: 12px;
+        }
+      }
+
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+        padding-top: 6px;
+        border-top: 1px solid #f7f8fa;
+
+        /deep/ .el-button--text {
+          padding: 4px 6px;
+          font-size: 13px;
+        }
+        .btn-danger {
+          color: #f56c6c;
+        }
+      }
+    }
+  }
+
+  .page-fixed {
+    position: static !important;
+    margin-top: 15px !important;
+    padding: 10px 0 !important;
+    justify-content: center !important;
+    /deep/ .el-pagination {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      .el-pagination__sizes,
+      .el-pagination__jump {
+        display: none;
+      }
+    }
+  }
+}

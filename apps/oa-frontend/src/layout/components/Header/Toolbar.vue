@@ -1,6 +1,6 @@
 <template>
   <div class="tool-bar breadcrumb">
-    <breadcrumb></breadcrumb>
+    <breadcrumb class="breadcrumb-wrapper"></breadcrumb>
     <!-- <div class="flex top" :class="helpShow ? 'left' : 'mr0'">
       <el-tooltip class="item" effect="dark" content="帮助中心搜索" placement="bottom">
         <span class="iconfont iconjishiben-sousuo" v-if="!searchShow" @click="searchShow = true"></span>
@@ -145,12 +145,24 @@ export default {
     color: #909399;
   }
 }
+.breadcrumb-wrapper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+
+  /deep/ .el-breadcrumb {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 
 .right-bar-wrapper {
   display: flex;
   // width: 220px;
   align-items: center;
   padding-right: 5px;
+  flex-shrink: 0;
 
   /deep/.iconfont {
     font-size: 20px !important;
@@ -164,6 +176,77 @@ export default {
   }
   .notice {
     margin-right: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumb {
+    padding-right: 10px;
+  }
+
+  .breadcrumb-wrapper {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+
+    /deep/ .el-breadcrumb {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+
+      // 移动端/窄屏下隐藏次要层级（非末级），只保留当前页面
+      .el-breadcrumb__item:not(:last-child) {
+        display: none;
+      }
+
+      .el-breadcrumb__item:last-child {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+
+        .el-breadcrumb__inner {
+          display: inline-block;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          vertical-align: middle;
+        }
+
+        .el-breadcrumb__separator {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .right-bar-wrapper {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+
+    .notepad {
+      margin: 0 10px 0 0;
+    }
+
+    .notice {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    /deep/ .user-info {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      .img {
+        width: 32px;
+        height: 32px;
+      }
+    }
   }
 }
 </style>

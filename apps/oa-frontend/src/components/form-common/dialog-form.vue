@@ -4,7 +4,8 @@
     <el-dialog
       top="10%"
       :visible.sync="show"
-      :width="fromData.width || '500px'"
+      :width="dialogWidth"
+      custom-class="oa-dialog-form"
       :show-close="false"
       :append-to-body="true"
       :close-on-click-modal="false"
@@ -80,6 +81,14 @@ export default {
       }
     }
   },
+  computed: {
+    dialogWidth() {
+      if (typeof window !== 'undefined' && window.innerWidth <= 767) {
+        return '94vw'
+      }
+      return (this.fromData && this.fromData.width) || '500px'
+    }
+  },
 
   methods: {
     openBox() {
@@ -150,5 +159,23 @@ export default {
 
 /deep/.el-dialog__body {
   padding: 30px 20px 10px;
+}
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+    margin-top: 8vh !important;
+  }
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .oa-dialog-form.el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+    margin-top: 8vh !important;
+  }
 }
 </style>

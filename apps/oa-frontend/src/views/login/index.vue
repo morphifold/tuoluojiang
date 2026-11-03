@@ -56,11 +56,11 @@
                   <el-input
                     ref="username"
                     v-model="loginForm.captcha"
+                    class="captcha-input"
                     placeholder="验证码"
                     autocomplete="on"
                     name="username"
                     prefix-icon="el-icon-message"
-                    style="width: 199px"
                     tabindex="3"
                     type="text"
                   />
@@ -926,6 +926,28 @@ $subsidiary-color: #808695;
   position: absolute;
   right: 0;
 }
+.page-account-container {
+  position: relative;
+
+  .image-login-code {
+    width: 69px;
+    height: 69px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .btn-login-code {
+    position: absolute;
+    right: 75px;
+    top: 12px;
+    background: rgba(231, 244, 255, 1);
+    border: 1px solid rgba(231, 244, 255, 1);
+    color: #1890ff;
+    z-index: 10;
+  }
+}
 @media (min-width: $screen-md) {
   .page-account {
     background-image: url('../../assets/images/bg.png');
@@ -935,24 +957,6 @@ $subsidiary-color: #808695;
   }
   .page-account-container {
     padding: 32px 0 24px 0;
-    position: relative;
-
-    .image-login-code {
-      width: 69px;
-      height: 69px;
-      position: absolute;
-      right: 0;
-      top: 0;
-      cursor: pointer;
-    }
-    .btn-login-code {
-      position: absolute;
-      right: 75px;
-      top: 12px;
-      background: rgba(231, 244, 255, 1);
-      border: 1px solid rgba(231, 244, 255, 1);
-      color: #1890ff;
-    }
   }
 }
 .page-account {
@@ -1027,20 +1031,69 @@ $subsidiary-color: #808695;
 .btn {
   background: linear-gradient(90deg, rgba(25, 180, 241, 1) 0%, rgba(14, 115, 232, 1) 100%) !important;
 }
+@media (max-width: 767px) {
+  .page-account {
+    background: #f5f7fa;
+    padding: 16px;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+  .container.containerBig {
+    width: 100% !important;
+    max-width: 400px;
+    background: #fff !important;
+    border-radius: 12px;
+    box-shadow: 0px 2px 24px 0px rgba(0, 18, 107, 0.08);
+    margin: 20px auto 0 auto;
+  }
+  .page-account-container.index_from {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 24px 28px 24px !important;
+  }
+}
 </style>
 
 <style lang="scss" scoped>
 .captcha {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+.el-form-item.captcha {
+  display: block;
+  /deep/ .el-form-item__content {
+    width: 100%;
+  }
+}
+.captcha-input {
+  flex: 1;
+  min-width: 0;
 }
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 .imgs {
-  margin-left: 26px;
+  margin-left: 0;
+  flex-shrink: 0;
+  width: 116px;
+  height: 36px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fa;
   img {
+    width: 100%;
     height: 36px;
+    object-fit: contain;
+    display: block;
   }
 }
 .login-form {
@@ -1169,5 +1222,13 @@ $light_gray: #eee;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+}
+@media (max-width: 767px) {
+  .foot-bar {
+    position: static;
+    margin-top: 20px;
+    padding: 0 12px;
+    line-height: 1.6;
+  }
 }
 </style>

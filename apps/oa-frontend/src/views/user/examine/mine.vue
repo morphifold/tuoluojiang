@@ -68,6 +68,10 @@ export default {
           row.content.props.titleIpt +
           ' : ' +
           row.value.duration
+      } else if (row.content.type === 'invoiceSelect' || row.content.type === 'invoice') {
+        let list = Array.isArray(row.value) ? row.value : []
+        let total = list.reduce((sum, inv) => sum + (parseFloat(inv.total_amount) || 0), 0)
+        str = (row.content.title || '发票明细') + ' : 共 ' + list.length + ' 张（合计 ¥' + total.toFixed(2) + '）'
       }
       callback(str)
     },
@@ -92,5 +96,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  .divBox {
+    margin: 4px 4px 0 4px !important;
+    padding: 0 !important;
+  }
+  /deep/ .employees-card-bottom {
+    border: none;
+    border-radius: 4px;
+    .el-card__body {
+      padding: 10px 8px !important;
+    }
+  }
+}
+</style>
 
 

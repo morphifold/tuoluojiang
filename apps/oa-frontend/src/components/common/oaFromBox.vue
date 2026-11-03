@@ -520,10 +520,27 @@ export default {
     background: #f7f7f7;
   }
 }
+.header-16 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
 .search {
   //margin-top: 11px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  > .flex.lh-center {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    max-width: 100%;
+  }
 }
 .title-16 {
   height: 32px !important;
@@ -653,6 +670,28 @@ export default {
 .icongengduo2 {
   font-size: 32px !important;
 }
+@media (max-width: 767px) {
+  .header-16 {
+    gap: 8px;
+  }
+  .search {
+    gap: 8px;
+
+    > .flex.lh-center {
+      width: 100%;
+      gap: 8px;
+    }
+  }
+  .total-16 {
+    font-size: 12px;
+    line-height: 32px;
+    margin-right: 4px;
+  }
+  .right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
 </style>
 <style>
 .time-popover {
@@ -662,5 +701,13 @@ export default {
   background: #edf5ff;
   border: 1px solid #97c3ff;
   padding: 11px 15px 0px 15px;
+}
+@media (max-width: 767px) {
+  .condition-popover {
+    width: 92vw !important;
+    max-width: 92vw !important;
+    left: 4vw !important;
+    box-sizing: border-box;
+  }
 }
 </style>

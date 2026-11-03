@@ -20,7 +20,7 @@
         @change="changeFrame"
       ></manage-range>
     </template>
-    <div v-for="(val, index) in list" :key="index" class="form-box">
+    <div v-for="(val, index) in list" :key="index" :class="['form-box', isFullWidth(val.form_value) ? 'full-width' : '']">
       <!-- 表单 -->
       <div>
         <manage-range
@@ -262,7 +262,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="reset-wrapper">
       <el-tooltip content="重置搜索条件" effect="dark" placement="top">
         <div class="reset" @click="resetSearch()"><i class="iconfont iconqingchu"></i></div>
       </el-tooltip>
@@ -526,7 +526,10 @@ export default {
         this.ruleForm[key] = ''
       }
       this.$emit('handleEmit', this.ruleForm)
-    }
+    },
+    isFullWidth(formValue) {
+      return ['date_time_picker', 'date_picker', 'monthrange', 'cascader_address'].includes(formValue)
+    },
   }
 }
 </script>
@@ -541,7 +544,9 @@ export default {
 
 .flex {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 .flex-box {
   display: flex;
@@ -595,5 +600,63 @@ export default {
   max-width: 70%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 767px) {
+  .flex {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .search-width {
+    flex: 1 1 180px;
+    width: auto !important;
+    max-width: calc(100% - 42px);
+  }
+  .search-form {
+    margin-right: 0 !important;
+  }
+  .form-box {
+    width: calc(50% - 4px);
+    box-sizing: border-box;
+
+    &.full-width {
+      width: 100% !important;
+    }
+
+    > div {
+      width: 100%;
+    }
+
+    div[style*="width"] {
+      width: 100% !important;
+    }
+
+    .mr10 {
+      margin-right: 0 !important;
+    }
+
+    .el-input,
+    .el-select,
+    .el-date-editor,
+    .el-cascader,
+    .el-input-number,
+    .time {
+      width: 100% !important;
+      margin-right: 0 !important;
+      box-sizing: border-box;
+    }
+  }
+
+  .reset-wrapper {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .reset {
+    margin: 0 !important;
+  }
 }
 </style>
