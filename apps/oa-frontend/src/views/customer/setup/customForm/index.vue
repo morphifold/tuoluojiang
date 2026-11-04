@@ -731,3 +731,22 @@ export default {
   }
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  /deep/ .card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /deep/ .el-tabs__nav-wrap {
+    overflow-x: auto;
+  }
+
+  /deep/ .table {
+    overflow-x: auto;
+  }
+}
+</style>
+

@@ -384,3 +384,23 @@ export default {
   padding-bottom: 50px;
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .form-box {
+    padding: 12px;
+    padding-bottom: 50px;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
+</style>

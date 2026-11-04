@@ -185,4 +185,27 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  /deep/ .flex-row,
+  /deep/ .from-s {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /deep/ .el-form-item,
+  /deep/ .el-input,
+  /deep/ .el-select {
+    width: 100%;
+    max-width: 100%;
+  }
+  /deep/ .el-table {
+    width: 100%;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+</style>

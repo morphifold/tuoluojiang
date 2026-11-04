@@ -192,3 +192,13 @@ export default {
   right: 0;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .category_id .el-cascader {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
+</style>

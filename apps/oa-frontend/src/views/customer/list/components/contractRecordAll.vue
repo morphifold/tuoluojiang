@@ -421,3 +421,7 @@ export default {
   background: #eee; //滚动条背景色
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+</style>
+

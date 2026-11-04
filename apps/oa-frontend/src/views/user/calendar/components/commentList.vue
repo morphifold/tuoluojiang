@@ -117,4 +117,17 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .p_box {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .p_right {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+  }
+}
 </style>

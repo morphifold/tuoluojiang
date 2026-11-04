@@ -230,4 +230,16 @@ export default {
   border-top: 1px solid #e6ebf5;
   text-align: right;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  /deep/ .el-select,
+  /deep/ .el-input-number {
+    width: 100%;
+  }
+  .table-box {
+    height: auto;
+  }
+}
 </style>

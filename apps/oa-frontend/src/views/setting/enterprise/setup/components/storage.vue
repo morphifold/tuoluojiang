@@ -802,6 +802,36 @@ export default {
     }
   }
 }
+@media (max-width: 767px) {
+  .flex {
+    flex-wrap: wrap;
+  }
+  .contentIput,
+  .flex .contentIput {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .flex .contentIput .topIput {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  ::v-deep .el-input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  ::v-deep .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  ::v-deep .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  ::v-deep .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+}
 </style>
 <style scoped>
 .message ::v-deep .ivu-table-header thead tr th {

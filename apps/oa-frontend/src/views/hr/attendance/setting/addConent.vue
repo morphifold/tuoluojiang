@@ -722,6 +722,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .cr-bottom-button {
   position: fixed;
   left: -20px;

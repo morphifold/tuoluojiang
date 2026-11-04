@@ -496,4 +496,25 @@ export default {
 .divBox {
   margin: 30px 20px 40px;
 }
+@media screen and (max-width: 768px) {
+  .divBox {
+    margin: 12px;
+  }
+  .expand-describe {
+    flex-direction: column;
+    .expand-left,
+    .expand-right {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  /deep/ .grey-bg,
+  .select-bar .mr10 {
+    width: 100% !important;
+  }
+  /deep/ .el-form--inline .el-form-item {
+    display: block;
+    margin-right: 0;
+  }
+}
 </style>

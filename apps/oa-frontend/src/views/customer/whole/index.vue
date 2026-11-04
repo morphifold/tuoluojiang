@@ -603,3 +603,22 @@ export default {
   margin-top: 34px;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .dialog /deep/ .el-textarea__inner {
+    width: 100% !important;
+  }
+
+  .dialog /deep/ .el-dialog {
+    height: auto !important;
+  }
+
+  .footer-expend .expend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 0;
+  }
+}
+</style>

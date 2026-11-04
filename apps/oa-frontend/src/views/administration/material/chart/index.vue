@@ -462,4 +462,15 @@ export default {
   height: 100%;
   overflow-y: auto;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-col-12 {
+    width: 100%;
+    float: none;
+    margin-bottom: 14px;
+  }
+  .content {
+    height: auto;
+    min-height: 220px;
+  }
+}
 </style>

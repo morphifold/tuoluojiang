@@ -164,6 +164,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../views/hr/_hr-mobile.scss';
 .ab-container {
   .num {
     font-size: 14px;

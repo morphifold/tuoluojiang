@@ -1,6 +1,6 @@
 ﻿<!-- 财务-账目记录-收支记账页面 -->
 <template>
-  <div class="divBox">
+  <div class="divBox fd-bill-list">
     <el-card class="normal-page">
       <formBox
         ref="formBox"
@@ -432,6 +432,43 @@ export default {
   }
   .page-fixed {
     bottom: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .fd-bill-list {
+    .footer.flex {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .footer {
+      .expend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 12px;
+        line-height: 1.6;
+        margin-left: 0;
+      }
+
+      .ml14 {
+        margin-left: 0;
+      }
+
+      .page-fixed {
+        position: static !important;
+        width: 100%;
+        right: auto;
+        bottom: auto;
+        justify-content: flex-start;
+      }
+    }
+
+    /deep/ .el-table__fixed,
+    /deep/ .el-table__fixed-right {
+      display: none;
+    }
   }
 }
 </style>

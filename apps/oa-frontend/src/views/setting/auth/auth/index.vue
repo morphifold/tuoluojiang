@@ -165,4 +165,10 @@ export default {
 .tips {
   font-size: 12px;
 }
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+}
 </style>

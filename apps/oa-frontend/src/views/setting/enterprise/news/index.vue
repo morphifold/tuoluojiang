@@ -330,4 +330,19 @@ export default {
 /deep/ .el-table__row {
   height: 56px;
 }
+@media (max-width: 767px) {
+  /deep/ .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .boder-left {
+    border-left: none !important;
+    padding: 12px 0 0 !important;
+  }
+  .p20 {
+    padding: 0 !important;
+  }
+}
 </style>

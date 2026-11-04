@@ -236,3 +236,11 @@ export default {
   color: #1890ff;
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+}
+</style>

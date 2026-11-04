@@ -70,6 +70,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../views/hr/_hr-mobile.scss';
 .icontuodong {
   cursor: pointer;
 }

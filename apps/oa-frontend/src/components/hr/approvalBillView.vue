@@ -27,6 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../views/hr/_hr-mobile.scss';
 .ab-container {
   position: relative;
   z-index: 4;

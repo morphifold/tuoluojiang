@@ -501,4 +501,30 @@ export default {
   margin-left: 100px;
   margin-top: 14px;
 }
+@media screen and (max-width: 768px) {
+  .box-card {
+    height: auto;
+  }
+  .card-box .main,
+  .examineCont {
+    width: 100%;
+    min-width: 0;
+  }
+  .card-list {
+    padding-left: 12px;
+  }
+  .infos {
+    margin-left: 0;
+  }
+  /deep/ .el-input,
+  /deep/ .el-select,
+  /deep/ .el-input-number {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .cr-bottom-button {
+    left: 0;
+    width: 100%;
+  }
+}
 </style>

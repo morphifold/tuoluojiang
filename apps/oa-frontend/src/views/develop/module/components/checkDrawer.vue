@@ -9,6 +9,7 @@
       :wrapperClosable="type == 'edit' ? false : true"
       @close="handleClose"
       :size="`55%`"
+      class="oa-m-drawer"
     >
       <div class="title flex-between" slot="title">
         <div class="fz15">{{ name || '查看' }}</div>
@@ -906,5 +907,13 @@ export default {
   line-height: 24px;
   font-size: 12px;
   border-radius: 3px;
+}
+</style>
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-drawer__wrapper.oa-m-drawer .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 </style>

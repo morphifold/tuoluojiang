@@ -507,4 +507,30 @@ export default {
 /deep/.w-e-text-container {
   padding-top: 10px;
 }
+@media screen and (max-width: 768px) {
+  .my-reply {
+    width: 100%;
+    left: 0;
+    box-sizing: border-box;
+    padding-right: 10px;
+    .reply-info {
+      width: calc(100% - 48px);
+    }
+  }
+  .author-title {
+    padding: 12px;
+    .author-info {
+      width: calc(100% - 48px);
+    }
+    .icon-btn {
+      float: none;
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+  .reply-box,
+  .my-comment-reply {
+    margin-left: 0;
+  }
+}
 </style>

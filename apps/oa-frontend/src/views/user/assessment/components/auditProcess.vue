@@ -429,4 +429,37 @@ export default {
 .v-height-flag .mb14 /deep/ .el-card__body {
   padding: 0px;
 }
+
+@media (max-width: 767px) {
+  .flex-box {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+    padding-right: 12px;
+  }
+  .header {
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .header .right {
+    width: calc(100% - 80px);
+  }
+  .process-left-list {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .process-right {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .right-box {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+}
 </style>

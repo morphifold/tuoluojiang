@@ -6,6 +6,7 @@
       :visible.sync="drawer"
       :direction="direction"
       size="700px"
+      class="right-drawer"
       :destroy-on-close="true"
       :before-close="handleClose"
     >
@@ -115,5 +116,17 @@ export default {
 <style scoped lang="scss">
 .p14 {
   padding-right: 14px;
+}
+
+@media (max-width: 767px) {
+  ::v-deep .right-drawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+
+  .p14 {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 </style>

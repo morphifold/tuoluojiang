@@ -158,4 +158,36 @@ export default {
 .employees-card {
   min-height: calc(100vh - 208px);
 }
+
+@media (max-width: 767px) {
+  .card-box {
+    height: auto;
+    max-height: none;
+  }
+  .main {
+    max-width: 100%;
+  }
+  .header .futitle {
+    font-size: 20px;
+  }
+  .p60 {
+    padding: 16px;
+  }
+  .employees-card {
+    min-height: 0;
+  }
+  .content {
+    /deep/ img,
+    /deep/ p img,
+    /deep/ video {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    /deep/ table {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+  }
+}
 </style>

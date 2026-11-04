@@ -290,4 +290,18 @@ export default {
   color: #ed4014;
   font-size: 16px;
 }
+
+@media (max-width: 767px) {
+  .box {
+    width: auto;
+    left: 8px;
+    right: 8px;
+    bottom: 12px;
+    max-height: 50vh;
+  }
+  .file-name {
+    width: auto;
+    max-width: calc(100vw - 140px);
+  }
+}
 </style>

@@ -309,4 +309,18 @@ export default {
   bottom: 10px;
   left: 20px;
 }
+@media screen and (max-width: 768px) {
+  .setting-container {
+    margin-top: 8px;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

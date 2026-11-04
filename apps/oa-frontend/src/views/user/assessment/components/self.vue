@@ -198,4 +198,32 @@ export default {
   margin-right: 10px;
   margin-left: 0;
 }
+
+@media (max-width: 767px) {
+  /deep/ .flex-row,
+  /deep/ .from-s {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /deep/ .el-form-item,
+  /deep/ .el-select,
+  /deep/ .el-input {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+  /deep/ .el-table {
+    width: 100%;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+  }
+}
 </style>

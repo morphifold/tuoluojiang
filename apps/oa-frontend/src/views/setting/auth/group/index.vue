@@ -511,4 +511,27 @@ export default {
     }
   }
 }
+@media (max-width: 767px) {
+  .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .tree-box {
+    width: 100%;
+    max-height: 240px;
+    min-height: 0;
+    height: auto;
+    overflow-y: auto;
+    border-right: none;
+  }
+  .right {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding: 12px;
+    border-left: none;
+  }
+}
 </style>

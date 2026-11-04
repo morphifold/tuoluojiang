@@ -412,4 +412,35 @@ export default {
 .color1 {
   color: #1890ff !important;
 }
+@media screen and (max-width: 768px) {
+  .box .card {
+    padding-top: 12px;
+    .main {
+      max-width: 100%;
+      .tab {
+        margin-top: 16px;
+      }
+      .content .header {
+        flex-wrap: wrap;
+        gap: 6px;
+        .title {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .default img {
+    margin-top: 40px;
+    max-width: 60%;
+    height: auto;
+  }
+  .flex-end {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /deep/ .el-input {
+    padding-right: 0;
+    width: 100%;
+  }
+}
 </style>

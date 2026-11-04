@@ -8,8 +8,8 @@
     >
       <div v-if="repeatData.data !== undefined" class="body mt15">
         <el-row>
-          <el-col :span="12" class="repeat-title">待办类型：{{ getScheduleName(repeatData.data.types) }}</el-col>
-          <el-col :span="12" class="text-right repeat-left">
+          <el-col :span="12" :xs="24" class="repeat-title">待办类型：{{ getScheduleName(repeatData.data.types) }}</el-col>
+          <el-col :span="12" :xs="24" class="text-right repeat-left">
             {{ repeatData.data.remind_day }} {{ repeatData.data.remind_time }}
           </el-col>
         </el-row>
@@ -139,5 +139,19 @@ export default {
 .dialog-footer {
   padding-top: 20px;
   border-top: 1px solid #e6ebf5;
+}
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  .repeat-left {
+    text-align: left;
+    margin-top: 6px;
+  }
+  .body p {
+    word-break: break-word;
+  }
 }
 </style>

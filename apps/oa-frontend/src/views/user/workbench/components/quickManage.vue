@@ -344,4 +344,20 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  .statistics-item {
+    width: calc(50% - 10px) !important;
+    margin-right: 10px !important;
+    box-sizing: border-box;
+  }
+  .quick-content .quick-list .quick-list-item-ul > li {
+    width: calc((100% - 28px) / 3) !important;
+    margin-right: 8px !important;
+  }
+}
 </style>

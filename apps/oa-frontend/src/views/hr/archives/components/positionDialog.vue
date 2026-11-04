@@ -144,4 +144,17 @@ export default {
   padding-top: 20px;
   border-top: 1px solid #e6ebf5;
 }
+@media (max-width: 767px) {
+  ::v-deep .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  ::v-deep .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  ::v-deep .el-select,
+  ::v-deep .el-input {
+    width: 100% !important;
+  }
+}
 </style>

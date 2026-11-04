@@ -10,6 +10,7 @@
       <el-dialog
         :visible.sync="dialogShow"
         width="760px"
+        custom-class="oa-m-dialog"
         :before-close="handleClose"
         :modal="true"
         :show-close="false"
@@ -590,5 +591,27 @@ export default {
   font-size: 12px;
   color: #1890ff;
   cursor: pointer;
+}
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+  }
+  .search-p {
+    width: 100%;
+  }
+  .select-box {
+    width: 100%;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-dialog.oa-m-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
 }
 </style>

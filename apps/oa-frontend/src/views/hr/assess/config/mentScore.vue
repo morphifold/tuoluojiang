@@ -20,6 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .divBox {
   padding-bottom: 0;
   margin-bottom: 10px;

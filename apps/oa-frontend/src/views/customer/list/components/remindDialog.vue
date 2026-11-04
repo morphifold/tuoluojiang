@@ -161,3 +161,12 @@ export default {
   text-align: right;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  /deep/ .picker-time {
+    width: 100% !important;
+  }
+}
+</style>

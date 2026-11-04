@@ -804,4 +804,24 @@ export default {
 .page-fixed {
   position: relative;
 }
+
+@media (max-width: 767px) {
+  .infeed-ul {
+    justify-content: flex-start;
+    li {
+      width: calc(33.33% - 12px);
+      max-width: 120px;
+      margin: 6px;
+    }
+  }
+  /deep/ .el-table {
+    width: 100%;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
 </style>

@@ -465,4 +465,15 @@ export default {
   position: absolute;
   top: -2px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  .invoice {
+    margin: 12px;
+  }
+  .form-box .form-item {
+    width: 100%;
+  }
+}
 </style>

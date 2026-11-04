@@ -209,4 +209,20 @@ export default {
   color: #1890ff !important;
   font-weight: 800;
 }
+@media screen and (max-width: 768px) {
+  .left {
+    border-right: none;
+    border-bottom: 1px solid #eeeeee;
+    margin: 0;
+  }
+  .tree-box-con {
+    max-height: 220px;
+    overflow: auto;
+    margin-left: 0;
+  }
+  .tree-box-con > div {
+    height: auto !important;
+    max-height: 220px;
+  }
+}
 </style>

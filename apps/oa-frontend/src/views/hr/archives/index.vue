@@ -359,6 +359,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../_hr-mobile.scss';
 /deep/ .el-form-item__content {
   flex: 1;
 }

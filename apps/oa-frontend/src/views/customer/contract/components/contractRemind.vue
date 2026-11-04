@@ -300,3 +300,6 @@ export default {
   table-layout: fixed !important;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+</style>

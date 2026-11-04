@@ -95,4 +95,13 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
+@media (max-width: 767px) {
+  ::v-deep .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  ::v-deep .el-table {
+    max-width: 100%;
+  }
+}
 </style>

@@ -60,6 +60,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+@import '../_hr-mobile.scss';
 // .main {
 //   max-width: 800px;
 //   margin: 0 auto;

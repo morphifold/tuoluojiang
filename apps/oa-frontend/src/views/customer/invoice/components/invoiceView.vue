@@ -802,3 +802,37 @@ export default {
   color: #909399 !important;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer__header {
+    height: auto !important;
+    min-height: 56px;
+    padding: 10px 52px 10px 12px !important;
+  }
+
+  .invoice-title .invoice-header .invoice-right {
+    width: 100% !important;
+  }
+
+  .operationBox {
+    width: 100% !important;
+  }
+
+  .default {
+    width: 100% !important;
+    margin-top: 60px;
+  }
+
+  /deep/ .el-step.is-vertical .el-step__main {
+    width: auto !important;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .invoice-body1 {
+    margin: 12px;
+  }
+}
+</style>

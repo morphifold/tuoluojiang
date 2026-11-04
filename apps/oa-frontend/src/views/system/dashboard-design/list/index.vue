@@ -262,4 +262,16 @@ export default {
   font-size: 16px;
   font-weight: 500;
 }
+@media (max-width: 767px) {
+  .flex-between,
+  .flex {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .select-bar,
+  .select-bar .el-input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

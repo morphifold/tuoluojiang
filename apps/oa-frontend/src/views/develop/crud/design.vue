@@ -216,3 +216,29 @@ export default {
   }
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  .header {
+    height: auto;
+    flex-wrap: wrap;
+    padding-bottom: 8px;
+  }
+  .header .right {
+    width: 100%;
+    margin-left: 0;
+    overflow-x: auto;
+  }
+  .header .right .tab {
+    width: 100%;
+  }
+  /deep/ .el-tabs__nav-scroll {
+    overflow-x: auto;
+  }
+  .ml20 {
+    margin-left: 12px;
+  }
+  .mr20 {
+    margin-right: 12px;
+  }
+}
+</style>

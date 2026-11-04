@@ -100,4 +100,22 @@ export default {
 /deep/ .el-form-item {
   margin-bottom: 20px;
 }
+
+@media (max-width: 767px) {
+  .from-s {
+    display: block;
+    width: 100%;
+  }
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /deep/ .el-form-item,
+  /deep/ .el-cascader,
+  /deep/ .el-input {
+    width: 100%;
+    margin-right: 0;
+  }
+}
 </style>

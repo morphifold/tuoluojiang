@@ -54,7 +54,7 @@
           </el-form-item>
           <el-form-item> 建议尺寸: 162X108</el-form-item>
           <el-form-item label="公告正文" prop="contents">
-            <div style="width: 80%">
+            <div class="notice-editor">
               <ueditorFrom :border="true" type="notepad" :height="`500px`" :content="form.content" ref="ueditorFrom" />
             </div>
           </el-form-item>
@@ -424,5 +424,42 @@ export default {
   right: 0;
   bottom: 0;
   width: calc(100% + 220px);
+}
+.notice-editor {
+  width: 80%;
+}
+@media screen and (max-width: 768px) {
+  .notice-editor {
+    width: 100%;
+  }
+  .notice {
+    .input /deep/ .el-input,
+    .input /deep/ .el-textarea,
+    /deep/ .el-select {
+      width: 100%;
+    }
+    .resource-content {
+      flex-direction: column;
+      align-items: stretch;
+      .resource-left,
+      .resource-right {
+        width: 100%;
+      }
+      .resource-right .date {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+  }
+  .cr-bottom-button {
+    left: 0;
+    width: 100%;
+  }
+  .card-box {
+    height: auto !important;
+  }
 }
 </style>

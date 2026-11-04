@@ -517,3 +517,37 @@ export default {
   line-height: 40px;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer__header {
+    height: auto !important;
+    min-height: 56px;
+    padding: 10px 52px 10px 12px !important;
+  }
+
+  .el-tabs--border-card {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .contract-body {
+    display: block;
+    margin-top: 12px;
+    padding: 0;
+    height: auto;
+
+    .contract-list,
+    .contract-remind {
+      height: auto;
+    }
+  }
+
+  .invoice-title .invoice-header .invoice-right {
+    width: 100% !important;
+  }
+}
+</style>

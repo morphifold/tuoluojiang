@@ -76,4 +76,27 @@ export default {
     max-width: 800px;
   }
 }
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .main {
+    max-width: 100%;
+    padding: 16px 12px 24px;
+    overflow-x: hidden;
+  }
+  .main /deep/ img,
+  .main /deep/ p img,
+  .main /deep/ video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .main /deep/ table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
 </style>

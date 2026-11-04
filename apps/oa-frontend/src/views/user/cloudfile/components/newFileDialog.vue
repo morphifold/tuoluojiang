@@ -187,4 +187,21 @@ export default {
     text-align: left;
   }
 }
+
+@media (max-width: 767px) {
+  .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+    margin-top: 8vh !important;
+  }
+  .current-dialog {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    span,
+    div {
+      width: 100%;
+      text-align: left;
+    }
+  }
+}
 </style>

@@ -98,4 +98,29 @@ export default {
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .wscn-http404-container {
+    width: 100%;
+    left: 0;
+    transform: none;
+    position: relative;
+    top: auto;
+    padding: 48px 16px;
+    box-sizing: border-box;
+    .wscn-http404 {
+      width: 100%;
+      padding: 0;
+      flex-direction: column;
+      .bullshit {
+        width: 100%;
+        float: none;
+        text-align: center;
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
 </style>

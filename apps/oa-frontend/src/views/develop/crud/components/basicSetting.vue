@@ -167,3 +167,21 @@ export default {
   align-items: center;
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  .main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
+</style>

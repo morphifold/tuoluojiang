@@ -287,3 +287,17 @@ export default {
   }
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .label-name /deep/ .el-input {
+    width: 100% !important;
+  }
+
+  .label-list {
+    flex-wrap: wrap;
+  }
+}
+</style>
+

@@ -462,3 +462,36 @@ export default {
 <style lang="scss" scoped>
 /* 表单样式保持不变 */
 </style>
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  .p20 {
+    padding: 12px;
+  }
+
+  .from-foot-btn {
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+
+    .el-button {
+      margin-left: 0 !important;
+      flex: 1 1 auto;
+    }
+  }
+
+  .el-form-item__content {
+    margin-left: 0 !important;
+  }
+
+  .el-form-item__label {
+    float: none;
+    display: block;
+    width: auto !important;
+    padding: 0 0 4px !important;
+    line-height: 20px;
+    text-align: left;
+  }
+}
+</style>

@@ -265,4 +265,9 @@ export default {
     background-color: rgba(247, 251, 255, 1);
   }
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-col-xs-24 {
+    width: 100%;
+  }
+}
 </style>

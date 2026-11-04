@@ -72,4 +72,26 @@ export default {
 /deep/ .wang-editor.w-e-toolbar {
   display: none !important;
 }
+
+@media (max-width: 767px) {
+  .main {
+    max-width: 100%;
+    padding: 16px 12px 24px;
+    overflow-x: auto;
+  }
+  .main .title {
+    font-size: 22px;
+  }
+  .main /deep/ img,
+  .main /deep/ p img,
+  .main /deep/ video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .main /deep/ table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
 </style>

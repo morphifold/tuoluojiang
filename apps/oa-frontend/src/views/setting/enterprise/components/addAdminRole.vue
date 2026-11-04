@@ -632,6 +632,33 @@ export default {
 .form-box .el-form .el-form-item:first-child {
   margin: 10px 0;
 }
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .container {
+    padding: 12px;
+  }
+  .table-box .flex {
+    flex-wrap: wrap;
+  }
+  .table-box .flex /deep/ .el-input,
+  .table-box .flex /deep/ .el-select {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 8px;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>
 
 <style>

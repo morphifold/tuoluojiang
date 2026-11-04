@@ -5,7 +5,7 @@
     <div class="header">
       <div class="title">
         当前触发器：{{ form.name }}
-        <el-popover placement="bottom" ref="popoverRef" width="400" trigger="click">
+        <el-popover placement="bottom" ref="popoverRef" width="400" trigger="click" popper-class="oa-m-popover">
           <div>
             <el-input v-model="value" placeholder="请输入触发器名称" style="width: 250px" size="small"></el-input>
             <el-button size="small" class="ml14" type="text" @click="close">取消</el-button>
@@ -470,7 +470,7 @@
       title="条件设置"
       :append-to-body="true"
       :wrapperClosable="false"
-      class="condition_copyer"
+      class="condition_copyer oa-m-drawer"
       :visible.sync="$store.state.business.conditionDialog"
     >
       <condition-dialog
@@ -1277,5 +1277,43 @@ export default {
 }
 /deep/.jv-container .jv-code {
   overflow-y: scroll;
+}
+</style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+  /deep/ .el-input,
+  /deep/ .el-select,
+  /deep/ .el-cascader,
+  /deep/ .el-input-number {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  [style*='width: 430px'] {
+    width: 100% !important;
+  }
+}
+</style>
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-drawer__wrapper.oa-m-drawer .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .el-popover.oa-m-popover {
+    width: 92vw !important;
+    max-width: 92vw !important;
+  }
 }
 </style>

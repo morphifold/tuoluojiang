@@ -2,7 +2,7 @@
   <div class="divBox">
     <el-card>
       <div class="head-box">
-        <el-col :lg="10" :xl="8">
+        <el-col :lg="10" :xl="8" :xs="24" :sm="24">
           <span>指标搜索</span>
           <el-input v-model="input" placeholder="请输入模板名称" style="width: 60%" />
           <el-button type="primary" icon="el-icon-search" @click="getSearch">搜索</el-button>
@@ -10,11 +10,16 @@
       </div>
     </el-card>
     <el-card class="mt20">
-      <el-col :lg="3" :xl="8">
-        <!--部门-->
-        <departmentNot ref="department" :type="type" @eventOptionData="eventOptionData" />
+      <el-col :lg="3" :xl="8" :xs="24" :sm="24" class="hr-tree-pane" :class="{ 'is-collapsed': !orgTreeOpen }">
+        <div class="hr-tree-toggle" @click="orgTreeOpen = !orgTreeOpen">
+          <span>{{ orgTreeOpen ? '收起分类' : '展开分类' }}</span>
+          <i :class="orgTreeOpen ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
+        </div>
+        <div class="hr-tree-body">
+          <departmentNot ref="department" :type="type" @eventOptionData="eventOptionData" />
+        </div>
       </el-col>
-      <el-col :lg="21" :xl="8">
+      <el-col :lg="21" :xl="8" :xs="24" :sm="24" class="hr-main-pane">
         <div class="assess-right">
           <div class="mb15">
             <el-button type="primary" icon="el-icon-plus" @click="addTargetCreate">添加指标</el-button>
@@ -88,6 +93,7 @@ export default {
   },
   data() {
     return {
+      orgTreeOpen: true,
       drawer: false,
       input: '',
       where: {
@@ -187,6 +193,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .btn-type {
   padding: 2px 12px;
   font-size: 13px;

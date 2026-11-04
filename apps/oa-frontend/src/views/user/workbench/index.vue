@@ -1,8 +1,8 @@
 <template>
   <div class="box divBox">
     <!--顶部-->
-    <el-row :gutter="14" type="flex">
-      <el-col :span="16">
+    <el-row :gutter="14" type="flex" class="workbench-row">
+      <el-col :span="16" :xs="24">
         <el-card body-style="padding:0">
           <ul class="header-need">
             <li v-for="(item, index) in needInfo" :key="'needInfo' + index" @click="needInfoItem(item)">
@@ -15,7 +15,7 @@
           </ul>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="8" :xs="24">
         <el-card body-style="padding:0">
           <div class="header-pic">
             <el-image class="image" :src="require('@/assets/images/personal-logo.png')" fit="cover" />
@@ -33,11 +33,11 @@
       </el-col>
     </el-row>
     <!-- 业绩统计 -->
-    <el-row class="mt14" type="flex">
-      <el-col :span="24">
-        <el-card body-style="padding:20px; height:150px">
+    <el-row class="mt14 workbench-row" type="flex">
+      <el-col :span="24" :xs="24">
+        <el-card class="achievement-card" body-style="padding:20px; height:150px">
           <el-row class="calendar_title achievementPb">
-            <el-col :span="12" class="row-middle">
+            <el-col :span="12" :xs="24" class="row-middle">
               <div class="dynamics">
                 业绩统计
                 <el-select
@@ -52,7 +52,7 @@
                 </el-select>
               </div>
             </el-col>
-            <el-col :span="12" class="text-right calendar_title-left">
+            <el-col :span="12" :xs="24" class="text-right calendar_title-left">
               <span class="display-align" @click="handlePerformance">
                 <i class="iconfont iconpcshouye-guanli"></i>
                 管理
@@ -69,11 +69,11 @@
       </el-col>
     </el-row>
     <!--待办日程-->
-    <el-row :gutter="14" class="mt14" type="flex">
-      <el-col :span="16">
+    <el-row :gutter="14" class="mt14 workbench-row" type="flex">
+      <el-col :span="16" :xs="24">
         <el-card body-style="padding:0;">
           <el-row class="calendar_title clearfix calendar-dealt">
-            <el-col :span="12" class="acea-row row-middle">
+            <el-col :span="12" :xs="24" class="acea-row row-middle">
               <div class="dynamics">
                 {{ time }} 待办
                 <i
@@ -85,7 +85,7 @@
                 ></i>
               </div>
             </el-col>
-            <el-col :span="12" class="text-right">
+            <el-col :span="12" :xs="24" class="text-right">
               <el-button-group v-model="timeTab">
                 <el-button
                   size="mini"
@@ -152,13 +152,13 @@
           </el-row>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="8" :xs="24">
         <el-card body-style="padding:0">
           <el-row class="calendar_title" style="padding-bottom: 12px">
-            <el-col :span="12" class="row-middle">
+            <el-col :span="12" :xs="24" class="row-middle">
               <div class="dynamics">快捷入口</div>
             </el-col>
-            <el-col :span="12" class="text-right calendar_title-left">
+            <el-col :span="12" :xs="24" class="text-right calendar_title-left">
               <span class="display-align" @click="handleQuick">
                 <i class="iconfont iconpcshouye-guanli"></i>
                 管理
@@ -185,9 +185,9 @@
       </el-col>
     </el-row>
     <!--绩效考核-->
-    <el-row :gutter="14" class="mt14">
+    <el-row :gutter="14" class="mt14 workbench-row" type="flex">
       <template v-if="assessLoading && assessNowData.length > 0">
-        <el-col :span="8">
+        <el-col :span="8" :xs="24">
           <el-card body-style="padding:0">
             <div class="calendar_title clearfix">
               <div class="pull-left acea-row row-middle">
@@ -204,7 +204,7 @@
           </el-card>
         </el-col>
       </template>
-      <el-col :span="assessLoading && assessNowData.length > 0 ? 8 : 16">
+      <el-col :span="assessLoading && assessNowData.length > 0 ? 8 : 16" :xs="24">
         <el-card body-style="padding:0" class="table-box note">
           <div class="calendar_title clearfix">
             <div class="pull-left acea-row row-middle">
@@ -237,7 +237,7 @@
           <default-page v-else :min-height="406" :index="14" />
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="8" :xs="24">
         <el-card body-style="padding:0">
           <div class="calendar_title clearfix">
             <div class="pull-left acea-row row-middle">
@@ -1557,6 +1557,191 @@ this.getPassword();
         top: 18px;
       }
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .box {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 8px !important;
+    box-sizing: border-box;
+  }
+  .box /deep/ .el-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100%;
+  }
+  .workbench-row.el-row--flex {
+    flex-wrap: wrap !important;
+  }
+  .workbench-row > .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin-bottom: 12px;
+  }
+  .header-need {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px 8px;
+    height: auto !important;
+    li {
+      float: none;
+      width: 50%;
+      margin-top: 0;
+      padding: 10px 6px;
+      box-sizing: border-box;
+      border-right: 1px solid #f0f2f5;
+      &:nth-child(2n) {
+        border-right: 0;
+      }
+      .image {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+      }
+      .header-need-right {
+        height: auto;
+        min-height: 40px;
+        padding-left: 8px;
+        min-width: 0;
+        .num {
+          font-size: 20px;
+        }
+        .text {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .header-pic {
+    height: auto;
+    min-height: 112px;
+    .image {
+      min-height: 112px;
+    }
+    .text {
+      left: 34%;
+      right: 12px;
+      top: 22px;
+      font-size: 16px;
+      padding-right: 0;
+      .info {
+        font-size: 12px;
+      }
+    }
+  }
+  .achievement-card /deep/ .el-card__body {
+    height: auto !important;
+    min-height: 150px;
+  }
+  .achievementPb {
+    height: auto;
+  }
+  .achievementPb /deep/ .el-col {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .achievementPb .calendar_title-left {
+    text-align: left;
+  }
+  .dynamics {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    /deep/ .el-select {
+      width: 120px !important;
+    }
+  }
+  .achievementContent {
+    flex-wrap: wrap;
+    gap: 12px;
+    .item {
+      width: calc(50% - 6px);
+      min-width: 0;
+    }
+  }
+  .calendar-dealt {
+    flex-wrap: wrap;
+    height: auto !important;
+    row-gap: 8px;
+    padding: 12px 12px 0 !important;
+  }
+  .calendar-dealt /deep/ .el-col {
+    width: 100%;
+    max-width: 100%;
+  }
+  .calendar-dealt .text-right {
+    text-align: left;
+  }
+  .calendar-dealt /deep/ .el-button-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .dealt-content-list {
+    height: auto;
+    min-height: 220px;
+    max-height: 420px;
+  }
+  .dealt-content-list .dealt-content-image {
+    width: 46%;
+    height: auto;
+  }
+  .calendar-dealt-list {
+    padding: 0 12px;
+    .item {
+      width: calc(50% - 8px);
+      margin-right: 8px;
+      height: auto;
+      min-height: 72px;
+      padding: 8px;
+      &:nth-of-type(3n) {
+        margin-right: 8px;
+      }
+      &:nth-of-type(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+  .quick-content {
+    height: auto;
+    min-height: 160px;
+    padding: 0 8px 8px;
+    .quick-list {
+      height: auto;
+      overflow: hidden;
+      .quick-list-item {
+        width: 33.33%;
+        height: 84px;
+      }
+    }
+  }
+  .calendar_title {
+    padding: 14px 12px;
+  }
+  .table-box .list,
+  .news-content {
+    height: auto !important;
+    max-height: 420px;
+  }
+  .table-box .list .item .system-note {
+    flex-wrap: wrap;
+    .line1,
+    .time {
+      width: 100%;
+      text-align: left;
+    }
+  }
+  .news-content {
+    padding: 0 12px;
+    .notice-left .bottom {
+      margin-top: 8px;
+    }
+  }
+  /deep/ .record .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+    margin-top: 8vh !important;
   }
 }
 </style>

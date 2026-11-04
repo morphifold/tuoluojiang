@@ -297,8 +297,8 @@ export default {
       tableData: [],
       optionData: {},
       styles: {
-        height: '256px',
-        width: '256px',
+        height: window.innerWidth < 768 ? '220px' : '256px',
+        width: window.innerWidth < 768 ? '100%' : '256px',
         margin: 'auto'
       }
     }
@@ -625,5 +625,52 @@ export default {
 .title-k {
   font-size: 16px;
   font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .divBox {
+    margin: 8px !important;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  .flex {
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .flex /deep/ .el-select {
+    width: 100%;
+  }
+  .flex-box {
+    height: auto;
+    flex-direction: column;
+    gap: 12px;
+    .left {
+      width: 100%;
+    }
+    .right {
+      width: 100%;
+    }
+    .right .right-box {
+      height: auto;
+      flex-wrap: wrap;
+      padding: 12px 8px;
+      box-sizing: border-box;
+      .attendance {
+        width: 50%;
+        margin: 0 0 12px 0;
+        box-sizing: border-box;
+        padding-right: 8px;
+      }
+    }
+    .right .top,
+    .right .lower {
+      height: auto;
+    }
+  }
+  /deep/ .el-card__body {
+    overflow-x: auto;
+  }
 }
 </style>

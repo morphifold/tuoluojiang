@@ -575,7 +575,12 @@ export default {
   border-top: 1px solid #e6ebf5;
   text-align: right;
 }
-/deep/.el-drawer {
-  width: 50% !important;
+@media (min-width: 768px) {
+  /deep/.el-drawer {
+    width: 50% !important;
+  }
 }
+</style>
+<style lang="scss" scoped>
+@import '../customer/customer-mobile.scss';
 </style>

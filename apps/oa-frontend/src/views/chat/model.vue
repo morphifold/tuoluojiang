@@ -354,4 +354,25 @@ export default {
     margin-right: 10px;
   }
 }
+@media screen and (max-width: 768px) {
+  .leftBox {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 180px;
+    overflow: auto;
+  }
+  .option-item,
+  .all-text {
+    width: auto;
+    padding-right: 16px;
+  }
+  .boder-left {
+    min-height: 0;
+    border-left: none;
+    border-top: 1px solid #eeeeee;
+  }
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

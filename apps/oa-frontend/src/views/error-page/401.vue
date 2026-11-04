@@ -84,4 +84,23 @@ export default {
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .errPage-container {
+    width: 100%;
+    margin: 24px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    /deep/ .el-col-12 {
+      width: 100%;
+      float: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .text-jumbo {
+      font-size: 36px;
+    }
+  }
+}
 </style>

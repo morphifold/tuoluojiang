@@ -560,4 +560,25 @@ export default {
 .divBox .el-pagination {
   margin-top: 0;
 }
+
+@media (max-width: 767px) {
+  .divBox {
+    margin: 8px !important;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  /deep/ .el-card__body {
+    overflow-x: auto;
+  }
+  .popoverWidth {
+    width: 280px;
+    max-width: 86vw;
+    height: auto;
+  }
+  .box {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
 </style>

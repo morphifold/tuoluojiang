@@ -104,4 +104,22 @@ export default {
 /deep/ .el-cascader {
   width: 100%;
 }
+@media (max-width: 767px) {
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  /deep/ .el-form--inline .el-form-item {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+  }
+  .select-bar {
+    display: block;
+  }
+  /deep/ .el-input,
+  /deep/ .el-cascader {
+    width: 100% !important;
+  }
+}
 </style>

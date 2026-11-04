@@ -423,8 +423,23 @@ export default {
   margin-top: 5px;
 }
 </style>
-<style>
+<style lang="scss">
 .popover {
   padding: 0px !important;
+}
+
+@media (max-width: 767px) {
+  .popover {
+    width: 94vw !important;
+    max-width: 94vw !important;
+    max-height: 80vh;
+    overflow: auto;
+  }
+
+  .popover .tree-box {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 ﻿<!-- 财务-账目记录-收支统计页面 -->
 <template>
-  <div class="divBox">
+  <div class="divBox fd-chart-page">
     <el-card class="mb12">
       <statisticsBox ref="formBox" @confirmData="confirmData" />
     </el-card>
@@ -10,8 +10,8 @@
       </div>
       <echartBox :option-data="optionData" :styles="styles1" />
     </el-card>
-    <el-row :gutter="24">
-      <el-col :lg="12">
+    <el-row :gutter="24" class="chart-split">
+      <el-col :lg="12" :md="24" :sm="24" :xs="24">
         <el-card>
           <div class="pie-tab">
             <el-row>
@@ -58,7 +58,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :lg="12">
+      <el-col :lg="12" :md="24" :sm="24" :xs="24">
         <el-card>
           <div class="pie-tab">
             <el-row>
@@ -155,10 +155,32 @@ export default {
       tableDataIncome: [],
       tableDataExpend: [],
       showNumber: 5,
-      cateIds: []
+      cateIds: [],
+      phoneLayout: typeof window !== 'undefined' && window.innerWidth < 768,
+      chartCache: null
     }
   },
-  mounted() {},
+  mounted() {
+    var self = this
+    this.phoneLayout = window.innerWidth < 768
+    this.onChartResize = function () {
+      var phone = window.innerWidth < 768
+      if (phone === self.phoneLayout || !self.chartCache) {
+        self.phoneLayout = phone
+        return
+      }
+      self.phoneLayout = phone
+      self.xianchart(self.chartCache)
+      self.shouruChart(self.chartCache.incomeRank || [])
+      self.zhichuChart(self.chartCache.expendRank || [])
+    }
+    window.addEventListener('resize', this.onChartResize)
+  },
+  beforeDestroy() {
+    if (this.onChartResize) {
+      window.removeEventListener('resize', this.onChartResize)
+    }
+  },
   methods: {
     // 点击切换饼状图
     pieChange(data) {
@@ -358,6 +380,7 @@ export default {
       this.optionData.series[0].data = data.series[0].data
       this.optionData.series[1].name = data.series[1].name
       this.optionData.series[1].data = data.series[1].data
+      this.fitLineOption(this.optionData)
     },
     // 收入饼状图
     shouruChart(data) {
@@ -461,6 +484,7 @@ export default {
           })
         })
       }
+      this.fitPieOption(this.pieChartData1)
     },
     // 支出饼状图
     zhichuChart(data) {
@@ -552,14 +576,67 @@ export default {
           })
         })
       }
+      this.fitPieOption(this.pieChartData2)
     },
     getChartList(data) {
       billChartApi(data).then((res) => {
         const cdata = res.data
+        this.chartCache = cdata
         this.xianchart(cdata)
-        this.shouruChart(cdata.incomeRank)
-        this.zhichuChart(cdata.expendRank)
+        this.shouruChart(cdata.incomeRank || [])
+        this.zhichuChart(cdata.expendRank || [])
       })
+    },
+    fitLineOption(option) {
+      if (!this.phoneLayout || !option) {
+        return option
+      }
+      option.grid = {
+        left: 4,
+        top: 56,
+        right: 12,
+        bottom: 4,
+        containLabel: true
+      }
+      if (option.legend) {
+        option.legend.left = 'center'
+        option.legend.right = 'auto'
+        option.legend.top = 0
+      }
+      if (option.xAxis && option.xAxis.axisLabel) {
+        option.xAxis.axisLabel.fontSize = 11
+      }
+      return option
+    },
+    fitPieOption(option) {
+      if (!this.phoneLayout || !option) {
+        return option
+      }
+      var legend = option.legend && option.legend[0]
+      if (legend) {
+        legend.orient = 'horizontal'
+        legend.left = 'center'
+        legend.right = 'auto'
+        legend.top = 'auto'
+        legend.bottom = 0
+        legend.y = 'bottom'
+        legend.itemGap = 8
+        legend.itemHeight = 10
+        if (legend.textStyle) {
+          legend.textStyle.fontSize = 11
+        }
+      }
+      if (option.series && option.series[0]) {
+        option.series[0].radius = '46%'
+        option.series[0].right = 0
+        option.series[0].center = ['50%', '40%']
+        option.series[0].label = { show: false }
+      }
+      if (option.title) {
+        option.title.left = 'center'
+        option.title.right = 'auto'
+      }
+      return option
     },
     confirmData(data) {
       this.activeId = ''
@@ -697,6 +774,48 @@ export default {
 /deep/ .el-drawer__body {
   height: 100%;
   overflow-y: auto;
+}
+
+@media (max-width: 767px) {
+  .fd-chart-page {
+    .chart-split {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .chart-split > .el-col {
+      width: 100% !important;
+      max-width: 100%;
+      padding-left: 0 !important;
+    }
+
+    .statistics-title {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .pie-tab {
+      /deep/ [id^='echarts'] {
+        width: 100% !important;
+        max-width: 100%;
+      }
+    }
+
+    .pie-title,
+    .pie-select {
+      width: 100% !important;
+      max-width: 100%;
+      text-align: left;
+    }
+
+    .pie-select {
+      margin-top: 8px;
+    }
+
+    .tab-btn {
+      margin-left: 0;
+    }
+  }
 }
 </style>
 

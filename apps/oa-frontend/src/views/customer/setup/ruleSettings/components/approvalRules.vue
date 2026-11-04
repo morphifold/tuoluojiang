@@ -107,3 +107,22 @@ export default {
   font-size: 13px;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  /deep/ .el-form-item__label {
+    width: auto !important;
+    float: none !important;
+    display: block;
+    padding: 0 0 4px !important;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
+</style>
+

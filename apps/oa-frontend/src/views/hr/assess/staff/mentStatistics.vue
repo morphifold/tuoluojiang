@@ -384,6 +384,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .card-box {
   height: calc(100vh - 76px);
   overflow-y: scroll;

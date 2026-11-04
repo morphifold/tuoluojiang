@@ -133,4 +133,32 @@ export default {
 .mp4-box {
   z-index: 120;
 }
+
+@media (max-width: 767px) {
+  .mp3-dialog {
+    /deep/ .el-dialog {
+      width: 95vw !important;
+      max-width: 95vw;
+      margin: 0 auto;
+
+      .mp3-box {
+        width: 100%;
+      }
+    }
+  }
+
+  .mp4-dialog {
+    /deep/ .el-dialog {
+      width: 95vw !important;
+      max-width: 95vw;
+      margin: 0 auto;
+    }
+
+    /deep/ .mp4-box video {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 75vh;
+    }
+  }
+}
 </style>

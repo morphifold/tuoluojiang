@@ -170,4 +170,17 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .current-con .current-btn {
+    position: static;
+    width: 100%;
+  }
+  .current-btn /deep/ .el-col {
+    width: 100%;
+  }
+  .current-btn button {
+    margin-bottom: 8px;
+  }
+}
 </style>

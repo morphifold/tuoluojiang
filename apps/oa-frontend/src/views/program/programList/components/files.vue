@@ -290,4 +290,24 @@ export default {
   width: 30px;
   height: 30px;
 }
+@media screen and (max-width: 768px) {
+  .box {
+    padding: 0 12px;
+  }
+  .header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .flex-10 {
+    height: auto;
+    flex-wrap: wrap;
+    /deep/ .el-input,
+    /deep/ .el-date-editor {
+      width: 100% !important;
+    }
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+  }
+}
 </style>

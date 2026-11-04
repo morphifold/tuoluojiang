@@ -107,4 +107,10 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .plan-tabs-content /deep/ .el-tabs__nav-wrap {
+    overflow-x: auto;
+  }
+}
 </style>

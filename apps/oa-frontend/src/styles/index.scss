@@ -930,13 +930,35 @@ tabel {
   }
 
   // 全局弹窗与消息框防超屏
+  body {
+    min-width: 0 !important;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  #app,
+  .app-wrapper,
+  .main-container,
+  .app-main {
+    min-width: 0 !important;
+    max-width: 100%;
+  }
+
   .el-dialog {
+    width: 95vw !important;
     max-width: 95vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     box-sizing: border-box;
   }
 
   .el-dialog__wrapper {
     overflow-x: hidden;
+  }
+
+  .el-drawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
   }
 
   .el-message-box {
@@ -945,8 +967,13 @@ tabel {
     box-sizing: border-box;
   }
 
-  .el-drawer {
-    max-width: 100vw !important;
+  .el-popover {
+    max-width: 94vw !important;
+    box-sizing: border-box;
+  }
+
+  .el-row--flex {
+    flex-wrap: wrap !important;
   }
 
   // 全局日期范围选择器 .el-date-range-picker 移动端防超屏

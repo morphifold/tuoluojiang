@@ -145,4 +145,10 @@ export default {
   line-height: 32px;
   cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+  .plan-footer-one {
+    height: auto;
+    line-height: 22px;
+  }
+}
 </style>

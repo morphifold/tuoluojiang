@@ -312,4 +312,30 @@ export default {
   width: auto;
   height: auto;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  .content {
+    padding: 12px 12px 72px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: auto !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  .from-foot-btn,
+  .fix {
+    width: 100% !important;
+    left: 0 !important;
+    box-sizing: border-box;
+  }
+}
 </style>

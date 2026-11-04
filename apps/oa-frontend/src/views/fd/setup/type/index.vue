@@ -1,6 +1,6 @@
 ﻿<!-- 财务-财务设置-支付方式页面 -->
 <template>
-  <div class="divBox bill-type">
+  <div class="divBox bill-type fd-setup-type">
     <el-card class="normal-page">
       <oaFromBox
         :total="total"
@@ -161,6 +161,41 @@ export default {
       position: absolute;
       left: -10px;
       top: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .fd-setup-type {
+    /deep/ .el-card__body {
+      padding: 12px !important;
+    }
+
+    /deep/ .header-16,
+    /deep/ .search,
+    /deep/ .header-16 > .flex {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .header-16 > .flex {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .page-fixed {
+      position: static !important;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /deep/ .el-table__fixed,
+    /deep/ .el-table__fixed-right {
+      display: none;
+    }
+
+    .table-box {
+      overflow-x: auto;
     }
   }
 }

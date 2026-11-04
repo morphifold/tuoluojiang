@@ -73,6 +73,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../views/hr/_hr-mobile.scss';
 .daxie {
   color: #999;
   font-size: 13px;

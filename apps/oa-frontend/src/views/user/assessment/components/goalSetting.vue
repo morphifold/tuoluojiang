@@ -1101,4 +1101,61 @@ export default {
   border: 1px solid #636363;
   text-align: center;
 }
+
+@media (max-width: 767px) {
+  .height,
+  .h32,
+  .flex,
+  .flex-between {
+    height: auto !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .box {
+    height: auto;
+    max-height: none;
+  }
+  .current-button-left {
+    width: 100%;
+    text-align: left;
+  }
+  .current-table {
+    overflow-x: auto;
+  }
+  .current-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 8;
+    padding: 12px 8px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  }
+  .current-footer /deep/ .el-button {
+    margin: 4px;
+  }
+  .current-bottom /deep/ .el-col {
+    width: 100%;
+  }
+  .current-dialog {
+    flex-direction: column;
+    align-items: stretch;
+    span,
+    div {
+      width: 100%;
+      text-align: left;
+    }
+  }
+  /deep/ .el-select,
+  /deep/ .el-date-editor,
+  /deep/ .el-input,
+  /deep/ .el-input-number {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+    margin-top: 8vh !important;
+  }
+}
 </style>

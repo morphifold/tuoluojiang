@@ -428,4 +428,45 @@ export default {
 /deep/.el-select {
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .main {
+    width: 100%;
+    max-width: 100%;
+  }
+  .detail-box {
+    padding: 12px;
+    min-height: 0;
+  }
+  .inTotal {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .inTotal .from-s {
+    margin-left: 0;
+    width: 100%;
+  }
+  /deep/ .el-form-item,
+  /deep/ .el-input,
+  /deep/ .el-select {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+  .detail-box .content /deep/ img,
+  .check-box .content /deep/ img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .detail-box .content /deep/ table,
+  .check-box .content /deep/ table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .el-drawer {
+    width: 100% !important;
+  }
+}
 </style>

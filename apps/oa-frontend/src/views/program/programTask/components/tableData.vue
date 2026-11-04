@@ -757,4 +757,9 @@ export default {
 /deep/ .el-table tr {
   height: 56px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-table {
+    width: 100%;
+  }
+}
 </style>

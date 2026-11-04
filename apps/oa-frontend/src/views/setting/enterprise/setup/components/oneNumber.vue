@@ -90,4 +90,25 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  /deep/ .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  /deep/ .el-input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+</style>

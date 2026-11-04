@@ -1,5 +1,46 @@
 import { enterpriseCardApi, enterpriseBatchApi } from '@/api/enterprise'
 let myMixins = {
+  computed: {
+    statCards() {
+      var rows = this.tableData || []
+      var defs = []
+      if (this.notEmployees === '未入职') {
+        defs = [
+          { label: '全职', field: 'is_part', match: 0 },
+          { label: '兼职', field: 'is_part', match: 1 },
+          { label: '实习', field: 'is_part', match: 2 }
+        ]
+      } else if (this.notEmployees === '离职') {
+        defs = [
+          { label: '全职', field: 'is_part', match: 0 },
+          { label: '兼职', field: 'is_part', match: 1 },
+          { label: '正式', field: 'type', match: 1 },
+          { label: '试用', field: 'type', match: 2 }
+        ]
+      } else {
+        defs = [
+          { label: '全职', field: 'is_part', match: 0 },
+          { label: '兼职', field: 'is_part', match: 1 },
+          { label: '正式', field: 'type', match: 1 },
+          { label: '试用', field: 'type', match: 2 },
+          { label: '实习', field: 'type', match: 3 }
+        ]
+      }
+      var cards = []
+      for (var i = 0; i < defs.length; i++) {
+        var def = defs[i]
+        var count = 0
+        for (var j = 0; j < rows.length; j++) {
+          var row = rows[j] || {}
+          if (Number(row[def.field]) === def.match) {
+            count += 1
+          }
+        }
+        cards.push({ label: def.label, value: count })
+      }
+      return cards
+    }
+  },
   methods: {
     // 导出功能
     getExportData(val) {

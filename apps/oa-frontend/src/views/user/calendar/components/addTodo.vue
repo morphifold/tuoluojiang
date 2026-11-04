@@ -746,4 +746,52 @@ export default {
 /deep/ .el-drawer__header {
   padding: 16px 24px 16px 24px;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  /deep/ .el-drawer__header {
+    padding: 12px 14px;
+  }
+  /deep/ .el-drawer__body {
+    overflow-x: hidden;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: auto !important;
+    text-align: left;
+    line-height: 1.4;
+    padding: 0 0 6px;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  .start-time,
+  .end-time {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .start-time /deep/ .el-date-editor.el-input,
+  .end-time /deep/ .el-date-editor.el-input,
+  .start-time /deep/ .el-date-editor,
+  .end-time /deep/ .el-date-editor {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .addWidth {
+    display: none;
+  }
+  /deep/ .el-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .from-foot-btn,
+  .fix {
+    width: 100% !important;
+    left: 0 !important;
+    box-sizing: border-box;
+  }
+}
 </style>

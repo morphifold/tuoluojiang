@@ -255,4 +255,15 @@ export default {
   padding: 20px;
   border-top: 1px solid #e6ebf5;
 }
+@media (max-width: 767px) {
+  ::v-deep .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  ::v-deep .el-input-number,
+  ::v-deep .el-input,
+  ::v-deep .el-select {
+    max-width: 100%;
+  }
+}
 </style>

@@ -261,4 +261,11 @@ export default {
     color: #999;
   }
 }
+@media (max-width: 767px) {
+  .setting-scrollbar {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-left: none;
+  }
+}
 </style>

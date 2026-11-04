@@ -10,6 +10,7 @@
       :wrapperClosable="false"
       :before-close="handleClose"
       :size="`55%`"
+      class="oa-m-drawer"
     >
       <div class="mt14" v-if="importTemplate.widgetList.length">
         <VFormRender
@@ -180,5 +181,13 @@ export default {
 .p10 {
   width: 100%;
   padding: 0 10px;
+}
+</style>
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-drawer__wrapper.oa-m-drawer .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 </style>

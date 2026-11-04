@@ -361,4 +361,14 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .el-dropdown,
+  .el-dropdown .dropdownbutton {
+    width: 100%;
+  }
+  .flex-box span:first-of-type {
+    max-width: calc(100% - 48px);
+  }
+}
 </style>

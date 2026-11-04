@@ -389,4 +389,22 @@ export default {
   margin-right: 10px;
   margin-left: 0;
 }
+
+@media (max-width: 767px) {
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /deep/ .el-form-item {
+    width: 100%;
+    margin-right: 0 !important;
+  }
+  /deep/ .el-select,
+  /deep/ .el-date-editor,
+  /deep/ .el-input {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
 </style>

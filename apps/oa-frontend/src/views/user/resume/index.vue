@@ -433,4 +433,81 @@ export default {
   padding-top: 0px;
   margin-top: 0;
 }
+
+@media (max-width: 767px) {
+  .divBox {
+    margin-left: 0;
+  }
+  .content {
+    flex-direction: column;
+    width: 100%;
+  }
+  .left,
+  .right,
+  .pushBox {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  .left-card {
+    height: auto;
+    max-height: none;
+    padding-top: 12px;
+  }
+  .left /deep/ .assess-left {
+    height: auto !important;
+    width: 100%;
+  }
+  .left /deep/ .assess-left-ul {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .left /deep/ .assess-left-ul li {
+    flex: 0 0 auto;
+  }
+  .right {
+    overflow: visible;
+    padding-right: 0;
+  }
+  .right-card {
+    padding: 12px 12px 88px;
+  }
+  .right /deep/ .form-box .form-item {
+    width: 100% !important;
+  }
+  .right /deep/ .form-box .form-item .el-form-item__label {
+    float: none;
+    display: block;
+    width: 100% !important;
+    text-align: left;
+  }
+  .right /deep/ .form-box .form-item .el-form-item__content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  .right /deep/ img,
+  .right /deep/ video,
+  .pushBox /deep/ img {
+    max-width: 100%;
+    height: auto;
+  }
+  .right /deep/ table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .pushBox {
+    max-height: 360px;
+    padding-bottom: 24px;
+  }
+  .footer {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+  .cr-bottom-button {
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+}
 </style>

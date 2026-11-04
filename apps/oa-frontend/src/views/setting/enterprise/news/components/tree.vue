@@ -218,4 +218,15 @@ export default {
   margin: -20px 0 -20px -20px;
   border-right: 1px solid #f5f5f5;
 }
+@media (max-width: 767px) {
+  .tree-box {
+    margin: 0;
+    max-height: 240px;
+    overflow-y: auto;
+    border-right: none;
+  }
+  /deep/ .v-height-box {
+    height: auto !important;
+  }
+}
 </style>

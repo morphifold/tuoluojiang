@@ -567,3 +567,25 @@ export default {
   width: 100%;
 }
 </style>
+<style lang="scss" scoped>
+@import '../customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .ex-content-con {
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .from-foot-btn {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+
+    .el-button {
+      margin-left: 0 !important;
+      flex: 1 1 auto;
+    }
+  }
+}
+</style>

@@ -606,3 +606,6 @@ export default {
   margin-bottom: 50px;
 }
 </style>
+<style lang="scss" scoped>
+@import '../customer/customer-mobile.scss';
+</style>

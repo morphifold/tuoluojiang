@@ -106,4 +106,24 @@ export default {
     -webkit-text-fill-color: transparent;
   }
 }
+
+@media (max-width: 767px) {
+  .plan-tabs-content {
+    margin: 0 0 14px 0;
+    overflow-x: auto;
+  }
+  .right-box {
+    position: static;
+    width: 100%;
+    transform: none;
+    margin-top: 8px;
+  }
+  .process-left-list {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tips-box {
+    margin: 0 8px;
+  }
+}
 </style>

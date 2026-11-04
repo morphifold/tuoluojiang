@@ -353,4 +353,26 @@ export default {
   height: 80px !important;
   line-height: none !important;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  /deep/ .el-drawer__header {
+    height: auto !important;
+  }
+  /deep/ .el-col-9,
+  /deep/ .el-col-6,
+  /deep/ .el-col-8 {
+    width: 100%;
+    float: none;
+  }
+  .invoice-title .invoice-header .txt2 {
+    display: flex;
+    flex-wrap: wrap;
+    .title {
+      padding-left: 0;
+      margin-right: 8px;
+    }
+  }
+}
 </style>

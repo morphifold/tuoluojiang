@@ -633,4 +633,23 @@ export default {
   height: 0;
   width: 0;
 }
+@media (max-width: 767px) {
+  .flex {
+    flex-wrap: wrap;
+  }
+  .flex > div {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+  }
+  .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .el-select {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

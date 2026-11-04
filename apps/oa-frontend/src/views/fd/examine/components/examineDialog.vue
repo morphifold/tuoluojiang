@@ -6,6 +6,7 @@
     :width="config.width"
     :append-to-body="true"
     :before-close="handleClose"
+    custom-class="fd-examine-audit-dialog"
   >
     <el-form class="mt15" label-width="100px">
       <el-form-item>
@@ -427,4 +428,56 @@ export default {
 .dialog-footer {
   padding-top: 20px;
 }
+
 </style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .fd-examine-audit-dialog {
+    width: 95vw !important;
+    margin-top: 6vh !important;
+
+    .el-dialog__body {
+      padding: 12px 14px;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .el-form-item__label {
+      float: none !important;
+      display: block;
+      width: 100% !important;
+      text-align: left !important;
+      line-height: 1.4 !important;
+      padding: 0 0 4px !important;
+    }
+
+    .el-form-item__content {
+      margin-left: 0 !important;
+    }
+
+    .el-select,
+    .el-input,
+    .el-textarea {
+      width: 100%;
+    }
+
+    .el-radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .dialog-footer {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dialog-footer .el-button {
+      flex: 1;
+      margin-left: 0;
+    }
+  }
+}
+</style>
+

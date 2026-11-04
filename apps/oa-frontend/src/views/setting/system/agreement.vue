@@ -225,4 +225,27 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
+@media (max-width: 767px) {
+  .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .tree-left {
+    min-height: 0;
+    max-height: 240px;
+    height: auto;
+    overflow-y: auto;
+    border-right: none;
+  }
+  .tree-left .tree-box-content .text {
+    padding-left: 12px;
+  }
+  .right {
+    min-height: 0;
+    height: auto;
+    padding: 12px;
+  }
+}
 </style>

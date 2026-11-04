@@ -244,4 +244,19 @@ export default {
   padding-top: 20px;
   border-top: 1px solid #e6ebf5;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  .body {
+    word-break: break-word;
+  }
+  .month /deep/ .el-checkbox-group,
+  /deep/ .el-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 </style>

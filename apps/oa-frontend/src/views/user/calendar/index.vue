@@ -8,11 +8,11 @@
           {{ $t('calendar.newschedule') }}
         </el-button>
       </div>
-      <el-row :gutter="14">
-        <el-col :span="6">
+      <el-row :gutter="14" class="calendar-layout">
+        <el-col :span="6" :xs="24" class="calendar-side">
           <calendar-bar ref="calendarBar" @handleDate="handleDate" />
         </el-col>
-        <el-col :span="18" class="line" v-loading="loading" element-loading-text="数据正在加载中">
+        <el-col :span="18" :xs="24" class="line" v-loading="loading" element-loading-text="数据正在加载中">
           <div class="plan-tabs-content"></div>
           <!-- 我的日历 -->
           <div class="needToBeDealt">
@@ -811,5 +811,99 @@ this.end_time = end;
 .normal-page {
   height: calc(100vh - 80px);
   overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+  .divBox {
+    margin: 8px !important;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  .normal-page {
+    height: auto;
+    min-height: calc(100vh - 80px);
+    overflow-x: hidden;
+  }
+  .header {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+  }
+  .calendar-layout {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .calendar-layout > .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .line {
+    display: block;
+    border-left: none;
+    border-top: 1px solid #f0f2f5;
+  }
+  .needToBeDealt {
+    padding: 0 8px 12px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .add-btn {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .content-button {
+    width: 100%;
+  }
+  .content-button /deep/ .el-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ml30 {
+    margin-left: 0;
+  }
+  /deep/ .fc-header-toolbar {
+    position: static !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  /deep/ .fc .fc-toolbar-title {
+    font-size: 14px;
+  }
+  /deep/ .fc .fc-toolbar-chunk {
+    flex-wrap: wrap;
+  }
+  /deep/ #calendar,
+  /deep/ .fc {
+    height: 70vh !important;
+    max-width: 100%;
+  }
+  /deep/ .fc-view-harness,
+  /deep/ .fc-scrollgrid-section,
+  /deep/ .fc-scroller-harness,
+  /deep/ .fc-scroller {
+    max-width: 100%;
+  }
+  /deep/ .fc-view-harness {
+    overflow-x: auto;
+  }
+  /deep/ .fc .fc-scrollgrid-shrink,
+  /deep/ .fc-timegrid-axis {
+    width: 40px !important;
+  }
+  /deep/ .fc-widget-content {
+    width: auto !important;
+    background-color: transparent;
+  }
+  .calendar-timeline {
+    width: 36px;
+  }
+  /deep/ .record .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
 }
 </style>

@@ -6,6 +6,7 @@
       :title="messageData.title"
       :before-close="handleClose"
       :append-to-body="true"
+      custom-class="oa-m-dialog"
     >
       <el-form ref="form" :model="form" :rules="rules" class="mt20" label-width="90px">
         <el-form-item label="提醒时间：" prop="date" v-if="messageData.type !== 1">
@@ -156,5 +157,24 @@ export default {
   color: #909399;
   font-size: 12px;
   text-align: center;
+}
+@media (max-width: 767px) {
+  .item {
+    flex-wrap: wrap;
+  }
+  .mo-input--number {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 6px;
+  }
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-dialog.oa-m-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
 }
 </style>

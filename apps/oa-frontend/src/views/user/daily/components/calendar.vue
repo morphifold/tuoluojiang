@@ -343,4 +343,22 @@ export default {
     margin-right: 4px;
   }
 }
+
+@media (max-width: 767px) {
+  .dealt-date {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .tips {
+    margin: 12px 0;
+    flex-wrap: wrap;
+  }
+  /deep/ .el-calendar__header {
+    padding: 12px 8px;
+  }
+  /deep/ .el-calendar-table .el-calendar-day {
+    height: 36px;
+    padding: 0;
+  }
+}
 </style>

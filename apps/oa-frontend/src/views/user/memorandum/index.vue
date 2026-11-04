@@ -1,7 +1,7 @@
 <!--记事本-->
 <template>
   <div class="divBox">
-    <div class="flex">
+    <div class="flex memo-layout" :class="{ 'show-editor': mobileShowEditor }">
       <!--左侧菜单-->
       <div class="left-box">
         <menuTree ref="menuTree" @createNote="addCreate" @frameId="getFrameId" @onRecently="getRecentlyList" />
@@ -95,7 +95,7 @@
       <div class="right-box">
         <el-card v-loading="loadingPage">
           <div v-if="!content" class="noneDefault">
-            <span class="el-icon-close btn1" @click="handleClose"></span>
+            <span class="memo-back el-icon-arrow-left" @click="mobileShowEditor = false"></span>
 
             <img alt="" class="img" src="../../../assets/images/nodedef1.png" />
             <div>暂无笔记~</div>
@@ -103,6 +103,7 @@
 
           <div v-else class="content">
             <div class="header flex">
+              <span class="memo-back el-icon-arrow-left" @click="mobileShowEditor = false"></span>
               <div class="edit-title">
                 <el-input
                   v-model="title"
@@ -158,6 +159,7 @@ export default {
   data() {
     return {
       loadingPage: false,
+      mobileShowEditor: false,
       recently: false,
       where: {
         file_name: '',
@@ -233,6 +235,7 @@ export default {
       }
     },
     clickItem(index, item) {
+      this.mobileShowEditor = true
       if (this.id === item.id) {
         return
       }
@@ -268,6 +271,7 @@ export default {
           this.itemIndex = this.listData[0]?.id
           this.content = this.listData[0]?.content
           this.title = this.listData[0]?.title
+          this.mobileShowEditor = true
           this.$refs.menuTree.menuList()
         })
         .catch((err) => {
@@ -621,6 +625,77 @@ export default {
       top: 20px;
       right: 10px;
     }
+  }
+}
+
+.memo-back {
+  display: none;
+}
+@media (max-width: 767px) {
+  .divBox {
+    margin: 0 !important;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .memo-layout {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+  }
+  .left-box {
+    width: 100% !important;
+    height: auto;
+    max-height: 180px;
+    overflow-y: auto;
+    background: #fff;
+    border-bottom: 1px solid #dcdfe6;
+  }
+  .middle-box {
+    width: 100% !important;
+    border-right: none;
+    .main {
+      height: auto;
+      max-height: calc(100vh - 240px);
+    }
+    .content-ul li .title span {
+      width: auto;
+      max-width: calc(100% - 36px);
+    }
+  }
+  .right-box {
+    display: none;
+    width: 100% !important;
+  }
+  .memo-layout.show-editor {
+    .left-box,
+    .middle-box {
+      display: none;
+    }
+    .right-box {
+      display: block;
+      width: 100% !important;
+      min-height: 100vh;
+    }
+  }
+  .memo-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: 8px 0 0 8px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #303133;
+  }
+  .right-box .content .header .edit-title {
+    width: calc(100% - 120px);
+  }
+  .right-box .noneDefault {
+    height: calc(100vh - 48px);
+  }
+  .right-box .content /deep/ .edit-content .wang-editor .w-e-text-container .w-e-text {
+    padding: 10px 12px 80px 12px;
   }
 }
 </style>

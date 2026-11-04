@@ -431,3 +431,7 @@ export default {
   border-top: 1px solid #e6ebf5;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+</style>
+

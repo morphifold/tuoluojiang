@@ -218,3 +218,22 @@ export default {
   width: 0;
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  .flex {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .h32 {
+    height: auto;
+  }
+  .flex .ml14 {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+  .flex .input {
+    width: 100% !important;
+  }
+}
+</style>

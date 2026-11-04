@@ -142,4 +142,18 @@ export default {
     }
   }
 }
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

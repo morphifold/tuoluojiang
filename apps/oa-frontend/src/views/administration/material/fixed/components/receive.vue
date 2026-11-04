@@ -304,4 +304,12 @@ export default {
 /deep/ .el-radio-group {
   // margin-top: 10px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  .station /deep/ .el-drawer__body {
+    padding: 12px 12px 60px;
+  }
+}
 </style>

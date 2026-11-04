@@ -118,4 +118,19 @@ export default {
 .divBox {
   margin-left: -145px;
 }
+
+@media (max-width: 767px) {
+  .divBox {
+    margin-left: 0;
+  }
+  .table-box {
+    width: 100%;
+    overflow-x: auto;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 </style>

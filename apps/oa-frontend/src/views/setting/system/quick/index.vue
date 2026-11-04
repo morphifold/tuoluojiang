@@ -249,4 +249,20 @@ export default {
     }
   }
 }
+@media (max-width: 767px) {
+  /deep/ .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    height: auto !important;
+  }
+  .assess-right {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding: 12px;
+    border-left: none;
+  }
+}
 </style>

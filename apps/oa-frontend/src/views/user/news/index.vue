@@ -224,4 +224,25 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-card__body {
+    padding: 8px 10px 0 !important;
+  }
+  /deep/ .el-tabs__nav-wrap {
+    overflow-x: auto;
+  }
+  /deep/ .el-tabs__nav-scroll {
+    overflow-x: auto;
+  }
+  .pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  /deep/ .el-dialog,
+  /deep/ .el-drawer {
+    width: 100% !important;
+    max-width: 100vw;
+  }
+}
 </style>

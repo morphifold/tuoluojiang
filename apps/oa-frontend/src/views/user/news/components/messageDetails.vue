@@ -187,4 +187,21 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+    margin-top: 8vh !important;
+  }
+  .details .right .bottom,
+  .details .right .content {
+    white-space: normal;
+    word-break: break-word;
+  }
+  /deep/ img {
+    max-width: 100%;
+    height: auto;
+  }
+}
 </style>

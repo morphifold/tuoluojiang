@@ -979,4 +979,32 @@ export default {
 /deep/.el-pagination {
   padding-bottom: 0;
 }
+
+@media (max-width: 767px) {
+  .card-box {
+    height: auto;
+    min-height: calc(100vh - 56px);
+  }
+  .cloudfile-right {
+    width: 100%;
+    padding: 0 10px 16px;
+    box-sizing: border-box;
+  }
+  /deep/ .el-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /deep/ .el-col {
+    width: 100%;
+    max-width: 100%;
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+    margin-top: 6vh !important;
+  }
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+}
 </style>

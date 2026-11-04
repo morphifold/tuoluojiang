@@ -39,6 +39,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../views/hr/_hr-mobile.scss';
 .label {
   display: flex;
   justify-content: space-between;

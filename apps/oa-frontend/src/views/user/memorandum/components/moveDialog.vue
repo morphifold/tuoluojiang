@@ -165,4 +165,11 @@ export default {
   color: #ffca28;
   font-size: 14px;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+}
 </style>

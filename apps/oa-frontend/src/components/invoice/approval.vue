@@ -177,3 +177,6 @@ export default {
   margin-left: 0 !important;
 }
 </style>
+<style lang="scss" scoped>
+@import '../customer/customer-mobile.scss';
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fd-chart-filter">
     <oaFromBox
       :isAddBtn="false"
       :isTotal="false"
@@ -153,4 +153,42 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  .fd-chart-filter {
+    /deep/ .search,
+    /deep/ .header-16 {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .search > .flex {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .search .grey-bga {
+      width: calc(50% - 4px) !important;
+    }
+
+    /deep/ .form-box {
+      width: calc(50% - 4px);
+      box-sizing: border-box;
+    }
+
+    /deep/ .form-box.full-width {
+      width: 100%;
+    }
+
+    /deep/ .form-box .el-input,
+    /deep/ .form-box .el-select,
+    /deep/ .form-box .el-cascader,
+    /deep/ .form-box .el-date-editor {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+  }
+}
+</style>

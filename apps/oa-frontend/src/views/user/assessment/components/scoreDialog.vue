@@ -100,4 +100,19 @@ export default {
     padding-left: 10px;
   }
 }
+
+@media (max-width: 767px) {
+  .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+    margin-top: 8vh !important;
+  }
+  /deep/ .el-dialog__body {
+    max-height: 70vh;
+    overflow: auto;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+  }
+}
 </style>

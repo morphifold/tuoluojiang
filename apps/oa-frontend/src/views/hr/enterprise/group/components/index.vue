@@ -130,4 +130,10 @@ export default {
 /deep/.el-cascader {
   width: 100%;
 }
+@media (max-width: 767px) {
+  ::v-deep .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+}
 </style>

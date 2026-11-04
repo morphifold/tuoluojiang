@@ -228,6 +228,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .text-right {
   font-family: PingFang SC, PingFang SC;
   font-weight: 400;

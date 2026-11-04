@@ -308,4 +308,66 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .assess-left {
+    height: auto !important;
+    margin: 0;
+    padding: 0 0 8px;
+    overflow: visible;
+  }
+  .assess-left > .v-height-flag,
+  .assess-left > .v-height-flag > div {
+    height: auto !important;
+    max-height: 52px;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .assess-left .v-height-flag {
+    border-right: none;
+  }
+  .assess-left /deep/ .el-scrollbar,
+  .assess-left /deep/ .el-scrollbar__wrap,
+  .assess-left /deep/ .el-scrollbar__view {
+    height: auto !important;
+    overflow: visible;
+  }
+  .assess-left .assess-left-ul {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .assess-left .assess-left-ul li {
+    flex: 0 0 auto;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+    margin-right: 6px;
+    border-radius: 16px;
+    background: #f5f7fa;
+  }
+  .assess-left .assess-left-ul li.active {
+    border-right: none;
+  }
+  .assess-right {
+    width: 100%;
+    padding-left: 0;
+    overflow-x: auto;
+  }
+  .check-box /deep/ img {
+    max-width: 100%;
+    height: auto;
+  }
+  .check-box /deep/ table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .el-drawer {
+    width: 100% !important;
+  }
+}
 </style>

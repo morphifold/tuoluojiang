@@ -169,4 +169,11 @@ export default {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   word-break: break-all;
 }
+
+@media (max-width: 767px) {
+  .menu {
+    max-width: calc(100vw - 24px);
+    box-sizing: border-box;
+  }
+}
 </style>

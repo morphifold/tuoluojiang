@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fd-examine-filter">
     <el-form :inline="true" class="from-s">
       <el-row class="flex-row">
         <el-form-item :label="$t('customer.businesstype')" class="select-bar">
@@ -22,7 +22,7 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item class="select-bar">
+        <el-form-item class="select-bar time-bar">
           <el-select
             class="sel"
             size="small"
@@ -187,4 +187,52 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  .fd-examine-filter {
+    /deep/ .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    /deep/ .el-form-item {
+      width: 100%;
+      margin-right: 0 !important;
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    /deep/ .el-form-item__label {
+      width: auto !important;
+      text-align: left;
+      line-height: 1.4;
+      padding-bottom: 4px;
+    }
+
+    /deep/ .el-form-item__content {
+      width: 100%;
+      margin-left: 0 !important;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .el-select,
+    /deep/ .el-date-editor,
+    /deep/ .el-input,
+    /deep/ .sel,
+    /deep/ .time {
+      width: 100% !important;
+      flex: 1 1 100%;
+    }
+
+    /deep/ .time-bar .el-select.sel {
+      width: 100% !important;
+    }
+  }
+}
+</style>

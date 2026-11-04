@@ -528,4 +528,37 @@ export default {
   height: 32px;
   line-height: 32px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+  }
+  .el-form {
+    height: auto;
+    flex-direction: column;
+    .left-card,
+    .right-card {
+      width: 100% !important;
+      margin-right: 0;
+      border-left: none;
+    }
+    .right-card {
+      border-top: 1px solid #f2f6fc;
+      /deep/ .el-form-item__label {
+        width: 100% !important;
+        text-align: left;
+      }
+      /deep/ .el-form-item__content {
+        margin-left: 0 !important;
+      }
+    }
+  }
+  .from-foot-btn {
+    /deep/ .el-button {
+      margin-bottom: 8px;
+    }
+  }
+}
 </style>

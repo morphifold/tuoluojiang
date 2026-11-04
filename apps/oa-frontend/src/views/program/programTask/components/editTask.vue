@@ -1198,6 +1198,38 @@ export default {
   color: #909399;
   font-weight: 400;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  .header-item {
+    position: static;
+  }
+  .header {
+    padding: 12px;
+    .title /deep/ .el-input__inner {
+      width: 100% !important;
+    }
+  }
+  .el-form {
+    height: auto;
+    flex-direction: column;
+    .left-card,
+    .right-card {
+      width: 100% !important;
+      margin-right: 0;
+      padding-top: 12px;
+      border-left: none;
+      overflow: visible;
+    }
+    .right-card {
+      border-top: 1px solid #f2f6fc;
+    }
+  }
+  /deep/ p img {
+    max-width: 100% !important;
+  }
+}
 </style>
 <style>
 .tooltip-width {

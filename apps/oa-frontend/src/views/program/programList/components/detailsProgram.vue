@@ -130,4 +130,19 @@ export default {
   align-items: center;
   margin-bottom: 30px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: 100% !important;
+    text-align: left;
+    line-height: 22px;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  /deep/ .el-form-item {
+    margin-bottom: 16px;
+  }
+}
 </style>

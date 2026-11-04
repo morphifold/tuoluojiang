@@ -3,7 +3,7 @@
   功能：根据消息类型展示不同的弹窗组件
 -->
 <template>
-  <div>
+  <div class="message-handle-popup">
     <!-- 日报相关弹窗 -->
     <addBox ref="addBox" :daily-id="1" />
     
@@ -345,6 +345,16 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-/* 组件样式 */
+<style lang="scss">
+@media (max-width: 767px) {
+  .message-handle-popup {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .message-handle-popup .el-dialog,
+  .message-handle-popup .el-drawer {
+    max-width: 100vw !important;
+  }
+}
 </style>

@@ -537,4 +537,10 @@ export default {
 .mb-18 {
   margin-bottom: 18px;
 }
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

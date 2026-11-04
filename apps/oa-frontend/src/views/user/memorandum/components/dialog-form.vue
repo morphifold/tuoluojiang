@@ -123,4 +123,22 @@ export default {
 /deep/.el-cascader {
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  /deep/ .tips {
+    margin-left: 0;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: auto !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

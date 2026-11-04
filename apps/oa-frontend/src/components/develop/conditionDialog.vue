@@ -987,4 +987,31 @@ export default {
   padding: 0 20px;
   padding-top: 20px;
 }
+@media (max-width: 767px) {
+  .drawer-content .list {
+    flex-wrap: wrap;
+  }
+  .el-col-16,
+  .el-col-8,
+  .el-col-10,
+  .el-col-13,
+  .el-col-1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    flex: 0 0 100%;
+  }
+  .mr10 {
+    margin-right: 0;
+  }
+  .flex {
+    flex-wrap: wrap;
+  }
+  .el-select {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    flex: 1 1 100%;
+  }
+}
 </style>

@@ -5,6 +5,7 @@
       top="10%"
       :visible.sync="show"
       width="700px"
+      custom-class="oa-m-dialog"
       append-to-body
       :show-close="false"
       :close-on-click-modal="false"
@@ -296,5 +297,27 @@ export default {
 .icontuodong {
   color: #cacdd2;
   font-size: 14px;
+}
+@media (max-width: 767px) {
+  .flex {
+    flex-wrap: wrap;
+  }
+  .ml14 {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  .input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-dialog.oa-m-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
 }
 </style>

@@ -3,10 +3,16 @@
     <!-- 组织架构页面 -->
     <el-card>
       <el-row>
-        <el-col v-bind="gridl" class="p20">
-          <tree :parent-tree="treeData" :frame-id="frame_id" @frameId="getFrameId" />
+        <el-col v-bind="gridl" class="p20 hr-tree-pane" :class="{ 'is-collapsed': !orgTreeOpen }">
+          <div class="hr-tree-toggle" @click="orgTreeOpen = !orgTreeOpen">
+            <span>{{ orgTreeOpen ? '收起部门' : '展开部门' }}</span>
+            <i :class="orgTreeOpen ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
+          </div>
+          <div class="hr-tree-body">
+            <tree :parent-tree="treeData" :frame-id="frame_id" @frameId="getFrameId" />
+          </div>
         </el-col>
-        <el-col v-bind="gridr" class="boder-left p20">
+        <el-col v-bind="gridr" class="boder-left p20 hr-main-pane">
           <div class="table-box ml20">
             <div class="header-16">
               <div class="title-16">
@@ -139,6 +145,7 @@ export default {
   },
   data() {
     return {
+      orgTreeOpen: true,
       treeData: [],
       loading: false,
       tableData: [],
@@ -352,6 +359,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .divBox {
   height: 100%;
 }

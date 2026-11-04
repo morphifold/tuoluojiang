@@ -1030,4 +1030,90 @@ export default {
   font-size: 12px;
   white-space: nowrap;
 }
+
+@media (max-width: 767px) {
+  .colLeft {
+    flex-direction: column;
+    min-width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .Nav {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    border-right: 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .trees-coadd .scollhide {
+    max-height: 220px;
+  }
+
+  .conter {
+    min-width: 0;
+    margin-left: 0 !important;
+  }
+
+  .conter .bnt {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      max-width: 100%;
+    }
+
+    .mr10 {
+      margin-right: 0 !important;
+    }
+
+    .treeSel,
+    .el-input {
+      width: 100% !important;
+      max-width: 150px;
+    }
+  }
+
+  .conter .pictrueList {
+    min-height: 0;
+    max-height: calc(100vh - 260px);
+  }
+
+  .conter .pictrueList.is-modal {
+    max-height: calc(100vh - 200px);
+  }
+
+  .pictrueList_pic,
+  .is-modal .pictrueList_pic {
+    width: calc(50% - 10px);
+    min-width: 0;
+    margin: 10px 5px !important;
+  }
+
+  .pictrueList_pic .img,
+  .is-modal .pictrueList_pic .img {
+    width: 100%;
+    height: 42vw;
+    min-height: 100px;
+    max-height: 146px;
+    padding: 3px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .conter .pictrueList > .el-table {
+    width: 100% !important;
+    overflow-x: auto;
+  }
+}
 </style>

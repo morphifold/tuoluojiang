@@ -688,4 +688,43 @@ div.external-link a {
     line-height: 18px;
   }
 }
+@media (max-width: 767px) {
+  .form-designer-container {
+    height: auto !important;
+    min-height: 100vh;
+  }
+  .el-header.toolbar-header {
+    height: auto !important;
+    min-height: 48px;
+    flex-wrap: wrap;
+    padding: 8px 12px;
+  }
+  .el-container.full-height,
+  .el-container.full-height > .el-container {
+    flex-direction: column !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .el-aside.side-panel,
+  .el-aside.side-panel.aside-visible,
+  .el-aside.setting-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 240px !important;
+    overflow-y: auto !important;
+    animation: none !important;
+  }
+  .el-container.center-layout-container {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .left-aside-toggle-bar,
+  .right-aside-toggle-bar {
+    display: none !important;
+  }
+  /deep/ .el-dialog:not(.is-fullscreen) {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+}
 </style>

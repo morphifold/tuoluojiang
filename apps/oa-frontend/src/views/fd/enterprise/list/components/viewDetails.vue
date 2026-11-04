@@ -1,7 +1,7 @@
 <template>
   <!-- 查看账目详情侧滑弹窗 -->
   <div>
-    <el-drawer :before-close="handleClose" :visible.sync="drawer" direction="rtl" size="450px" title="查看账目详情">
+    <el-drawer :before-close="handleClose" :visible.sync="drawer" custom-class="fd-bill-detail-drawer" direction="rtl" size="450px" title="查看账目详情">
       <el-tabs v-model="tabIndex" tab-position="top" type="border-card" @tab-click="handleClick">
         <el-tab-pane label="账目信息" name="1" />
         <el-tab-pane label="操作记录" name="2" />
@@ -433,5 +433,57 @@ export default {
 }
 /deep/.el-tabs__header .el-tabs__item {
   line-height: 40px;
+}
+
+@media (max-width: 767px) {
+  /deep/ .fd-bill-detail-drawer {
+    width: 100% !important;
+  }
+
+  .contract-body {
+    padding: 12px;
+    height: calc(100vh - 110px);
+  }
+
+  .form-box {
+    display: block;
+
+    .form-item {
+      width: 100%;
+
+      /deep/ .el-form-item__content {
+        width: auto;
+      }
+    }
+  }
+
+  .remarks-wrap,
+  .content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .default {
+    width: 100%;
+    margin-top: 48px;
+  }
+
+  .invoice-body1 {
+    padding: 0 8px 0 4px !important;
+  }
+
+  .operationBox {
+    width: 100% !important;
+
+    .header {
+      height: auto;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+  }
+
+  .el-tabs--border-card {
+    width: 100%;
+  }
 }
 </style>

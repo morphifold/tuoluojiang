@@ -294,4 +294,10 @@ export default {
 .box-shadow {
   box-shadow: inset 0 -4px 4px -2px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+}
 </style>

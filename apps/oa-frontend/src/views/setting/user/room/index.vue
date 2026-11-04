@@ -386,4 +386,43 @@ export default {
     width: 100%;
   }
 }
+@media (max-width: 767px) {
+  .room-content {
+    margin-top: 20px;
+    height: auto;
+    padding-bottom: 80px;
+  }
+  .form-box {
+    padding: 0 12px;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  .flex-item {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .el-input,
+  .codeItem {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .upload-content {
+    .left {
+      width: 100%;
+    }
+    .right {
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+  .btn-box {
+    padding-left: 0;
+  }
+}
 </style>

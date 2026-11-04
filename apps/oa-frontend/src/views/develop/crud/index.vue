@@ -398,3 +398,33 @@ export default {
   cursor: pointer;
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  .head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .head .flex-tab {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .head .right {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+  .flex {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .flex .ml20 {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+  .flex .input {
+    width: 100% !important;
+  }
+}
+</style>

@@ -460,4 +460,31 @@ export default {
   margin-bottom: 12px;
   line-height: 13px;
 }
+@media (max-width: 767px) {
+  /deep/ .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .intro-box {
+    padding: 12px;
+  }
+  .form-height {
+    height: auto;
+  }
+  /deep/ .el-input,
+  /deep/ .el-cascader {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

@@ -14,8 +14,16 @@
           @showTextFn="showTextFn"
         ></formBox>
 
+        <div class="hr-stat-bar" title="当前页人数">
+          <div class="hr-stat-note">本页</div>
+          <div class="hr-stat-item" v-for="item in statCards" :key="item.label">
+            <div class="hr-stat-num">{{ item.value }}</div>
+            <div class="hr-stat-label">{{ item.label }}</div>
+          </div>
+        </div>
+
         <!-- 表格 -->
-        <div v-loading="pageLoading">
+        <div v-loading="pageLoading" class="table-box">
           <Table
             ref="table"
             :showText="showText"

@@ -175,4 +175,28 @@ export default {
     margin-bottom: 5px;
   }
 }
+@media (max-width: 767px) {
+  .ml20.mr20 {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  /deep/ .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  /deep/ .el-input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

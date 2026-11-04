@@ -266,4 +266,29 @@ export default {
 .p0 {
   padding: 20px 0 !important;
 }
+@media screen and (max-width: 768px) {
+  .header {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 8px;
+    .flex {
+      height: auto !important;
+    }
+  }
+  /deep/ .el-col-8 {
+    width: 100%;
+    max-width: 100%;
+  }
+  .content {
+    height: auto;
+    min-height: 280px;
+    border-right: none;
+    border-bottom: 1px solid #eeeeee;
+    .mobile-box,
+    .mobile-box-iframe {
+      min-height: 420px;
+    }
+  }
+}
 </style>

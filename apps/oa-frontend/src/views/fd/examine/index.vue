@@ -1,6 +1,6 @@
 ﻿<!-- 财务-付款审核页面 -->
 <template>
-  <div class="divBox">
+  <div class="divBox fd-examine-page">
     <el-card class="mb14 normal-page">
       <div class="from-s">
         <div class="flex-row flex-col">
@@ -124,6 +124,7 @@
       top="25vh"
       :append-to-body="true"
       :visible.sync="dialogVisible"
+      custom-class="fd-examine-refuse-dialog"
       width="540px"
     >
       <div class="line" />
@@ -553,6 +554,47 @@ export default {
     font-size: 13px;
   }
 }
+
+@media (max-width: 767px) {
+  .fd-examine-page {
+    .from-s .flex-row.flex-col {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: flex-start !important;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .from-s .mb20 {
+      margin-bottom: 0;
+      align-self: flex-start;
+    }
+
+    /deep/ .el-card__body {
+      padding: 12px !important;
+    }
+
+    .paginationClass {
+      justify-content: center;
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    /deep/ .el-table__fixed,
+    /deep/ .el-table__fixed-right {
+      display: none;
+    }
+
+    .footer {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .from {
+      margin: 0 12px;
+    }
+  }
+}
 </style>
 
 <style lang="scss">
@@ -597,6 +639,39 @@ export default {
     background: rgba(153, 153, 153, 0.05);
     border: 1px solid #999999;
     color: #999999;
+  }
+}
+
+@media (max-width: 767px) {
+  .fd-examine-refuse-dialog {
+    width: 95vw !important;
+    height: auto !important;
+    max-height: 90vh;
+    margin-top: 8vh !important;
+
+    .el-textarea__inner {
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+
+    .el-form-item__label {
+      float: none !important;
+      display: block;
+      width: 100% !important;
+      text-align: left !important;
+      padding: 0 0 4px !important;
+    }
+
+    .el-form-item__content {
+      margin-left: 0 !important;
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
   }
 }
 </style>

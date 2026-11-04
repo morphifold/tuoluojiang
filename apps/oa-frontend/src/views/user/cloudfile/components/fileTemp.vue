@@ -100,4 +100,13 @@ export default {
 /deep/ .el-input--small {
   width: 50%;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-input--small {
+    width: 100%;
+  }
+  .iframe {
+    width: 100%;
+  }
+}
 </style>

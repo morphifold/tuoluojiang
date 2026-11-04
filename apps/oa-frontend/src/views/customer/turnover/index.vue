@@ -14,7 +14,7 @@
     </el-card>
     <div class="item-info-card">
       <el-row :gutter="24" class="elRow">
-        <el-col :lg="8" :md="6" :sm="12" :xl="4">
+        <el-col :lg="8" :md="6" :sm="12" :xl="4" :xs="12">
           <div class="item-info-list">
             <el-card>
               <div class="item">
@@ -43,7 +43,7 @@
             </el-card>
           </div>
         </el-col>
-        <el-col :lg="8" :md="6" :sm="12" :xl="4">
+        <el-col :lg="8" :md="6" :sm="12" :xl="4" :xs="12">
           <div class="item-info-list">
             <el-card>
               <div class="item">
@@ -72,7 +72,7 @@
             </el-card>
           </div>
         </el-col>
-        <el-col :lg="8" :md="6" :sm="12" :xl="4">
+        <el-col :lg="8" :md="6" :sm="12" :xl="4" :xs="12">
           <div class="item-info-list">
             <el-card>
               <div class="item">
@@ -104,7 +104,7 @@
             </el-card>
           </div>
         </el-col>
-        <el-col :lg="8" :md="6" :sm="12" :xl="4" style="min-height: 1px">
+        <el-col :lg="8" :md="6" :sm="12" :xl="4" :xs="12" style="min-height: 1px">
           <div class="item-info-list">
             <el-card>
               <div class="item">
@@ -137,7 +137,7 @@
             </el-card>
           </div>
         </el-col>
-        <el-col :lg="8" :md="6" :sm="12" :xl="4">
+        <el-col :lg="8" :md="6" :sm="12" :xl="4" :xs="12">
           <div class="item-info-list">
             <el-card>
               <div class="item">
@@ -167,7 +167,7 @@
             </el-card>
           </div>
         </el-col>
-        <el-col :lg="8" :md="6" :sm="12" :xl="4">
+        <el-col :lg="8" :md="6" :sm="12" :xl="4" :xs="12">
           <div class="item-info-list">
             <el-card>
               <div class="item">
@@ -184,7 +184,7 @@
       </el-row>
     </div>
     <el-row :gutter="24">
-      <el-col :lg="24">
+      <el-col :lg="24" :xs="24" :sm="24">
         <el-card>
           <div class="statistics-title">业绩趋势</div>
           <div>
@@ -194,7 +194,7 @@
       </el-col>
     </el-row>
     <el-row :gutter="24">
-      <el-col :lg="12">
+      <el-col :lg="12" :xs="24" :sm="24" :md="24">
         <el-row class="mb14">
           <el-card>
             <div class="statistics-title">
@@ -239,7 +239,7 @@
           </el-card>
         </el-row>
       </el-col>
-      <el-col :lg="12">
+      <el-col :lg="12" :xs="24" :sm="24" :md="24">
         <el-card>
           <!-- 业绩排行榜 -->
           <div class="statistics-title">
@@ -1113,5 +1113,53 @@ export default {
 }
 .from-box /deep/ .search {
   margin-top: 0;
+}
+</style>
+<style lang="scss" scoped>
+@import '../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .mt50 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin-top: 16px;
+  }
+
+  .item-info-card /deep/ .el-card {
+    min-width: 0 !important;
+  }
+
+  /deep/ .el-card {
+    height: auto !important;
+    max-width: 100%;
+  }
+
+  .table-box > div {
+    height: auto !important;
+  }
+
+  /deep/ .el-table {
+    max-height: 70vh;
+  }
+
+  .default {
+    height: auto;
+    padding: 30px 0;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .statistics-title {
+    margin-bottom: 14px;
+  }
+
+  .item .num {
+    font-size: 18px;
+    word-break: break-all;
+  }
 }
 </style>

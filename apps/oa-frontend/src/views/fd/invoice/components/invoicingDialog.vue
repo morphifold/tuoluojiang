@@ -5,6 +5,7 @@
       :title="config.title"
       :visible.sync="dialogVisible"
       width="540px"
+      custom-class="fd-invoice-open-dialog"
       :close-on-click-modal="false"
       :append-to-body="true"
       :before-close="handleClose"
@@ -258,5 +259,57 @@ export default {
 }
 .dialog-footer {
   padding-top: 20px;
+}
+
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .fd-invoice-open-dialog {
+    width: 95vw !important;
+    margin-top: 6vh !important;
+
+    .el-dialog__body {
+      padding: 12px 14px;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .el-form-item__label {
+      float: none !important;
+      display: block;
+      width: 100% !important;
+      text-align: left !important;
+      line-height: 1.4 !important;
+      padding: 0 0 4px !important;
+    }
+
+    .el-form-item__content {
+      margin-left: 0 !important;
+    }
+
+    .el-input,
+    .el-select,
+    .el-textarea,
+    .el-date-editor,
+    .el-input-number {
+      width: 100% !important;
+    }
+
+    .avatar {
+      flex-wrap: wrap;
+      height: auto;
+    }
+
+    .dialog-footer {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dialog-footer .el-button {
+      flex: 1;
+      margin-left: 0;
+    }
+  }
 }
 </style>

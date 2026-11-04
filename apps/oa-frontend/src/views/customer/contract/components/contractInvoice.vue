@@ -590,3 +590,16 @@ export default {
   }
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .btn-box1 {
+    height: auto !important;
+  }
+
+  .addBox /deep/ .el-textarea__inner {
+    width: 100% !important;
+  }
+}
+</style>

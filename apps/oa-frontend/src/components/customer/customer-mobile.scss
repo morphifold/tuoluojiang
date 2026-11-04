@@ -1,0 +1,251 @@
+/* 客户 / 合同 CRM 移动端（< 768px）公共适配样式，由各页面在 scoped style 中引入 */
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+
+  /deep/ .el-drawer__header {
+    height: auto !important;
+    min-height: 56px;
+    padding: 10px 52px 10px 12px !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /deep/ .el-drawer__body {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    height: auto !important;
+    max-height: 92vh;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
+  }
+
+  /deep/ .el-dialog__body {
+    max-height: calc(92vh - 110px);
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  /* 抽屉头部信息栏（客户 / 合同 / 发票详情） */
+  .invoice-header {
+    flex-wrap: wrap;
+
+    .invoice-right {
+      width: 100% !important;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .txt1 {
+      word-break: break-all;
+    }
+
+    .txt2 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+
+      .title {
+        padding-left: 0 !important;
+      }
+    }
+  }
+
+  /* 子 Tab 在移动端横向滚动，不撑破抽屉 */
+  /deep/ .el-tabs--border-card {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /deep/ .el-tabs__nav-wrap {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &::after {
+      height: 0;
+    }
+  }
+
+  /deep/ .el-tabs__nav-scroll {
+    overflow-x: auto;
+  }
+
+  /deep/ .el-tabs__item {
+    padding: 0 12px !important;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* 详情表单：双列变单列 */
+  .form-box {
+    display: block !important;
+
+    .form-item {
+      width: 100% !important;
+      margin-bottom: 8px;
+
+      /deep/ .el-form-item__content {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+    }
+  }
+
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: auto !important;
+    padding: 0 0 4px !important;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+
+  /deep/ .el-form--inline .el-form-item {
+    display: block;
+    margin-right: 0;
+  }
+
+  /* 固定像素宽度的输入控件不超过容器（仅限表单 / 详情区域，避免影响工具栏按钮） */
+  .el-form,
+  .form-box,
+  .invoice,
+  .contract-body,
+  .description {
+    /deep/ .el-input,
+    /deep/ .el-input-number,
+    /deep/ .el-select,
+    /deep/ .el-cascader,
+    /deep/ .el-date-editor.el-input,
+    /deep/ .el-date-editor.el-input__inner,
+    /deep/ .el-textarea {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    /deep/ .el-textarea__inner {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+  }
+
+  /deep/ .el-date-editor--daterange,
+  /deep/ .el-date-editor--datetimerange {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /deep/ .el-table {
+    max-width: 100%;
+  }
+
+  /deep/ .table-box {
+    overflow-x: auto;
+  }
+
+  /deep/ .el-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  /deep/ .el-pagination__sizes,
+  /deep/ .el-pagination__jump {
+    display: none !important;
+  }
+
+  /* 统计 / 金额汇总横条：移动端 2 列流式排列 */
+  .amount,
+  .el-row.flex,
+  .flex-between,
+  .footer-expend,
+  .btn-box1 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .amount {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 8px;
+    width: 100% !important;
+
+    > div {
+      min-width: 0;
+      word-break: break-all;
+    }
+
+    .ml36 {
+      margin-left: 0 !important;
+    }
+  }
+
+  .el-row.flex > .amount {
+    width: 100% !important;
+    flex: 1 1 100%;
+  }
+
+  .btn-box1 {
+    height: auto !important;
+    gap: 8px;
+
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .el-button {
+      margin-left: 0 !important;
+    }
+  }
+
+  .footer-expend .expend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+  }
+
+  /* 客户设置类页面：左侧导航 / 中间设置块在移动端占满 */
+  .setting-container {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .assess-left {
+    height: auto !important;
+    max-height: 240px;
+    border-right: none !important;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .statistics-department {
+    flex-wrap: wrap;
+
+    .item {
+      width: 100% !important;
+    }
+  }
+}

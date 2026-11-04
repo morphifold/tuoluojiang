@@ -143,4 +143,40 @@ export default {
 .content {
   padding: 20px;
 }
+@media (max-width: 767px) {
+  /deep/ .el-tabs__nav {
+    margin-left: 0;
+  }
+  /deep/ .el-tabs__nav-scroll {
+    overflow-x: auto;
+  }
+  /deep/ .el-tabs__item {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 12px;
+  }
+  .content {
+    padding: 12px;
+  }
+  /deep/ .el-scrollbar {
+    height: auto !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  /deep/ .el-input,
+  /deep/ .el-select,
+  /deep/ .el-cascader,
+  /deep/ .el-textarea,
+  /deep/ .el-date-editor,
+  /deep/ .el-input-number {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

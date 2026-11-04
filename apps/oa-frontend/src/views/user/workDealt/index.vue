@@ -224,4 +224,19 @@ export default {
     text-align: center;
   }
 }
+
+@media (max-width: 767px) {
+  .dealt-content {
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 0 4px;
+  }
+  .task-list .task-list-right {
+    min-width: 0;
+    p {
+      word-break: break-word;
+    }
+  }
+}
 </style>

@@ -202,4 +202,19 @@ export default {
   padding-left: 14px;
   padding-right: 14px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-col-5,
+  /deep/ .el-col-19 {
+    width: 100%;
+    float: none;
+  }
+  .left .tree-box {
+    max-height: 220px;
+    overflow: auto;
+  }
+  .right {
+    border-left: none;
+    border-top: 1px solid #eeeeee;
+  }
+}
 </style>

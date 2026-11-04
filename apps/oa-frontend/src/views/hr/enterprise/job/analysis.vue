@@ -4,7 +4,12 @@
     <el-card class="normal-page">
       <el-row>
         <!-- 左边结构 -->
-        <el-col v-bind="gridl">
+        <el-col v-bind="gridl" class="hr-tree-pane" :class="{ 'is-collapsed': !orgTreeOpen }">
+          <div class="hr-tree-toggle" @click="orgTreeOpen = !orgTreeOpen">
+            <span>{{ orgTreeOpen ? '收起部门' : '展开部门' }}</span>
+            <i :class="orgTreeOpen ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
+          </div>
+          <div class="hr-tree-body">
           <div class="tree-box">
             <div class="clearfix el-card__header">
               <el-input
@@ -34,9 +39,10 @@
               </div>
             </el-tree>
           </div>
+          </div>
         </el-col>
         <!-- 右边结构 -->
-        <el-col class="right" v-bind="gridr">
+        <el-col class="right hr-main-pane" v-bind="gridr">
           <oaFromBox
             v-if="search.length > 0"
             :isAddBtn="false"
@@ -151,6 +157,7 @@ export default {
 
   data() {
     return {
+      orgTreeOpen: true,
       treeData: [],
       height: 'calc(100vh - 180px)',
       defaultFrame: [],
@@ -348,6 +355,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .over-text {
   overflow: hidden;
   text-overflow: ellipsis;

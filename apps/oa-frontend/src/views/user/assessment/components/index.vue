@@ -136,4 +136,23 @@ export default {
 /deep/.el-cascader {
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .el-drawer {
+    width: 100% !important;
+  }
+  .station /deep/ .el-drawer__body {
+    padding: 12px 12px 72px;
+  }
+  .station /deep/ img {
+    max-width: 100%;
+    height: auto;
+  }
+  .from-foot-btn,
+  .button {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}
 </style>

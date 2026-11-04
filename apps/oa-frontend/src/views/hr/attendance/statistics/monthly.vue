@@ -199,6 +199,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 /deep/ .el-table thead.is-group th {
   background-color: rgba(247, 251, 255, 1);
   border-color: #fff;

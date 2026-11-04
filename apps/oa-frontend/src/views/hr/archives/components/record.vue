@@ -5,6 +5,7 @@
       :width="title == '调薪弹窗' ? '680px' : '470px'"
       :show-close="status == 'add' ? false : true"
       append-to-body
+      custom-class="hr-record-dialog"
     >
       <div class="header" slot="title">
         <span>{{ title }}</span>
@@ -503,11 +504,30 @@ export default {
     margin-bottom: 28px;
   }
 }
+@media (max-width: 767px) {
+  ::v-deep .el-input,
+  ::v-deep .el-date-editor,
+  ::v-deep .el-textarea {
+    width: 100% !important;
+  }
+  .change-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+}
 </style>
 <style>
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
   margin: 0;
+}
+@media (max-width: 767px) {
+  .hr-record-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
 }
 </style>

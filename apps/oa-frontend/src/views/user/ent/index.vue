@@ -247,4 +247,36 @@ export default {
   position: absolute;
   top: 5px;
 }
+
+@media (max-width: 767px) {
+  .table-container {
+    margin-left: 0 !important;
+    width: 100%;
+    padding-top: 8px;
+    box-sizing: border-box;
+  }
+  .seach-box {
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .seach-box /deep/ .el-input {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  /deep/ .el-col {
+    width: 100%;
+    max-width: 100%;
+  }
+  /deep/ .el-table {
+    width: 100%;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+}
 </style>

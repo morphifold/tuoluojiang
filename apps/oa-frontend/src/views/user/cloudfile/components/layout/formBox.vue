@@ -533,4 +533,32 @@ export default {
 .color-mindmap {
   font-size: 14px;
 }
+
+@media (max-width: 767px) {
+  .header {
+    width: 100%;
+  }
+  .header-16,
+  .header-left,
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .header /deep/ .el-input {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .header /deep/ .el-breadcrumb {
+    flex-wrap: wrap;
+    line-height: 1.6;
+  }
+  .sort-content {
+    left: 0 !important;
+    right: auto;
+  }
+}
 </style>

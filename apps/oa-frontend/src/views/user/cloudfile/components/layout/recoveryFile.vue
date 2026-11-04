@@ -247,4 +247,27 @@ export default {
   margin-right: 6px;
   vertical-align: middle;
 }
+
+@media (max-width: 767px) {
+  .box {
+    height: auto !important;
+    padding: 0 10px 12px;
+    box-sizing: border-box;
+  }
+  /deep/ .flex,
+  /deep/ .flex-row,
+  /deep/ .from-s {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /deep/ .el-input,
+  /deep/ .el-select {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  /deep/ .el-table {
+    width: 100%;
+    height: auto !important;
+  }
+}
 </style>

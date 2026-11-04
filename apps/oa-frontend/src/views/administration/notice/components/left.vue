@@ -197,4 +197,13 @@ export default {
   border-radius: 5px;
   background: #f0f2f5;
 }
+@media screen and (max-width: 768px) {
+  .assess-left {
+    height: auto;
+    max-height: 240px;
+    margin: 0 0 12px 0;
+    border-right: none;
+    border-bottom: 1px solid #eeeeee;
+  }
+}
 </style>

@@ -200,4 +200,11 @@ export default {
   border-radius: 50%;
   margin-right: 4px;
 }
+@media screen and (max-width: 768px) {
+  .search {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+  }
+}
 </style>

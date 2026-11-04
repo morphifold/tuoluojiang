@@ -459,6 +459,8 @@ export default {
       this.isMobile = window.innerWidth < 768
     }
     window.addEventListener('resize', this.handleResize)
+    var formItem = this.$el && this.$el.closest ? this.$el.closest('.el-form-item') : null
+    if (formItem) formItem.classList.add('invoice-select-form-item')
   },
   beforeDestroy() {
     if (this.handleResize) {

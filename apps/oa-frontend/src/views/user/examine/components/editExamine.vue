@@ -686,7 +686,7 @@ export default {
 }
 
 /deep/ .edit-examine-form {
-  .el-form-item:has(.invoice-select-component) {
+  .invoice-select-form-item {
     .el-form-item__label {
       float: none !important;
       display: block !important;

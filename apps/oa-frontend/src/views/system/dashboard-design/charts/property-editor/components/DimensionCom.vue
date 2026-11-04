@@ -476,4 +476,11 @@ export default {
   width: 0.9em;
   height: 0.9em;
 }
+@media (max-width: 767px) {
+  .decimal-places .el-input-number,
+  .decimal-places .el-select {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
 </style>

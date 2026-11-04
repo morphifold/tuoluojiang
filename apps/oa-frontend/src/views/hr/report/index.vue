@@ -312,6 +312,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../_hr-mobile.scss';
 .textover3 {
   display: -webkit-box;
   -webkit-box-orient: vertical;

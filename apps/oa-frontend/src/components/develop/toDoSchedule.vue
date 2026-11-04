@@ -311,4 +311,18 @@ export default {
   height: 0;
   width: 0;
 }
+@media (max-width: 767px) {
+  .flex-between {
+    flex-wrap: wrap;
+    align-items: stretch;
+    height: auto;
+  }
+  .flex-between > .el-select,
+  .flex-between > .el-date-editor,
+  .flex-between > .ml14 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
 </style>

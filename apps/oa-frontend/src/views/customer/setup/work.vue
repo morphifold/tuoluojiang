@@ -430,3 +430,28 @@ export default {
   padding-left: 0;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .v-height-flag {
+    height: auto !important;
+  }
+
+  .assess-right {
+    padding-left: 0 !important;
+    margin-top: 12px;
+  }
+
+  .cr-bottom-button {
+    position: static !important;
+    height: auto !important;
+    padding: 12px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+}
+</style>
+

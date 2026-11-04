@@ -101,4 +101,20 @@ export default {
 .dialog-footer {
   text-align: right;
 }
+
+@media (max-width: 767px) {
+  .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+    margin-top: 8vh !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

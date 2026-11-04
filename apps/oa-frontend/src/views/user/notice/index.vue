@@ -571,4 +571,54 @@ export default {
 /deep/.el-pagination {
   margin-top: 40px;
 }
+
+@media (max-width: 767px) {
+  .divBox {
+    .flex-box {
+      flex-direction: column;
+    }
+    .flex-left,
+    .flex-right {
+      width: 100%;
+      margin: 0;
+    }
+    .card-box,
+    .notice-box {
+      height: auto;
+      max-height: none;
+    }
+    .flex-left .main {
+      max-width: 100%;
+    }
+  }
+  .news-right {
+    width: 100%;
+    min-height: 0;
+    margin-top: 12px;
+  }
+  .content .notice-nav-content {
+    overflow-x: auto;
+  }
+  .content .notice-content li {
+    .notice-left {
+      width: 100%;
+    }
+    .notice-right {
+      width: 100%;
+      max-height: none;
+      .image {
+        width: 100%;
+        max-width: 100%;
+        height: 160px;
+      }
+    }
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+}
 </style>

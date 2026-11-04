@@ -150,4 +150,27 @@ export default {
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .divBox .header {
+    height: auto;
+    align-items: flex-start;
+    .left {
+      padding-left: 12px;
+    }
+    .right {
+      flex: 1;
+      min-width: 0;
+      margin-left: 8px;
+      .title {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .tab /deep/ .el-tabs__nav-wrap {
+        overflow-x: auto;
+      }
+    }
+  }
+}
 </style>

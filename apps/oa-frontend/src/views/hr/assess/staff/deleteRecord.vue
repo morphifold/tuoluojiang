@@ -98,6 +98,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 /deep/ .el-drawer__body {
   height: 100%;
   overflow-y: auto;

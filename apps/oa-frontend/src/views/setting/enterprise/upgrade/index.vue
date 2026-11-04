@@ -642,4 +642,27 @@ export default {
 /deep/ .el-dialog__body {
   padding: 0;
 }
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+  .dialog1-content,
+  .exoneration-header,
+  .dialog1 .footer,
+  .d-upgrade,
+  .d-upgrade .img,
+  .dialog .dialog-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+  .dialog1 {
+    height: auto;
+    padding-bottom: 70px;
+  }
+  .dialog {
+    height: auto;
+  }
+}
 </style>

@@ -1,9 +1,12 @@
 <template>
   <div class="tree-box">
-    <div class="el-card__header clearfix">
+    <div class="el-card__header clearfix tree-header">
       <el-input size="small" v-model="filterText" clearable placeholder="搜索部门" prefix-icon="el-icon-search" />
+      <button type="button" class="tree-fold" @click="treeFolded = !treeFolded">
+        {{ treeFolded ? '展开部门' : '收起部门' }}
+      </button>
     </div>
-    <div v-height>
+    <div v-show="!treeFolded" v-height class="tree-scroll">
       <el-scrollbar style="height: 100%">
         <el-tree
           ref="tree"
@@ -47,6 +50,7 @@ export default {
   data() {
     return {
       filterText: '',
+      treeFolded: false,
       defaultProps: {
         children: 'children',
         label: 'label'
@@ -148,5 +152,35 @@ export default {
   border-right: 1px solid #eeeeee;
   background: #fff;
   margin: -20px 0 -20px -20px;
+}
+.tree-fold {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .tree-fold {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 12px;
+    border: none;
+    border-radius: 14px;
+    background: #f5f7fa;
+    color: #1890ff;
+    font-size: 12px;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  .tree-box {
+    max-height: 280px;
+    overflow: hidden;
+    border-right: none;
+    border-bottom: 1px solid #eeeeee;
+    margin: 0 0 8px 0;
+  }
+  .tree-scroll {
+    height: 220px !important;
+    max-height: 220px !important;
+    overflow: auto;
+  }
 }
 </style>

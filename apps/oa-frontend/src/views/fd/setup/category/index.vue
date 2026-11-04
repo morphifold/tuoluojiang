@@ -1,6 +1,6 @@
 <!-- 财务-财务设置-发票类目 -->
 <template>
-  <div class="divBox table-box">
+  <div class="divBox table-box fd-setup-category">
     <el-card class="normal-page">
       <oaFromBox
         :isViewSearch="false"
@@ -133,4 +133,53 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  .fd-setup-category {
+    /deep/ .el-card__body {
+      padding: 12px !important;
+    }
+
+    /deep/ .header-16,
+    /deep/ .search,
+    /deep/ .search > .flex,
+    /deep/ .header-16 > .flex {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .header-16 > .flex {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .paginationClass {
+      justify-content: center;
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    /deep/ .el-dialog {
+      width: 95vw !important;
+      margin-top: 6vh !important;
+    }
+
+    /deep/ .el-dialog .el-form-item__label {
+      float: none !important;
+      display: block;
+      width: 100% !important;
+      text-align: left !important;
+      padding: 0 0 4px !important;
+    }
+
+    /deep/ .el-dialog .el-form-item__content {
+      margin-left: 0 !important;
+    }
+
+    /deep/ .el-dialog .el-input,
+    /deep/ .el-dialog .el-input-number {
+      width: 100% !important;
+    }
+  }
+}
+</style>

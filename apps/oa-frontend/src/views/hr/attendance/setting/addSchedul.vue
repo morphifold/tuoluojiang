@@ -641,6 +641,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .nameFn {
   cursor: pointer;
   width: 100%;

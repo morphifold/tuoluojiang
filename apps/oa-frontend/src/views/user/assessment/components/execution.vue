@@ -1308,4 +1308,65 @@ export default {
   background-color: #fff !important;
 }
 // #
+
+@media (max-width: 767px) {
+  .flex,
+  .flex-between {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .current-table {
+    overflow-x: auto;
+  }
+  .current-table-title {
+    flex-wrap: wrap;
+    height: auto;
+    .left,
+    .right {
+      width: 100%;
+      height: auto;
+      line-height: 1.5;
+    }
+  }
+  .current-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 8;
+    margin-top: 12px;
+    padding: 12px 8px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  }
+  .current-footer /deep/ .el-button {
+    margin: 4px;
+  }
+  .comment-list /deep/ .el-col,
+  .current-bottom /deep/ .el-col {
+    width: 100%;
+    max-width: 100%;
+  }
+  .current-dialog {
+    flex-direction: column;
+    align-items: stretch;
+    span,
+    div {
+      width: 100%;
+      text-align: left;
+    }
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+    margin-top: 8vh !important;
+  }
+  /deep/ .el-input,
+  /deep/ .el-textarea,
+  /deep/ .el-input-number {
+    max-width: 100%;
+  }
+  /deep/ img {
+    max-width: 100%;
+    height: auto;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 ﻿<!-- 财务-财务科目-收入/支出分类页面 -->
 <template>
-  <div class="divBox">
+  <div class="divBox fd-setup-cate">
     <el-card :body-style="{ padding: '20px 20px 0 20px' }" class="employees-card-bottom card-box">
       <oaFromBox
         :isTotal="false"
@@ -245,5 +245,53 @@ export default {
 /deep/ .el-drawer__body {
   height: 100%;
   overflow-y: auto;
+}
+
+@media (max-width: 767px) {
+  .fd-setup-cate {
+    .card-box {
+      height: auto;
+      max-height: none;
+      overflow: visible;
+    }
+
+    /deep/ .el-card__body {
+      padding: 12px 12px 0 12px !important;
+    }
+
+    /deep/ .header-16,
+    /deep/ .search,
+    /deep/ .search > .flex {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .header-16 > .flex,
+    /deep/ .search > .flex {
+      width: 100%;
+    }
+
+    /deep/ .form-box {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /deep/ .form-box .el-input,
+    /deep/ .form-box .el-select,
+    /deep/ .form-box .el-cascader,
+    /deep/ .form-box .el-date-editor {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+
+    .table-box {
+      overflow-x: auto;
+    }
+
+    /deep/ .el-table__fixed,
+    /deep/ .el-table__fixed-right {
+      display: none;
+    }
+  }
 }
 </style>

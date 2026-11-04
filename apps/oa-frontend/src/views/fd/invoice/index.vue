@@ -1,6 +1,6 @@
 ﻿<!-- 财务-发票审核页面 -->
 <template>
-  <div class="divBox">
+  <div class="divBox fd-invoice-page">
     <el-card :body-style="{ padding: '20px 20px 0 20px' }" class="mb14 normal-page">
       <oaFromBox
         :search="search"
@@ -15,7 +15,7 @@
           <img alt="" class="img" src="../../../assets/images/defd.png" />
           <span class="text"> 暂无发票数据</span>
         </div>
-        <div v-else style="width: 100%; overflow: auto" :style="{ height: tableHeight }">
+        <div v-else class="invoice-list-scroll" style="width: 100%; overflow: auto" :style="{ height: tableHeight }">
           <!-- 发票页面 -->
           <div v-for="(item, index) in tableData" :key="index" class="table-box">
             <div>
@@ -256,7 +256,7 @@
     <invoicingDialog ref="invoicingDialog" :config="invoicingDialog" @isOk="isOk"></invoicingDialog>
     <!-- 申请作废 -->
     <div class="toVoid">
-      <el-dialog :visible.sync="dialogFormVisible" title="作废" width="600px">
+      <el-dialog :visible.sync="dialogFormVisible" custom-class="fd-invoice-void-dialog" title="作废" width="600px">
         <div class="mt20">
           <el-form ref="voidData" :model="voidDataForm" class="from">
             <el-form-item
@@ -276,7 +276,7 @@
       </el-dialog>
     </div>
 
-    <el-dialog :top="`7vh`" :visible.sync="dialogInvoiceVisible" class="headerbtn" width="90%" @close="dialogClose">
+    <el-dialog :top="`7vh`" :visible.sync="dialogInvoiceVisible" class="headerbtn" custom-class="fd-invoice-frame-dialog" width="90%" @close="dialogClose">
       <iframe v-if="invoiceUri" :src="invoiceUri" frameborder="0" height="650" width="100%"></iframe>
     </el-dialog>
   </div>
@@ -833,6 +833,121 @@ export default {
   position: absolute;
   top: 12px;
   right: 25px;
+}
+
+@media (max-width: 767px) {
+  .fd-invoice-page {
+    /deep/ .el-card__body {
+      padding: 12px 12px 0 12px !important;
+    }
+
+    /deep/ .header-16,
+    /deep/ .search,
+    /deep/ .search > .flex {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .search > .flex {
+      width: 100%;
+    }
+
+    /deep/ .form-box {
+      width: calc(50% - 4px);
+      box-sizing: border-box;
+    }
+
+    /deep/ .form-box.full-width {
+      width: 100%;
+    }
+
+    /deep/ .form-box .el-input,
+    /deep/ .form-box .el-select,
+    /deep/ .form-box .el-cascader,
+    /deep/ .form-box .el-date-editor {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+
+    .invoice-list-scroll {
+      height: auto !important;
+      max-height: none !important;
+    }
+
+    .table-box {
+      .header {
+        height: auto;
+        min-height: 48px;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 12px;
+
+        .left {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px 8px;
+          line-height: 1.4;
+        }
+      }
+
+      .content {
+        flex-direction: column;
+        padding: 12px 12px 0;
+
+        .line {
+          position: static;
+          width: 100%;
+          height: 0;
+          border-left: none;
+          border-bottom: 1px dashed #ebf5ff;
+          margin: 0 0 16px;
+          transform: none;
+        }
+
+        .left,
+        .right {
+          width: 100%;
+          flex: none;
+        }
+      }
+    }
+
+    .page-fixed {
+      position: static !important;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .toVoid /deep/ .fd-invoice-void-dialog {
+      width: 95vw !important;
+      height: auto !important;
+      max-height: 90vh;
+    }
+
+    .toVoid /deep/ .el-textarea__inner {
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+
+    .toVoid .from {
+      margin: 0 12px;
+    }
+
+    .footer {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .fd-invoice-frame-dialog {
+      width: 95vw !important;
+      margin-top: 4vh !important;
+    }
+
+    .headerbtn /deep/ iframe {
+      height: 70vh;
+    }
+  }
 }
 </style>
 

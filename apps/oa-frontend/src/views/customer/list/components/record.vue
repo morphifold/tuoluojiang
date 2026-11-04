@@ -431,3 +431,12 @@ export default {
   background-color: none;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  /deep/ .el-timeline-item__wrapper {
+    padding-left: 20px;
+  }
+}
+</style>

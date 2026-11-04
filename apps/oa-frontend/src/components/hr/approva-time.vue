@@ -189,6 +189,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../views/hr/_hr-mobile.scss';
 .el-form--label-top .el-form-item__label {
   float: none;
   display: inline-block;

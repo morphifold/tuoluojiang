@@ -277,4 +277,9 @@ export default {
   background: #fff;
   margin: -20px 0 -20px -20px;
 }
+@media (max-width: 767px) {
+  .tree-box {
+    margin: 0;
+  }
+}
 </style>

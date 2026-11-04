@@ -412,3 +412,17 @@ export default {
   font-size: 12px;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .footer {
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .text-right {
+      text-align: left !important;
+    }
+  }
+}
+</style>

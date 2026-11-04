@@ -140,6 +140,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .header {
   width: 100%;
   height: 30px;

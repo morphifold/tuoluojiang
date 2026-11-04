@@ -482,4 +482,15 @@ export default {
 .flex-between {
   height: 32px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  .point {
+    max-width: 160px;
+  }
+  /deep/ .el-drawer__header {
+    padding: 10px 12px;
+  }
+}
 </style>

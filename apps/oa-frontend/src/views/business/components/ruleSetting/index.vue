@@ -220,4 +220,22 @@ export default {
 .el-icon-arrow-down {
   line-height: 38px;
 }
+@media screen and (max-width: 768px) {
+  .ruleSetting {
+    height: auto;
+  }
+  .plan-footer-one {
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .select-bar {
+    flex-wrap: wrap;
+  }
+  /deep/ .el-select,
+  /deep/ .el-input {
+    max-width: 100%;
+  }
+}
 </style>

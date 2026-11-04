@@ -9,6 +9,7 @@
       :append-to-body="true"
       :before-close="handleClose"
       :size="`65%`"
+      class="oa-m-drawer"
     >
       <div class="table-box">
         <div class="mb10 flex-between">
@@ -152,5 +153,13 @@ export default {
   margin-left: 10px;
   cursor: pointer;
   color: #1890ff;
+}
+</style>
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-drawer__wrapper.oa-m-drawer .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 </style>

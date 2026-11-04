@@ -88,6 +88,7 @@
           placement="bottom-start"
           trigger="manual"
           width="750"
+          popper-class="oa-m-popover"
         >
           <!-- 高级筛选 -->
           <div class="condition-box">
@@ -1053,5 +1054,42 @@ export default {
 }
 .el-icon-arrow-down {
   /* margin-left: 6px; */
+}
+</style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  .flex-between {
+    flex-wrap: wrap;
+  }
+  .lh-center {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+  .flex-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .flex-box .left,
+  .flex-box .center,
+  .flex-box .right {
+    width: 100%;
+    min-width: 0;
+  }
+  .flex-box .left {
+    flex-wrap: wrap;
+  }
+  .flex-box .right {
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+}
+</style>
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-popover.oa-m-popover {
+    width: 92vw !important;
+    max-width: 92vw !important;
+  }
 }
 </style>

@@ -393,4 +393,17 @@ export default {
 /deep/ .el-dialog__body {
   padding-top: 0;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-dialog {
+    width: 92% !important;
+    margin-top: 8vh !important;
+  }
+  .dialog-footer {
+    margin: 0;
+    padding: 0;
+  }
+  .flex {
+    flex-wrap: wrap;
+  }
+}
 </style>

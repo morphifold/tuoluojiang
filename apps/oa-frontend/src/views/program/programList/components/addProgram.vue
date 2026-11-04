@@ -520,4 +520,22 @@ export default {
     margin-right: 4px;
   }
 }
+@media screen and (max-width: 768px) {
+  .stationBox {
+    width: 100%;
+    margin-top: 12px;
+    padding: 0 12px 20px;
+    box-sizing: border-box;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: 100% !important;
+    text-align: left;
+    line-height: 22px;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

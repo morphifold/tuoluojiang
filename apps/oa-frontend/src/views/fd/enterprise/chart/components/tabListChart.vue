@@ -119,4 +119,36 @@ export default {
   transition: all 0.5s ease-in-out;
   transform: translateY(-54px);
 }
+
+@media (max-width: 767px) {
+  .tab-list li {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    span:nth-of-type(1) {
+      width: 36px;
+      flex: none;
+    }
+
+    span:nth-of-type(2) {
+      width: auto;
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    span:nth-of-type(3) {
+      width: 72px;
+      flex: none;
+    }
+
+    span:nth-of-type(4) {
+      width: 64px;
+      flex: none;
+    }
+  }
+}
 </style>

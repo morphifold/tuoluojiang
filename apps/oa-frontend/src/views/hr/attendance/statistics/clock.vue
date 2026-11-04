@@ -151,6 +151,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .mb50 {
   margin-bottom: 50px;
 }

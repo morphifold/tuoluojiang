@@ -175,4 +175,13 @@ export default {
     margin-bottom: 0;
   }
 }
+
+@media (max-width: 767px) {
+  .el-drawer {
+    width: 100% !important;
+  }
+  .content {
+    padding: 12px 14px 24px;
+  }
+}
 </style>

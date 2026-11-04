@@ -131,4 +131,10 @@ export default {
 /deep/.el-cascader {
   width: 100%;
 }
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

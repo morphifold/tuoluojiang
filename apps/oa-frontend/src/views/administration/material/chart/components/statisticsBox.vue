@@ -97,4 +97,12 @@ export default {
 /deep/.el-form-item--medium .el-form-item__content {
   line-height: 30px;
 }
+@media screen and (max-width: 768px) {
+  .flex-row {
+    flex-wrap: wrap;
+  }
+  /deep/ .el-date-editor {
+    width: 100% !important;
+  }
+}
 </style>

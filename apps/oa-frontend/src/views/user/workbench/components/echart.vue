@@ -193,4 +193,15 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .assess {
+    height: auto;
+    max-height: 420px;
+    max-width: 100%;
+  }
+  .name {
+    word-break: break-word;
+  }
+}
 </style>

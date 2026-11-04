@@ -24,7 +24,7 @@
     <Verify
       @success="success"
       captchaType="clickWord"
-      :imgSize="{ width: '330px', height: '155px' }"
+      :imgSize="verifyImgSize"
       ref="verify"
     ></Verify>
   </div>
@@ -73,7 +73,13 @@ export default {
   computed: {
     designerDsv() {
       return this.globalDsv
-    }
+    },
+    verifyImgSize() {
+      if (typeof window !== 'undefined' && window.innerWidth < 768) {
+        return { width: '280px', height: '155px' }
+      }
+      return { width: '330px', height: '155px' }
+    },
   },
 
   created() {
@@ -166,6 +172,13 @@ export default {
   .p10 {
     width: 100%;
     padding: 0 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content {
+    width: 100%;
+    padding: 20px 12px;
+    box-sizing: border-box;
   }
 }
 </style>

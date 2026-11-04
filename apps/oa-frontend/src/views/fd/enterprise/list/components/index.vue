@@ -9,6 +9,7 @@
       :wrapper-closable="false"
       :before-close="handleClose"
       size="550px"
+      custom-class="fd-bill-edit-drawer"
     >
       <formCreate v-if="rules.length > 0" ref="fc" :option="option" :rule="rules" />
 
@@ -156,5 +157,43 @@ export default {
 /deep/ .el-select,
 /deep/ .el-date-editor {
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .station /deep/ .fd-bill-edit-drawer {
+    width: 100% !important;
+  }
+
+  .station /deep/ .el-drawer__body {
+    padding: 12px 12px 64px 12px;
+  }
+
+  .station /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .station /deep/ .el-form-item__label {
+    float: none !important;
+    display: block;
+    width: 100% !important;
+    text-align: left !important;
+    line-height: 1.4 !important;
+    padding: 0 0 4px !important;
+  }
+
+  .station /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+
+  .station /deep/ .el-input,
+  .station /deep/ .el-select,
+  .station /deep/ .el-cascader,
+  .station /deep/ .el-date-editor,
+  .station /deep/ .el-input-number,
+  .station /deep/ .el-textarea {
+    width: 100% !important;
+  }
 }
 </style>

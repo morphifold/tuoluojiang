@@ -170,4 +170,18 @@ export default {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .plan-tabs-content {
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .btn-create {
+    margin-top: 0;
+  }
+  .plan-tabs-content /deep/ .el-tabs__nav-wrap {
+    overflow-x: auto;
+  }
+}
 </style>

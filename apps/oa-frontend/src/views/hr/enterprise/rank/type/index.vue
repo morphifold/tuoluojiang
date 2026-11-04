@@ -98,4 +98,6 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import '../../../_hr-mobile.scss';
+</style>

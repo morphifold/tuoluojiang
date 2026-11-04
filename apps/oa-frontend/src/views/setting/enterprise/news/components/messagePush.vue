@@ -164,4 +164,21 @@ export default {
     color: #606266;
   }
 }
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .content {
+    padding: 12px;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

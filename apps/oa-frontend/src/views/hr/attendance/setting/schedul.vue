@@ -261,6 +261,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .fromx {
   display: flex;
   justify-content: space-between;

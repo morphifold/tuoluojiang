@@ -81,7 +81,7 @@ export default {
       ],
       fromData: {
         title: '创建应用',
-        width: '650px',
+        width: typeof window !== 'undefined' && window.innerWidth < 768 ? '100%' : '650px',
         type: 'add',
         btnText: '创建'
       },
@@ -292,6 +292,14 @@ export default {
     font-weight: 400;
     font-size: 12px;
     color: #606266;
+  }
+}
+@media screen and (max-width: 768px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+  .item {
+    min-height: 140px;
   }
 }
 </style>

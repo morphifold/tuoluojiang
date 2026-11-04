@@ -373,4 +373,20 @@ export default {
   align-items: center !important;
   justify-content: space-between;
 }
+
+@media (max-width: 767px) {
+  .left-box {
+    height: auto;
+    max-height: 460px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .dealt-list /deep/ .el-checkbox-group .flex {
+    max-width: 100%;
+  }
+  /deep/ .el-calendar-table .el-calendar-day {
+    height: 36px;
+    padding: 0;
+  }
+}
 </style>

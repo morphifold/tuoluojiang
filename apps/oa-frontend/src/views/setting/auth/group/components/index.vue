@@ -7,6 +7,7 @@
       :modal="true"
       :append-to-body="true"
       :before-close="handleClose"
+      custom-class="oa-m-dialog"
     >
       <formCreate v-if="rules.length > 0" ref="fc" :option="option" :rule="rules" />
       <div slot="footer" class="dialog-footer">
@@ -131,5 +132,14 @@ export default {
 }
 /deep/.el-cascader {
   width: 100%;
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-dialog.oa-m-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
 }
 </style>

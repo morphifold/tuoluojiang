@@ -283,4 +283,14 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .drawer-title {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
 </style>

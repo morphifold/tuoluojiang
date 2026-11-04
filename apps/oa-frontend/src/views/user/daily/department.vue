@@ -99,8 +99,8 @@
       </div>
 
       <!-- 汇报统计页面 -->
-      <el-row v-if="activeVal == '4'" class="flexBox">
-        <el-col :span="14" class="left">
+      <el-row v-if="activeVal == '4'" class="flexBox daily-stat-row">
+        <el-col :span="14" :xs="24" class="left">
           <div class="title">
             <oaFromBox
               :isAddBtn="false"
@@ -164,7 +164,7 @@
             @current-change="handleChange"
           />
         </el-col>
-        <el-col :span="10" class="right">
+        <el-col :span="10" :xs="24" class="right">
           <!-- 右边日历 -->
           <calendar
             v-if="tableFrom.types !== 2"
@@ -1309,5 +1309,63 @@ export default {
 .divBox .el-pagination {
   margin-top: 30px;
   padding-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .divBox {
+    margin: 8px !important;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  .from-s .flex-row,
+  .from-s .flex-col {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  /deep/ .el-tabs__nav-wrap {
+    overflow-x: auto;
+  }
+  /deep/ .el-tabs__nav {
+    display: flex;
+    float: none;
+  }
+  /deep/ .el-card__body {
+    overflow-x: auto;
+  }
+  .daily-stat-row.flexBox {
+    flex-direction: column;
+    height: auto;
+  }
+  .flexBox .left,
+  .flexBox .right {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none;
+    height: auto;
+    border-right: none;
+    padding-right: 0;
+  }
+  .flexBox .left .title {
+    flex-wrap: wrap;
+    gap: 6px;
+    height: auto;
+  }
+  .flexBox .left .classification {
+    padding: 8px;
+    height: auto;
+    flex-wrap: wrap;
+    .content {
+      width: 33.33%;
+    }
+  }
+  .popoverWidth {
+    width: 280px;
+    max-width: 86vw;
+    height: auto;
+  }
+  .monthBox div {
+    margin-bottom: 16px !important;
+  }
 }
 </style>

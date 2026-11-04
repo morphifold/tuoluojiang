@@ -126,4 +126,17 @@ export default {
   height: calc(100% - 14px);
   background: #fff;
 }
+
+@media (max-width: 767px) {
+  .tree-box {
+    margin-left: 0;
+    height: auto;
+    max-height: 50vh;
+    overflow: auto;
+  }
+  .edit-box {
+    left: 0;
+    right: auto;
+  }
+}
 </style>

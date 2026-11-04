@@ -117,6 +117,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../views/hr/_hr-mobile.scss';
 .flex-box span {
   margin-right: 6px;
 }

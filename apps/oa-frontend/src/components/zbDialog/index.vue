@@ -90,4 +90,18 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+@media (max-width: 767px) {
+  .mldialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .mldialog.isFullSceen {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+}
+</style>

@@ -516,3 +516,37 @@ export default {
   }
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  .examineCard {
+    height: auto;
+    padding-bottom: 8px;
+  }
+  .examineCard /deep/ .el-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .examineCard /deep/ .el-col {
+    width: 100%;
+    max-width: 100%;
+    float: none;
+  }
+  /deep/ .el-tabs__nav-scroll {
+    overflow-x: auto;
+  }
+  .card-box .main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
+</style>

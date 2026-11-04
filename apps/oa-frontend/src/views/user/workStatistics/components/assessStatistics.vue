@@ -380,4 +380,21 @@ body .el-month-table td.start-date .cell,
   margin-right: 10px;
   margin-left: 0;
 }
+
+@media (max-width: 767px) {
+  .statistics {
+    height: auto;
+    min-height: 420px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .statistics-con {
+    width: 100%;
+    height: 320px;
+  }
+  #statistics-con {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
 </style>

@@ -317,3 +317,11 @@ export default {
   line-height: 18px;
 }
 </style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+}
+</style>

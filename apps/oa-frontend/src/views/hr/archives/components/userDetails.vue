@@ -569,4 +569,123 @@ export default {
   justify-content: space-between;
   color: #c0c4cc;
 }
+
+@media (max-width: 767px) {
+  ::v-deep .el-drawer {
+    width: 100% !important;
+  }
+  ::v-deep .el-drawer__header {
+    height: auto !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0;
+    padding: 10px 36px 8px 12px;
+  }
+  ::v-deep .el-drawer__body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .drawer-body {
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+  }
+  .left {
+    width: 100%;
+    height: auto;
+    flex: none;
+  }
+  .right {
+    width: 100% !important;
+    margin: 0;
+    height: auto;
+    padding: 8px 12px 120px;
+    overflow-x: hidden;
+  }
+  .personalExperience {
+    width: 100%;
+    height: auto;
+    margin: 0 0 80px;
+    padding: 8px 12px 40px;
+  }
+  .tabsEdit {
+    flex-wrap: wrap;
+    height: auto;
+    .tabs {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .invitationUrl {
+      height: auto;
+      margin: 0 8px 6px 0;
+    }
+  }
+  ::v-deep .assess-left {
+    height: auto !important;
+    padding-top: 8px;
+    border-right: none !important;
+    border-bottom: 1px solid #eeeeee;
+    overflow: visible !important;
+  }
+  ::v-deep .assess-left .head-portrait {
+    display: flex;
+    align-items: center;
+    padding: 0 12px 8px;
+  }
+  ::v-deep .assess-left .head-portrait .avatar {
+    width: auto !important;
+    margin-top: 0 !important;
+  }
+  ::v-deep .assess-left .head-portrait .avatar .img {
+    width: 48px !important;
+    height: 62px !important;
+  }
+  ::v-deep .assess-left .updata-text {
+    margin-top: 0 !important;
+    margin-left: 10px;
+    align-items: flex-start !important;
+  }
+  ::v-deep .assess-left .line,
+  ::v-deep .assess-left .catalogue {
+    display: none !important;
+  }
+  ::v-deep .assess-left .assess-left-ul {
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 8px 8px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  ::v-deep .assess-left .li-style {
+    width: auto !important;
+    flex: 0 0 auto;
+    padding: 8px 12px !important;
+    white-space: nowrap;
+  }
+  ::v-deep .assess-left .li-active {
+    border-right: none !important;
+    border-bottom: 2px solid #1890ff;
+  }
+  ::v-deep .form-box .form-item {
+    width: 100% !important;
+  }
+  ::v-deep .form-box .el-form-item__label {
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    line-height: 22px !important;
+    padding: 0 0 4px !important;
+  }
+  ::v-deep .form-box .el-form-item__content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  ::v-deep .form-box .el-input,
+  ::v-deep .form-box .el-select,
+  ::v-deep .form-box .el-date-editor,
+  ::v-deep .form-box .el-cascader,
+  ::v-deep .form-box .el-textarea {
+    width: 100% !important;
+  }
+}
 </style>

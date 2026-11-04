@@ -1,6 +1,6 @@
 <!-- 收支记账列表条件筛选组件 -->
 <template>
-  <div>
+  <div class="fd-list-form">
     <oaFromBox
       v-if="search.length > 0"
       :treeData="treeData"
@@ -334,5 +334,65 @@ export default {
 }
 /deep/ .el-cascader__search-input {
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .fd-list-form {
+    /deep/ .header-16 {
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /deep/ .header-16 > .flex {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /deep/ .header-16 .el-button,
+    /deep/ .header-16 .el-dropdown {
+      margin-left: 0 !important;
+    }
+
+    /deep/ .search {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /deep/ .search > .flex {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /deep/ .search .grey-bga {
+      width: calc(50% - 4px) !important;
+    }
+
+    /deep/ .form-box {
+      width: calc(50% - 4px);
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /deep/ .form-box.full-width {
+      width: 100%;
+    }
+
+    /deep/ .form-box .el-input,
+    /deep/ .form-box .el-select,
+    /deep/ .form-box .el-cascader,
+    /deep/ .form-box .el-date-editor,
+    /deep/ .form-box .el-input-number {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+  }
 }
 </style>

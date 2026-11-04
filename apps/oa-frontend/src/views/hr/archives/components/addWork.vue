@@ -307,4 +307,29 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@media (max-width: 767px) {
+  ::v-deep .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  .form-item {
+    width: 100%;
+  }
+  ::v-deep .el-form-item__label {
+    float: none;
+    display: block;
+    width: 100% !important;
+    text-align: left;
+    line-height: 22px;
+  }
+  ::v-deep .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  ::v-deep .el-input,
+  ::v-deep .el-select,
+  ::v-deep .el-date-editor {
+    width: 100% !important;
+  }
+}
+</style>

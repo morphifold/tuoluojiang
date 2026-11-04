@@ -482,4 +482,94 @@ export default {
   scrollbar-width: none; /* firefox */
   -ms-overflow-style: none; /* IE 10+ */
 }
+
+@media (max-width: 767px) {
+  .box {
+    height: auto !important;
+    width: auto;
+    flex: 0 0 auto;
+  }
+  .cloudfile-left {
+    height: auto !important;
+    min-height: 0 !important;
+    margin-right: 0;
+    border-right: none;
+    border-bottom: 1px solid #f5f5f5;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    .mr15 {
+      display: none;
+    }
+    .tab-name {
+      flex: 0 0 auto;
+      padding: 0 8px 0 0;
+      margin: 0;
+      .name,
+      .number {
+        width: auto;
+      }
+    }
+    .m20,
+    .recovery {
+      flex: 0 0 auto;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 6px 0 0;
+      padding: 0 12px;
+      border-radius: 16px;
+      background: #f5f7fa;
+      border-right: none !important;
+      white-space: nowrap;
+    }
+    .activeText {
+      border-right: none;
+      background: rgba(24, 144, 255, 0.12);
+      color: #1890ff;
+    }
+    /deep/ .el-scrollbar {
+      height: auto !important;
+    }
+    /deep/ .el-scrollbar__wrap {
+      overflow: visible;
+      height: auto !important;
+      margin-bottom: 0 !important;
+      margin-right: 0 !important;
+    }
+    /deep/ .el-scrollbar__view {
+      display: flex;
+      height: auto;
+      overflow: visible;
+    }
+    .cloudfile-left-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      li {
+        flex: 0 0 auto;
+        height: 32px;
+        margin-right: 6px;
+        padding: 0 12px;
+        border-radius: 16px;
+        background: #f5f7fa;
+        border-right: none;
+        white-space: nowrap;
+        .name,
+        .number {
+          width: auto;
+        }
+        &.active {
+          border-right: none;
+        }
+      }
+    }
+    .border-bottom {
+      display: none;
+    }
+  }
+}
 </style>

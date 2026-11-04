@@ -27,4 +27,9 @@ export default {
 //     background-color: rgba(247, 251, 255, 1);
 //   }
 // }
+@media screen and (max-width: 768px) {
+  .card-box {
+    min-height: 0;
+  }
+}
 </style>

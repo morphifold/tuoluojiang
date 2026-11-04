@@ -188,4 +188,16 @@ export default {
   border-radius: 5px;
   background: #f0f2f5;
 }
+@media (max-width: 767px) {
+  .assess-left {
+    height: auto;
+    max-height: 240px;
+    min-height: 0;
+    overflow-y: auto;
+    border-right: none;
+  }
+  .assess-left .assess-left-con {
+    height: auto;
+  }
+}
 </style>

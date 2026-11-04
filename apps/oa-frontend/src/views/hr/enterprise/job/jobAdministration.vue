@@ -393,6 +393,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .detail-box {
   padding: 20px;
   color: #333;

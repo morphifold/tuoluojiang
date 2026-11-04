@@ -120,6 +120,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+@import '../../_hr-mobile.scss';
 .flex-box {
   cursor: pointer;
   span {

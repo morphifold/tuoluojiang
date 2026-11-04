@@ -848,3 +848,88 @@ table .el-image {
     background-color: $--color-bg3;
   }
 }
+
+/* ===== 全局移动端布局底座 (< 768px) ===== */
+@media (max-width: 767px) {
+  .selWidth,
+  .modal-form {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .upload-form {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-height: 80vh !important;
+  }
+
+  .demo-table-expand .el-form-item {
+    width: 100% !important;
+  }
+
+  .from-s {
+    width: 100%;
+
+    .flex-col {
+      flex-wrap: wrap !important;
+      gap: 8px;
+    }
+
+    .flex-row {
+      width: 100%;
+      flex-wrap: wrap !important;
+      gap: 6px;
+    }
+
+    .el-date-picker,
+    .time,
+    .el-cascader,
+    .el-select {
+      width: auto !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+  }
+
+  .el-drawer {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+
+  .el-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .el-popover {
+    max-width: 94vw !important;
+  }
+
+  .el-row--flex {
+    flex-wrap: wrap !important;
+  }
+
+  // 主分栏在手机端上下排列。LibSass 3.5 不支持多参数 has 伪类。
+  .divBox > .el-row--flex > .el-col-16,
+  .divBox > .el-row--flex > .el-col-8,
+  .divBox > .el-row--flex > .el-col-6,
+  .divBox > .el-row--flex > .el-col-18,
+  .divBox > .el-row--flex > .el-col-5,
+  .divBox > .el-row--flex > .el-col-19,
+  .divBox > .el-row--flex > .el-col-4,
+  .divBox > .el-row--flex > .el-col-20 {
+    width: 100% !important;
+    margin-bottom: 10px;
+  }
+
+  .divBox {
+    margin: 8px !important;
+    padding-top: 4px !important;
+  }
+
+  .el-card__body {
+    padding: 12px !important;
+  }
+}

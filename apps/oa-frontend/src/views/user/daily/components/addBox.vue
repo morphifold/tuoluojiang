@@ -43,8 +43,8 @@
 
         <!-- 日报内容 -->
         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="demo-ruleForm" label-width="100px">
-          <el-row :gutter="20">
-            <el-col :span="report_show ? 24 : 12">
+          <el-row :gutter="20" class="report-grid">
+            <el-col :span="report_show ? 24 : 12" :xs="24">
               <div :class="!disabled ? 'border' : ''" class="today-work">
                 <el-form-item
                   v-if="needList.length > 0 && editType !== 'check'"
@@ -98,7 +98,7 @@
                 </el-form-item>
               </div>
             </el-col>
-            <el-col v-if="!report_show" :span="12">
+            <el-col v-if="!report_show" :span="12" :xs="24">
               <div :class="!disabled ? 'border' : ''" class="item-bar-box">
                 <el-form-item :label="planLable" class="item-bar" prop="plan">
                   <el-input
@@ -1003,5 +1003,59 @@ export default {
 }
 .pb-120 {
   padding-bottom: 120px;
+}
+
+@media (max-width: 767px) {
+  /deep/ .el-drawer {
+    width: 100% !important;
+  }
+  /deep/ .el-drawer__body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  .invoice-title {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-right: 28px;
+  }
+  .report-grid {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .report-grid > .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 12px;
+  }
+  .today-work {
+    min-height: 0;
+  }
+  .line {
+    transform: none;
+  }
+  .flex {
+    margin: 4px 0;
+    flex-wrap: wrap;
+  }
+  .flex-user {
+    flex-wrap: wrap;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: 100% !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+  .from-foot-btn,
+  .fix {
+    width: 100% !important;
+    left: 0 !important;
+    box-sizing: border-box;
+  }
 }
 </style>

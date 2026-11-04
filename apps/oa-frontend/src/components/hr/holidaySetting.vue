@@ -54,6 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../views/hr/_hr-mobile.scss';
 .el-select .el-input {
   width: 130px;
 }

@@ -5,6 +5,7 @@
       top="10%"
       :visible.sync="show"
       width="700px"
+      custom-class="oa-m-dialog"
       append-to-body
       :show-close="false"
       :close-on-click-modal="false"
@@ -339,5 +340,27 @@ ul {
   font-weight: 400;
   font-size: 13px;
   color: #303133;
+}
+@media (max-width: 767px) {
+  .flex-between {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .flex-between > div {
+    width: 100%;
+  }
+  .input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-dialog.oa-m-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
 }
 </style>

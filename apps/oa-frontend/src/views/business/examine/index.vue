@@ -565,4 +565,31 @@ export default {
   bottom: 0;
   width: calc(100% + 220px);
 }
+@media screen and (max-width: 768px) {
+  .flex-between {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .examineCard /deep/ .el-col-8,
+  .examineCard /deep/ .el-col-16 {
+    width: 100%;
+  }
+  .card-box {
+    height: auto;
+    min-height: calc(100vh - 220px);
+    .main {
+      width: 100%;
+    }
+  }
+  .examineCont {
+    min-width: 0;
+  }
+  .examineTabs /deep/ .el-tabs__nav-wrap {
+    overflow-x: auto;
+  }
+  .cr-bottom-button {
+    left: 0;
+    width: 100%;
+  }
+}
 </style>

@@ -5,7 +5,12 @@
       <div>
         <div class="v-height-flag">
           <el-row>
-            <el-col v-bind="gridl">
+            <el-col v-bind="gridl" class="hr-tree-pane" :class="{ 'is-collapsed': !orgTreeOpen }">
+              <div class="hr-tree-toggle" @click="orgTreeOpen = !orgTreeOpen">
+                <span>{{ orgTreeOpen ? '收起类别' : '展开类别' }}</span>
+                <i :class="orgTreeOpen ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
+              </div>
+              <div class="hr-tree-body">
               <div class="rank-left v-height-flag">
                 <el-row class="rank-left-header">
                   <el-col :span="18">
@@ -57,8 +62,9 @@
                   </div>
                 </div>
               </div>
+              </div>
             </el-col>
-            <el-col v-bind="gridr">
+            <el-col v-bind="gridr" class="hr-main-pane">
               <div class="rank-right v-height-flag">
                 <oaFromBox
                   :dropdownList="dropdownList"
@@ -152,6 +158,7 @@ export default {
   },
   data() {
     return {
+      orgTreeOpen: true,
       gridl: {
         xl: 3,
         lg: 4,
@@ -318,6 +325,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .rank-left {
   min-height: calc(100vh - 77px);
   margin: -20px 0 -20px -20px;

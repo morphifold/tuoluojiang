@@ -791,4 +791,37 @@ export default {
   left: 60%;
   top: 10%;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  /deep/ .comment-dialog .el-dialog {
+    position: static;
+    left: auto;
+    top: auto;
+  }
+  .footer {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .footer /deep/ .el-button {
+    width: calc(50% - 4px) !important;
+    margin: 0 !important;
+  }
+  .header .title,
+  .content {
+    word-break: break-word;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    width: auto !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

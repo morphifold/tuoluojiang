@@ -923,3 +923,24 @@ export default {
   width: 160px;
 }
 </style>
+<style lang="scss" scoped>
+@import '../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .from-box /deep/ .el-select {
+    width: 100% !important;
+  }
+
+  .addBox /deep/ .el-dialog {
+    height: auto !important;
+  }
+
+  .main {
+    width: 100% !important;
+  }
+
+  .addBox /deep/ .el-textarea__inner {
+    width: 100% !important;
+  }
+}
+</style>

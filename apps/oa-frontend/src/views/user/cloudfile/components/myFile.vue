@@ -742,4 +742,19 @@ export default {
     background-color: #f5f7fa;
   }
 }
+
+@media (max-width: 767px) {
+  .infeed-ul {
+    justify-content: flex-start;
+    li {
+      width: calc(33.33% - 12px);
+      max-width: 120px;
+      margin: 6px;
+    }
+  }
+  /deep/ .el-dialog {
+    width: 92% !important;
+    max-width: 92vw;
+  }
+}
 </style>

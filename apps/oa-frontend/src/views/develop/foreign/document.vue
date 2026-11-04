@@ -212,4 +212,23 @@ export default {
 /deep/.jv-container.jv-light {
   background: #eeeeee;
 }
+@media (max-width: 767px) {
+  /deep/ .el-row > .el-col {
+    width: 100%;
+    max-width: 100%;
+  }
+  /deep/ .el-row > .el-col:first-child {
+    height: auto;
+    min-height: 0;
+    max-height: 240px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+  }
+  .boder-left {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    padding: 12px;
+  }
+}
 </style>

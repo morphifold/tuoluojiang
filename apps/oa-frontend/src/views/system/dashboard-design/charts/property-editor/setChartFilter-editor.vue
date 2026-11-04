@@ -21,7 +21,7 @@
         :visible.sync="dialogIsShow"
         :wrapperClosable="false"
         direction="rtl"
-        class="condition_copyer"
+        class="condition_copyer oa-m-drawer"
         size="650px"
       >
         <condition-dialog
@@ -167,5 +167,14 @@ export default {
 <style lang="scss" scoped>
 /deep/ .condition_content {
   padding-right: 24px;
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 767px) {
+  .el-drawer__wrapper.oa-m-drawer .el-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 </style>

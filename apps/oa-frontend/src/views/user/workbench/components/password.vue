@@ -127,4 +127,20 @@ export default {
   border-top: 1px solid #e6ebf5;
   text-align: right;
 }
+
+@media (max-width: 767px) {
+  /deep/ .el-dialog {
+    width: 94vw !important;
+    max-width: 94vw !important;
+  }
+  /deep/ .el-form-item__label {
+    float: none;
+    display: block;
+    width: auto !important;
+    text-align: left;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>

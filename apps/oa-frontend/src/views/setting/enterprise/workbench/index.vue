@@ -74,4 +74,19 @@ export default {
   width: 752px;
   height: 90px;
 }
+@media (max-width: 767px) {
+  /deep/ .el-col {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .table-box {
+    min-height: 0;
+  }
+  /deep/ .fc-files {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

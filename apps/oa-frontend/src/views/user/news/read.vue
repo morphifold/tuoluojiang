@@ -266,4 +266,39 @@ export default {
 /deep/ .el-table-column--selection .cell {
   padding: 0 10px;
 }
+
+@media (max-width: 767px) {
+  .m14 {
+    margin: 0 8px;
+  }
+  .from-s {
+    height: auto;
+  }
+  .flex-row,
+  .flex-col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer {
+    position: relative;
+  }
+  .isSelect {
+    position: static;
+    height: auto;
+    margin-top: 10px;
+  }
+  .paginationClass {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  .content .el-table {
+    height: auto !important;
+    max-height: 60vh;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+}
 </style>

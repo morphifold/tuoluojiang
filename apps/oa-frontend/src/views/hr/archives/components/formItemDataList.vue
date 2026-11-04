@@ -1409,4 +1409,40 @@ export default {
   color: #ccc;
   line-height: 20px;
 }
+
+@media (max-width: 767px) {
+  .form-box .form-item {
+    width: 100% !important;
+  }
+  .right {
+    width: 100%;
+    margin: 0;
+    height: auto;
+    padding: 8px 0 80px;
+  }
+  ::v-deep .form-box .el-form-item__label {
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    line-height: 22px !important;
+    padding: 0 0 4px !important;
+  }
+  ::v-deep .form-box .el-form-item__content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  ::v-deep .form-box .el-input,
+  ::v-deep .form-box .el-select,
+  ::v-deep .form-box .el-date-editor,
+  ::v-deep .form-box .el-cascader,
+  ::v-deep .form-box .el-textarea {
+    width: 100% !important;
+  }
+  .table-box {
+    height: auto;
+    max-height: none;
+    overflow-x: auto;
+  }
+}
 </style>

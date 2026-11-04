@@ -405,4 +405,42 @@ export default {
   width: 200px;
   margin-left: 10px;
 }
+
+@media (max-width: 767px) {
+  .main {
+    width: 100%;
+    max-width: 100%;
+  }
+  .detail-box {
+    padding: 12px;
+    min-height: 0;
+  }
+  .inTotal,
+  .flex {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .search-input {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+  }
+  .detail-box .content /deep/ img,
+  .check-box .content /deep/ img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .detail-box .content /deep/ table,
+  .check-box .content /deep/ table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .el-drawer {
+    width: 100% !important;
+  }
+  /deep/ .el-pagination {
+    white-space: normal;
+  }
+}
 </style>

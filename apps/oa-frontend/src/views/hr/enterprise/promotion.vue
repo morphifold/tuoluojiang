@@ -3,11 +3,17 @@
   <div class="divBox">
     <el-card class="normal-page">
       <el-row>
-        <el-col v-bind="gridl">
-          <left @clickType="clickType"></left>
+        <el-col v-bind="gridl" class="hr-tree-pane" :class="{ 'is-collapsed': !orgTreeOpen }">
+          <div class="hr-tree-toggle" @click="orgTreeOpen = !orgTreeOpen">
+            <span>{{ orgTreeOpen ? '收起目录' : '展开目录' }}</span>
+            <i :class="orgTreeOpen ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
+          </div>
+          <div class="hr-tree-body">
+            <left @clickType="clickType"></left>
+          </div>
         </el-col>
         <!-- 右边晋升表格 -->
-        <el-col class="assess-right" v-bind="gridr">
+        <el-col class="assess-right hr-main-pane" v-bind="gridr">
           <div class="header">
             <div class="title">
               {{ title }}
@@ -211,6 +217,7 @@ export default {
 
   data() {
     return {
+      orgTreeOpen: true,
       gridl: {
         xl: 3,
         lg: 4,
@@ -430,6 +437,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../_hr-mobile.scss';
 .el-icon-info {
   color: #1890ff;
 }

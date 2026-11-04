@@ -342,4 +342,12 @@ export default {
     }
   }
 }
+@media (max-width: 767px) {
+  .chart-container-widget-list {
+    flex-wrap: wrap;
+  }
+  .chart-container-widget-item {
+    max-width: 100%;
+  }
+}
 </style>

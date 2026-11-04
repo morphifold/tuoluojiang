@@ -35,4 +35,17 @@ export default {
   height: 0;
   width: 0;
 }
+
+@media (max-width: 767px) {
+  .box {
+    margin: 0;
+    padding-top: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  .iframe {
+    width: 100%;
+    height: calc(100vh - 56px);
+  }
+}
 </style>

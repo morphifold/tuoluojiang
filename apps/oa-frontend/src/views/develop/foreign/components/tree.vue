@@ -203,4 +203,19 @@ export default {
 .tree-box {
   background: #fff;
 }
+@media (max-width: 767px) {
+  .tree-box {
+    max-height: 240px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    border-right: none;
+  }
+  .tree-box /deep/ .v-height-flag,
+  .tree-box /deep/ .v-height-flag > div,
+  .tree-box /deep/ .el-scrollbar {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+}
 </style>

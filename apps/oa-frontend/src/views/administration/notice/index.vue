@@ -302,4 +302,10 @@ export default {
 /deep/.is-top .el-switch__core {
   width: 69px !important;
 }
+@media screen and (max-width: 768px) {
+  .card-box {
+    height: auto;
+    min-height: calc(100vh - 77px);
+  }
+}
 </style>

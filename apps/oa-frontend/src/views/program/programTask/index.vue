@@ -2250,4 +2250,42 @@ export default {
     border: none !important;
   }
 }
+@media screen and (max-width: 768px) {
+  .table-header {
+    position: static;
+    width: 100%;
+    height: auto;
+    left: 0;
+    margin-right: 0;
+    .header-right {
+      position: static;
+      width: 100%;
+      right: auto;
+      justify-content: flex-start;
+      > span {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        min-width: 0;
+      }
+      /deep/ .el-select,
+      /deep/ .el-cascader,
+      /deep/ .el-date-editor.el-input {
+        width: calc(50% - 8px) !important;
+        margin: 4px 8px 4px 0 !important;
+      }
+    }
+  }
+  .no-border,
+  .normal-page {
+    padding: 12px;
+    min-height: 0;
+  }
+  .members-line,
+  .task-name {
+    max-width: 140px;
+    width: auto;
+  }
+}
 </style>

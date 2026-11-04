@@ -149,6 +149,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../_hr-mobile.scss';
 .from {
   display: flex;
   justify-content: space-between;

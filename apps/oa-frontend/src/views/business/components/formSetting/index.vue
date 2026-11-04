@@ -93,4 +93,30 @@ export default {
     padding-top: 0;
   }
 }
+@media screen and (max-width: 768px) {
+  .formData {
+    height: auto;
+    /deep/ ._fc-designer {
+      height: auto !important;
+      min-height: 0;
+      overflow: visible;
+    }
+    /deep/ ._fc-designer > .el-main {
+      position: static;
+    }
+    /deep/ ._fc-designer > .el-main > .el-container {
+      flex-direction: column !important;
+      height: auto !important;
+    }
+    /deep/ ._fc-l,
+    /deep/ ._fc-r {
+      width: 100% !important;
+      max-height: 240px;
+    }
+    /deep/ ._fc-m {
+      width: 100% !important;
+      min-height: 420px;
+    }
+  }
+}
 </style>
