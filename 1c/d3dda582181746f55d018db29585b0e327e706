@@ -1,0 +1,290 @@
+apps/edge-proxy/src/index.ts
+  h_5fb804fa880b8e 72
+apps/oa-backend/public/admin/index.html
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/app.735ba5f4.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-0455e436.a5622582.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-04c6031a.3ff91637.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-1532ea98.e2620515.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-24568d40.aa0f76f8.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-263ad4a3.e6b67214.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-2ded6901.ae9f0615.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-2f1c57ae.d6841c06.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-3514ae16.3b807f20.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-35c69d69.7e1a5a9d.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-4b30ae4f.6e8d06f5.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-5391d420.65e89045.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-60883674.d75bd9b1.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-6da7b0b2.466de221.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-737e17cf.cbe96909.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-9dc982b8.5948a4f7.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/app.913d58bc.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-0455e436.98bec6e3.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-04c6031a.a356cde1.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-1532ea98.b790de5f.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-24568d40.8a906744.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-263ad4a3.8021b6b2.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-2ded6901.61d750d2.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-2f1c57ae.3f776d0b.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-3514ae16.2f1cddcc.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-35c69d69.24013672.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-4b30ae4f.96b462ca.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-5391d420.d8e91504.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-642379d7.20ae8aef.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-6da7b0b2.024e8a2a.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-737e17cf.11696f00.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-9677a23c.9de7843f.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-9dc982b8.b7cb172b.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-c5cfc998.a34221cb.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-libs.408f3e64.js
+  h_5fb804fa880b8e 33,47,151,157,205,426
+apps/oa-frontend/src/components/common/mapContainer.vue
+  h_5fb804fa880b8e 10,364-367,416-424
+apps/oa-frontend/src/components/develop/updateContent.vue
+  h_5fb804fa880b8e 14,35,636-638,651,653-658
+apps/oa-frontend/src/components/develop/viewManagement.vue
+  h_5fb804fa880b8e 343-345,357
+apps/oa-frontend/src/components/form-common/dialog-payment.vue
+  h_5fb804fa880b8e 193-201
+apps/oa-frontend/src/components/form-common/dialog-target.vue
+  h_5fb804fa880b8e 34,210-229
+apps/oa-frontend/src/components/form-common/dialog-template.vue
+  h_5fb804fa880b8e 61-62,405-412,666-673
+apps/oa-frontend/src/components/form-common/oa-log.vue
+  h_5fb804fa880b8e 9,89,112,211-216,346-356
+apps/oa-frontend/src/components/form-common/select-dateQuarter.vue
+  h_5fb804fa880b8e 20-21,206-217
+apps/oa-frontend/src/components/form-common/select-icon.vue
+  h_5fb804fa880b8e 10,123-136
+apps/oa-frontend/src/components/form-designer/form-widget/index.vue
+  h_5fb804fa880b8e 369-378
+apps/oa-frontend/src/components/form-designer/index.vue
+  h_5fb804fa880b8e 448-482
+apps/oa-frontend/src/components/form-designer/setting-panel/index.vue
+  h_5fb804fa880b8e 54,254-264,423-431
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onAppendButtonClick-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onBeforeUpload-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onBlur-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onChange-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onClick-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onCreated-editor.vue
+  h_5fb804fa880b8e 29-40
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onFileRemove.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onFocus-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onInput-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onMounted-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onRemoteQuery-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onSubFormRowAdd-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onSubFormRowChange-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onSubFormRowDelete-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onSubFormRowInsert-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onUploadError-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onUploadSuccess-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/setting-panel/property-editor/event-handler/onValidate-editor.vue
+  h_5fb804fa880b8e 28-39
+apps/oa-frontend/src/components/form-designer/toolbar-panel/index.vue
+  h_5fb804fa880b8e 66,90,114,822-859
+apps/oa-frontend/src/components/invoice/InvoiceSelect.vue
+  h_5fb804fa880b8e 3-11,13,20-22,26-67,70-82,85-88,177-213,511-517,530-541,567-572,615,624-626,631-665,746,824,839-955,1466-1641
+apps/oa-frontend/src/components/invoice/invoiceDetails.vue
+  h_5fb804fa880b8e 66,89,216-221,627-628,633-634,639-640,642-656
+apps/oa-frontend/src/components/openFile/previewMd.vue
+  h_5fb804fa880b8e 132-140
+apps/oa-frontend/src/components/openFile/previewMp4.vue
+  h_5fb804fa880b8e 3,32-46
+apps/oa-frontend/src/components/openFile/previewTxt.vue
+  h_5fb804fa880b8e 88-96
+apps/oa-frontend/src/components/setting/rolesTree.vue
+  h_5fb804fa880b8e 269-284
+apps/oa-frontend/src/components/workFlow/drawer/approverDrawer.vue
+  h_5fb804fa880b8e 301-308
+apps/oa-frontend/src/components/workFlow/drawer/conditionDrawer.vue
+  h_5fb804fa880b8e 622-633
+apps/oa-frontend/src/components/xmind-editor/components/Search.vue
+  h_5fb804fa880b8e 324-336
+apps/oa-frontend/src/components/zbSetConditions/index.vue
+  h_5fb804fa880b8e 566-573
+apps/oa-frontend/src/layout/components/Document/help.vue
+  h_5fb804fa880b8e 373-389
+apps/oa-frontend/src/layout/components/Navbar.vue
+  h_5fb804fa880b8e 195-210,212,215,217,228,230,232-234
+apps/oa-frontend/src/layout/components/Notice/noticeList.vue
+  h_5fb804fa880b8e 29,370-408
+apps/oa-frontend/src/layout/components/Sidebar/index.vue
+  h_5fb804fa880b8e 3,111-113,116-121,420-438
+apps/oa-frontend/src/layout/index.vue
+  h_5fb804fa880b8e 6,308-319,347-366,391-395
+apps/oa-frontend/src/styles/index.scss
+  h_5fb804fa880b8e 908,911-912,914-916,918-920,923-969,971-975,984-1006
+apps/oa-frontend/src/styles/sidebar.scss
+  h_5fb804fa880b8e 125-146
+apps/oa-frontend/src/styles/styles.scss
+  h_5fb804fa880b8e 935-995
+apps/oa-frontend/src/views/administration/material/chart/index.vue
+  h_5fb804fa880b8e 7,13,74,107,466-473,476,482-491
+apps/oa-frontend/src/views/administration/material/fixed/components/materialDialog.vue
+  h_5fb804fa880b8e 16,19,24,27,32,398-400,403-411
+apps/oa-frontend/src/views/administration/material/fixed/components/tree.vue
+  h_5fb804fa880b8e 308-311,316-325
+apps/oa-frontend/src/views/business/components/ruleSetting/index.vue
+  h_5fb804fa880b8e 228-231,238-265,268-270
+apps/oa-frontend/src/views/business/holidayType/index.vue
+  h_5fb804fa880b8e 510-513,521-542,547-549,553-556
+apps/oa-frontend/src/views/chat/components/supplierDialog.vue
+  h_5fb804fa880b8e 103-112
+apps/oa-frontend/src/views/chat/index.vue
+  h_5fb804fa880b8e 14,19,221-226,300-313
+apps/oa-frontend/src/views/chat/model.vue
+  h_5fb804fa880b8e 18,48,50,210-215,218-223,383
+apps/oa-frontend/src/views/customer/contract/components/contractInvoice.vue
+  h_5fb804fa880b8e 604-610
+apps/oa-frontend/src/views/customer/contract/components/contractPayment.vue
+  h_5fb804fa880b8e 423-434
+apps/oa-frontend/src/views/customer/contract/components/contractRenew.vue
+  h_5fb804fa880b8e 244-252
+apps/oa-frontend/src/views/customer/contract/components/fileUpload.vue
+  h_5fb804fa880b8e 6,23-27,44,128-145,438-440,447-453
+apps/oa-frontend/src/views/customer/invoice/components/invoiceView.vue
+  h_5fb804fa880b8e 273,363-370,825-826,831-838,843-844,848-862,864-865,867-877,881-885
+apps/oa-frontend/src/views/customer/list/components/recordUpload.vue
+  h_5fb804fa880b8e 6,23-27,44,133-150,451-453,460-466
+apps/oa-frontend/src/views/customer/setup/ruleSettings/components/followRules.vue
+  h_5fb804fa880b8e 39,53,206-208,212-229
+apps/oa-frontend/src/views/customer/setup/ruleSettings/components/returnRule.vue
+  h_5fb804fa880b8e 32,46,60,95,265-267,271-288
+apps/oa-frontend/src/views/develop/crud/event.vue
+  h_5fb804fa880b8e 40,49,267,277,294,322,364,1124-1134,1292-1300,1323-1325,1327-1328
+apps/oa-frontend/src/views/fd/enterprise/list/components/viewDetails.vue
+  h_5fb804fa880b8e 97,126,136,227-237,474-479,498-507
+apps/oa-frontend/src/views/fd/expenseInvoice/index.vue
+  h_5fb804fa880b8e 5,15,25,35,179,739-746
+apps/oa-frontend/src/views/hr/archives/components/record.vue
+  h_5fb804fa880b8e 55,101,137,498,519-531
+apps/oa-frontend/src/views/hr/assess/check/components/preview.vue
+  h_5fb804fa880b8e 33,263-275,382-388
+apps/oa-frontend/src/views/hr/assess/config/components/explain.vue
+  h_5fb804fa880b8e 64,313-369
+apps/oa-frontend/src/views/hr/assess/config/components/plan.vue
+  h_5fb804fa880b8e 612-696
+apps/oa-frontend/src/views/hr/assess/config/index.vue
+  h_5fb804fa880b8e 73-89
+apps/oa-frontend/src/views/hr/assess/staff/components/formBox.vue
+  h_5fb804fa880b8e 28,37,60,503-511,618-656
+apps/oa-frontend/src/views/hr/assess/staff/mentStaff.vue
+  h_5fb804fa880b8e 333-359
+apps/oa-frontend/src/views/hr/attendance/setting/addConent.vue
+  h_5fb804fa880b8e 206,1042-1056
+apps/oa-frontend/src/views/hr/attendance/setting/addSchedul.vue
+  h_5fb804fa880b8e 848-854
+apps/oa-frontend/src/views/hr/attendance/setting/components/checkSchedul.vue
+  h_5fb804fa880b8e 408-414
+apps/oa-frontend/src/views/hr/attendance/setting/white.vue
+  h_5fb804fa880b8e 190-196
+apps/oa-frontend/src/views/hr/enterprise/group/index.vue
+  h_5fb804fa880b8e 68,205-215,308
+apps/oa-frontend/src/views/hr/enterprise/job/components/rankDialog.vue
+  h_5fb804fa880b8e 268-272
+apps/oa-frontend/src/views/hr/enterprise/job/rankManagement.vue
+  h_5fb804fa880b8e 389-398
+apps/oa-frontend/src/views/program/programList/taskDetails.vue
+  h_5fb804fa880b8e 154-169,179-180,182,191-204
+apps/oa-frontend/src/views/program/programTask/components/addTask.vue
+  h_5fb804fa880b8e 25,48,58,75,532-533,535-537,539-543,551-553
+apps/oa-frontend/src/views/program/programTask/components/editTask.vue
+  h_5fb804fa880b8e 77,105,130,155,1202-1203,1205-1213,1219-1223,1227-1229,1238-1240,1246-1249
+apps/oa-frontend/src/views/program/programTask/index.vue
+  h_5fb804fa880b8e 2254-2313,2317,2320-2322,2326-2327,2329-2330,2332-2333,2339,2346-2347,2349-2356,2364-2365
+apps/oa-frontend/src/views/setting/enterprise/news/record.vue
+  h_5fb804fa880b8e 123-124,126
+apps/oa-frontend/src/views/setting/enterprise/setup/index.vue
+  h_5fb804fa880b8e 147-148,150-160,163-169
+apps/oa-frontend/src/views/setting/enterprise/upgrade/index.vue
+  h_5fb804fa880b8e 43,69,103,166-173,659,664,668,671-688
+apps/oa-frontend/src/views/setting/system/quick/index.vue
+  h_5fb804fa880b8e 41-42,155-162,267,270-272,275,277-305
+apps/oa-frontend/src/views/system/dashboard-design/charts/components/VFormDesigner.vue
+  h_5fb804fa880b8e 582-589,591-597,729-735
+apps/oa-frontend/src/views/user/calendar/components/calendarDetails.vue
+  h_5fb804fa880b8e 826-831
+apps/oa-frontend/src/views/user/calendar/components/checkDialog.vue
+  h_5fb804fa880b8e 148,153-164
+apps/oa-frontend/src/views/user/cloudfile/components/myFile.vue
+  h_5fb804fa880b8e 5,16,759-763
+apps/oa-frontend/src/views/user/daily/components/addBox.vue
+  h_5fb804fa880b8e 1060-1065
+apps/oa-frontend/src/views/user/examine/components/detailExamine.vue
+  h_5fb804fa880b8e 91,103-117,486-506,782-819
+apps/oa-frontend/src/views/user/examine/components/detailProcecss.vue
+  h_5fb804fa880b8e 13,381-398
+apps/oa-frontend/src/views/user/examine/components/editExamine.vue
+  h_5fb804fa880b8e 39-43,46-50,71-96,112,180-185,288-297,588,630-781,842,968-1092
+apps/oa-frontend/src/views/user/examine/components/process.vue
+  h_5fb804fa880b8e 2-5,7-15,18,25-34,36-51,53-56,58-64,175-183,284-289,291,296,298-433
+apps/oa-frontend/src/views/user/training/promotion.vue
+  h_5fb804fa880b8e 70,136,139-140,152,168,326-332,341-351,355,357,375-377
+apps/oa-frontend/src/views/user/workbench/components/echart.vue
+  h_5fb804fa880b8e 206-211
+apps/oa-frontend/src/views/user/workbench/index.vue
+  h_5fb804fa880b8e 177-179,1659-1662,1664-1667
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "1cd3dda582181746f55d018db29585b0e327e706",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
