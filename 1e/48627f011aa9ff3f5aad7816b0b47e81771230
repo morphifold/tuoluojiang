@@ -1,0 +1,26 @@
+apps/oa-backend/public/admin/index.html
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/app.53aafaa7.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/app.4ae07d16.js
+  h_5fb804fa880b8e 1
+apps/oa-frontend/src/components/invoice/InvoiceSelect.vue
+  h_5fb804fa880b8e 44-45,212-213,1554-1555,1562-1569,1648-1650
+apps/oa-frontend/src/layout/index.vue
+  h_5fb804fa880b8e 272,315,321,436-442
+apps/oa-frontend/src/views/chat/index.vue
+  h_5fb804fa880b8e 19
+apps/oa-frontend/src/views/hr/assess/config/components/plan.vue
+  h_5fb804fa880b8e 664,670-676,687,690-691
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "1e48627f011aa9ff3f5aad7816b0b47e81771230",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
