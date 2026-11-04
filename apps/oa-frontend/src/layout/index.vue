@@ -269,7 +269,7 @@ export default {
   position: fixed;
   top: 7px;
   left: 10px;
-  z-index: 2100;
+  z-index: 1000;
   width: 34px;
   height: 34px;
   background: #1890ff;
@@ -312,11 +312,13 @@ export default {
   .mobile-hamburger.is-open {
     left: 72px !important;
     top: 10px !important;
+    z-index: 2005 !important;
   }
 
   .mobile-hamburger.is-open.has-submenu {
     left: 232px !important;
     top: 10px !important;
+    z-index: 2005 !important;
   }
 
   .mobile-drawer-mask {
@@ -430,6 +432,13 @@ export default {
     box-sizing: border-box !important;
     width: auto !important;
     overflow-x: hidden !important;
+  }
+  .el-drawer__wrapper,
+  .el-dialog__wrapper {
+    z-index: 2001 !important;
+  }
+  .v-modal {
+    z-index: 2000 !important;
   }
 }
 </style>

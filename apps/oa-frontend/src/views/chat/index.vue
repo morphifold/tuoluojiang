@@ -16,7 +16,7 @@
         <div class="list" id="listBox" ref="container">
           <div class="item" id="item" v-for="(item, index) in listData" :key="index">
             <div class="flex">
-              <img :src="item.pic || '/admin/image/logo.png'" @error="$event.target.src = '/admin/image/logo.png'" alt="" class="img" />
+              <img :src="item.pic || '/local-assets/attach/2025/04/a4697202504100927184844.jpg'" @error="$event.target.src = '/local-assets/attach/2025/04/a4697202504100927184844.jpg'" alt="" class="img" />
               <div class="flex-column" style="width: 100%">
                 <div class="title over-text">{{ item.name }}</div>
                 <span class="name">创建者：{{ item.user ? item.user.name : '--' }} </span>

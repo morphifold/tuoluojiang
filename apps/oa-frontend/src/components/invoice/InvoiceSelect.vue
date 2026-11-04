@@ -41,6 +41,8 @@
               type="date"
               value-format="yyyy-MM-dd"
               placeholder="请选择"
+              prefix-icon="none"
+              :clearable="false"
               @change="syncFormFields"
             />
           </div>
@@ -207,6 +209,8 @@
           type="date"
           value-format="yyyy-MM-dd"
           placeholder="请选择"
+          prefix-icon="none"
+          :clearable="false"
           @change="syncFormFields"
         />
       </div>
@@ -1547,13 +1551,21 @@ export default {
 }
 .dd-plain-input /deep/ .el-input__inner,
 .dd-plain-select /deep/ .el-input__inner,
-.dd-plain-date /deep/ .el-input__inner,
-.dd-plain-area /deep/ .el-textarea__inner {
+  .dd-plain-date /deep/ .el-input__inner,
+  .dd-plain-area /deep/ .el-textarea__inner {
   border: none;
   background: transparent;
   padding-left: 0;
   font-size: 16px;
   color: #1f2329;
+}
+.dd-plain-date /deep/ .el-input__prefix,
+.dd-plain-date /deep/ .el-input__suffix {
+  display: none !important;
+}
+.dd-plain-date /deep/ .el-input__inner {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 .dd-add-detail {
   width: 100%;
@@ -1633,7 +1645,9 @@ export default {
 }
 @media (max-width: 767px) {
   .dd-top-actions {
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
   }
   .dd-total-num {
     font-size: 20px;

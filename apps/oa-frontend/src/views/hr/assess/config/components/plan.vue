@@ -661,11 +661,19 @@ export default {
     text-align: left;
   }
   .form-list /deep/ .el-row,
+  .box /deep/ .el-row,
   .form-list /deep/ .el-radio-group {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
     flex-wrap: wrap !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .box /deep/ .el-col,
+  .form-list-con {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   .plan-add,
   .plan-days,
@@ -676,9 +684,11 @@ export default {
     max-width: 100% !important;
     margin-left: 0 !important;
   }
+  .form-list .assess-info,
   .resource-text .assess-info,
   .assess-info {
-    white-space: normal;
+    white-space: normal !important;
+    word-break: break-word;
   }
   .cr-bottom-button {
     left: 0;
