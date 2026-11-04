@@ -6,7 +6,7 @@
       <el-table-column prop="desc">
         <template slot-scope="scope">
           【{{ scope.row.action_type == 1 ? '创建' : '编辑' }}】{{ scope.row.operator }}
-          <span style="max-width: 550px" v-html="scope.row.title" @click="previewPicture($event)"></span>
+          <span class="oa-log-title" v-html="scope.row.title" @click="previewPicture($event)"></span>
           <span class="created-time">{{ scope.row.created_at }}</span>
         </template>
       </el-table-column>
@@ -86,7 +86,7 @@
               <!-- 图片 -->
               <template v-if="scope.row.form_value == 'image'">
                 <div class="flex" v-for="(item, index) in scope.row.before_value">
-                  <img :src="item.url" alt="" class="img" @click="filePreview(item)" />
+                  <img :src="item.url" alt="" class="img" @click="filePreview(item)" @error="onLogImgError" />
                 </div>
               </template>
               <div
@@ -109,7 +109,7 @@
               <span class="modify-text">修改后：</span>
               <template v-if="scope.row.form_value == 'image'">
                 <div class="flex" v-for="(item, index) in scope.row.after_value">
-                  <img :src="item.url" alt="" class="img" @click="filePreview(item)" />
+                  <img :src="item.url" alt="" class="img" @click="filePreview(item)" @error="onLogImgError" />
                 </div>
               </template>
               <div
@@ -208,6 +208,12 @@ export default {
       }
 
       return str || '空值'
+    },
+    onLogImgError(e) {
+      var img = e.target
+      if (!img) return
+      if (img.src && img.src.indexOf('enterprise_user1.png') !== -1) return
+      img.src = '/static/img/enterprise_user1.png'
     }
   }
 }
@@ -336,5 +342,16 @@ export default {
 .line-short {
   width: 1px;
   background: rgba(204, 204, 204, 0.3);
+}
+
+.oa-log-title {
+  max-width: 550px;
+}
+@media (max-width: 767px) {
+  .oa-log-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
 }
 </style>

@@ -321,4 +321,17 @@ export default {
     }
   }
 }
+@media (max-width: 767px) {
+  .searchContainer {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    right: -100%;
+  }
+  .searchContainer.show {
+    right: 0;
+    left: 0;
+  }
+}
 </style>

@@ -2251,29 +2251,109 @@ export default {
   }
 }
 @media screen and (max-width: 768px) {
+  .bill-type,
+  .employees-card,
+  .table {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .employees-card /deep/ .el-card__body {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .employees-card /deep/ .el-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .employees-card /deep/ .el-row > .el-col {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+  .employees-card /deep/ .el-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .employees-card /deep/ .el-table__header-wrapper,
+  .employees-card /deep/ .el-table__body-wrapper,
+  .employees-card /deep/ .el-table__fixed,
+  .employees-card /deep/ .el-table__fixed-right {
+    max-width: 100% !important;
+  }
+  .employees-card /deep/ .el-table__fixed-right-patch,
+  .employees-card /deep/ .el-table th.gutter {
+    width: 0 !important;
+    display: none;
+  }
+  .employees-card /deep/ .el-table .cell {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .table {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .employees-card /deep/ .search,
+  .employees-card /deep/ .header-16,
+  .employees-card /deep/ .search > .flex {
+    max-width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+  .employees-card /deep/ .search .el-select,
+  .employees-card /deep/ .search .el-input,
+  .employees-card /deep/ .search .el-cascader,
+  .employees-card /deep/ .grey-bga {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
   .table-header {
     position: static;
     width: 100%;
+    max-width: 100%;
     height: auto;
     left: 0;
-    margin-right: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
     .header-right {
       position: static;
       width: 100%;
+      max-width: 100%;
+      min-width: 0;
       right: auto;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
       justify-content: flex-start;
+      flex-wrap: wrap;
+      box-sizing: border-box;
       > span {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         width: 100%;
+        max-width: 100%;
         min-width: 0;
       }
       /deep/ .el-select,
       /deep/ .el-cascader,
       /deep/ .el-date-editor.el-input {
         width: calc(50% - 8px) !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
         margin: 4px 8px 4px 0 !important;
+        box-sizing: border-box !important;
+      }
+      /deep/ .el-input__inner {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
       }
     }
   }
@@ -2281,6 +2361,8 @@ export default {
   .normal-page {
     padding: 12px;
     min-height: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .members-line,
   .task-name {

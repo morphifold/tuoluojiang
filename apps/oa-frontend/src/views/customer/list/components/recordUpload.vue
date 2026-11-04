@@ -3,7 +3,7 @@
   <div class="followUpRecord">
     <div class="addContent">
       <div class="left">
-        <img :src="avatar" alt="" class="head-portrait" />
+        <img :src="avatar" alt="" class="head-portrait" @error="onImgError" />
       </div>
       <div class="right">
         <div class="box" @click="focusFn">
@@ -20,11 +20,11 @@
             <el-tag v-for="(item, i) in uploadList" :key="i" class="mt10" type="info">
               <div class="info">
                 <i class="el-icon-error" @click="deleteTag(item)"></i>
-                <img v-if="toSrc(item.real_name) === 1" alt="" class="img" src="@/assets/images/doc.png" />
-                <img v-else-if="toSrc(item.real_name) === 2" alt="" class="img" src="@/assets/images/ppt.png" />
-                <img v-else-if="toSrc(item.real_name) === 3" alt="" class="img" src="@/assets/images/xls.png" />
-                <img v-else-if="toSrc(item.real_name) === 4" alt="" class="img" src="@/assets/images/record2.png" />
-                <img v-else-if="toSrc(item.real_name) === 5" alt="" class="img" src="@/assets/images/pdf.png" />
+                <img v-if="toSrc(item.real_name) === 1" alt="" class="img" src="@/assets/images/doc.png" @error="onImgError" />
+                <img v-else-if="toSrc(item.real_name) === 2" alt="" class="img" src="@/assets/images/ppt.png" @error="onImgError" />
+                <img v-else-if="toSrc(item.real_name) === 3" alt="" class="img" src="@/assets/images/xls.png" @error="onImgError" />
+                <img v-else-if="toSrc(item.real_name) === 4" alt="" class="img" src="@/assets/images/record2.png" @error="onImgError" />
+                <img v-else-if="toSrc(item.real_name) === 5" alt="" class="img" src="@/assets/images/pdf.png" @error="onImgError" />
                 <span class="text-info line1">{{ item.real_name }}</span>
               </div>
             </el-tag>
@@ -41,7 +41,7 @@
             >
               <div v-if="!percentShow" class="addText"><span class="iconfont iconfujian"></span> 添加文件</div>
               <div v-else class="addText">
-                <img alt="" class="l_gif" src="@/assets/images/loading.gif" />
+                <img alt="" class="l_gif" src="@/assets/images/loading.gif" @error="onImgError" />
               </div>
             </el-upload>
           </el-col>
@@ -129,6 +129,24 @@ export default {
   methods: {
     focusFn() {
       this.$refs.inputFocus.focus()
+    },
+    onImgError(event) {
+      var img = event && event.target
+      if (!img || !img.src) {
+        return
+      }
+      if (img.src.indexOf('enterprise_user1.png') !== -1) {
+        return
+      }
+      var cls = img.className || ''
+      if (typeof cls !== 'string') {
+        cls = ''
+      }
+      if (cls.indexOf('head-portrait') !== -1) {
+        img.src = '/static/img/enterprise_user1.png'
+        return
+      }
+      img.style.display = 'none'
     },
     // 判断上传的文件格式文件是否有无图片，无图则为默认
     toSrc(e) {
@@ -430,12 +448,21 @@ export default {
 
 @media (max-width: 767px) {
   .footer {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap !important;
+    height: auto !important;
     gap: 8px;
 
     .text-right {
       text-align: left !important;
     }
+  }
+
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100% !important;
   }
 }
 </style>

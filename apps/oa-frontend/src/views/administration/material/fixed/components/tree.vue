@@ -305,9 +305,23 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .left {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
     border-right: none;
     border-bottom: 1px solid #eeeeee;
     margin: 0;
+  }
+  .title {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .title /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    float: none;
   }
   .tree-box-con {
     max-height: 220px;

@@ -187,4 +187,11 @@ export default {
   line-height: 32px;
   padding: 0 15px;
 }
+@media (max-width: 767px) {
+  .main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
 </style>

@@ -845,4 +845,11 @@ export default {
   bottom: 0;
   width: calc(100% + 220px);
 }
+@media (max-width: 767px) {
+  .card-box .main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
 </style>

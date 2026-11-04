@@ -13,23 +13,23 @@
           <el-form ref="form" :model="form" :rules="rules" label-width="90px" v-if="fromData.data">
             <template v-if="fromData.type !== 7">
               <el-row>
-                <el-col :span="12">
+                <el-col :span="12" :xs="24">
                   <el-form-item label="物资名称：">{{ fromData.data.name }}</el-form-item>
                 </el-col>
-                <el-col :span="12" v-if="fromData.type !== 4">
+                <el-col :span="12" :xs="24" v-if="fromData.type !== 4">
                   <el-form-item label="物资编号：">{{ fromData.data.number }}</el-form-item>
                 </el-col>
               </el-row>
               <el-row>
-                <el-col :span="12">
+                <el-col :span="12" :xs="24">
                   <el-form-item label="物资分类：">{{ fromData.data.cate.cate_name }}</el-form-item>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="12" :xs="24">
                   <el-form-item label="物资型号：">{{ fromData.data.units }}</el-form-item>
                 </el-col>
               </el-row>
               <el-row v-if="fromData.type == 6">
-                <el-col :span="12">
+                <el-col :span="12" :xs="24">
                   <el-form-item label="归还对象：">{{
                     fromData.data.receive_frame ? fromData.data.receive_frame.name : fromData.data.receive_user.name
                   }}</el-form-item>
@@ -395,8 +395,19 @@ export default {
 }
 @media screen and (max-width: 768px) {
   /deep/ .el-dialog {
-    width: 92% !important;
+    width: 92vw !important;
+    max-width: 92vw !important;
+    min-width: 0 !important;
     margin-top: 8vh !important;
+  }
+  /deep/ .el-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
   .dialog-footer {
     margin: 0;

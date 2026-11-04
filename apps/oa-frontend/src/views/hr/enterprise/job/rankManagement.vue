@@ -386,4 +386,14 @@ export default {
 .rank-icon {
   font-size: 14px;
 }
+@media (max-width: 767px) {
+  ::v-deep .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  .rank-left {
+    margin: 0 !important;
+  }
+}
 </style>

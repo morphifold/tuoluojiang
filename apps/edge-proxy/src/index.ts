@@ -69,7 +69,7 @@ export default {
     if (isStatic && (request.method === 'GET' || request.method === 'HEAD')) {
       init.cf = {
         cacheEverything: true,
-        cacheKey: targetUrl.origin + targetUrl.pathname + '?v=20260916-v3',
+        cacheKey: targetUrl.origin + targetUrl.pathname + '?v=20261104-assets',
         cacheTtl: 2592000
       };
     }

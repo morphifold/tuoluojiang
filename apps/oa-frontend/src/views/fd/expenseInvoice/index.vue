@@ -2,7 +2,7 @@
   <div class="divBox finance-invoice-container">
     <!-- 顶部财务数据概览卡片 -->
     <el-row :gutter="14" class="mb14 stat-row">
-      <el-col :span="4" :xs="12" :sm="8" class="stat-col">
+      <el-col :span="4" :xs="24" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">全员进项总览</div>
@@ -12,7 +12,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="5" :xs="12" :sm="8" class="stat-col">
+      <el-col :span="5" :xs="24" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">待报销 (未绑定)</div>
@@ -22,7 +22,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="5" :xs="12" :sm="8" class="stat-col">
+      <el-col :span="5" :xs="24" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">报销审批中 (已绑定)</div>
@@ -32,7 +32,7 @@
         </el-card>
       </el-col>
 
-      <el-col :span="5" :xs="12" :sm="8" class="stat-col">
+      <el-col :span="5" :xs="24" :sm="8" class="stat-col">
         <el-card shadow="never" class="stat-card">
           <div class="stat-inner">
             <div class="stat-title">已报销归档</div>
@@ -176,7 +176,7 @@
       <div v-loading="loading">
         <!-- 空状态 (卡片模式下) -->
         <div v-if="viewMode === 'card' && tableData.length === 0" class="empty-box acea-row row-column row-center row-middle">
-          <img src="../../../assets/images/defd.png" alt="暂无台账" class="empty-img" />
+          <img src="../../../assets/images/defd.png" alt="暂无台账" class="empty-img" @error="onStaticImgError" />
           <p class="empty-text">进项发票台账暂无相关记录</p>
         </div>
 
@@ -736,6 +736,14 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+    onStaticImgError(e) {
+      var target = e && e.target ? e.target : null
+      if (!target || target.getAttribute('data-oa-fallback')) {
+        return
+      }
+      target.setAttribute('data-oa-fallback', '1')
+      target.style.display = 'none'
+    },
     async getTableData() {
       this.loading = true
       try {

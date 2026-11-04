@@ -25,7 +25,17 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+@media (max-width: 767px) {
+  ::v-deep .el-form-item__label {
+    float: none !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0 !important;
+  }
+  ::v-deep .el-form-item__content {
+    margin-left: 0 !important;
+  }
+}
 </style>
 @/utils/i18ns

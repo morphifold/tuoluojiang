@@ -38,8 +38,8 @@
                 </el-table-column>
                 <el-table-column prop="name" label="封面" min-width="80">
                   <template slot-scope="scope">
-                    <img v-if="scope.row.image" class="table-img" :src="scope.row.image" alt="" />
-                    <img v-else class="table-img" src="../../../../assets/images/index/quick-icon-09.png" alt="" />
+                    <img v-if="scope.row.image" class="table-img" :src="scope.row.image" alt="" @error="onQuickImgError" />
+                    <img v-else class="table-img" src="../../../../assets/images/index/quick-icon-09.png" alt="" @error="onQuickImgError" />
                   </template>
                 </el-table-column>
                 <el-table-column prop="card.name" label="pc端显示" min-width="80">
@@ -152,6 +152,14 @@ export default {
   },
 
   methods: {
+    onQuickImgError(e) {
+      var target = e && e.target ? e.target : null
+      if (!target || target.getAttribute('data-oa-fallback')) {
+        return
+      }
+      target.setAttribute('data-oa-fallback', '1')
+      target.src = require('../../../../assets/images/index/quick-icon-09.png')
+    },
     handleSizeChange(val) {
       this.where.limit = val
       this.getTableData()
@@ -256,13 +264,45 @@ export default {
     max-width: 100% !important;
     margin-left: 0 !important;
     height: auto !important;
+    flex: 0 0 100% !important;
   }
   .assess-right {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
     min-height: 0;
     height: auto;
-    padding: 12px;
+    padding: 8px !important;
     border-left: none;
+    box-sizing: border-box;
+  }
+  .ml14,
+  .mr14 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /deep/ .el-card,
+  /deep/ .el-card__body,
+  /deep/ .el-row,
+  .table-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  /deep/ .el-table,
+  /deep/ .el-table__header,
+  /deep/ .el-table__body,
+  /deep/ .el-table__header-wrapper,
+  /deep/ .el-table__body-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  /deep/ .el-table__fixed,
+  /deep/ .el-table__fixed-right,
+  /deep/ .el-table__fixed-right-patch {
+    display: none !important;
+    width: 0 !important;
   }
 }
 </style>

@@ -25,7 +25,7 @@
                     :placeholder="$t('access.placeholder18')"
                     @getSelectList="getSelectList($event, 2)"
                     :is-search="true"
-                    style="width: 200px"
+                    class="oa-m-member"
                   ></select-member>
                 </el-form-item>
                 <el-form-item class="select-bar">
@@ -34,7 +34,7 @@
                     placeholder="请选择考核周期"
                     clearable
                     size="small"
-                    style="width: 160px"
+                    class="oa-m-period"
                     @change="changePeriod"
                   >
                     <el-option
@@ -55,10 +55,9 @@
                       :format="dateArray[tableFrom.period - 1].format"
                       :placeholder="dateArray[tableFrom.period - 1].text"
                       :type="dateArray[tableFrom.period - 1].type"
-                      class="time"
                       clearable
                       size="small"
-                      style="width: 250px"
+                      class="time oa-m-time"
                       @change="getDateValue"
                     />
                     <el-date-picker
@@ -501,6 +500,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.oa-m-member {
+  width: 200px;
+}
+.oa-m-period {
+  width: 160px;
+}
+.oa-m-time {
+  width: 250px;
+}
 .field-bga {
   color: #1890ff;
   background: rgba(24, 144, 255, 0.07);
@@ -606,6 +614,45 @@ export default {
 }
 .condition-box {
   padding: 20px;
+}
+
+@media (max-width: 767px) {
+  .search {
+    height: auto !important;
+    flex-wrap: wrap !important;
+    align-items: stretch;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .flex,
+  .flex-row,
+  .flex-col,
+  .flex-between {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .select-bar {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+  }
+  .oa-m-member,
+  .oa-m-period,
+  .oa-m-time,
+  /deep/ .el-date-editor,
+  /deep/ .el-date-editor.el-input,
+  /deep/ .el-date-editor.el-input__inner,
+  /deep/ .el-range-editor.el-input__inner,
+  /deep/ .el-select,
+  /deep/ .el-input {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
 }
 </style>
 <style>

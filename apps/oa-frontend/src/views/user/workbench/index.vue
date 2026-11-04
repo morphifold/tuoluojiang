@@ -174,7 +174,9 @@
                 :key="'quick' + index"
               >
                 <div class="pointer">
-                  <el-image :src="item.image" class="image"></el-image>
+                  <el-image :src="item.image" class="image">
+                    <div slot="error" class="image-slot"><i class="el-icon-menu" style="font-size:24px;color:#1890ff;line-height:44px;"></i></div>
+                  </el-image>
                   <div class="name">{{ item.name }}</div>
                 </div>
               </div>
@@ -1654,11 +1656,15 @@ this.getPassword();
     }
   }
   .achievementContent {
-    flex-wrap: wrap;
-    gap: 12px;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    height: auto !important;
     .item {
-      width: calc(50% - 6px);
-      min-width: 0;
+      width: 100% !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
     }
   }
   .calendar-dealt {

@@ -17,8 +17,8 @@
     </el-input>
     <el-card
       v-show="showSeason"
-      class="box-card"
-      style="width: 322px; padding: 0 3px 20px; margin-top: 10px; position: fixed; z-index: 9999"
+      class="box-card oa-quarter-card"
+      style="padding: 0 3px 20px; margin-top: 10px; position: fixed; z-index: 9999"
     >
       <div slot="header" class="clearfix" style="text-align: center; padding: 0">
         <button
@@ -202,5 +202,17 @@ export default {
   background-color: #f5f7fa;
   cursor: not-allowed;
   color: #c0c4cc;
+}
+
+.oa-quarter-card {
+  width: 322px;
+  box-sizing: border-box;
+}
+@media (max-width: 767px) {
+  .oa-quarter-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
 }
 </style>

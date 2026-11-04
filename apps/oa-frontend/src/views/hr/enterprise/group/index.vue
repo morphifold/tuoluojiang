@@ -65,7 +65,7 @@
                 <el-table-column prop="name" :label="$t('toptable.name')" min-width="100">
                   <template slot-scope="scope">
                     <div class="flex lh-center">
-                      <img :src="scope.row.avatar" alt="" class="img" />
+                      <img :src="scope.row.avatar" alt="" class="img" @error="onAvatarError" />
                       <div>{{ scope.row.name }}</div>
                     </div>
                   </template>
@@ -202,6 +202,17 @@ export default {
     })
   },
   methods: {
+    onAvatarError(e) {
+      var target = e && e.target ? e.target : null
+      if (!target) {
+        return
+      }
+      var src = target.src || ''
+      if (src.indexOf('enterprise_user1.png') !== -1) {
+        return
+      }
+      target.src = '/static/img/enterprise_user1.png'
+    },
     // 获取选中id
     getFrameId(data) {
       this.frame_id = data
@@ -294,7 +305,7 @@ export default {
         this.loading = false
         if (this.tableData && this.tableData.length > 0) {
           this.tableData.map((value) => {
-            if (value.frames.length > 1) {
+            if (value.frames && value.frames.length > 1) {
               value.frames.sort((a, b) => {
                 return b.is_mastart - a.is_mastart
               }) //升序

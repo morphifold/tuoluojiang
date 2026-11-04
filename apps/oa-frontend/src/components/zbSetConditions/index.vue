@@ -563,4 +563,12 @@ export default {
     }
   }
 }
+@media (max-width: 767px) {
+  ::v-deep .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100% !important;
+  }
+}
 </style>

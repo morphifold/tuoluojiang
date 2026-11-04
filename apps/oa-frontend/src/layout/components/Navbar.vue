@@ -192,13 +192,29 @@ export default {
     handleSettingMenuClick() {
       this.handleParentCur(this.settingMenuIndex, 1, this.settingMenuInfo);
     },
-    // 父级菜单切换
+    hasVisibleSubMenu(row) {
+      if (!row || !row.children) {
+        return false
+      }
+      if (row.children.length > 1) {
+        return true
+      }
+      return row.children.length === 1 && row.children[0].is_show !== 0
+    },
+    isMobileMenuDrawer() {
+      if (window.innerWidth >= 768) {
+        return false
+      }
+      return this.$store.state.app.device === 'mobile' || window.innerWidth < 768
+    },
+    // 父级菜单切换。手机抽屉下有可见二级菜单时只切列表，不 push（push 会关掉抽屉）
     handleParentCur(index, type, row) {
+      var keepDrawer = this.isMobileMenuDrawer() && this.hasVisibleSubMenu(row)
       if (type === 1) {
         this.parentcur = index
-        this.$store.commit('app/SET_CLICK_TAB', true)
+        this.$store.commit('app/SET_CLICK_TAB', !keepDrawer)
         this.$store.commit('app/SET_PARENTCUR', this.parentcur)
-        if(!row.children){
+        if (!keepDrawer && !row.children) {
           this.$router.push({
             path: row.menu_path
           })
@@ -209,14 +225,13 @@ export default {
         this.menuList[this.showMax - 1] = row
         this.menuList[this.showMax + index] = len4
         this.$store.commit('user/SET_MENU_LIST', this.menuList)
-        this.$store.commit('app/SET_CLICK_TAB', true)
+        this.$store.commit('app/SET_CLICK_TAB', !keepDrawer)
         this.$store.commit('app/SET_PARENTCUR', this.parentcur)
-        if(!row.children){
+        if (!keepDrawer && !row.children) {
           this.$router.push({
-          path: row.menu_path
-        })
-      
-      }
+            path: row.menu_path
+          })
+        }
       }
     },
     filterArr(arr, url) {

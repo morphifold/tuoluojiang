@@ -63,7 +63,7 @@
           </VFormRender>
         </div>
       </div>
-      <div slot="footer" class="dialog-footer">
+      <div slot="footer" class="oa-m-actions">
         <el-button type="primary" @click="getFormData">获取数据</el-button>
         <el-button type="primary" @click="resetForm">重置表单</el-button>
         <el-button type="primary" @click="setFormDisabled">禁用编辑</el-button>
@@ -87,7 +87,7 @@
       :destroy-on-close="true"
     >
       <code-editor :mode="'json'" :readonly="true" v-model="jsonContent"></code-editor>
-      <div slot="footer" class="dialog-footer">
+      <div slot="footer" class="oa-m-actions">
         <el-button type="primary" class="copy-json-btn" :data-clipboard-text="jsonRawContent" @click="copyFormJson">
           复制JSON</el-button
         >
@@ -111,7 +111,7 @@
       <div style="border: 1px solid #dcdfe6">
         <code-editor :mode="'json'" :readonly="true" v-model="formCopyJson"></code-editor>
       </div>
-      <div slot="footer" class="dialog-footer">
+      <div slot="footer" class="oa-m-actions">
         <el-button
           type="primary"
           class="copy-form-data-json-btn"
@@ -819,4 +819,42 @@ div.toolbar-container {
 .clear-btn.el-button:hover {
   background-color: #fef0ed;
 }
+@media (max-width: 767px) {
+  .toolbar-container,
+  .left-toolbar,
+  .right-toolbar,
+  .right-toolbar-con {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .right-toolbar-con {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .form-render-wrapper.h5-layout,
+  .form-render-wrapper.pad-layout {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-shadow: none;
+  }
+
+  .oa-m-actions {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .node-tree ::v-deep .el-tree-node__expand-icon {
+    margin-left: 0 !important;
+  }
+}
+
 </style>

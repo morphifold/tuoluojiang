@@ -61,7 +61,7 @@
                       <el-input
                         size="small"
                         v-model="scope.row.mark"
-                        style="width: 367px"
+                        class="mark-input"
                         clearable
                         type="text"
                         :placeholder="$t('access.levelthat')"
@@ -309,5 +309,62 @@ export default {
 
 /deep/.el-table .cell {
   padding-right: 0;
+}
+.mark-input {
+  width: 367px;
+}
+
+
+@media (max-width: 767px) {
+  .main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .pl50 {
+    padding-left: 0;
+  }
+  .input-suffix {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .input-suffix label {
+    width: 100% !important;
+  }
+  .mark-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .number-explain {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .number-explain >>> .el-input,
+  .number-section >>> .el-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .cr-bottom-button {
+    left: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /deep/ .el-table,
+  /deep/ .el-table__header,
+  /deep/ .el-table__body {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed;
+  }
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
 }
 </style>

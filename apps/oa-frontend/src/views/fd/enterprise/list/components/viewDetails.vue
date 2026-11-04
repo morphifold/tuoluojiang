@@ -94,7 +94,7 @@
           <!-- 操作记录 -->
           <div v-if="tabIndex == 2" class="invoice-body1">
             <div v-if="recordList.length == 0" class="default">
-              <img alt="" class="img" src="../../../../../assets/images/defd.png" />
+              <img alt="" class="img" src="../../../../../assets/images/defd.png" @error="onBillImgError" />
               <div class="text">暂无操作记录</div>
             </div>
             <el-steps v-if="recordList.length !== 0" :active="1" class="set" direction="vertical" space="130px">
@@ -123,6 +123,7 @@
                               alt=""
                               class="item-img"
                               @click="handlePictureCardPreview(details.val.before)"
+                              @error="onBillImgError"
                             />
                             <span v-else>--</span>
                             <span class="ml10 mr10"> 改为</span>
@@ -132,6 +133,7 @@
                               alt=""
                               @click="handlePictureCardPreview(details.val.after)"
                               class="item-img"
+                              @error="onBillImgError"
                             />
                             <span v-else>--</span>
                           </template>
@@ -222,6 +224,17 @@ export default {
       if (this.tabIndex == '2') {
         this.operationRecord()
       }
+    },
+    onBillImgError(e) {
+      var target = e && e.target ? e.target : null
+      if (!target) {
+        return
+      }
+      var src = target.src || ''
+      if (src.indexOf('enterprise_user1.png') !== -1) {
+        return
+      }
+      target.src = '/static/img/enterprise_user1.png'
     }
   }
 }
@@ -458,13 +471,15 @@ export default {
   }
 
   .remarks-wrap,
-  .content {
-    width: 100%;
-    max-width: 100%;
+  .content,
+  .default,
+  .operationBox {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .default {
-    width: 100%;
     margin-top: 48px;
   }
 
@@ -473,13 +488,21 @@ export default {
   }
 
   .operationBox {
-    width: 100% !important;
-
     .header {
       height: auto;
       flex-wrap: wrap;
       gap: 4px;
     }
+  }
+
+  .set.el-steps,
+  /deep/ .el-steps {
+    display: flex !important;
+    flex-direction: column;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .el-tabs--border-card {

@@ -36,10 +36,18 @@
           </div>
         </div>
       </div>
-      <div class="ex-content">
+      <div v-if="isReimburseForm" class="dd-tabs-nav">
+        <div class="dd-tab" :class="{ active: ddTab === 'submit' }" @click="ddTab = 'submit'">发起提交</div>
+        <div class="dd-tab" :class="{ active: ddTab === 'history' }" @click="switchHistory">历史记录</div>
+      </div>
+      <div class="ex-content" v-show="ddTab === 'submit'">
         <el-scrollbar style="height: 100%">
           <div class="ex-content-con">
-            <div class="acea-row mb20">
+            <div v-if="draftHint" class="dd-draft-hint">
+              <span>已为您恢复上次暂存的草稿</span>
+              <button type="button" class="dd-draft-clear" @click="clearDraftForm">清空重填</button>
+            </div>
+            <div v-if="!isReimburseForm" class="acea-row mb20">
               <div class="shu mr10"></div>
               <span class="title">提交审批</span>
             </div>
@@ -60,7 +68,32 @@
           </div>
         </el-scrollbar>
       </div>
-      <div class="button from-foot-btn fix btn-shadow">
+      <div class="ex-content" v-show="isReimburseForm && ddTab === 'history'">
+        <el-scrollbar style="height: 100%">
+          <div class="ex-content-con" v-loading="historyLoading">
+            <div v-if="!historyLoading && historyList.length === 0" class="dd-history-empty">暂无历史申请</div>
+            <div v-for="item in historyList" :key="item.id" class="dd-history-card">
+              <div class="dd-history-top">
+                <span class="dd-history-title">{{ historyTitle(item) }}</span>
+                <el-tag size="mini" effect="plain" :type="historyTagType(item)">{{ historyStatusText(item) }}</el-tag>
+              </div>
+              <div v-if="historyBrief(item)" class="dd-history-brief">{{ historyBrief(item) }}</div>
+              <div class="dd-history-time">{{ item.created_at || '--' }}</div>
+              <button type="button" class="dd-history-reapply" @click="reapplyHistory(item)">再次提交</button>
+            </div>
+          </div>
+        </el-scrollbar>
+      </div>
+      <div v-if="isReimburseForm && ddTab === 'submit'" class="dd-footer-bar fix btn-shadow">
+        <button type="button" class="dd-draft-btn" @click="saveDraft">
+          <i class="el-icon-receiving"></i>
+          <span>存草稿</span>
+        </button>
+        <button type="button" class="dd-submit-btn" :disabled="loading" @click="handleConfirm('ruleForm')">
+          {{ loading ? '提交中...' : '提 交' }}
+        </button>
+      </div>
+      <div v-else-if="ddTab === 'submit'" class="button from-foot-btn fix btn-shadow">
         <el-button size="small" @click="close">{{ $t('public.cancel') }}</el-button>
         <el-button size="small" type="primary" :loading="loading" @click="handleConfirm('ruleForm')">
           {{ $t('public.ok') }}
@@ -76,6 +109,7 @@ import {
   approveApplyEditApi,
   approveApplyFormApi,
   approveApplyListApi,
+  approveApplyApi,
   attendanceAbnormalDateApi,
   attendanceAbnormalRecordApi,
   approveHolidayTypeSelectApi
@@ -143,7 +177,12 @@ export default {
       tryDateOptions: null, // 异常时间
       tryYiChangOptions: null, // 异常记录
       holidayTypeOptions: null,
-      windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200
+      windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200,
+      ddTab: 'submit',
+      historyLoading: false,
+      historyList: [],
+      draftHint: false,
+      isReimburseForm: false,
     }
   },
   computed: {
@@ -246,6 +285,16 @@ export default {
             this.rules.push(item)
           }
         })
+        this.markReimburseFields()
+        if (!this.isEdit && this.isReimburseForm) {
+          var selfRestore = this
+          this.$nextTick(function () {
+            setTimeout(function () {
+              selfRestore.restoreDraft()
+              selfRestore.hideNativeExpenseFields()
+            }, 700)
+          })
+        }
 
         if (!this.isEdit) {
           this.drawer = true
@@ -536,6 +585,7 @@ export default {
         request[FromData.method.toLowerCase()](FromData.action, data)
           .then((res) => {
             this.loading = false
+            if (this.isReimburseForm) this.clearDraftStorage()
             this.close()
             this.$emit('scheduleRecord')
             this.$emit('isOk')
@@ -577,7 +627,158 @@ export default {
           }
         }
       })
-    }
+    },
+    markReimburseFields() {
+      var hasInvoice = false
+      ;(this.rules || []).forEach(function (item) {
+        if (item && (item.type === 'invoiceSelect' || item.type === 'invoice')) hasInvoice = true
+      })
+      this.isReimburseForm = hasInvoice
+    },
+    hideNativeExpenseFields() {
+      if (!this.isReimburseForm) return
+      var forms = document.querySelectorAll('.edit-examine-form')
+      var form = forms.length ? forms[forms.length - 1] : null
+      if (!form) return
+      var items = form.querySelectorAll('.el-form-item')
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].querySelector('.invoice-select-component')) continue
+        var label = items[i].querySelector('.el-form-item__label')
+        var text = label ? label.textContent || '' : ''
+        if (/报销类型|费用类型|费用类别|报销总金额|报销金额|报销事由|事由|备注|费用明细/.test(text)) {
+          items[i].style.display = 'none'
+        }
+      }
+    },
+    draftKey() {
+      return 'oa_examine_draft_' + this.approveId
+    },
+    saveDraft() {
+      var form = {}
+      try {
+        form = this.fapi && this.fapi.formData ? this.fapi.formData() : this.handleFromObj()
+      } catch (e) {
+        form = this.handleFromObj()
+      }
+      localStorage.setItem(this.draftKey(), JSON.stringify({ form: form, savedAt: Date.now() }))
+      this.$message.success('草稿已保存，下次打开将自动恢复')
+    },
+    restoreDraft() {
+      var raw = localStorage.getItem(this.draftKey())
+      if (!raw || !this.fapi || !this.fapi.setValue) return
+      try {
+        var data = JSON.parse(raw)
+        if (data && data.form) {
+          this.fapi.setValue(data.form)
+          this.draftHint = true
+        }
+      } catch (e) {}
+    },
+    clearDraftStorage() {
+      localStorage.removeItem(this.draftKey())
+      this.draftHint = false
+    },
+    clearDraftForm() {
+      this.clearDraftStorage()
+      if (this.fapi && this.fapi.resetFields) this.fapi.resetFields()
+      this.$message.success('已清空草稿，请重新填写')
+    },
+    switchHistory() {
+      this.ddTab = 'history'
+      this.loadHistory()
+    },
+    loadHistory() {
+      var self = this
+      this.historyLoading = true
+      approveApplyApi({ page: 1, limit: 20, types: 0 })
+        .then(function (res) {
+          var list = (res.data && res.data.list) || []
+          var id = String(self.approveId || '')
+          var filtered = list.filter(function (item) {
+            if (!id) return true
+            var aid = item.approve_id || (item.approve && item.approve.id) || ''
+            return String(aid) === id
+          })
+          self.historyList = filtered.length ? filtered : list
+        })
+        .catch(function () {
+          self.historyList = []
+        })
+        .finally(function () {
+          self.historyLoading = false
+        })
+    },
+    historyTitle(item) {
+      if (!item) return '报销申请'
+      if (item.approve && item.approve.name) return item.approve.name
+      return item.name || '报销申请'
+    },
+    historyStatusText(item) {
+      if (!item) return ''
+      if (item.status === -1) return '已撤销'
+      if (item.status === 1 && item.recall) return '撤销中'
+      if (item.status === 0) return '审核中'
+      if (item.status === 1) return '已通过'
+      if (item.status === 2) return '已拒绝'
+      return '处理中'
+    },
+    historyTagType(item) {
+      if (!item) return 'info'
+      if (item.status === 0) return 'warning'
+      if (item.status === 2) return 'danger'
+      return 'info'
+    },
+    historyBrief(item) {
+      var content = item && item.content
+      if (!Array.isArray(content)) return ''
+      var parts = []
+      content.forEach(function (row) {
+        if (!row || row.type === 'uploadFrom' || row.type === 'rich_text') return
+        var list = null
+        if (Array.isArray(row.value) && row.value.length && row.value[0] && (row.value[0].invoice_number || row.value[0].total_amount !== undefined)) {
+          list = row.value
+        }
+        if (row.type === 'invoiceSelect' || row.type === 'invoice' || list) {
+          var invoices = list || []
+          var total = 0
+          invoices.forEach(function (inv) {
+            total += parseFloat(inv.total_amount) || 0
+          })
+          if (invoices.length) parts.push('发票 ' + invoices.length + ' 张 ¥' + total.toFixed(2))
+          return
+        }
+        if (row.label && /金额/.test(row.label) && row.value !== undefined && row.value !== '') {
+          parts.push(row.label + ' ¥' + row.value)
+        }
+      })
+      return parts.join(' · ')
+    },
+    reapplyHistory(item) {
+      var content = item && item.content
+      if (!Array.isArray(content) || !this.fapi || !this.fapi.setValue) {
+        this.$message.warning('这条记录暂时无法引用')
+        return
+      }
+      var self = this
+      this.ddTab = 'submit'
+      this.$nextTick(function () {
+        content.forEach(function (row) {
+          if (!row) return
+          var field = row.field
+          if (!field && self.fapi.rule) {
+            for (var i = 0; i < self.fapi.rule.length; i++) {
+              if (self.fapi.rule[i].title === row.label) {
+                field = self.fapi.rule[i].field
+                break
+              }
+            }
+          }
+          if (field) self.fapi.setValue(field, row.value)
+        })
+        self.hideNativeExpenseFields()
+        self.$message.success('已引用该申请，请核对后提交')
+      })
+    },
   }
 }
 </script>
@@ -638,7 +839,7 @@ export default {
 }
 
 /deep/ .el-drawer__body {
-  padding-bottom: 40px;
+  padding-bottom: 76px;
 }
 .ex-content {
   padding: 20px 0 20px 20px;
@@ -763,6 +964,131 @@ export default {
       flex: 1;
     }
   }
+}
+
+.dd-tabs-nav {
+  display: flex;
+  background: #fff;
+  border-bottom: 1px solid #f0f1f5;
+  padding: 0 16px;
+}
+.dd-tab {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  height: 44px;
+  line-height: 44px;
+  font-size: 15px;
+  color: #646a73;
+  cursor: pointer;
+}
+.dd-tab.active {
+  color: #1677ff;
+  font-weight: 700;
+}
+.dd-tab.active:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 24px;
+  height: 3px;
+  margin-left: -12px;
+  border-radius: 2px;
+  background: #1677ff;
+}
+.dd-draft-hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f6fa;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  color: #646a73;
+  font-size: 13px;
+}
+.dd-draft-clear {
+  border: none;
+  background: transparent;
+  color: #1677ff;
+  cursor: pointer;
+}
+.dd-footer-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 16px;
+  box-sizing: border-box;
+}
+.dd-draft-btn {
+  width: 64px;
+  border: none;
+  background: transparent;
+  color: #646a73;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+.dd-draft-btn i {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+.dd-submit-btn {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  background: linear-gradient(90deg, #1677ff 0%, #0052d9 100%);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+}
+.dd-submit-btn:disabled {
+  opacity: 0.7;
+}
+.dd-history-card {
+  background: #fff;
+  border: 1px solid #f0f1f5;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.dd-history-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.dd-history-title {
+  font-weight: 600;
+  color: #1f2329;
+}
+.dd-history-brief,
+.dd-history-time {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #8f959e;
+  word-break: break-word;
+}
+.dd-history-reapply {
+  margin-top: 8px;
+  border: none;
+  background: transparent;
+  color: #1677ff;
+  padding: 0;
+  cursor: pointer;
+}
+.dd-history-empty {
+  text-align: center;
+  color: #8f959e;
+  padding: 40px 0;
+}
+/deep/ .el-form-item.dd-native-field {
+  display: none !important;
 }
 </style>
 

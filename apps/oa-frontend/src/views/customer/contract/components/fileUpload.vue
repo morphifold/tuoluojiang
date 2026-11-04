@@ -3,7 +3,7 @@
   <div class="followUpRecord">
     <div class="addContent">
       <div class="left">
-        <img :src="formInfo.data.card ? formInfo.data.card.avatar : avatar" alt="" class="head-portrait" />
+        <img :src="formInfo.data.card ? formInfo.data.card.avatar : avatar" alt="" class="head-portrait" @error="onImgError" />
       </div>
       <div class="right">
         <div class="box" @click="focusFn">
@@ -20,11 +20,11 @@
             <el-tag type="info" v-for="(item, i) in uploadList" :key="i">
               <div class="info">
                 <i class="el-icon-error" @click="deleteTag(item)"></i>
-                <img v-if="toSrc(item.name) === 1" class="img" src="../../../../assets/images/doc.png" alt="" />
-                <img v-if="toSrc(item.name) === 2" class="img" src="../../../../assets/images/ppt.png" alt="" />
-                <img v-if="toSrc(item.name) === 3" class="img" src="../../../../assets/images/xls.png" alt="" />
-                <img v-if="toSrc(item.name) === 4" class="img" src="../../../../assets/images/record2.png" alt="" />
-                <img v-if="toSrc(item.name) === 5" class="img" src="../../../../assets/images/pdf.png" alt="" />
+                <img v-if="toSrc(item.name) === 1" class="img" src="../../../../assets/images/doc.png" alt="" @error="onImgError" />
+                <img v-if="toSrc(item.name) === 2" class="img" src="../../../../assets/images/ppt.png" alt="" @error="onImgError" />
+                <img v-if="toSrc(item.name) === 3" class="img" src="../../../../assets/images/xls.png" alt="" @error="onImgError" />
+                <img v-if="toSrc(item.name) === 4" class="img" src="../../../../assets/images/record2.png" alt="" @error="onImgError" />
+                <img v-if="toSrc(item.name) === 5" class="img" src="../../../../assets/images/pdf.png" alt="" @error="onImgError" />
                 <span class="text-info line1">{{ item.name }}</span>
               </div>
             </el-tag>
@@ -41,7 +41,7 @@
             >
               <div class="addText" v-if="!percentShow"><span class="iconfont iconfujian"></span> 添加文件</div>
               <div class="addText" v-else>
-                <img src="../../../../assets/images/loading.gif" alt="" class="l_gif" />
+                <img src="../../../../assets/images/loading.gif" alt="" class="l_gif" @error="onImgError" />
               </div>
             </el-upload>
           </el-col>
@@ -124,6 +124,24 @@ export default {
   methods: {
     focusFn() {
       this.$refs.inoutFocus.focus()
+    },
+    onImgError(event) {
+      var img = event && event.target
+      if (!img || !img.src) {
+        return
+      }
+      if (img.src.indexOf('enterprise_user1.png') !== -1) {
+        return
+      }
+      var cls = img.className || ''
+      if (typeof cls !== 'string') {
+        cls = ''
+      }
+      if (cls.indexOf('head-portrait') !== -1) {
+        img.src = '/static/img/enterprise_user1.png'
+        return
+      }
+      img.style.display = 'none'
     },
     // 上传文件方法
     uploadServerLog(params) {
@@ -417,12 +435,21 @@ export default {
 
 @media (max-width: 767px) {
   .footer {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap !important;
+    height: auto !important;
     gap: 8px;
 
     .text-right {
       text-align: left !important;
     }
+  }
+
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100% !important;
   }
 }
 </style>

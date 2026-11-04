@@ -30,7 +30,7 @@
         <el-col :span="6">
           <div class="image-preview">
             <div class="image-preview-con">
-              <img :src="data.cover === '' || isImage ? defaultImg : data.cover" alt="" />
+              <img :src="data.cover === '' || isImage ? defaultImg : data.cover" alt="" @error="onCoverError" />
               <div
                 v-if="data.cover === '' || isImage"
                 class="public-img"
@@ -260,6 +260,19 @@ export default {
         return false
       }
       return true
+    },
+    onCoverError(e) {
+      if (!e || !e.target) return
+      var current = e.target.src || ''
+      if (current.indexOf('enterprise_user1.png') !== -1) return
+      var fallback = this.defaultMore
+      if (!fallback) fallback = this.defaultImg
+      if (!fallback || e.target.getAttribute('data-oa-fallback') === '1') {
+        e.target.src = '/static/img/enterprise_user1.png'
+        return
+      }
+      e.target.setAttribute('data-oa-fallback', '1')
+      e.target.src = fallback
     }
   }
 }
@@ -364,6 +377,13 @@ export default {
     li.mActive {
       // margin-right: 0;
     }
+  }
+}
+@media (max-width: 767px) {
+  ::v-deep .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
   }
 }
 </style>

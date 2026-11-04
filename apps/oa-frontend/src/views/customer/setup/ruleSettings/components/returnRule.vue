@@ -29,7 +29,7 @@
                     placeholder="请输入正整数"
                     show-word-limit
                     size="small"
-                    style="width: 350px"
+                    class="rule-input"
                     type="number"
                   >
                     <template slot="suffix">天</template>
@@ -43,7 +43,7 @@
                     placeholder="请输入正整数"
                     show-word-limit
                     size="small"
-                    style="width: 350px"
+                    class="rule-input"
                     type="number"
                   >
                     <template slot="suffix">天</template>
@@ -57,7 +57,7 @@
                     placeholder="请输入正整数"
                     show-word-limit
                     size="small"
-                    style="width: 350px"
+                    class="rule-input"
                     type="number"
                   >
                     <template slot="suffix">天</template>
@@ -92,7 +92,7 @@
                     placeholder="请输入正整数"
                     show-word-limit
                     size="small"
-                    style="width: 350px"
+                    class="rule-input"
                     type="number"
                   >
                     <template slot="suffix">个</template>
@@ -262,8 +262,29 @@ export default {
 /deep/.el-form-item__content::after {
   display: none;
 }
+.rule-input {
+  width: 350px;
+}
 </style>
 <style lang="scss" scoped>
 @import '../../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  .setting-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .setting-container .head {
+    margin-left: 0 !important;
+  }
+
+  .rule-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
 </style>
 

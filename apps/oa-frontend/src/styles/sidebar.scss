@@ -122,6 +122,28 @@
    }
   }
 
+  @media (max-width: 767px) {
+    .mobile-menu-open.hideSidebar,
+    .mobile-menu-open.openSidebar {
+      .sidebar-container {
+        width: 160px !important;
+        max-width: 160px !important;
+        pointer-events: auto !important;
+      }
+      .el-submenu__title span,
+      .el-menu-item span {
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        visibility: visible !important;
+        display: inline !important;
+      }
+      .el-submenu__icon-arrow {
+        display: inline-block !important;
+      }
+    }
+  }
+
   .withoutAnimation {
     .main-container,
     .sidebar-container {

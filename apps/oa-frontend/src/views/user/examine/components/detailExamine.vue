@@ -88,7 +88,7 @@
               <el-form-item v-for="(item, index) in form.rule" :key="index">
                 <div
                   class="label"
-                  :class="{ 'label-block': isInvoiceData(item) || Array.isArray(item.value) || item.type === 'rich_text' }"
+                  :class="{ 'label-block': isInvoiceData(item) || Array.isArray(item.value) || item.type === 'rich_text' || expenseMeta(item) }"
                 >
                   <span class="rule-label">{{ item.label }}:</span>
                   <div v-if="isInvoiceData(item)" style="width: 100%">
@@ -100,7 +100,21 @@
                   <div v-else-if="item.type === 'rich_text'" style="width: 100%">
                     <div class="rich-box" v-html="item.value"></div>
                   </div>
-                  <span v-else class="rule-value">{{ item.value || '--' }}</span>
+                  <div v-else-if="expenseMeta(item)" class="dd-expense-view">
+                    <div v-if="expenseMeta(item).tag === 'none'" class="dd-tag-view">无发票</div>
+                    <div v-if="expenseMeta(item).tag === 'pending'" class="dd-tag-view">待收发票</div>
+                    <div v-for="(exp, idx) in expenseMeta(item).items || []" :key="'meta' + idx" class="dd-exp-line">
+                      <span class="dd-exp-name">报销明细 {{ idx + 1 }}</span>
+                      <span>{{ exp.type || '费用' }}</span>
+                      <span>{{ exp.date || '' }}</span>
+                      <span v-if="exp.amount">¥{{ exp.amount }}</span>
+                      <div v-if="exp.remark" class="dd-exp-remark">{{ exp.remark }}</div>
+                    </div>
+                    <div v-if="expenseMeta(item).account" class="dd-exp-extra">收款账户：{{ expenseMeta(item).account }}</div>
+                    <div v-if="expenseMeta(item).entity" class="dd-exp-extra">企业主体：{{ expenseMeta(item).entity }}</div>
+                    <div v-if="expenseMeta(item).payDate" class="dd-exp-extra">期望付款时间：{{ expenseMeta(item).payDate }}</div>
+                  </div>
+                  <span v-else class="rule-value">{{ displayRuleValue(item) }}</span>
                 </div>
               </el-form-item>
               <el-form-item v-if="examineData.apply_id">
@@ -469,6 +483,27 @@ export default {
         }
       }
       return []
+    },
+    expenseMeta(item) {
+      var text = item && typeof item.value === 'string' ? item.value : ''
+      var mark = '@@OA_EXPENSE@@'
+      var idx = text.indexOf(mark)
+      if (idx < 0) return null
+      try {
+        return JSON.parse(text.slice(idx + mark.length))
+      } catch (e) {
+        return null
+      }
+    },
+    expensePlain(item) {
+      var text = item && item.value !== undefined && item.value !== null ? String(item.value) : ''
+      var idx = text.indexOf('@@OA_EXPENSE@@')
+      if (idx < 0) return text || '--'
+      var plain = text.slice(0, idx).replace(/\s+$/, '')
+      return plain || '--'
+    },
+    displayRuleValue(item) {
+      return this.expensePlain(item)
     }
   }
 }
@@ -743,5 +778,43 @@ export default {
 }
 .from-foot-btn {
   height: max-content;
+}
+
+.dd-expense-view {
+  width: 100%;
+  background: #f4f6fa;
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+}
+.dd-tag-view {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: rgba(22, 119, 255, 0.12);
+  color: #1677ff;
+  font-size: 12px;
+}
+.dd-exp-line {
+  padding: 8px 0;
+  border-bottom: 1px solid #eef0f3;
+  color: #1f2329;
+  font-size: 13px;
+}
+.dd-exp-name {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.dd-exp-line span {
+  margin-right: 8px;
+}
+.dd-exp-remark,
+.dd-exp-extra {
+  margin-top: 4px;
+  color: #646a73;
+  font-size: 12px;
+  word-break: break-word;
 }
 </style>

@@ -145,10 +145,23 @@ export default {
   /deep/ .el-dialog {
     width: 94vw !important;
     max-width: 94vw !important;
+    min-width: 0 !important;
   }
   .repeat-left {
     text-align: left;
     margin-top: 6px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    word-break: break-word;
+  }
+  .body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    word-break: break-word;
   }
   .body p {
     word-break: break-word;

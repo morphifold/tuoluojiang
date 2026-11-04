@@ -40,7 +40,7 @@
           </el-timeline>
           <!-- 缺省页 -->
           <div class="defult" v-if="activities.length == 0">
-            <img src="@/assets/images/def2.png" alt="" class="img" />
+            <img src="@/assets/images/def2.png" alt="" class="img" @error="onStaticImgError" />
             <div class="text">暂无系统升级～</div>
           </div>
         </el-tab-pane>
@@ -66,7 +66,7 @@
           </el-timeline>
           <!-- 缺省页 -->
           <div class="defult" v-if="logActivities.length == 0">
-            <img src="@/assets/images/def2.png" alt="" class="img" />
+            <img src="@/assets/images/def2.png" alt="" class="img" @error="onStaticImgError" />
             <div class="text">暂无升级记录哟～</div>
           </div>
         </el-tab-pane>
@@ -100,7 +100,7 @@
         </div>
 
         <template v-if="upgradeProgress.speed == '100.0'">
-          <img src="@/assets/images/ok.png" alt="" class="ok-img" />
+          <img src="@/assets/images/ok.png" alt="" class="ok-img" @error="onStaticImgError" />
           <div class="ok-text">升级成功</div>
           <el-button type="primary" round class="ok-btn mt20" @click="back">确认</el-button>
         </template>
@@ -163,6 +163,14 @@ export default {
     this.getUpgradeAgreement()
   },
   methods: {
+    onStaticImgError(e) {
+      var target = e && e.target ? e.target : null
+      if (!target || target.getAttribute('data-oa-fallback')) {
+        return
+      }
+      target.setAttribute('data-oa-fallback', '1')
+      target.style.display = 'none'
+    },
     //   获取在线升级列表
     getUpgradeList() {
       getUpgradeList().then((res) => {
@@ -648,14 +656,35 @@ export default {
     max-width: 95vw !important;
   }
   .dialog1-content,
+  .exoneration,
   .exoneration-header,
   .dialog1 .footer,
   .d-upgrade,
   .d-upgrade .img,
+  .dialog .img,
   .dialog .dialog-content {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box;
+  }
+  .ml20,
+  .divBox .header .info ul {
+    margin-left: 0 !important;
+  }
+  .divBox .header,
+  .divBox .header .info ul {
+    flex-wrap: wrap !important;
+  }
+  .time-line {
+    margin-left: 0 !important;
+  }
+  .time {
+    position: static;
+    left: 0;
+  }
+  .dialog .img {
+    margin-top: 0 !important;
   }
   .dialog1 {
     height: auto;

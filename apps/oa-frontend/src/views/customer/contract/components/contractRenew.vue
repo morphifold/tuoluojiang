@@ -241,4 +241,13 @@ export default {
 </style>
 <style lang="scss" scoped>
 @import '../../../../components/customer/customer-mobile.scss';
+
+@media (max-width: 767px) {
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100% !important;
+  }
+}
 </style>

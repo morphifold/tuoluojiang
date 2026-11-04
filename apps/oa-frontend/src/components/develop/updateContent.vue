@@ -11,7 +11,7 @@
                 size="small"
                 v-model="item.form_field_uniqid"
                 placeholder="请搜索选择目标字段"
-                style="width: 300px"
+                class="oa-m-field"
                 filterable
               >
                 <el-option
@@ -32,7 +32,7 @@
                 size="small"
                 v-model="item.to_form_field_uniqid"
                 placeholder="请搜索选择源字段"
-                style="width: 300px"
+                class="oa-m-field"
                 filterable
               >
                 <el-option v-for="(item, index) in field" :key="index" :label="item.label" :value="item.value">
@@ -633,6 +633,9 @@ export default {
   height: 0;
   width: 0;
 }
+.oa-m-field {
+  width: 300px;
+}
 @media (max-width: 767px) {
   .flex {
     flex-wrap: wrap;
@@ -645,7 +648,14 @@ export default {
   .el-col {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
     margin-left: 0 !important;
+    flex: 0 0 100% !important;
+  }
+  .oa-m-field {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
   .el-select {
     width: 100% !important;

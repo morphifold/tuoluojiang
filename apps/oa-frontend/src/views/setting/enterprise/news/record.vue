@@ -120,9 +120,10 @@ export default {
         this.total = res.data.messageNum
         if (this.tableData && this.tableData.length > 0) {
           this.tableData.forEach((value) => {
-            value.message_template.sort((a, b) => {
+            var templates = value && Array.isArray(value.message_template) ? value.message_template : []
+            templates.sort((a, b) => {
               return a.type - b.type
-            }) //升序
+            })
           })
         }
       })

@@ -270,7 +270,7 @@
         <!-- 操作记录 -->
         <div class="invoice-body1" v-if="tabIndex == 3">
           <div class="default" v-if="recordList.length == 0">
-            <img src="../../../../assets/images/defd.png" alt="" class="img" />
+            <img src="../../../../assets/images/defd.png" alt="" class="img" @error="onStaticImgError" />
             <div class="text">暂无操作记录</div>
           </div>
           <el-steps direction="vertical" space="100" class="set" :active="1" v-if="recordList.length !== 0">
@@ -360,6 +360,14 @@ export default {
     }
   },
   methods: {
+    onStaticImgError(e) {
+      var target = e && e.target ? e.target : null
+      if (!target || target.getAttribute('data-oa-fallback')) {
+        return
+      }
+      target.setAttribute('data-oa-fallback', '1')
+      target.style.display = 'none'
+    },
     handleClose() {
       this.drawer = false
       this.tabIndex = '1'
@@ -814,25 +822,67 @@ export default {
 
   .invoice-title .invoice-header .invoice-right {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .operationBox {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .operationBox .header {
+    flex-wrap: wrap !important;
+    height: auto !important;
   }
 
   .default {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
     margin-top: 60px;
   }
 
+  /deep/ .el-steps {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /deep/ .el-steps .el-step {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+  }
+
   /deep/ .el-step.is-vertical .el-step__main {
-    width: auto !important;
+    width: 0 !important;
+    max-width: 100% !important;
     flex: 1;
-    min-width: 0;
+    min-width: 0 !important;
+  }
+
+  /deep/ .el-form-item__label {
+    float: none !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
   }
 
   .invoice-body1 {
-    margin: 12px;
+    margin: 12px 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
   }
 }
 </style>

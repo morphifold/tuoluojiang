@@ -31,7 +31,7 @@
                 placeholder="根据关键字搜索"
                 prefix-icon="el-icon-search"
                 size="small"
-                style="width: 300px"
+                class="oa-m-target-search"
                 @change="handleSearch"
               />
             </div>
@@ -206,5 +206,25 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 0 12px 20px;
+}
+
+.oa-m-target-search {
+  width: 300px;
+}
+@media (max-width: 767px) {
+  .dialog-box {
+    flex-wrap: wrap !important;
+  }
+  .oa-m-target-search {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  ::v-deep .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100% !important;
+  }
 }
 </style>

@@ -7,7 +7,7 @@
     <!-- 地址搜索区域 -->
     <div class="posInput">
       <el-input
-        style="width: 350px"
+        class="oa-m-map-input"
         id="tipinput"
         placeholder="请输入搜索地址"
         v-model="address"
@@ -361,6 +361,10 @@ export default {
   margin-left: 10%;
 }
 
+.oa-m-map-input {
+  width: 350px;
+}
+
 /* 搜索结果列表样式 */
 .map_search_result {
   cursor: pointer;
@@ -407,6 +411,15 @@ export default {
       color: #fff;
       border-radius: 0 4px 4px 0;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .oa-m-map-input,
+  .map_search_result {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
 </style>

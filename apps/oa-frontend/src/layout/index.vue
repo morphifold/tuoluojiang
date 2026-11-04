@@ -3,6 +3,7 @@
     <!-- 移动端左上角汉堡切换按钮 -->
     <div
       class="mobile-hamburger"
+      :class="{ 'is-open': mobileMenuOpen, 'has-submenu': isSidebarShow }"
       @click="mobileMenuOpen = !mobileMenuOpen"
     >
       <i :class="mobileMenuOpen ? 'el-icon-close' : 'el-icon-s-unfold'"></i>
@@ -304,6 +305,18 @@ export default {
 @media (max-width: 767px) {
   .mobile-hamburger {
     display: flex !important;
+    left: 10px;
+    top: 7px;
+  }
+
+  .mobile-hamburger.is-open {
+    left: 72px !important;
+    top: 10px !important;
+  }
+
+  .mobile-hamburger.is-open.has-submenu {
+    left: 232px !important;
+    top: 10px !important;
   }
 
   .mobile-drawer-mask {
@@ -331,6 +344,26 @@ export default {
     }
   }
 
+  // hideSidebar 会把折叠菜单收成 64px 并藏文字；抽屉打开时强制展开二级栏
+  .mobile-menu-open.hideSidebar,
+  .mobile-menu-open.openSidebar {
+    /deep/ .sidebar-container {
+      width: 160px !important;
+      max-width: 160px !important;
+    }
+    /deep/ .el-submenu__title span,
+    /deep/ .el-menu-item span {
+      width: auto !important;
+      height: auto !important;
+      overflow: visible !important;
+      visibility: visible !important;
+      display: inline !important;
+    }
+    /deep/ .el-submenu__icon-arrow {
+      display: inline-block !important;
+    }
+  }
+
   // 强制重置主内容容器边距为 0，防止被 219px 挤压截断
   .main-container {
     margin-left: 0 !important;
@@ -353,6 +386,11 @@ export default {
       width: 100% !important;
       max-width: 100vw !important;
     }
+  }
+
+  .left {
+    animation: none !important;
+    margin-right: 0 !important;
   }
 
   // 顶栏面包屑左侧让位给汉堡按钮

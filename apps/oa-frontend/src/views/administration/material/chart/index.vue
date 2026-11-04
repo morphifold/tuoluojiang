@@ -4,13 +4,13 @@
       <statisticsBox ref="formBox" @confirmData="confirmData" />
     </el-card>
     <el-row :gutter="14" class="mt14">
-      <el-col :span="12">
+      <el-col :span="12" :xs="24">
         <el-card>
           <div class="statistics-title">资产金额</div>
           <echartBox :option-data="optionData" :styles="styles1" />
         </el-card>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="12" :xs="24">
         <el-card>
           <div class="statistics-title">物资变动情况</div>
           <div class="content border-none">
@@ -71,7 +71,7 @@
       </el-col>
     </el-row>
     <el-row ref="rows" :gutter="14" class="mt14">
-      <el-col :span="12">
+      <el-col :span="12" :xs="24">
         <el-card>
           <div class="pie-tab">
             <div class="statistics-title mb20">库存预警</div>
@@ -104,7 +104,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="12" :xs="24">
         <el-card>
           <div class="pie-tab">
             <div class="statistics-title mb20">物资变动明细</div>
@@ -463,14 +463,31 @@ export default {
   overflow-y: auto;
 }
 @media screen and (max-width: 768px) {
-  /deep/ .el-col-12 {
-    width: 100%;
+  .divBox > .el-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .divBox > .el-row > .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
     float: none;
     margin-bottom: 14px;
+    box-sizing: border-box !important;
   }
   .content {
     height: auto;
     min-height: 220px;
+  }
+  .content /deep/ .el-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .content /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    float: none;
   }
 }
 </style>

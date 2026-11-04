@@ -1,42 +1,90 @@
 <template>
   <div class="invoice-select-component">
-    <!-- 头部操作区（只读模式隐藏） -->
-    <div v-if="!disabled && !isView" class="action-bar mb10">
-      <div class="action-buttons">
-        <el-button
-          type="primary"
-          size="small"
-          icon="el-icon-tickets"
-          @click="openSelectDialog"
-        >
-          从我的发票夹选择
-        </el-button>
-
+    <div v-if="!disabled && !isView" class="dd-reimburse">
+      <div class="dd-total-banner">
+        <span class="dd-total-label">报销总额：</span>
+        <span class="dd-total-num">¥ {{ formatMoney(totalReimburseAmount) }}</span>
+      </div>
+      <div class="dd-top-actions">
+        <button type="button" class="dd-action-btn" @click="openSelectDialog">
+          <i class="el-icon-document-copy"></i> 导入发票夹
+        </button>
         <el-upload
-          class="upload-inline"
+          class="dd-upload"
           action="#"
           :show-file-list="false"
           :auto-upload="false"
           :on-change="handleDirectUpload"
           accept=".pdf,.png,.jpg,.jpeg"
         >
-          <el-button
-            size="small"
-            icon="el-icon-upload2"
-            :loading="uploading"
-          >
-            现场上传发票原件
-          </el-button>
+          <button type="button" class="dd-action-btn" :disabled="uploading">
+            <i class="el-icon-camera"></i> {{ uploading ? '识别中...' : '发票识别' }}
+          </button>
         </el-upload>
       </div>
 
-      <div class="summary-badge" v-if="selectedList.length > 0">
-        已选 <span class="highlight">{{ selectedList.length }}</span> 张发票
+      <div class="dd-expense-list">
+        <div v-for="(exp, idx) in expenseItems" :key="'exp-' + idx" class="dd-expense-card">
+          <div class="dd-detail-pill">
+            <span>报销明细 {{ idx + 1 }}</span>
+            <span v-if="expenseItems.length > 1" class="dd-del-link" @click="removeExpenseItem(idx)">删除</span>
+          </div>
+          <div class="dd-cell">
+            <div class="dd-cell-title">* 报销金额（元）</div>
+            <el-input v-model="exp.amount" class="dd-plain-input" placeholder="请输入金额" @input="syncFormFields" />
+          </div>
+          <div class="dd-cell">
+            <div class="dd-cell-title">* 费用发生日期</div>
+            <el-date-picker
+              v-model="exp.date"
+              class="dd-plain-date"
+              type="date"
+              value-format="yyyy-MM-dd"
+              placeholder="请选择"
+              @change="syncFormFields"
+            />
+          </div>
+          <div class="dd-cell">
+            <div class="dd-cell-title">* 费用类型</div>
+            <el-select v-model="exp.type" class="dd-plain-select" placeholder="请选择" @change="syncFormFields">
+              <el-option v-for="name in expenseTypes" :key="name" :label="name" :value="name" />
+            </el-select>
+          </div>
+          <div class="dd-cell">
+            <div class="dd-cell-title">费用说明</div>
+            <el-input
+              v-model="exp.remark"
+              class="dd-plain-area"
+              type="textarea"
+              :rows="2"
+              maxlength="500"
+              show-word-limit
+              placeholder="请输入费用说明"
+              @input="syncFormFields"
+            />
+          </div>
+        </div>
+        <button type="button" class="dd-add-detail" @click="addExpenseItem">+ 增加报销明细</button>
       </div>
 
-      <div class="upload-tip text-muted">
-        支持 PDF 电子发票或发票图片（自动解析提取并入账）
+      <div class="dd-invoice-section">
+        <div class="dd-invoice-head">
+          <span class="dd-invoice-title">发票</span>
+          <span class="dd-circle-plus" @click="openSelectDialog"><i class="el-icon-plus"></i></span>
+        </div>
+        <div class="dd-invoice-sub">支持智能识别电子、纸质发票的金额等信息</div>
+        <div class="dd-invoice-tags">
+          <span class="dd-tag-chip" :class="{ active: invoiceTagMode === 'none' }" @click="toggleInvoiceTag('none')">无发票</span>
+          <span class="dd-tag-chip" :class="{ active: invoiceTagMode === 'pending' }" @click="toggleInvoiceTag('pending')">待收发票</span>
+          <el-tooltip content="无发票或发票暂未收到时可点选标记，将在报销单中向审批人与财务说明">
+            <i class="el-icon-question dd-help-icon"></i>
+          </el-tooltip>
+        </div>
       </div>
+    </div>
+    <div v-else class="dd-total-banner">
+      <span class="dd-total-label">报销总额：</span>
+      <span class="dd-total-num">¥ {{ formatMoney(totalSumAmount) }}</span>
     </div>
 
     <!-- 发票明细紧凑卡片流（彻底取代原 11 列 1160px 超宽表格，实现 375px~760px 自适应零截断） -->
@@ -124,6 +172,43 @@
       </div>
       <div class="total-sum">
         报销发票总金额：<span class="sum-number">¥{{ formatMoney(totalSumAmount) }}</span>
+      </div>
+    </div>
+    <div v-if="!disabled && !isView" class="dd-extra-card">
+      <div class="dd-cell">
+        <div class="dd-cell-title">收款账户</div>
+        <el-select
+          v-model="payeeAccount"
+          class="dd-plain-select"
+          filterable
+          allow-create
+          default-first-option
+          placeholder="请选择"
+          @change="syncFormFields"
+        >
+          <el-option label="本人尾号工资卡（默认）" value="本人尾号工资卡（默认）" />
+          <el-option label="银行卡转账" value="银行卡转账" />
+          <el-option label="支付宝/企业微信" value="支付宝/企业微信" />
+        </el-select>
+      </div>
+      <div class="dd-cell dd-cell-arrow">
+        <div class="dd-cell-title">企业主体</div>
+        <div class="dd-entity-row">
+          <el-input v-model="companyEntity" class="dd-plain-input" placeholder="当前企业主体" @input="syncFormFields" />
+          <i v-if="companyEntity" class="el-icon-error dd-clear" @click="clearCompany"></i>
+          <i class="el-icon-arrow-right dd-arrow"></i>
+        </div>
+      </div>
+      <div class="dd-cell">
+        <div class="dd-cell-title">期望付款时间</div>
+        <el-date-picker
+          v-model="payDate"
+          class="dd-plain-date"
+          type="date"
+          value-format="yyyy-MM-dd"
+          placeholder="请选择"
+          @change="syncFormFields"
+        />
       </div>
     </div>
 
@@ -423,7 +508,13 @@ export default {
       currentPreview: {},
       previewUrl: '',
       // 响应式移动端状态
-      isMobile: typeof window !== 'undefined' ? window.innerWidth < 768 : false
+      isMobile: typeof window !== 'undefined' ? window.innerWidth < 768 : false,
+      expenseItems: [{ amount: '', date: '', type: '', remark: '' }],
+      expenseTypes: ['差旅交通费', '餐饮招待费', '住宿费', '办公采购费', '通讯及补贴', '其他费用'],
+      invoiceTagMode: '',
+      payeeAccount: '本人尾号工资卡（默认）',
+      companyEntity: '',
+      payDate: '',
     }
   },
   computed: {
@@ -435,6 +526,18 @@ export default {
     },
     totalSumAmount() {
       return this.selectedList.reduce((sum, item) => sum + (parseFloat(item.total_amount) || 0), 0)
+    },
+    totalReimburseAmount() {
+      var sum = 0
+      var has = false
+      ;(this.expenseItems || []).forEach((exp) => {
+        var n = parseFloat(exp && exp.amount)
+        if (!isNaN(n)) {
+          has = true
+          sum += n
+        }
+      })
+      return has ? sum : this.totalSumAmount
     },
     dialogSelectedAmount() {
       return this.dialogSelection.reduce((sum, item) => sum + (parseFloat(item.total_amount) || 0), 0)
@@ -461,6 +564,12 @@ export default {
     window.addEventListener('resize', this.handleResize)
     var formItem = this.$el && this.$el.closest ? this.$el.closest('.el-form-item') : null
     if (formItem) formItem.classList.add('invoice-select-form-item')
+    if (!this.expenseItems[0].date) this.expenseItems[0].date = this.todayStr()
+    this.companyEntity = this.readCompanyName()
+    var self = this
+    this.$nextTick(function () {
+      self.restoreExpenseMeta()
+    })
   },
   beforeDestroy() {
     if (this.handleResize) {
@@ -503,7 +612,7 @@ export default {
         if (field) {
           this.formCreateInject.api.setValue(field, result)
         }
-        this.syncAmountToForm()
+        this.syncFormFields()
       }
     },
 
@@ -512,17 +621,48 @@ export default {
      * 避免用户选完发票后还要手工再填一次报销金额
      */
     syncAmountToForm() {
+      this.syncFormFields()
+    },
+    syncFormFields() {
       const inject = this.formCreateInject || {}
       const api = inject.api
       if (!api || typeof api.getRule !== 'function' || typeof api.fields !== 'function') return
       const selfField = inject.rule && inject.rule.field
-      const target = (api.fields() || []).find((name) => {
-        if (name === selfField) return false
-        const rule = api.getRule(name) || {}
-        return rule.type === 'moneyFrom' || /金额/.test(rule.title || '')
-      })
-      if (!target) return
-      api.setValue(target, Number(this.totalSumAmount.toFixed(2)))
+      const names = api.fields() || []
+      const findField = (tester) => {
+        for (var i = 0; i < names.length; i++) {
+          if (names[i] === selfField) continue
+          const rule = api.getRule(names[i]) || {}
+          if (tester(rule)) return names[i]
+        }
+        return ''
+      }
+      const amountField = findField((rule) => rule.type === 'moneyFrom' || /金额/.test(rule.title || ''))
+      if (amountField) {
+        api.setValue(amountField, Number(Number(this.totalReimburseAmount).toFixed(2)))
+      }
+      const typeName = (this.expenseItems[0] && this.expenseItems[0].type) || ''
+      const typeField = findField((rule) => /报销类型|费用类型|费用类别/.test(rule.title || ''))
+      if (typeField && typeName) {
+        const rule = api.getRule(typeField) || {}
+        const options = rule.options || []
+        var matched = typeName
+        if (options.length) {
+          matched = ''
+          for (var j = 0; j < options.length; j++) {
+            const opt = options[j] || {}
+            const label = opt.label || opt.name || ''
+            const val = opt.value !== undefined ? opt.value : opt.id
+            if (label === typeName || String(val) === String(typeName) || (label && label.indexOf(typeName) > -1)) {
+              matched = val
+              break
+            }
+          }
+        }
+        if (matched !== '') api.setValue(typeField, matched)
+      }
+      const reasonField = findField((rule) => /报销事由|事由|备注|费用明细/.test(rule.title || ''))
+      if (reasonField) api.setValue(reasonField, this.buildRemarkText())
     },
 
     // 打开选择弹窗
@@ -603,6 +743,7 @@ export default {
         (item) => !this.selectedList.some((selected) => selected.id === item.id)
       )
       this.selectedList = [...this.selectedList, ...toAdd]
+      this.fillExpenseFromInvoices(toAdd)
       this.selectDialogVisible = false
       this.emitChange()
       this.$message.success(`成功添加 ${toAdd.length} 张发票`)
@@ -680,6 +821,7 @@ export default {
 
         // 4. 追加到当前已选发票明细
         this.selectedList.push(savedInvoice)
+        this.fillExpenseFromInvoices([savedInvoice])
         this.emitChange()
         this.$message.success('发票要素已智能识别，并已添加至报销单！')
       } catch (err) {
@@ -694,6 +836,123 @@ export default {
       this.emitChange()
     },
 
+    todayStr() {
+      var d = new Date()
+      var m = d.getMonth() + 1
+      var day = d.getDate()
+      return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (day < 10 ? '0' + day : day)
+    },
+    readCompanyName() {
+      var name = '当前企业主体'
+      try {
+        var raw = localStorage.getItem('sitedata')
+        var site = raw ? JSON.parse(raw) : null
+        if (site) name = site.site_name || site.enterprise_name || site.company_name || site.version_name || name
+      } catch (e) {}
+      return name
+    },
+    isBlankExpense(exp) {
+      if (!exp) return true
+      return !exp.amount && !exp.type && !exp.remark
+    },
+    mapExpenseType(inv) {
+      var text = ((inv && inv.seller_name) || '') + ' ' + ((inv && inv.invoice_type) || '')
+      if (/餐|饭|酒|食/.test(text)) return '餐饮招待费'
+      if (/酒店|住宿|宾馆|旅馆/.test(text)) return '住宿费'
+      if (/滴滴|出租|铁路|航空|加油|通行|停车|地铁|火车|机票|toll/.test(text)) return '差旅交通费'
+      if (/办公|文具|京东|采购/.test(text)) return '办公采购费'
+      if (/通讯|移动|电信|联通|话费/.test(text)) return '通讯及补贴'
+      return '其他费用'
+    },
+    fillExpenseFromInvoices(list) {
+      var self = this
+      ;(list || []).forEach(function (inv) {
+        var row = {
+          amount: inv && inv.total_amount !== undefined && inv.total_amount !== null ? String(inv.total_amount) : '',
+          date: (inv && inv.invoice_date) || self.todayStr(),
+          type: self.mapExpenseType(inv),
+          remark: (inv && inv.seller_name) || ''
+        }
+        if (self.expenseItems.length === 1 && self.isBlankExpense(self.expenseItems[0])) {
+          self.$set(self.expenseItems, 0, row)
+        } else {
+          self.expenseItems.push(row)
+        }
+      })
+    },
+    addExpenseItem() {
+      this.expenseItems.push({ amount: '', date: this.todayStr(), type: '', remark: '' })
+    },
+    removeExpenseItem(idx) {
+      this.expenseItems.splice(idx, 1)
+      if (!this.expenseItems.length) this.addExpenseItem()
+      this.syncFormFields()
+    },
+    toggleInvoiceTag(mode) {
+      this.invoiceTagMode = this.invoiceTagMode === mode ? '' : mode
+      this.syncFormFields()
+    },
+    clearCompany() {
+      this.companyEntity = ''
+      this.syncFormFields()
+    },
+    buildRemarkText() {
+      var lines = []
+      if (this.invoiceTagMode === 'none') lines.push('【无发票】')
+      if (this.invoiceTagMode === 'pending') lines.push('【待收发票】')
+      ;(this.expenseItems || []).forEach((exp, i) => {
+        var bits = []
+        if (exp.type) bits.push(exp.type)
+        if (exp.date) bits.push(exp.date)
+        if (exp.amount) bits.push('¥' + this.formatMoney(exp.amount))
+        if (exp.remark) bits.push(exp.remark)
+        if (bits.length) lines.push(i + 1 + '. ' + bits.join(' '))
+      })
+      if (this.payeeAccount) lines.push('收款账户：' + this.payeeAccount)
+      if (this.companyEntity) lines.push('企业主体：' + this.companyEntity)
+      if (this.payDate) lines.push('期望付款时间：' + this.payDate)
+      var meta = {
+        v: 1,
+        items: this.expenseItems,
+        account: this.payeeAccount,
+        entity: this.companyEntity,
+        payDate: this.payDate,
+        tag: this.invoiceTagMode
+      }
+      lines.push('@@OA_EXPENSE@@' + JSON.stringify(meta))
+      return lines.join('\n')
+    },
+    restoreExpenseMeta() {
+      const inject = this.formCreateInject || {}
+      const api = inject.api
+      if (!api || typeof api.fields !== 'function' || typeof api.getValue !== 'function') return
+      const selfField = inject.rule && inject.rule.field
+      const names = api.fields() || []
+      var text = ''
+      for (var i = 0; i < names.length; i++) {
+        if (names[i] === selfField) continue
+        const rule = api.getRule(names[i]) || {}
+        if (/报销事由|事由|备注/.test(rule.title || '')) {
+          text = api.getValue(names[i]) || ''
+          break
+        }
+      }
+      if (typeof text !== 'string') return
+      var mark = '@@OA_EXPENSE@@'
+      var idx = text.indexOf(mark)
+      if (idx < 0) {
+        if (!text) this.syncFormFields()
+        return
+      }
+      try {
+        var meta = JSON.parse(text.slice(idx + mark.length))
+        if (meta.items && meta.items.length) this.expenseItems = meta.items
+        if (meta.account) this.payeeAccount = meta.account
+        if (meta.entity) this.companyEntity = meta.entity
+        if (meta.payDate) this.payDate = meta.payDate
+        if (meta.tag) this.invoiceTagMode = meta.tag
+      } catch (e) {}
+    },
     previewInvoice(row) {
       this.currentPreview = row
       // 后端返回的是相对存储路径，必须转成站点根路径，否则会解析到当前路由目录下
@@ -1203,5 +1462,181 @@ export default {
 
 .color-primary {
   color: #1890ff;
+}
+
+.dd-total-banner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: #f4f6fa;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.dd-total-label {
+  font-size: 14px;
+  color: #646a73;
+}
+.dd-total-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2329;
+}
+.dd-top-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.dd-upload,
+.dd-upload /deep/ .el-upload {
+  width: 100%;
+  display: block;
+}
+.dd-action-btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #e5e6eb;
+  background: #fff;
+  color: #1f2329;
+  font-size: 14px;
+  cursor: pointer;
+}
+.dd-action-btn:active {
+  background: #f7f8fa;
+}
+.dd-expense-card,
+.dd-extra-card {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.dd-detail-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f6fa;
+  color: #1f2329;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 16px;
+  padding: 6px 12px;
+  margin: 4px 0 8px;
+}
+.dd-del-link {
+  color: #f54a45;
+  font-weight: 400;
+  cursor: pointer;
+}
+.dd-cell {
+  padding: 10px 2px 8px;
+  border-bottom: 1px solid #f0f1f5;
+}
+.dd-cell-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2329;
+  margin-bottom: 4px;
+}
+.dd-plain-input,
+.dd-plain-select,
+.dd-plain-date {
+  width: 100%;
+}
+.dd-plain-input /deep/ .el-input__inner,
+.dd-plain-select /deep/ .el-input__inner,
+.dd-plain-date /deep/ .el-input__inner,
+.dd-plain-area /deep/ .el-textarea__inner {
+  border: none;
+  background: transparent;
+  padding-left: 0;
+  font-size: 16px;
+  color: #1f2329;
+}
+.dd-add-detail {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #1677ff;
+  font-size: 14px;
+  padding: 8px 0 14px;
+  cursor: pointer;
+  text-align: left;
+}
+.dd-invoice-section {
+  margin: 4px 0 10px;
+}
+.dd-invoice-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dd-invoice-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2329;
+}
+.dd-circle-plus {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #1677ff;
+  color: #1677ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.dd-invoice-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #8f959e;
+}
+.dd-invoice-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.dd-tag-chip {
+  padding: 4px 12px;
+  border-radius: 14px;
+  background: #f2f3f5;
+  color: #646a73;
+  font-size: 13px;
+  cursor: pointer;
+}
+.dd-tag-chip.active {
+  background: rgba(22, 119, 255, 0.12);
+  color: #1677ff;
+}
+.dd-help-icon {
+  color: #8f959e;
+  cursor: pointer;
+}
+.dd-entity-row {
+  display: flex;
+  align-items: center;
+}
+.dd-entity-row .dd-plain-input {
+  flex: 1;
+}
+.dd-clear,
+.dd-arrow {
+  color: #8f959e;
+  margin-left: 6px;
+}
+.dd-clear {
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .dd-top-actions {
+    grid-template-columns: 1fr;
+  }
+  .dd-total-num {
+    font-size: 20px;
+  }
 }
 </style>

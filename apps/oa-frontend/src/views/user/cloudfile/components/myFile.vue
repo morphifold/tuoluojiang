@@ -2,7 +2,7 @@
   <div class="content">
     <div class="header-caption">
       <el-row class="mb10">
-        <el-col :span="21">
+        <el-col :span="21" :xs="24">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item
               v-for="(item, index) in breadcrumbArray"
@@ -13,7 +13,7 @@
             </el-breadcrumb-item>
           </el-breadcrumb>
         </el-col>
-        <el-col :span="3" class="text-right">
+        <el-col :span="3" :xs="24" class="text-right">
           <span>{{ $t('file.total') }} {{ total }} {{ $t('file.individual') }}</span>
         </el-col>
       </el-row>
@@ -755,6 +755,11 @@ export default {
   /deep/ .el-dialog {
     width: 92% !important;
     max-width: 92vw;
+  }
+  .mb10 /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
 </style>

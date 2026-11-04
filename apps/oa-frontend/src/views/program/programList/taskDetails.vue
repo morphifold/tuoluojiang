@@ -151,6 +151,22 @@ export default {
   }
 }
 @media screen and (max-width: 768px) {
+  .divBox,
+  .divBox .header,
+  .tab,
+  .tab /deep/ .el-tabs,
+  .tab /deep/ .el-tabs__header,
+  .tab /deep/ .el-tabs__nav-wrap,
+  .tab /deep/ .el-tabs__nav-scroll {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .divBox {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
   .divBox .header {
     height: auto;
     align-items: flex-start;
@@ -160,17 +176,31 @@ export default {
     .right {
       flex: 1;
       min-width: 0;
+      width: auto !important;
+      max-width: 100%;
       margin-left: 8px;
+      overflow: hidden;
       .title {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      .tab /deep/ .el-tabs__nav-wrap {
-        overflow-x: auto;
-      }
     }
+  }
+  .tab /deep/ .el-tabs__nav-wrap,
+  .tab /deep/ .el-tabs__nav-scroll {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab /deep/ .el-tabs__nav {
+    transform: none !important;
+    white-space: nowrap;
+    float: none !important;
+  }
+  .tab /deep/ .el-tabs__item {
+    padding: 0 12px !important;
   }
 }
 </style>

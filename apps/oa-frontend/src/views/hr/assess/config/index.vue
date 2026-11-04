@@ -70,4 +70,21 @@ export default {
   width: 300px;
   transform: translateY(-50%);
 }
+
+@media (max-width: 767px) {
+  .right-box {
+    position: static;
+    right: auto;
+    top: auto;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    transform: none;
+  }
+  .form-wrapper {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
 </style>

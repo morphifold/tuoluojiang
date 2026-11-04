@@ -579,22 +579,22 @@ div.external-link a {
 .el-aside.side-panel.aside-visible {
   animation: aside-slide-show 0.3s ease-in-out;
 }
-// 收起动画
-@keyframes aside-slide-hidden {
-  from {
-    width: 310px;
+@media (min-width: 768px) {
+  @keyframes aside-slide-hidden {
+    from {
+      width: 310px;
+    }
+    to {
+      width: 0;
+    }
   }
-  to {
-    width: 0;
-  }
-}
-// 展开动画
-@keyframes aside-slide-show {
-  from {
-    width: 0;
-  }
-  to {
-    width: 310px;
+  @keyframes aside-slide-show {
+    from {
+      width: 0;
+    }
+    to {
+      width: 310px;
+    }
   }
 }
 .el-aside {
@@ -725,6 +725,13 @@ div.external-link a {
   /deep/ .el-dialog:not(.is-fullscreen) {
     width: 95vw !important;
     max-width: 95vw !important;
+  }
+  .el-header.main-header,
+  .from,
+  .to {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
 </style>

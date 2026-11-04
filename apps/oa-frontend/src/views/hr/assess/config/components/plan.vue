@@ -609,4 +609,89 @@ export default {
   transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   width: 100%;
 }
+
+@media (max-width: 767px) {
+  .box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden;
+  }
+  .plan-title {
+    margin: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .plan-title .p30 {
+    padding: 0 4px;
+  }
+  /deep/ .el-tabs__header,
+  /deep/ .el-tabs__nav-wrap,
+  /deep/ .el-tabs__nav-scroll {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible;
+  }
+  /deep/ .el-tabs__nav {
+    display: flex;
+    float: none;
+    width: 100% !important;
+    white-space: normal;
+    transform: none !important;
+  }
+  /deep/ .el-tabs__item {
+    flex: 1 1 0;
+    min-width: 0 !important;
+    padding: 0 4px !important;
+    font-size: 13px !important;
+    text-align: center;
+  }
+  .form-list {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-right: 0;
+  }
+  .form-list label {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    text-align: left;
+  }
+  .form-list /deep/ .el-row,
+  .form-list /deep/ .el-radio-group {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+  .plan-add,
+  .plan-days,
+  .resource-check,
+  .resource-text {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .resource-text .assess-info,
+  .assess-info {
+    white-space: normal;
+  }
+  .cr-bottom-button {
+    left: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  /deep/ .el-scrollbar__wrap {
+    padding-right: 0;
+  }
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
 </style>

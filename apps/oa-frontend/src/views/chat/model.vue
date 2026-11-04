@@ -15,7 +15,7 @@
               :class="activeVal === item.value ? 'active' : ''"
               @click="handleTypes(item)"
             >
-              <img :src="require(`../../assets/chat/${item.pic}`)" alt="" class="logo" /> {{ item.label }}
+              <img :src="require(`../../assets/chat/${item.pic}`)" @error="imgFallback" alt="" class="logo" /> {{ item.label }}
             </div>
           </div>
         </el-col>
@@ -45,8 +45,9 @@
                       :src="require(`../../assets/chat/${item.json.pic}`)"
                       alt=""
                       class="img"
+                      @error="imgFallback"
                     />
-                    <img v-else src="../../assets/chat/deepseek.png" alt="" class="img" />
+                    <img v-else src="../../assets/chat/deepseek.png" @error="imgFallback" alt="" class="img" />
                     <div style="width: 70%" class="over-text">{{ item.name }}</div>
                   </div>
                   <div class="flex mt14">
@@ -206,12 +207,19 @@ export default {
       }
     },
     getLimit() {
-      const windowHeight = document.documentElement.clientHeight - 304
-      const winWidth = document.getElementById('list').offsetWidth
-      const col = Math.floor(winWidth / 480)
-      const row = Math.floor(windowHeight / 150)
-      this.where.limit = col * row
+      const listEl = document.getElementById('list')
+      const windowHeight = Math.max(300, document.documentElement.clientHeight - 304)
+      const winWidth = listEl ? listEl.offsetWidth : window.innerWidth
+      const col = Math.max(1, Math.floor(winWidth / 480))
+      const row = Math.max(2, Math.floor(windowHeight / 150))
+      this.where.limit = Math.max(6, col * row)
       this.getList()
+    },
+    imgFallback(e) {
+      var fallback = require('../../assets/chat/deepseek.png')
+      if (e && e.target && e.target.src.indexOf('deepseek.png') === -1) {
+        e.target.src = fallback
+      }
     },
     openModelDialog(item) {
       this.supplierVal = item
@@ -372,7 +380,7 @@ export default {
     border-top: 1px solid #eeeeee;
   }
   .list {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
   }
 }
 </style>

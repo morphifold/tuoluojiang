@@ -507,8 +507,10 @@ export default {
   }
   .card-box .main,
   .examineCont {
-    width: 100%;
-    min-width: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
   .card-list {
     padding-left: 12px;
@@ -516,15 +518,42 @@ export default {
   .infos {
     margin-left: 0;
   }
+  /deep/ .el-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  /deep/ .el-form-item__label {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    float: none !important;
+    text-align: left !important;
+  }
+  /deep/ .el-form-item__content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
   /deep/ .el-input,
   /deep/ .el-select,
   /deep/ .el-input-number {
     width: 100% !important;
-    max-width: 100%;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
   .cr-bottom-button {
     left: 0;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 }
 </style>

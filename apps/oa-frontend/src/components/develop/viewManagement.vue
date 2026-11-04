@@ -22,7 +22,6 @@
             size="small"
             placeholder="请输入视图名称(10个字以内)"
             clearable
-            style="width: 300px"
             class="input"
             @change="changeList"
           ></el-input>
@@ -341,6 +340,9 @@ ul {
   font-size: 13px;
   color: #303133;
 }
+.input {
+  width: 300px;
+}
 @media (max-width: 767px) {
   .flex-between {
     flex-wrap: wrap;
@@ -352,6 +354,7 @@ ul {
   .input {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
 </style>

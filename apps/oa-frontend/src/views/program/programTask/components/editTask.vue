@@ -74,7 +74,7 @@
       <el-form ref="formData" :model="formData" label-width="84px" :rules="rule">
         <div class="left-card">
           <el-row class="ml20">
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="关联项目：" prop="program_id">
                 <div class="bg">
                   <span v-if="!programShow" @click.stop="handleToggle('programShow')" class="pointer p-l-12">{{
@@ -102,7 +102,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="负责人：" class="select-bar">
                 <div v-if="!adminsShow" @click.stop="handleToggle('adminsShow')" class="admins pointer flex bg">
                   <div class="p-l-12" v-if="formData.admins && formData.admins.length == 0">未设置</div>
@@ -127,7 +127,7 @@
             </el-col>
           </el-row>
           <el-row class="ml20">
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="计划时间：" class="select-bar">
                 <div v-if="!timeValShow" class="bg pointer" @click.stop="handleToggle('timeValShow')">
                   <span class="p-l-12" v-if="formData.plan_start"
@@ -152,7 +152,7 @@
                 ></el-date-picker>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="协作者：" class="select-bar">
                 <div v-if="!membersShow" @click.stop="handleToggle('membersShow')" class="admins pointer flex bg">
                   <div class="p-l-12" v-if="formData.members && formData.members.length == 0">未设置</div>
@@ -1199,16 +1199,34 @@ export default {
   font-weight: 400;
 }
 @media screen and (max-width: 768px) {
-  /deep/ .el-drawer {
+  /deep/ .el-drawer,
+  /deep/ .el-dialog {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100%;
   }
   .header-item {
     position: static;
   }
   .header {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-right: 0;
+    box-sizing: border-box !important;
     padding: 12px;
     .title /deep/ .el-input__inner {
       width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
     }
   }
   .el-form {
@@ -1217,10 +1235,17 @@ export default {
     .left-card,
     .right-card {
       width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
       margin-right: 0;
       padding-top: 12px;
       border-left: none;
       overflow: visible;
+    }
+    .left-card /deep/ .el-row {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
     .right-card {
       border-top: 1px solid #f2f6fc;

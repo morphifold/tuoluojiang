@@ -203,7 +203,7 @@
                     clearable
                     placeholder="请输入地点"
                     size="small"
-                    style="width: 350px"
+                    class="oa-location-name"
                   />
                   <div>
                     <span class="tips">该名称会在打卡手机端显示，便于员工识别打卡地点</span>
@@ -1037,6 +1037,21 @@ export default {
   }
   span:last-of-type {
     margin-left: 0;
+  }
+}
+.oa-location-name {
+  width: 350px;
+}
+@media (max-width: 767px) {
+  .card-box .main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .oa-location-name {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
 </style>

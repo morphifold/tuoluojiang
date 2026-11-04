@@ -266,4 +266,20 @@ export default {
 /deep/.el-tree-node__content {
   padding-right: 0;
 }
+@media (max-width: 767px) {
+  .tree-box {
+    flex-wrap: wrap !important;
+  }
+  .check-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex-wrap: wrap !important;
+  }
+  .check_list {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
 </style>

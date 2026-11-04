@@ -67,7 +67,7 @@
       <div class="check-box">
         <div class="user-name mb20">
           <span>职位：</span>
-          <span class="text">{{ positions.map((obj) => obj.name).join('、') }}</span>
+          <span class="text">{{ (positions || []).map((obj) => obj.name).join('、') }}</span>
         </div>
         <ueditorFrom
           ref="ueditorFrom"
@@ -133,10 +133,11 @@ export default {
       this.content = e
     },
     getText(row) {
+      var list = row || []
       let str = ''
       let arr = []
-      if (row.length > 0) {
-        row.map((item) => {
+      if (list.length > 0) {
+        list.map((item) => {
           let text = item.name + '(' + item.alias + ')'
           arr.push(text)
         })
@@ -148,7 +149,7 @@ export default {
     },
     async getData(val) {
       const result = await promotionListApi()
-      this.department = result.data.list
+      this.department = (result && result.data && result.data.list) || []
       if (this.department.length) this.title = this.department[0].name
       if (val == 1) {
         this.department.map((item) => {
@@ -164,6 +165,7 @@ export default {
       this.list = result.data
     },
     getTotal(row) {
+      if (!row) return '--'
       return Number(row.basicSalary) + Number(row.performance)
     },
 
@@ -321,8 +323,13 @@ export default {
     height: auto !important;
     max-height: 52px;
     max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
+  }
+  .assess-left .v-height-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
   }
   .assess-left .v-height-flag {
     border-right: none;
@@ -331,11 +338,23 @@ export default {
   .assess-left /deep/ .el-scrollbar__wrap,
   .assess-left /deep/ .el-scrollbar__view {
     height: auto !important;
-    overflow: visible;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: block !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .assess-left /deep/ .el-scrollbar__wrap {
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    overflow-y: hidden !important;
   }
   .assess-left .assess-left-ul {
     display: flex;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -353,7 +372,9 @@ export default {
     border-right: none;
   }
   .assess-right {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
     padding-left: 0;
     overflow-x: auto;
   }

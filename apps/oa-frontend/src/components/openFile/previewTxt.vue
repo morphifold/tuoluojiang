@@ -85,4 +85,13 @@ export default {
   background: #fff;
   line-height: 48px;
 }
+
+@media (max-width: 767px) {
+  .box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+}
 </style>

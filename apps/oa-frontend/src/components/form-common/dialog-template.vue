@@ -58,8 +58,8 @@
                       </p>
                     </div>
 
-                    <img v-if="item.cover != ''" :src="item.cover" alt="" />
-                    <img v-else src="../../assets/images/default.jpg" alt="" />
+                    <img v-if="item.cover != ''" :src="item.cover" alt="" @error="onCoverError" />
+                    <img v-else src="../../assets/images/default.jpg" alt="" @error="onCoverError" />
                     <div
                       v-if="
                         hoverIndex === index &&
@@ -402,6 +402,14 @@ export default {
       assessTemplateEditApi(row.id, { way: row.way }).then((res) => {
         this.selectDada = res.data ? res.data.info : []
       })
+    },
+    onCoverError(e) {
+      var img = e.target
+      if (!img) return
+      if (img.getAttribute('data-oa-fallback') === '1') return
+      if (img.src && img.src.indexOf('default.jpg') !== -1) return
+      img.setAttribute('data-oa-fallback', '1')
+      img.src = require('../../assets/images/default.jpg')
     }
   }
 }
@@ -654,5 +662,13 @@ export default {
 .divBox .el-pagination {
   margin-top: 0;
   justify-content: center;
+}
+@media (max-width: 767px) {
+  ::v-deep .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100% !important;
+  }
 }
 </style>

@@ -26,7 +26,7 @@
         <div class="right">
           <div class="mt20">
             <el-input v-model="where.name" prefix-icon="el-icon-search" clearable size="small" @change="getList"
-              @keyup.native.stop.prevent.enter="getList" placeholder="请输入标题/内容" style="width: 250px"></el-input>
+              @keyup.native.stop.prevent.enter="getList" placeholder="请输入标题/内容" class="notice-search"></el-input>
           </div>
 
           <!-- 消息列表 -->
@@ -366,5 +366,44 @@ export default {
 
 /deep/ .el-table-column--selection .cell {
   padding: 0 10px;
+}
+
+.notice-search {
+  width: 250px;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .flex {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .left {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  .right {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 10px 12px !important;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+
+  .notice-search {
+    width: 100% !important;
+  }
+
+  .paginationClass {
+    justify-content: center !important;
+  }
 }
 </style>

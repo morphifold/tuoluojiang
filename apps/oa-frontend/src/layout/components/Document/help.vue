@@ -370,4 +370,21 @@ export default {
   font-weight: 400;
   color: rgba(24, 144, 255, 0.851);
 }
+@media (max-width: 767px) {
+  .box {
+    animation: none !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    z-index: 2200;
+  }
+
+  .iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

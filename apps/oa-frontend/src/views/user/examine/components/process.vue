@@ -1,79 +1,67 @@
 <template>
-  <div class="stepsBox">
-    <div class="acea-row mb25">
-      <div class="shu mr10"></div>
-      <span class="title">
-        审批流程
-        <i class="tit1" v-if="approverDelete || copyerDelete">（已由管理员预设不可{{ title01.substring(1) }}）</i>
-      </span>
+  <div class="stepsBox dd-flow-card">
+    <div class="dd-flow-head">
+      <span class="dd-flow-title">流程</span>
+      <span class="dd-flow-help" @click="showFlowHelp">流程说明 &gt;</span>
     </div>
-    <el-steps direction="vertical">
-      <el-step v-for="(item, index) in examineList" :key="index">
-        <div slot="title" class="caption">
+    <div
+      v-for="(item, index) in examineList"
+      :key="index"
+      class="dd-flow-node"
+      :class="{ 'is-last': index === examineList.length - 1 }"
+    >
+      <div class="dd-flow-rail"><span class="dd-flow-dot"></span></div>
+      <div class="dd-flow-main">
+        <div class="dd-flow-name">
           {{ item.title }}
           <el-tag
-            v-if="item.types == 1 && item.settype != 5 && item.examine_mode > 0 && item.users.length > 1"
+            v-if="item.types == 1 && item.settype != 5 && item.examine_mode > 0 && item.users && item.users.length > 1"
             effect="plain"
             size="mini"
           >
             {{ getExamineText(item.examine_mode) }}
           </el-tag>
-
-          <span class="color-tab tab-icon" v-if="item.types == 1 && item.settype === 4">*</span>
-          <span class="tip-title color-tab" v-if="judgeNodeText(item)">{{ judgeNodeText(item) }}</span>
         </div>
-        <div slot="icon" class="liuchen">
-          <i :class="item.types == 1 ? 'el-icon-s-check' : 'el-icon-s-promotion'"></i>
-        </div>
-        <div slot="description">
-          <div class="acea-row">
-            <div v-for="(items, indexs) in item.users" :key="indexs" class="manList acea-row row-between-wrapper">
-              <img
-                v-if="items.card || items.avatar"
-                class="mb10"
-                :src="items.card ? items.card.avatar : items.avatar"
-              />
-
-              <img v-else class="mb10" src="../../../../assets/images/portrait.png" />
-
-              <span>{{ items.card ? items.card.name : items.name }}</span>
-              <span v-if="!items.isDelete" class="acea-icon" @click="deleteUsersItem(item.users, indexs)">
-                <i class="el-icon-close"></i>
-              </span>
-              <div
-                v-if="item.types == 1 && item.examine_mode == 3 && indexs !== item.users.length - 1"
-                class="acea-arrow-right"
-              >
-                <i class="el-icon-arrow-right"></i>
-              </div>
-            </div>
-            <select-member
-              ref="selectMember"
-              :only-one="item.select_mode == 1 ? true : false"
-              :value="item.users || []"
-              @getSelectList="getSelectList($event, item)"
-            >
-              <template v-slot:custom>
-                <div
-                  v-if="item.types == 1 && (item.options || editUser)"
-                  class="upload"
-                  @click="openDepartment(item, index)"
-                >
-                  <i class="el-icon-plus"></i>
-                </div>
-                <div
-                  v-if="item.types == 2 && item.self_select == 1"
-                  class="upload"
-                  @click="openDepartment(item, index)"
-                >
-                  <i class="el-icon-plus"></i>
-                </div>
-              </template>
-            </select-member>
+        <div class="dd-flow-sub">{{ flowSub(item) }}</div>
+        <div class="dd-flow-people">
+          <div v-for="(items, indexs) in item.users || []" :key="indexs" class="manList">
+            <img v-if="items.card || items.avatar" :src="items.card ? items.card.avatar : items.avatar" />
+            <img v-else src="../../../../assets/images/portrait.png" />
+            <span>{{ items.card ? items.card.name : items.name }}</span>
+            <span v-if="!items.isDelete" class="acea-icon" @click="deleteUsersItem(item.users, indexs)">
+              <i class="el-icon-close"></i>
+            </span>
           </div>
         </div>
-      </el-step>
-    </el-steps>
+      </div>
+      <div class="dd-flow-side">
+        <select-member
+          ref="selectMember"
+          :only-one="item.select_mode == 1 ? true : false"
+          :value="item.users || []"
+          @getSelectList="getSelectList($event, item)"
+        >
+          <template v-slot:custom>
+            <div
+              v-if="item.types == 1 && (item.options || editUser)"
+              class="upload dd-plus-box"
+              @click="openDepartment(item, index)"
+            >
+              <i v-if="item.types == 1" class="dd-star">*</i>
+              <i class="el-icon-plus"></i>
+            </div>
+            <div
+              v-if="item.types == 2 && item.self_select == 1"
+              class="upload dd-plus-box"
+              @click="openDepartment(item, index)"
+            >
+              <i class="el-icon-plus"></i>
+            </div>
+          </template>
+        </select-member>
+      </div>
+    </div>
+    <div v-if="approverDelete || copyerDelete" class="dd-flow-note">已由管理员预设不可{{ title01.substring(1) }}</div>
   </div>
 </template>
 
@@ -184,6 +172,15 @@ export default {
         str = this.examineRules.abnormal <= 0 ? '自动同意' : '转交给指定人员处理'
       }
       return str
+    },
+    flowSub(item) {
+      if (!item) return ''
+      var users = item.users || []
+      if (users.length) return '已选 ' + users.length + ' 人'
+      return item.types == 2 ? '请选择抄送人' : '请选择审批人'
+    },
+    showFlowHelp() {
+      this.$message.info('带 * 的节点需要选择审批人。流程由管理员配置，提交前请确认节点不为空。')
     }
   }
 }
@@ -284,18 +281,156 @@ export default {
   color: rgba(0, 0, 0, 0.85);
 }
 .upload {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #eeeeee;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #e5e6eb;
+  background: #fff;
+  color: #1677ff;
   font-size: 16px;
-  margin-left: 16px;
+  margin-left: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   i {
-    font-size: 22px;
+    font-size: 18px;
+  }
+}
+.dd-flow-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 12px;
+  box-sizing: border-box;
+}
+.dd-flow-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.dd-flow-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2329;
+}
+.dd-flow-help {
+  font-size: 13px;
+  color: #8f959e;
+  cursor: pointer;
+}
+.dd-flow-node {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 16px;
+}
+.dd-flow-rail {
+  width: 16px;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+}
+.dd-flow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c9cdd4;
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+}
+.dd-flow-node:not(.is-last) .dd-flow-rail:after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  bottom: -8px;
+  width: 1px;
+  background: #e5e6eb;
+}
+.dd-flow-main {
+  flex: 1;
+  min-width: 0;
+  padding-right: 8px;
+}
+.dd-flow-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2329;
+}
+.dd-flow-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #8f959e;
+}
+.dd-flow-people {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.dd-star {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  color: #f54a45;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1;
+}
+.dd-flow-note {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #8f959e;
+}
+.manList {
+  width: 56px;
+  margin-right: 8px;
+  text-align: center;
+  position: relative;
+}
+.manList img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+.manList span {
+  display: block;
+  max-width: 56px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #646a73;
+}
+@media (max-width: 767px) {
+  .stepsBox {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .stepsBox /deep/ .el-step__description,
+  .stepsBox /deep/ .el-step__main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden;
+  }
+  .acea-row {
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .manList {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .manList span {
+    width: auto !important;
+    max-width: 72px !important;
+    min-width: 0 !important;
   }
 }
 </style>

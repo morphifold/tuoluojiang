@@ -52,7 +52,7 @@
               maxlength="200"
             ></el-input>
           </el-form-item>
-          <el-form-item class="footer">
+          <el-form-item class="oa-m-actions">
             <el-button @click="restFn" class="btn">取消</el-button>
             <el-button type="primary" :loading="loading" @click="okFn('formName')" class="btn">确定</el-button>
           </el-form-item>
@@ -98,7 +98,7 @@
               maxlength="200"
             ></el-input>
           </el-form-item>
-          <el-form-item class="footer">
+          <el-form-item class="oa-m-actions">
             <el-button @click="restFn" class="btn">取消</el-button>
             <el-button type="primary" @click="okFn('formName')" class="btn">确定</el-button>
           </el-form-item>
@@ -134,7 +134,7 @@
               <i class="el-icon-plus"></i> 添加</el-button
             >
 
-            <div class="footer">
+            <div class="oa-m-actions">
               <el-button @click="handleResetFn" class="btn">取消</el-button>
               <el-button type="primary" @click="handleConfirm" class="btn">确定</el-button>
             </div>
@@ -495,7 +495,7 @@ export default {
 /deep/ .el-form-item {
   margin-bottom: 10px;
 }
-.footer {
+.oa-m-actions {
   display: flex;
   justify-content: flex-end;
   margin-top: 80px;
@@ -515,6 +515,19 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
+  }
+  .oa-m-actions {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+  }
+  ::v-deep .el-form-item__label {
+    float: none !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+  ::v-deep .el-form-item__content {
+    margin-left: 0 !important;
   }
 }
 </style>

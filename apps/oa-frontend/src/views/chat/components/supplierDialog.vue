@@ -100,4 +100,14 @@ export default {
   border-radius: 4px 4px 4px 4px;
   margin-right: 13px;
 }
+@media screen and (max-width: 768px) {
+  /deep/ .el-dialog {
+    width: 92vw !important;
+    max-width: 92vw !important;
+    min-width: 0 !important;
+  }
+  .list {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
 </style>

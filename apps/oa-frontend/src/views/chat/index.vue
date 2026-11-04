@@ -11,12 +11,12 @@
         @confirmData="confirmData"
         @addDataFn="addDataFn"
       ></formBox>
-      <div id="content-box " class="mt20" v-loading="loading">
+      <div id="content-box" class="mt20" v-loading="loading">
         <default-page v-if="listData.length == 0" :index="14" :min-height="520" />
         <div class="list" id="listBox" ref="container">
           <div class="item" id="item" v-for="(item, index) in listData" :key="index">
             <div class="flex">
-              <img :src="item.pic" alt="" class="img" />
+              <img :src="item.pic || '/admin/image/logo.png'" @error="$event.target.src = '/admin/image/logo.png'" alt="" class="img" />
               <div class="flex-column" style="width: 100%">
                 <div class="title over-text">{{ item.name }}</div>
                 <span class="name">创建者：{{ item.user ? item.user.name : '--' }} </span>
@@ -218,11 +218,12 @@ export default {
       })
     },
     getLimit() {
-      const windowHeight = document.documentElement.clientHeight - 287
-      const winWidth = document.getElementById('listBox').offsetWidth
-      const col = Math.floor((winWidth + 15) / (367 + 15))
-      const row = Math.floor((windowHeight + 15) / (153 + 15))
-      this.where.limit = col * row
+      const listEl = document.getElementById('listBox')
+      const windowHeight = Math.max(300, document.documentElement.clientHeight - 287)
+      const winWidth = listEl ? listEl.offsetWidth : window.innerWidth
+      const col = Math.max(1, Math.floor((winWidth + 15) / (367 + 15)))
+      const row = Math.max(2, Math.floor((windowHeight + 15) / (153 + 15)))
+      this.where.limit = Math.max(6, col * row)
       this.getList()
     }
   }
@@ -296,7 +297,20 @@ export default {
 }
 @media screen and (max-width: 768px) {
   .list {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  #content-box,
+  .normal-page {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .normal-page /deep/ .el-card__body {
+    padding: 12px 8px !important;
   }
   .item {
     min-height: 140px;

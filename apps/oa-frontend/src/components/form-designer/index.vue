@@ -445,5 +445,40 @@ div.external-link a {
     overflow-y: auto;
   }
 }
+@media (max-width: 767px) {
+  .el-container.main,
+  .el-container.full-height,
+  .el-container.main > .el-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex-wrap: wrap !important;
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .el-container.center-layout-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .el-header.main-header,
+  .el-header.toolbar-header {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .el-aside.setting-panel,
+  .el-aside.side-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
 </style>
 @/utils/i18ns

@@ -823,5 +823,11 @@ export default {
   /deep/ .el-form-item__content {
     margin-left: 0 !important;
   }
+  .header {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
 }
 </style>

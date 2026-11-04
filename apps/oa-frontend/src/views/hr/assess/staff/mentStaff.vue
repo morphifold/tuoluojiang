@@ -330,4 +330,31 @@ export default {
   height: 100%;
   overflow-y: auto;
 }
+
+@media (max-width: 767px) {
+  .divBox,
+  .form-wrapper,
+  /deep/ .el-card,
+  /deep/ .el-card__body {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  /deep/ .el-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  /deep/ .el-table__header-wrapper,
+  /deep/ .el-table__body-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto;
+  }
+  /deep/ .el-table__header,
+  /deep/ .el-table__body {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
 </style>

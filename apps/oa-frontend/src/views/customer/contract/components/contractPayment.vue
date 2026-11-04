@@ -420,5 +420,17 @@ export default {
   .btn-box1 {
     height: auto !important;
   }
+
+  .flex,
+  .amount {
+    flex-wrap: wrap !important;
+  }
+
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100% !important;
+  }
 }
 </style>

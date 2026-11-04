@@ -37,7 +37,7 @@
                   size="small"
                   :disabled="id == 0 ? false : true"
                   :props="props"
-                  style="width: 300px"
+                  class="oa-w300"
                   clearable
                   @change="crudChange"
                   placeholder="请选择实体"
@@ -46,7 +46,7 @@
               </el-form-item>
               <el-form-item label="触发动作">
                 <el-checkbox-group v-model="action" @change="actionChange()">
-                  <div style="width: 430px">
+                  <div class="oa-w430">
                     <el-checkbox
                       v-for="(item, index) in actionList"
                       :key="index"
@@ -264,7 +264,7 @@
                         <el-table-column type="selection"></el-table-column>
                         <el-table-column label="推送渠道 " width="150">
                           <template slot-scope="scope">
-                            <img :src="scope.row.icon" alt="" class="img" />
+                            <img :src="scope.row.icon" alt="" class="img" @error="onChannelIconError" />
                           </template>
                         </el-table-column>
                         <el-table-column label="显示名称" prop="name" width="150"> </el-table-column>
@@ -274,7 +274,7 @@
                               v-model="form[scope.row.key]"
                               :placeholder="scope.row.placeholder"
                               size="small"
-                              style="width: 350px"
+                              class="oa-w350"
                             ></el-input>
                           </template>
                         </el-table-column>
@@ -291,7 +291,7 @@
                         size="small"
                         v-model="form.crud_approve_id"
                         :placeholder="info.event === 'auto_approve' ? '请选择审批流程' : '请搜索选择关联撤销记录'"
-                        style="width: 300px"
+                        class="oa-w300"
                       >
                         <el-option v-for="(item, index) in approval" :key="index" :label="item.name" :value="item.id">
                         </el-option>
@@ -319,7 +319,7 @@
                           v-model="form.curl_id"
                           filterable
                           placeholder="链接地址"
-                          style="width: 300px"
+                          class="oa-w300"
                         >
                           <el-option v-for="item in dataList" :key="item.id" :label="item.title" :value="item.id">
                           </el-option>
@@ -361,7 +361,7 @@
                         v-model="form.target_crud_id"
                         filterable
                         placeholder="应用实体名称"
-                        style="width: 300px"
+                        class="oa-w300"
                         @change="changeTargetCrudId"
                       >
                         <el-option
@@ -1121,6 +1121,17 @@ export default {
     close() {
       this.$refs.popoverRef.doClose()
     },
+    onChannelIconError(e) {
+      var target = e && e.target ? e.target : null
+      if (!target) {
+        return
+      }
+      var src = target.src || ''
+      if (src.indexOf('enterprise_user1.png') !== -1) {
+        return
+      }
+      target.src = '/static/img/enterprise_user1.png'
+    },
 
     getLabel(val) {
       let obj = {
@@ -1278,6 +1289,15 @@ export default {
 /deep/.jv-container .jv-code {
   overflow-y: scroll;
 }
+.oa-w300 {
+  width: 300px;
+}
+.oa-w350 {
+  width: 350px;
+}
+.oa-w430 {
+  width: 430px;
+}
 </style>
 <style scoped lang="scss">
 @media (max-width: 767px) {
@@ -1300,8 +1320,12 @@ export default {
   /deep/ .el-form-item__content {
     margin-left: 0 !important;
   }
-  [style*='width: 430px'] {
+  .oa-w300,
+  .oa-w350,
+  .oa-w430 {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 }
 </style>

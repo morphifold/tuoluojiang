@@ -63,7 +63,7 @@
         <!-- 操作记录 -->
         <div class="invoice-body1" v-show="tabIndex == 3">
           <div class="default" v-if="recordList.length == 0">
-            <img src="../../assets/images/defd.png" alt="" class="img" />
+            <img src="../../assets/images/defd.png" alt="" class="img" @error="onInvoiceImgError" />
             <div class="text">暂无操作记录</div>
           </div>
           <el-steps direction="vertical" space="100" class="set" :active="1" v-if="recordList.length !== 0">
@@ -86,7 +86,7 @@
                     <el-form label-width="110px" :row-style="{ height: '32px' }" class="description">
                       <el-form-item :label="details.name" v-for="(details, index) in item.operation" :key="index">
                         <span v-if="details.name !== '开票凭证：'" class="content">{{ details.val || '--' }}</span>
-                        <img :src="details.val" alt="" v-else class="item-img" />
+                        <img :src="details.val" alt="" v-else class="item-img" @error="onInvoiceImgError" />
                       </el-form-item>
                     </el-form>
                   </div>
@@ -213,6 +213,12 @@ export default {
     closeImageViewer() {
       this.isImage = false
       this.srcList = []
+    },
+    onInvoiceImgError(e) {
+      var img = e.target
+      if (!img) return
+      if (img.src && img.src.indexOf('enterprise_user1.png') !== -1) return
+      img.src = '/static/img/enterprise_user1.png'
     }
   }
 }
@@ -618,17 +624,36 @@ export default {
 
   .operationBox {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .default {
     width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
     margin-top: 60px;
   }
 
   /deep/ .el-step.is-vertical .el-step__main {
-    width: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
     flex: 1;
-    min-width: 0;
+    min-width: 0 !important;
+  }
+
+  ::v-deep .el-steps {
+    flex-wrap: wrap !important;
+  }
+
+  ::v-deep .el-form-item__label {
+    float: none !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  ::v-deep .el-form-item__content {
+    margin-left: 0 !important;
   }
 
   .invoice-body1 {

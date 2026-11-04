@@ -1057,5 +1057,11 @@ export default {
     left: 0 !important;
     box-sizing: border-box;
   }
+  .textCon {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%">
-    <video ref="{videoRef}" controls muted controlsList="nodownload" style="width: 1200px; height: 650px">
+    <video ref="{videoRef}" controls muted controlsList="nodownload" class="oa-m-video">
       <track kind="captions" />
       <source :src="fileUrl" type="video/mp4" />
     </video>
@@ -29,4 +29,18 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.oa-m-video {
+  width: 100%;
+  max-width: 1200px;
+  height: 650px;
+}
+@media (max-width: 767px) {
+  .oa-m-video {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto;
+  }
+}
+</style>

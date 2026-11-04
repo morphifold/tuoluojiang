@@ -1,6 +1,6 @@
 <template>
   <!--  <div class="sidebar-container" v-if="isShowMenu"></div>-->
-  <div class="nav-bar" v-if="isShowMenu && menuList[sidebarParentCur] && menuList[sidebarParentCur].children" :style="{ width: !isCollapse ? '156px !important' : '64px !important' }">
+  <div class="nav-bar" v-if="isShowMenu && menuList[sidebarParentCur] && menuList[sidebarParentCur].children" :style="{ width: navBarWidth }">
     <div v-if="isShow" class="child-bar" :class="!isCollapse ? 'plr12' : ''">
       <div
         class="over-text1"
@@ -108,7 +108,16 @@ export default {
       return variables
     },
     isCollapse() {
+      if (this.$store.state.app.device === 'mobile') {
+        return false
+      }
       return !this.sidebar.opened
+    },
+    navBarWidth() {
+      if (this.$store.state.app.device === 'mobile') {
+        return '160px'
+      }
+      return this.isCollapse ? '64px !important' : '156px !important'
     },
     includeRouteOrNot() {
       return function (menuPath) {
@@ -407,5 +416,24 @@ export default {
 }
 .icon {
   font-size: 18px;
+}
+@media (max-width: 767px) {
+  .nav-bar {
+    width: 160px !important;
+  }
+  .nav-open {
+    display: none !important;
+  }
+  /deep/ .el-menu {
+    width: 100% !important;
+  }
+  /deep/ .el-submenu__title span,
+  /deep/ .el-menu-item span {
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    display: inline !important;
+  }
 }
 </style>

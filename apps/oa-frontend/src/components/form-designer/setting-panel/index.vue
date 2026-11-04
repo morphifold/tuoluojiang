@@ -51,7 +51,7 @@
           </template>
           <div v-else-if="!designer.selectedWidget">
             <div class="no-widget-selected">
-              <img class="no-widget-selected-img" src="@/assets/images/defd.png" alt="" />
+              <img class="no-widget-selected-img" src="@/assets/images/defd.png" alt="" @error="onNoWidgetImgError" />
               <div class="no-widget-selected-text">当前没有选中设置的组件</div>
             </div>
           </div>
@@ -251,6 +251,17 @@ export default {
     })
   },
   methods: {
+    onNoWidgetImgError(e) {
+      var img = e && e.target
+      if (!img || !img.src) {
+        return
+      }
+      if (img.src.indexOf('enterprise_user1.png') !== -1) {
+        return
+      }
+      img.src = '/static/img/enterprise_user1.png'
+    },
+
     hasPropEditor(propName, editorName) {
       if (!editorName) {
         return false
@@ -409,5 +420,14 @@ export default {
     color: #999;
   }
 }
+@media (max-width: 767px) {
+  .no-widget-selected,
+  .no-widget-selected-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
 </style>
 @/utils/i18ns

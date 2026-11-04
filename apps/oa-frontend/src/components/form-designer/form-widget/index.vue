@@ -366,5 +366,15 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+@media (max-width: 767px) {
+  .form-widget-container .el-form.H5-layout,
+  .form-widget-container .el-form.Pad-layout {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-shadow: none;
+  }
+}
+
 </style>
 @/utils/i18ns

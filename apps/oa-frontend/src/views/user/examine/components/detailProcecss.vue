@@ -10,7 +10,7 @@
         <div slot="title" class="caption" @click="itemIsShow(item)">
           {{ item.title }}
           <el-tag
-            v-if="item.types == 1 && item.settype != 5 && item.examine_mode > 0 && item.users.length > 1"
+            v-if="item.types == 1 && item.settype != 5 && item.examine_mode > 0 && item.users && item.users.length > 1"
             effect="plain"
             size="mini"
           >
@@ -377,5 +377,23 @@ export default {
   font-weight: 400;
   font-size: 13px;
   color: #909399;
+}
+@media (max-width: 767px) {
+  .stepsBox,
+  .manList,
+  .flex-between,
+  .name {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .flex-between {
+    flex-wrap: wrap;
+  }
+  .name {
+    white-space: normal;
+    word-break: break-word;
+  }
 }
 </style>

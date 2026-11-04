@@ -144,16 +144,29 @@ export default {
   padding: 20px;
 }
 @media (max-width: 767px) {
-  /deep/ .el-tabs__nav {
-    margin-left: 0;
-  }
+  /deep/ .el-tabs__header,
+  /deep/ .el-tabs__nav-wrap,
   /deep/ .el-tabs__nav-scroll {
-    overflow-x: auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+  /deep/ .el-tabs__nav {
+    margin-left: 0 !important;
+    display: flex !important;
+    float: none !important;
+    width: 100% !important;
+    white-space: normal !important;
+    transform: none !important;
   }
   /deep/ .el-tabs__item {
-    height: 44px;
-    line-height: 44px;
-    padding: 0 12px;
+    flex: 1 1 0;
+    min-width: 0 !important;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 4px !important;
+    font-size: 12px !important;
+    text-align: center;
   }
   .content {
     padding: 12px;

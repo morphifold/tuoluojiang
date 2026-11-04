@@ -405,4 +405,11 @@ export default {
 /deep/ .el-tabs__nav-wrap::after {
   height: 1px;
 }
+@media (max-width: 767px) {
+  .card-box .main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
 </style>

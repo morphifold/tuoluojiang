@@ -22,7 +22,7 @@
             />
           </el-form-item>
           <el-row>
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="关联项目：" prop="program_id">
                 <el-select
                   v-model="formData.program_id"
@@ -45,7 +45,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="负责人：" class="select-bar">
                 <el-select v-model="formData.uid" size="small" filterable placeholder="请选择负责人">
                   <el-option v-for="item in programMemberOptions" :key="item.id" :label="item.name" :value="item.id">
@@ -55,7 +55,7 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="计划时间：" class="select-bar">
                 <el-date-picker
                   v-model="timeVal"
@@ -72,7 +72,7 @@
                 ></el-date-picker>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="12" :xs="24">
               <el-form-item label="协作者：" class="select-bar">
                 <el-select
                   v-model="formData.members"
@@ -529,11 +529,18 @@ export default {
   line-height: 32px;
 }
 @media screen and (max-width: 768px) {
-  /deep/ .el-drawer {
-    width: 100% !important;
-  }
+  /deep/ .el-drawer,
   /deep/ .el-dialog {
-    width: 92% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  /deep/ .el-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 0 0 100%;
   }
   .el-form {
     height: auto;
@@ -541,6 +548,9 @@ export default {
     .left-card,
     .right-card {
       width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
       margin-right: 0;
       border-left: none;
     }

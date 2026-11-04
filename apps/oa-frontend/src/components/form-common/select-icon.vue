@@ -7,7 +7,7 @@
         v-model="iconVal"
         placeholder="输入关键字搜索"
         clearable
-        style="width: 300px"
+        class="oa-m-icon-search"
         @input="upIcon(iconVal)"
       />
       <div class="icons-container">
@@ -118,6 +118,20 @@ export default {
 
   .disabled {
     pointer-events: none;
+  }
+}
+
+.oa-m-icon-search {
+  width: 300px;
+}
+@media (max-width: 767px) {
+  .oa-m-icon-search {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .icons-container .grid {
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
   }
 }
 </style>
