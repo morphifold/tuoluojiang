@@ -1,0 +1,720 @@
+apps/oa-backend/public/admin/index.html
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/app.623453ba.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-063f4e0a.aa9d0ae6.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-09e4a29b.50e00205.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-15dc0d27.5e8e6445.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-4a085cba.61145564.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-4a9ef0ea.1fc0306c.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-4aef8015.cd9fe539.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-7c6b1848.d7886111.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-b61a1e9a.ed2f6df9.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-c5cfc998.c3df2f8e.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-d585c4b8.feed0c50.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/css/chunk-e790906a.7a2cd7e3.css
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/app.55eb1be6.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-034718a0.611142aa.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-063f4e0a.bbe6dc8a.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-09e4a29b.91ea2423.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-0acfd6fa.063a76fe.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-15dc0d27.75e4bcfb.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-27cbe03e.ea60c8c4.js
+  h_5fb804fa880b8e 1,16
+apps/oa-backend/public/admin/system/js/chunk-4a085cba.c45c5bb6.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-4a9ef0ea.d992536f.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-4aef8015.580a424e.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-577957f0.3e9d58b3.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-7c6b1848.df9efe6b.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-9677a23c.8e7adb6f.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-a0270b74.709f4aa9.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-a034899a.c71ff4ae.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-b61a1e9a.7c10a5d4.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-c5cfc998.afe5a442.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-d585c4b8.cacaeaba.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-e488fbf2.5f1ca490.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-e790906a.04d82e82.js
+  h_5fb804fa880b8e 1
+apps/oa-backend/public/admin/system/js/chunk-libs.3cc80457.js
+  h_5fb804fa880b8e 7,33,37,47,70,73,151,157,159,199,203,235,374,376,389,474,671,679
+apps/oa-frontend/src/components/common/messageHandlePopup.vue
+  h_5fb804fa880b8e 6,348-359
+apps/oa-frontend/src/components/customer/customer-mobile.scss
+  h_5fb804fa880b8e 1-251
+apps/oa-frontend/src/components/customer/oaForm.vue
+  h_5fb804fa880b8e 465-497
+apps/oa-frontend/src/components/develop/applicatDialog.vue
+  h_5fb804fa880b8e 297-302
+apps/oa-frontend/src/components/develop/checkboxDialog.vue
+  h_5fb804fa880b8e 13,595-616
+apps/oa-frontend/src/components/develop/conditionDialog.vue
+  h_5fb804fa880b8e 990-1016
+apps/oa-frontend/src/components/develop/processSetting.vue
+  h_5fb804fa880b8e 41,255-263
+apps/oa-frontend/src/components/develop/tableDialog.vue
+  h_5fb804fa880b8e 8,301-322
+apps/oa-frontend/src/components/develop/toDoSchedule.vue
+  h_5fb804fa880b8e 314-327
+apps/oa-frontend/src/components/develop/updateContent.vue
+  h_5fb804fa880b8e 636-654
+apps/oa-frontend/src/components/develop/viewManagement.vue
+  h_5fb804fa880b8e 8,344-365
+apps/oa-frontend/src/components/form-common/select-department.vue
+  h_5fb804fa880b8e 521,525-545
+apps/oa-frontend/src/components/form-common/select-member.vue
+  h_5fb804fa880b8e 426,430-444
+apps/oa-frontend/src/components/hr/addSel.vue
+  h_5fb804fa880b8e 73
+apps/oa-frontend/src/components/hr/approva-money.vue
+  h_5fb804fa880b8e 76
+apps/oa-frontend/src/components/hr/approva-time.vue
+  h_5fb804fa880b8e 192
+apps/oa-frontend/src/components/hr/approvalBill.vue
+  h_5fb804fa880b8e 167
+apps/oa-frontend/src/components/hr/approvalBillView.vue
+  h_5fb804fa880b8e 30
+apps/oa-frontend/src/components/hr/city.vue
+  h_5fb804fa880b8e 97
+apps/oa-frontend/src/components/hr/departmentTreeChange.vue
+  h_5fb804fa880b8e 120
+apps/oa-frontend/src/components/hr/holidaySetting.vue
+  h_5fb804fa880b8e 57
+apps/oa-frontend/src/components/hr/infoForm.vue
+  h_5fb804fa880b8e 42
+apps/oa-frontend/src/components/invoice/InvoiceSelect.vue
+  h_5fb804fa880b8e 462-463
+apps/oa-frontend/src/components/invoice/approval.vue
+  h_5fb804fa880b8e 180-182
+apps/oa-frontend/src/components/invoice/approvalEdit.vue
+  h_5fb804fa880b8e 570-591
+apps/oa-frontend/src/components/invoice/invoiceApply.vue
+  h_5fb804fa880b8e 578-581,584-586
+apps/oa-frontend/src/components/invoice/invoiceDetails.vue
+  h_5fb804fa880b8e 605-638
+apps/oa-frontend/src/components/invoice/mergeInvoice.vue
+  h_5fb804fa880b8e 609-611
+"apps/oa-frontend/src/components/openFile/previewDialog .vue"
+  h_5fb804fa880b8e 136-163
+apps/oa-frontend/src/components/setting/rightDrawer.vue
+  h_5fb804fa880b8e 9,120-131
+apps/oa-frontend/src/components/uploadPicture/index.vue
+  h_5fb804fa880b8e 1033-1118
+apps/oa-frontend/src/components/zbDialog/index.vue
+  h_5fb804fa880b8e 93-107
+apps/oa-frontend/src/styles/index.scss
+  h_5fb804fa880b8e 933-946,948,950-951,959-963,970-976
+apps/oa-frontend/src/styles/styles.scss
+  h_5fb804fa880b8e 851-935
+apps/oa-frontend/src/views/administration/material/chart/components/statisticsBox.vue
+  h_5fb804fa880b8e 100-107
+apps/oa-frontend/src/views/administration/material/chart/index.vue
+  h_5fb804fa880b8e 465-475
+apps/oa-frontend/src/views/administration/material/consume/components/log.vue
+  h_5fb804fa880b8e 268-272
+apps/oa-frontend/src/views/administration/material/consume/components/tree.vue
+  h_5fb804fa880b8e 212-227
+apps/oa-frontend/src/views/administration/material/consume/list.vue
+  h_5fb804fa880b8e 33-37
+apps/oa-frontend/src/views/administration/material/fixed/components/addMaterial.vue
+  h_5fb804fa880b8e 468-478
+apps/oa-frontend/src/views/administration/material/fixed/components/consume.vue
+  h_5fb804fa880b8e 377-381
+apps/oa-frontend/src/views/administration/material/fixed/components/fixed.vue
+  h_5fb804fa880b8e 554-558
+apps/oa-frontend/src/views/administration/material/fixed/components/log.vue
+  h_5fb804fa880b8e 308-312
+apps/oa-frontend/src/views/administration/material/fixed/components/materialDialog.vue
+  h_5fb804fa880b8e 396-408
+apps/oa-frontend/src/views/administration/material/fixed/components/receive.vue
+  h_5fb804fa880b8e 307-314
+apps/oa-frontend/src/views/administration/material/fixed/components/record.vue
+  h_5fb804fa880b8e 356-377
+apps/oa-frontend/src/views/administration/material/fixed/components/return.vue
+  h_5fb804fa880b8e 233-244
+apps/oa-frontend/src/views/administration/material/fixed/components/tree.vue
+  h_5fb804fa880b8e 306-321
+apps/oa-frontend/src/views/administration/material/fixed/list.vue
+  h_5fb804fa880b8e 30-34
+apps/oa-frontend/src/views/administration/material/fixed/manage.vue
+  h_5fb804fa880b8e 30-34
+apps/oa-frontend/src/views/administration/notice/components/addNotice.vue
+  h_5fb804fa880b8e 57,428-464
+apps/oa-frontend/src/views/administration/notice/components/left.vue
+  h_5fb804fa880b8e 200-208
+apps/oa-frontend/src/views/administration/notice/index.vue
+  h_5fb804fa880b8e 305-310
+apps/oa-frontend/src/views/business/components/basicSetting/index.vue
+  h_5fb804fa880b8e 312-325
+apps/oa-frontend/src/views/business/components/formSetting/index.vue
+  h_5fb804fa880b8e 96-121
+apps/oa-frontend/src/views/business/components/ruleSetting/index.vue
+  h_5fb804fa880b8e 223-240
+apps/oa-frontend/src/views/business/examine/index.vue
+  h_5fb804fa880b8e 568-594
+apps/oa-frontend/src/views/business/holidayQuery/index.vue
+  h_5fb804fa880b8e 205-219
+apps/oa-frontend/src/views/business/holidayType/index.vue
+  h_5fb804fa880b8e 504-529
+apps/oa-frontend/src/views/business/record/components/formBox.vue
+  h_5fb804fa880b8e 148-153
+apps/oa-frontend/src/views/business/record/index.vue
+  h_5fb804fa880b8e 203-209
+apps/oa-frontend/src/views/chat/index.vue
+  h_5fb804fa880b8e 84,297-304
+apps/oa-frontend/src/views/chat/model.vue
+  h_5fb804fa880b8e 357-377
+apps/oa-frontend/src/views/chat/setting.vue
+  h_5fb804fa880b8e 269-293
+apps/oa-frontend/src/views/customer/contract/components/addContract.vue
+  h_5fb804fa880b8e 259-261
+apps/oa-frontend/src/views/customer/contract/components/contractDialog.vue
+  h_5fb804fa880b8e 744-746
+apps/oa-frontend/src/views/customer/contract/components/contractInfo.vue
+  h_5fb804fa880b8e 456-458
+apps/oa-frontend/src/views/customer/contract/components/contractInvoice.vue
+  h_5fb804fa880b8e 593-605
+apps/oa-frontend/src/views/customer/contract/components/contractPayment.vue
+  h_5fb804fa880b8e 416-424
+apps/oa-frontend/src/views/customer/contract/components/contractRemind.vue
+  h_5fb804fa880b8e 303-305
+apps/oa-frontend/src/views/customer/contract/components/contractRenew.vue
+  h_5fb804fa880b8e 242-244
+apps/oa-frontend/src/views/customer/contract/components/editContract.vue
+  h_5fb804fa880b8e 520-553
+apps/oa-frontend/src/views/customer/contract/components/file.vue
+  h_5fb804fa880b8e 421-423
+apps/oa-frontend/src/views/customer/contract/components/fileUpload.vue
+  h_5fb804fa880b8e 415-428
+apps/oa-frontend/src/views/customer/contract/components/markDialog.vue
+  h_5fb804fa880b8e 149-151
+apps/oa-frontend/src/views/customer/contract/components/paymentTable.vue
+  h_5fb804fa880b8e 141-144
+apps/oa-frontend/src/views/customer/contract/components/renewCensus.vue
+  h_5fb804fa880b8e 108-110
+apps/oa-frontend/src/views/customer/contract/index.vue
+  h_5fb804fa880b8e 900-902
+apps/oa-frontend/src/views/customer/invoice/components/invoiceView.vue
+  h_5fb804fa880b8e 805-838
+apps/oa-frontend/src/views/customer/invoice/index.vue
+  h_5fb804fa880b8e 926-946
+apps/oa-frontend/src/views/customer/list/components/applyForPayment.vue
+  h_5fb804fa880b8e 378-380
+apps/oa-frontend/src/views/customer/list/components/contract.vue
+  h_5fb804fa880b8e 174-176
+apps/oa-frontend/src/views/customer/list/components/contractRecordAll.vue
+  h_5fb804fa880b8e 424-427
+apps/oa-frontend/src/views/customer/list/components/dynamicRecord.vue
+  h_5fb804fa880b8e 404-406
+apps/oa-frontend/src/views/customer/list/components/editCustomer.vue
+  h_5fb804fa880b8e 500-537
+apps/oa-frontend/src/views/customer/list/components/expendDialog.vue
+  h_5fb804fa880b8e 434-437
+apps/oa-frontend/src/views/customer/list/components/file.vue
+  h_5fb804fa880b8e 287-289
+apps/oa-frontend/src/views/customer/list/components/index.vue
+  h_5fb804fa880b8e 186-188
+apps/oa-frontend/src/views/customer/list/components/liaison.vue
+  h_5fb804fa880b8e 254-256
+apps/oa-frontend/src/views/customer/list/components/liaisonDialog.vue
+  h_5fb804fa880b8e 135-137
+apps/oa-frontend/src/views/customer/list/components/record.vue
+  h_5fb804fa880b8e 434-442
+apps/oa-frontend/src/views/customer/list/components/recordUpload.vue
+  h_5fb804fa880b8e 428-442
+apps/oa-frontend/src/views/customer/list/components/remindDialog.vue
+  h_5fb804fa880b8e 164-172
+apps/oa-frontend/src/views/customer/list/components/transferDialog.vue
+  h_5fb804fa880b8e 203-205
+apps/oa-frontend/src/views/customer/list/index.vue
+  h_5fb804fa880b8e 1205-1213
+apps/oa-frontend/src/views/customer/setup/customForm/index.vue
+  h_5fb804fa880b8e 734-752
+apps/oa-frontend/src/views/customer/setup/dictionary/index.vue
+  h_5fb804fa880b8e 299-302
+apps/oa-frontend/src/views/customer/setup/dictionary/management.vue
+  h_5fb804fa880b8e 262-264
+apps/oa-frontend/src/views/customer/setup/label.vue
+  h_5fb804fa880b8e 290-303
+apps/oa-frontend/src/views/customer/setup/ruleSettings/components/approvalRules.vue
+  h_5fb804fa880b8e 110-128
+apps/oa-frontend/src/views/customer/setup/ruleSettings/components/followRules.vue
+  h_5fb804fa880b8e 207-210
+apps/oa-frontend/src/views/customer/setup/ruleSettings/components/returnRule.vue
+  h_5fb804fa880b8e 266-269
+apps/oa-frontend/src/views/customer/setup/ruleSettings/index.vue
+  h_5fb804fa880b8e 161-170
+apps/oa-frontend/src/views/customer/setup/type/components/addDialog.vue
+  h_5fb804fa880b8e 246-249
+apps/oa-frontend/src/views/customer/setup/type/index.vue
+  h_5fb804fa880b8e 127-129
+apps/oa-frontend/src/views/customer/setup/work.vue
+  h_5fb804fa880b8e 433-457
+apps/oa-frontend/src/views/customer/turnover/components/formBox.vue
+  h_5fb804fa880b8e 195-204
+apps/oa-frontend/src/views/customer/turnover/index.vue
+  h_5fb804fa880b8e 17,46,75,107,140,170,187,197,242,1118-1165
+apps/oa-frontend/src/views/customer/whole/index.vue
+  h_5fb804fa880b8e 606-624
+apps/oa-frontend/src/views/develop/crud/components/basicSetting.vue
+  h_5fb804fa880b8e 170-187
+apps/oa-frontend/src/views/develop/crud/components/eventSetting.vue
+  h_5fb804fa880b8e 242-257
+apps/oa-frontend/src/views/develop/crud/components/fieldSetting.vue
+  h_5fb804fa880b8e 396-414
+apps/oa-frontend/src/views/develop/crud/components/processSetting.vue
+  h_5fb804fa880b8e 221-239
+apps/oa-frontend/src/views/develop/crud/design.vue
+  h_5fb804fa880b8e 219-244
+apps/oa-frontend/src/views/develop/crud/event.vue
+  h_5fb804fa880b8e 8,473,1282-1319
+apps/oa-frontend/src/views/develop/crud/index.vue
+  h_5fb804fa880b8e 401-430
+apps/oa-frontend/src/views/develop/crud/process.vue
+  h_5fb804fa880b8e 519-552
+apps/oa-frontend/src/views/develop/dataManagement/components/addData.vue
+  h_5fb804fa880b8e 387-406
+apps/oa-frontend/src/views/develop/foreign/components/addForeign.vue
+  h_5fb804fa880b8e 322-340
+apps/oa-frontend/src/views/develop/foreign/components/tree.vue
+  h_5fb804fa880b8e 206-220
+apps/oa-frontend/src/views/develop/foreign/document.vue
+  h_5fb804fa880b8e 215-233
+apps/oa-frontend/src/views/develop/foreign/index.vue
+  h_5fb804fa880b8e 239-246
+apps/oa-frontend/src/views/develop/module/components/addDrawer.vue
+  h_5fb804fa880b8e 13,186-193
+apps/oa-frontend/src/views/develop/module/components/checkDrawer.vue
+  h_5fb804fa880b8e 12,912-919
+apps/oa-frontend/src/views/develop/module/components/dragUpload.vue
+  h_5fb804fa880b8e 320-327
+apps/oa-frontend/src/views/develop/module/components/fillIn.vue
+  h_5fb804fa880b8e 12,158-165
+apps/oa-frontend/src/views/develop/module/components/fillInDialog.vue
+  h_5fb804fa880b8e 142-149
+apps/oa-frontend/src/views/develop/module/components/formBox.vue
+  h_5fb804fa880b8e 91,1059-1095
+apps/oa-frontend/src/views/develop/module/components/share.vue
+  h_5fb804fa880b8e 12,200-207
+apps/oa-frontend/src/views/error-page/401.vue
+  h_5fb804fa880b8e 87-105
+apps/oa-frontend/src/views/error-page/404.vue
+  h_5fb804fa880b8e 101-125
+apps/oa-frontend/src/views/fd/enterprise/chart/components/statisticsBox.vue
+  h_5fb804fa880b8e 2,156-194
+apps/oa-frontend/src/views/fd/enterprise/chart/components/tabListChart.vue
+  h_5fb804fa880b8e 122-153
+apps/oa-frontend/src/views/fd/enterprise/chart/index.vue
+  h_5fb804fa880b8e 3,13-14,61,158-181,383,487,579,584,586-587,590-640,778-819
+apps/oa-frontend/src/views/fd/enterprise/list/components/formBox.vue
+  h_5fb804fa880b8e 3,338-397
+apps/oa-frontend/src/views/fd/enterprise/list/components/index.vue
+  h_5fb804fa880b8e 12,161-198
+apps/oa-frontend/src/views/fd/enterprise/list/components/viewDetails.vue
+  h_5fb804fa880b8e 4,437-488
+apps/oa-frontend/src/views/fd/enterprise/list/index.vue
+  h_5fb804fa880b8e 3,437-473
+apps/oa-frontend/src/views/fd/examine/components/examineDialog.vue
+  h_5fb804fa880b8e 9,431,433-483
+apps/oa-frontend/src/views/fd/examine/components/formBox.vue
+  h_5fb804fa880b8e 2,25,190-238
+apps/oa-frontend/src/views/fd/examine/components/operationDialog.vue
+  h_5fb804fa880b8e 10,442-494,496
+apps/oa-frontend/src/views/fd/examine/index.vue
+  h_5fb804fa880b8e 3,127,557-597,644-676
+apps/oa-frontend/src/views/fd/invoice/components/invoicingDialog.vue
+  h_5fb804fa880b8e 8,263-314
+apps/oa-frontend/src/views/fd/invoice/index.vue
+  h_5fb804fa880b8e 3,18,259,279,837-951
+apps/oa-frontend/src/views/fd/setup/cate/components/index.vue
+  h_5fb804fa880b8e 12,153-194
+apps/oa-frontend/src/views/fd/setup/cate/index.vue
+  h_5fb804fa880b8e 3,249-296
+apps/oa-frontend/src/views/fd/setup/category/index.vue
+  h_5fb804fa880b8e 3,136-185
+apps/oa-frontend/src/views/fd/setup/type/index.vue
+  h_5fb804fa880b8e 3,167-201
+apps/oa-frontend/src/views/hr/_hr-mobile.scss
+  h_5fb804fa880b8e 1-301
+apps/oa-frontend/src/views/hr/archives/components/LeftNavigation.vue
+  h_5fb804fa880b8e 423-428
+apps/oa-frontend/src/views/hr/archives/components/addWork.vue
+  h_5fb804fa880b8e 310-335
+apps/oa-frontend/src/views/hr/archives/components/formItemDataList.vue
+  h_5fb804fa880b8e 1412-1447
+apps/oa-frontend/src/views/hr/archives/components/index/employees.vue
+  h_5fb804fa880b8e 17-24,26
+apps/oa-frontend/src/views/hr/archives/components/index/notEmployees.vue
+  h_5fb804fa880b8e 15-22,24
+apps/oa-frontend/src/views/hr/archives/components/index/quitEmployees.vue
+  h_5fb804fa880b8e 18-25,27
+apps/oa-frontend/src/views/hr/archives/components/positionDialog.vue
+  h_5fb804fa880b8e 147-159
+apps/oa-frontend/src/views/hr/archives/components/record.vue
+  h_5fb804fa880b8e 8,507-519,527-532
+apps/oa-frontend/src/views/hr/archives/components/userDetails.vue
+  h_5fb804fa880b8e 572-690
+apps/oa-frontend/src/views/hr/archives/index.vue
+  h_5fb804fa880b8e 362
+apps/oa-frontend/src/views/hr/archives/mixins/method.js
+  h_5fb804fa880b8e 3-43
+apps/oa-frontend/src/views/hr/assess/check/index.vue
+  h_5fb804fa880b8e 5,13-20,22,86,166
+apps/oa-frontend/src/views/hr/assess/config/index.vue
+  h_5fb804fa880b8e 52
+apps/oa-frontend/src/views/hr/assess/config/mentPlan.vue
+  h_5fb804fa880b8e 23
+apps/oa-frontend/src/views/hr/assess/config/mentProcess.vue
+  h_5fb804fa880b8e 23
+apps/oa-frontend/src/views/hr/assess/config/mentScore.vue
+  h_5fb804fa880b8e 23
+apps/oa-frontend/src/views/hr/assess/quota/index.vue
+  h_5fb804fa880b8e 5,13-20,22,96,196
+apps/oa-frontend/src/views/hr/assess/staff/deleteRecord.vue
+  h_5fb804fa880b8e 101
+apps/oa-frontend/src/views/hr/assess/staff/mentStaff.vue
+  h_5fb804fa880b8e 290
+apps/oa-frontend/src/views/hr/assess/staff/mentStatistics.vue
+  h_5fb804fa880b8e 387
+apps/oa-frontend/src/views/hr/attendance/setting/addConent.vue
+  h_5fb804fa880b8e 725
+apps/oa-frontend/src/views/hr/attendance/setting/addSchedul.vue
+  h_5fb804fa880b8e 644
+apps/oa-frontend/src/views/hr/attendance/setting/calendarsetUp.vue
+  h_5fb804fa880b8e 143
+apps/oa-frontend/src/views/hr/attendance/setting/schedul.vue
+  h_5fb804fa880b8e 264
+apps/oa-frontend/src/views/hr/attendance/setting/shift.vue
+  h_5fb804fa880b8e 152
+apps/oa-frontend/src/views/hr/attendance/setting/team.vue
+  h_5fb804fa880b8e 238
+apps/oa-frontend/src/views/hr/attendance/setting/white.vue
+  h_5fb804fa880b8e 123
+apps/oa-frontend/src/views/hr/attendance/statistics/clock.vue
+  h_5fb804fa880b8e 154
+apps/oa-frontend/src/views/hr/attendance/statistics/daily.vue
+  h_5fb804fa880b8e 462
+apps/oa-frontend/src/views/hr/attendance/statistics/monthly.vue
+  h_5fb804fa880b8e 202
+apps/oa-frontend/src/views/hr/enterprise/group/components/index.vue
+  h_5fb804fa880b8e 133-138
+apps/oa-frontend/src/views/hr/enterprise/group/components/tree.vue
+  h_5fb804fa880b8e 280-284
+apps/oa-frontend/src/views/hr/enterprise/group/index.vue
+  h_5fb804fa880b8e 6-13,15,148,362
+apps/oa-frontend/src/views/hr/enterprise/job/analysis.vue
+  h_5fb804fa880b8e 7-12,42,45,160,358
+apps/oa-frontend/src/views/hr/enterprise/job/components/rankDialog.vue
+  h_5fb804fa880b8e 258-268
+apps/oa-frontend/src/views/hr/enterprise/job/jobAdministration.vue
+  h_5fb804fa880b8e 396
+apps/oa-frontend/src/views/hr/enterprise/job/positionSystemChart.vue
+  h_5fb804fa880b8e 231
+apps/oa-frontend/src/views/hr/enterprise/job/rankManagement.vue
+  h_5fb804fa880b8e 8-13,65,67,161,328
+apps/oa-frontend/src/views/hr/enterprise/promotion.vue
+  h_5fb804fa880b8e 6-13,16,220,440
+apps/oa-frontend/src/views/hr/enterprise/rank/cate/index.vue
+  h_5fb804fa880b8e 76-79
+apps/oa-frontend/src/views/hr/enterprise/rank/type/index.vue
+  h_5fb804fa880b8e 101-103
+apps/oa-frontend/src/views/hr/report/index.vue
+  h_5fb804fa880b8e 315
+apps/oa-frontend/src/views/hr/tool/haishAssessment/components/historyList.vue
+  h_5fb804fa880b8e 98-106
+apps/oa-frontend/src/views/hr/tool/haishAssessment/index.vue
+  h_5fb804fa880b8e 689
+apps/oa-frontend/src/views/hr/training/companyProfile.vue
+  h_5fb804fa880b8e 63
+apps/oa-frontend/src/views/hr/training/plan.vue
+  h_5fb804fa880b8e 65
+apps/oa-frontend/src/views/hr/training/structure.vue
+  h_5fb804fa880b8e 64
+apps/oa-frontend/src/views/program/programList/components/addProgram.vue
+  h_5fb804fa880b8e 523-540
+apps/oa-frontend/src/views/program/programList/components/detailsProgram.vue
+  h_5fb804fa880b8e 133-147
+apps/oa-frontend/src/views/program/programList/components/files.vue
+  h_5fb804fa880b8e 293-312
+apps/oa-frontend/src/views/program/programList/dynamics.vue
+  h_5fb804fa880b8e 499-519
+apps/oa-frontend/src/views/program/programList/index.vue
+  h_5fb804fa880b8e 485-495
+apps/oa-frontend/src/views/program/programList/taskDetails.vue
+  h_5fb804fa880b8e 153-175
+apps/oa-frontend/src/views/program/programTask/components/addTask.vue
+  h_5fb804fa880b8e 531-563
+apps/oa-frontend/src/views/program/programTask/components/comment.vue
+  h_5fb804fa880b8e 510-535
+apps/oa-frontend/src/views/program/programTask/components/editTask.vue
+  h_5fb804fa880b8e 1201-1232
+apps/oa-frontend/src/views/program/programTask/components/tableData.vue
+  h_5fb804fa880b8e 760-764
+apps/oa-frontend/src/views/program/programTask/index.vue
+  h_5fb804fa880b8e 2253-2290
+apps/oa-frontend/src/views/search/index.vue
+  h_5fb804fa880b8e 415-445
+apps/oa-frontend/src/views/setting/auth/admin/index.vue
+  h_5fb804fa880b8e 286-295
+apps/oa-frontend/src/views/setting/auth/auth/index.vue
+  h_5fb804fa880b8e 168-173
+apps/oa-frontend/src/views/setting/auth/group/components/editUser.vue
+  h_5fb804fa880b8e 221-237
+apps/oa-frontend/src/views/setting/auth/group/components/index.vue
+  h_5fb804fa880b8e 10,137-145
+apps/oa-frontend/src/views/setting/auth/group/index.vue
+  h_5fb804fa880b8e 514-536
+apps/oa-frontend/src/views/setting/enterprise/components/addAdminRole.vue
+  h_5fb804fa880b8e 635-661
+apps/oa-frontend/src/views/setting/enterprise/info/index.vue
+  h_5fb804fa880b8e 463-489
+apps/oa-frontend/src/views/setting/enterprise/news/components/formBox.vue
+  h_5fb804fa880b8e 107-124
+apps/oa-frontend/src/views/setting/enterprise/news/components/messagePush.vue
+  h_5fb804fa880b8e 167-183
+apps/oa-frontend/src/views/setting/enterprise/news/components/messageTimes.vue
+  h_5fb804fa880b8e 9,161-179
+apps/oa-frontend/src/views/setting/enterprise/news/components/messageType.vue
+  h_5fb804fa880b8e 145-158
+apps/oa-frontend/src/views/setting/enterprise/news/components/tree.vue
+  h_5fb804fa880b8e 221-231
+apps/oa-frontend/src/views/setting/enterprise/news/index.vue
+  h_5fb804fa880b8e 333-347
+apps/oa-frontend/src/views/setting/enterprise/news/record.vue
+  h_5fb804fa880b8e 182-196
+apps/oa-frontend/src/views/setting/enterprise/setup/components/cloudfile.vue
+  h_5fb804fa880b8e 178-201
+apps/oa-frontend/src/views/setting/enterprise/setup/components/index.vue
+  h_5fb804fa880b8e 134-139
+apps/oa-frontend/src/views/setting/enterprise/setup/components/oneNumber.vue
+  h_5fb804fa880b8e 93-114
+apps/oa-frontend/src/views/setting/enterprise/setup/components/storage.vue
+  h_5fb804fa880b8e 805-834
+apps/oa-frontend/src/views/setting/enterprise/setup/index.vue
+  h_5fb804fa880b8e 146-181
+apps/oa-frontend/src/views/setting/enterprise/upgrade/index.vue
+  h_5fb804fa880b8e 645-667
+apps/oa-frontend/src/views/setting/enterprise/workbench/index.vue
+  h_5fb804fa880b8e 77-91
+apps/oa-frontend/src/views/setting/system/agreement.vue
+  h_5fb804fa880b8e 228-250
+apps/oa-frontend/src/views/setting/system/firewall.vue
+  h_5fb804fa880b8e 129-152
+apps/oa-frontend/src/views/setting/system/quick/components/left.vue
+  h_5fb804fa880b8e 191-202
+apps/oa-frontend/src/views/setting/system/quick/index.vue
+  h_5fb804fa880b8e 252-267
+apps/oa-frontend/src/views/setting/user/room/index.vue
+  h_5fb804fa880b8e 389-427
+apps/oa-frontend/src/views/share.vue
+  h_5fb804fa880b8e 27,76-82,177-183
+apps/oa-frontend/src/views/system/dashboard-design/charts/components/FieldPanel.vue
+  h_5fb804fa880b8e 345-352
+apps/oa-frontend/src/views/system/dashboard-design/charts/components/SettingPanel.vue
+  h_5fb804fa880b8e 264-270
+apps/oa-frontend/src/views/system/dashboard-design/charts/components/VFormDesigner.vue
+  h_5fb804fa880b8e 691-729
+apps/oa-frontend/src/views/system/dashboard-design/charts/property-editor/components/DimensionCom.vue
+  h_5fb804fa880b8e 479-485
+apps/oa-frontend/src/views/system/dashboard-design/charts/property-editor/setChartFilter-editor.vue
+  h_5fb804fa880b8e 24,172-180
+apps/oa-frontend/src/views/system/dashboard-design/charts/property-editor/setDimensional-editor.vue
+  h_5fb804fa880b8e 540-545
+apps/oa-frontend/src/views/system/dashboard-design/list/index.vue
+  h_5fb804fa880b8e 265-276
+apps/oa-frontend/src/views/user/assessment/appraisal.vue
+  h_5fb804fa880b8e 110-115
+apps/oa-frontend/src/views/user/assessment/components/auditProcess.vue
+  h_5fb804fa880b8e 432-464
+apps/oa-frontend/src/views/user/assessment/components/current.vue
+  h_5fb804fa880b8e 173-185
+apps/oa-frontend/src/views/user/assessment/components/execution.vue
+  h_5fb804fa880b8e 1311-1371
+apps/oa-frontend/src/views/user/assessment/components/formBox.vue
+  h_5fb804fa880b8e 392-409
+apps/oa-frontend/src/views/user/assessment/components/goalSetting.vue
+  h_5fb804fa880b8e 1104-1160
+apps/oa-frontend/src/views/user/assessment/components/index.vue
+  h_5fb804fa880b8e 139-157
+apps/oa-frontend/src/views/user/assessment/components/lowerLevel.vue
+  h_5fb804fa880b8e 327-349
+apps/oa-frontend/src/views/user/assessment/components/merits.vue
+  h_5fb804fa880b8e 188-211
+apps/oa-frontend/src/views/user/assessment/components/scoreDialog.vue
+  h_5fb804fa880b8e 103-117
+apps/oa-frontend/src/views/user/assessment/components/self.vue
+  h_5fb804fa880b8e 201-228
+apps/oa-frontend/src/views/user/assessment/components/setTemplate.vue
+  h_5fb804fa880b8e 104-119
+apps/oa-frontend/src/views/user/assessment/department.vue
+  h_5fb804fa880b8e 173-186
+apps/oa-frontend/src/views/user/assessment/my.vue
+  h_5fb804fa880b8e 116-124
+apps/oa-frontend/src/views/user/calendar/components/addTodo.vue
+  h_5fb804fa880b8e 749-796
+apps/oa-frontend/src/views/user/calendar/components/calendarBar.vue
+  h_5fb804fa880b8e 376-391
+apps/oa-frontend/src/views/user/calendar/components/calendarDetails.vue
+  h_5fb804fa880b8e 794-826
+apps/oa-frontend/src/views/user/calendar/components/checkDialog.vue
+  h_5fb804fa880b8e 11-12,143-156
+apps/oa-frontend/src/views/user/calendar/components/commentList.vue
+  h_5fb804fa880b8e 120-132
+apps/oa-frontend/src/views/user/calendar/index.vue
+  h_5fb804fa880b8e 11-12,15,815-908
+apps/oa-frontend/src/views/user/cloudfile/components/authorDialog.vue
+  h_5fb804fa880b8e 261-272
+apps/oa-frontend/src/views/user/cloudfile/components/fileAttribute.vue
+  h_5fb804fa880b8e 178-186
+apps/oa-frontend/src/views/user/cloudfile/components/fileTemp.vue
+  h_5fb804fa880b8e 103-111
+apps/oa-frontend/src/views/user/cloudfile/components/layout/cloudfileLeft.vue
+  h_5fb804fa880b8e 485-574
+apps/oa-frontend/src/views/user/cloudfile/components/layout/formBox.vue
+  h_5fb804fa880b8e 536-563
+apps/oa-frontend/src/views/user/cloudfile/components/layout/latelyFile.vue
+  h_5fb804fa880b8e 807-826
+apps/oa-frontend/src/views/user/cloudfile/components/layout/recoveryFile.vue
+  h_5fb804fa880b8e 250-272
+apps/oa-frontend/src/views/user/cloudfile/components/layout/spaceFile.vue
+  h_5fb804fa880b8e 806-825
+apps/oa-frontend/src/views/user/cloudfile/components/menuTree.vue
+  h_5fb804fa880b8e 129-141
+apps/oa-frontend/src/views/user/cloudfile/components/moveDialog.vue
+  h_5fb804fa880b8e 249-260
+apps/oa-frontend/src/views/user/cloudfile/components/myFile.vue
+  h_5fb804fa880b8e 745-759
+apps/oa-frontend/src/views/user/cloudfile/components/newFileDialog.vue
+  h_5fb804fa880b8e 190-206
+apps/oa-frontend/src/views/user/cloudfile/components/rightClick.vue
+  h_5fb804fa880b8e 172-178
+apps/oa-frontend/src/views/user/cloudfile/components/shareDialog.vue
+  h_5fb804fa880b8e 255-266
+apps/oa-frontend/src/views/user/cloudfile/components/spaceDialog.vue
+  h_5fb804fa880b8e 485-496
+apps/oa-frontend/src/views/user/cloudfile/components/uploadProgress.vue
+  h_5fb804fa880b8e 293-306
+apps/oa-frontend/src/views/user/cloudfile/index.vue
+  h_5fb804fa880b8e 982-1009
+apps/oa-frontend/src/views/user/daily/components/addBox.vue
+  h_5fb804fa880b8e 46-47,101,1007-1060
+apps/oa-frontend/src/views/user/daily/components/calendar.vue
+  h_5fb804fa880b8e 346-363
+apps/oa-frontend/src/views/user/daily/department.vue
+  h_5fb804fa880b8e 102-103,167,1313-1370
+apps/oa-frontend/src/views/user/daily/my.vue
+  h_5fb804fa880b8e 563-583
+apps/oa-frontend/src/views/user/duty/analyse.vue
+  h_5fb804fa880b8e 431-471
+apps/oa-frontend/src/views/user/duty/explain.vue
+  h_5fb804fa880b8e 408-445
+apps/oa-frontend/src/views/user/ent/components/menuTree.vue
+  h_5fb804fa880b8e 3,5-7,9,53,156-185
+apps/oa-frontend/src/views/user/ent/index.vue
+  h_5fb804fa880b8e 250-281
+apps/oa-frontend/src/views/user/examine/components/editExamine.vue
+  h_5fb804fa880b8e 689
+apps/oa-frontend/src/views/user/forum/index.vue
+  h_5fb804fa880b8e 38-50
+apps/oa-frontend/src/views/user/memorandum/components/dialog-form.vue
+  h_5fb804fa880b8e 126-143
+apps/oa-frontend/src/views/user/memorandum/components/menuTree.vue
+  h_5fb804fa880b8e 364-373
+apps/oa-frontend/src/views/user/memorandum/components/moveDialog.vue
+  h_5fb804fa880b8e 168-174
+apps/oa-frontend/src/views/user/memorandum/index.vue
+  h_5fb804fa880b8e 4,98,106,162,238,274,630-700
+apps/oa-frontend/src/views/user/news/components/formBox.vue
+  h_5fb804fa880b8e 103-120
+apps/oa-frontend/src/views/user/news/components/index.vue
+  h_5fb804fa880b8e 134-151
+apps/oa-frontend/src/views/user/news/components/messageDetails.vue
+  h_5fb804fa880b8e 190-206
+apps/oa-frontend/src/views/user/news/index.vue
+  h_5fb804fa880b8e 227-247
+apps/oa-frontend/src/views/user/news/read.vue
+  h_5fb804fa880b8e 269-303
+apps/oa-frontend/src/views/user/news/subscribe.vue
+  h_5fb804fa880b8e 121-135
+apps/oa-frontend/src/views/user/news/unread.vue
+  h_5fb804fa880b8e 267-301
+apps/oa-frontend/src/views/user/notice/components/noticeDetail.vue
+  h_5fb804fa880b8e 161-192
+apps/oa-frontend/src/views/user/notice/index.vue
+  h_5fb804fa880b8e 574-623
+apps/oa-frontend/src/views/user/resume/index.vue
+  h_5fb804fa880b8e 436-512
+apps/oa-frontend/src/views/user/statistic/single.vue
+  h_5fb804fa880b8e 300-301,629-675
+apps/oa-frontend/src/views/user/training/companyProfile.vue
+  h_5fb804fa880b8e 79-101
+apps/oa-frontend/src/views/user/training/plan.vue
+  h_5fb804fa880b8e 77-99
+apps/oa-frontend/src/views/user/training/promotion.vue
+  h_5fb804fa880b8e 311-372
+apps/oa-frontend/src/views/user/training/structure.vue
+  h_5fb804fa880b8e 75-96
+apps/oa-frontend/src/views/user/workDealt/components/index.vue
+  h_5fb804fa880b8e 315-340
+apps/oa-frontend/src/views/user/workDealt/components/repeatDialog.vue
+  h_5fb804fa880b8e 247-261
+apps/oa-frontend/src/views/user/workDealt/index.vue
+  h_5fb804fa880b8e 227-241
+apps/oa-frontend/src/views/user/workStatistics/components/assessStatistics.vue
+  h_5fb804fa880b8e 383-399
+apps/oa-frontend/src/views/user/workStatistics/index.vue
+  h_5fb804fa880b8e 109-128
+apps/oa-frontend/src/views/user/workbench/components/assessTarget.vue
+  h_5fb804fa880b8e 132-150
+apps/oa-frontend/src/views/user/workbench/components/echart.vue
+  h_5fb804fa880b8e 196-206
+apps/oa-frontend/src/views/user/workbench/components/enterprise.vue
+  h_5fb804fa880b8e 162-179
+apps/oa-frontend/src/views/user/workbench/components/index.vue
+  h_5fb804fa880b8e 178-195
+apps/oa-frontend/src/views/user/workbench/components/password.vue
+  h_5fb804fa880b8e 130-145
+apps/oa-frontend/src/views/user/workbench/components/quickManage.vue
+  h_5fb804fa880b8e 347-362
+apps/oa-frontend/src/views/user/workbench/index.vue
+  h_5fb804fa880b8e 4-5,18,36-38,40,55,72-73,76,88,155,158,161,188,190,207,240,1562-1746
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "2fff3be7a6eb4cca6e29c4a33cd38d5555359b1e",
+  "prompts": {},
+  "humans": {
+    "h_5fb804fa880b8e": {
+      "author": "星剑 <zhangheng2@xiaohongshu.com>"
+    }
+  }
+}
